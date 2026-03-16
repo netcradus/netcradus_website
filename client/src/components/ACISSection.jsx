@@ -42,8 +42,9 @@ const ACISSection = () => {
               <span className="pulse-dot"></span>
               Autonomous Response Active
             </div>
-            <h2 className="acis-title">ACIS — The Future of <span className="gradient-text">Immune Defense.</span></h2>
-            <p className="acis-desc mt-6 mb-8 text-lg">
+<h2 className="acis-title">
+ACIS — The Future of <span>Immune Defense.</span>
+</h2>            <p className="acis-desc mt-6 mb-8 text-lg">
               ACIS is our revolutionary, proprietary AI-driven cybersecurity platform. Designed to eliminate the lag between threat detection and response, ACIS operates autonomously to identify, isolate, and neutralize cyber threats without requiring manual human intervention.
             </p>
             <div className="feature-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

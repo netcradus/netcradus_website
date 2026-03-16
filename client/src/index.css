@@ -1,35 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500;1,700&family=Inter:wght@300;400;500;600&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
-  /* Dark Theme (Default) */
-  --bg-color: #0A0D12;
-  --surface-color: #111520;
-  --border-color: #1E2535;
-  --primary-accent: #00C2FF;
-  --secondary-accent: #7B4FFF;
-  --text-primary: #F0F4FF;
-  --text-secondary: #8A94A8;
-  --success-color: #00E589;
-  --glass-bg: rgba(17, 21, 32, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.05);
-  
+  /* Dark Theme (Logo Inspired Default) */
+  --bg-color: #090909;
+  --surface-color: #121014;
+  --border-color: #2A1B24;
+
+  --primary-accent: #FF8A1F;   /* orange */
+  --secondary-accent: #FF2D8F; /* pink/magenta */
+  --accent-gradient: linear-gradient(135deg, #FF8A1F 0%, #FF5A3D 45%, #FF2D8F 100%);
+
+  --text-primary: #FFF4F8;
+  --text-secondary: #B8A8B2;
+
+  --success-color: #22D38B;
+  --glass-bg: rgba(18, 16, 20, 0.75);
+  --glass-border: rgba(255, 138, 31, 0.12);
+
   --transition-speed: 0.3s;
-  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+ --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", system-ui, sans-serif;
 }
 
 [data-theme="light"] {
-  --bg-color: #F6F8FC;
+  --bg-color: #FFF8F6;
   --surface-color: #FFFFFF;
-  --border-color: #DDE3EE;
-  --primary-accent: #0077CC;
-  --secondary-accent: #5B2FCC;
-  --text-primary: #1A202C;
-  --text-secondary: #4A5568;
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(0, 0, 0, 0.1);
+  --border-color: #F0D6DE;
+
+  --primary-accent: #F97316;   /* warm orange */
+  --secondary-accent: #E11D74; /* strong pink */
+  --accent-gradient: linear-gradient(135deg, #F97316 0%, #FB923C 40%, #E11D74 100%);
+
+  --text-primary: #2A1A22;
+  --text-secondary: #6E5560;
+
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(225, 29, 116, 0.12);
 }
 
 * {
@@ -114,9 +124,9 @@ p {
 }
 
 .btn-primary {
-  background-color: var(--primary-accent);
+  background: var(--accent-gradient);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px 0 rgba(0, 194, 255, 0.39);
+  box-shadow: 0 4px 16px rgba(255, 45, 143, 0.28);
 }
 
 .btn-ghost {
@@ -133,6 +143,15 @@ p {
   color: var(--primary-accent);
   margin-bottom: 1rem;
   display: block;
+}
+
+/* Optional gradient text utility */
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Animations */
@@ -167,10 +186,10 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
+  background: linear-gradient(180deg, #FF8A1F, #FF2D8F);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
-}
+  filter: brightness(1.1);
+}
