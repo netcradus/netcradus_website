@@ -1,0 +1,114 @@
+.acis-orbit-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.orbit-ambient-glow {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 194, 255, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.orbit-core {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.core-glow {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    background: radial-gradient(circle, var(--primary-accent) 0%, transparent 70%);
+    opacity: 0.4;
+    filter: blur(40px);
+}
+
+.core-sphere {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px rgba(0, 194, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.core-badge {
+    background-color: var(--bg-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+}
+
+.core-icon {
+    color: var(--primary-accent);
+}
+
+.orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed var(--border-color);
+    pointer-events: none;
+}
+
+.orbit-label-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+}
+
+.orbit-label-wrapper.front { z-index: 30; }
+.orbit-label-wrapper.back { z-index: 10; opacity: 0.6; }
+
+.orbit-label-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    border-radius: 50px;
+    white-space: nowrap;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.orbit-label-card span {
+    font-size: 0.7rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.color-primary .status-dot { background-color: var(--primary-accent); box-shadow: 0 0 8px var(--primary-accent); }
+.color-secondary .status-dot { background-color: var(--secondary-accent); box-shadow: 0 0 8px var(--secondary-accent); }
+.color-accent .status-dot { background-color: var(--success-color); box-shadow: 0 0 8px var(--success-color); }
+
+@media (max-width: 768px) {
+    .acis-orbit-container {
+        scale: 0.7;
+    }
+}

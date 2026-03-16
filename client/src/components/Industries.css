@@ -1,0 +1,89 @@
+.industries-section {
+  padding: 8rem 0;
+  background-color: var(--bg-color);
+}
+
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.industry-card {
+  padding: 3rem;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.industry-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-accent);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.industry-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--primary-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  transition: transform 0.3s;
+}
+
+.industry-card:hover .industry-icon {
+  transform: scale(1.1) rotate(5deg);
+  background-color: var(--primary-accent);
+  color: #fff;
+}
+
+.industry-name {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.industry-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.industry-hover-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--primary-accent);
+  transition: width 0.4s ease;
+}
+
+.industry-card:hover .industry-hover-line {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .industries-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .industries-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .industry-card {
+    padding: 2rem;
+  }
+}

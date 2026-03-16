@@ -1,0 +1,307 @@
+.acis-section {
+  padding: 8rem 0;
+  background-color: var(--bg-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.acis-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 10rem;
+}
+
+.acis-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 2rem;
+}
+
+.acis-desc {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  color: var(--text-secondary);
+}
+
+.acis-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 194, 255, 0.1);
+    border: 1px solid rgba(0, 194, 255, 0.2);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    color: var(--primary-accent);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.acis-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.acis-pills .pill {
+    padding: 0.4rem 0.8rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.acis-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+.acis-feature {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.acis-icon {
+    color: var(--primary-accent);
+}
+
+/* Mockup */
+.mockup-frame {
+    background-color: #0d1117;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+}
+
+.mockup-header {
+    background-color: #161b22;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mockup-dots {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.mockup-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
+
+.mockup-tab {
+    margin-left: 1.5rem;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    padding: 0.2rem 0.6rem;
+    background-color: #0d1117;
+    border-radius: 4px 4px 0 0;
+}
+
+.mockup-body {
+    padding: 2rem;
+}
+
+.terminal-lines {
+    font-size: 0.85rem;
+    height: 200px;
+    color: #c9d1d9;
+    margin-bottom: 2rem;
+}
+
+.log-line { margin-bottom: 0.5rem; }
+.text-dim { color: #8b949e; }
+.text-warning { color: #d29922; }
+.text-danger { color: #f85149; }
+.text-success { color: #3fb950; }
+.text-info { color: #58a6ff; }
+
+.terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: var(--primary-accent);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.mockup-footer {
+    border-top: 1px solid #30363d;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gauge-container { flex: 1; margin-right: 2rem; }
+.gauge-label { font-size: 0.65rem; color: #8b949e; margin-bottom: 0.5rem; }
+.gauge-bar { height: 6px; background-color: #30363d; border-radius: 3px; overflow: hidden; margin-bottom: 0.25rem; }
+.gauge-fill { height: 100%; background-color: var(--primary-accent); transition: width 1.5s ease; }
+.gauge-val { font-size: 0.7rem; color: var(--text-primary); text-align: right; }
+
+.indicator-group { display: flex; gap: 1rem; }
+.indicator { font-size: 0.7rem; color: #8b949e; display: flex; align-items: center; gap: 0.4rem; }
+.indicator.active { color: #3fb950; }
+
+.mockup-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130%;
+    height: 130%;
+    background: radial-gradient(circle, rgba(0, 194, 255, 0.1) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Architecture Interactive */
+.architecture-interactive {
+    margin-bottom: 10rem;
+}
+
+.arch-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 4rem;
+    margin-top: 4rem;
+}
+
+.arch-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.arch-tab {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text-secondary);
+    text-align: left;
+}
+
+.arch-tab.active {
+    background-color: var(--bg-color);
+    border-color: var(--primary-accent);
+    color: var(--text-primary);
+    box-shadow: 0 10px 30px rgba(0, 194, 255, 0.1);
+}
+
+.arch-tab-icon {
+    color: var(--text-secondary);
+}
+
+.arch-tab.active .arch-tab-icon {
+    color: var(--primary-accent);
+}
+
+.arch-content {
+    padding: 4rem;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.arch-content h4 {
+    font-size: 0.8rem;
+    color: var(--primary-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+}
+
+.arch-content p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    color: var(--primary-accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+/* Timeline */
+.timeline-section-title {
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.timeline-item {
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.phase-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--primary-accent);
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.phase-title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+}
+
+.phase-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+    .acis-grid { grid-template-columns: 1fr; gap: 4rem; }
+    .arch-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .timeline-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .timeline-grid { grid-template-columns: 1fr; }
+}
