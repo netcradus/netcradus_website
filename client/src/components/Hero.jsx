@@ -68,7 +68,8 @@ const Hero = () => {
       <div className="container hero-container">
         <div className="hero-content reveal">
           <span className="section-label">// DEFEND WHAT MATTERS</span>
-          <h1 className="hero-title">Defend What Matters. Intelligently.</h1>
+      
+          <h1 className="hero-title">Defend What Matters <span>Intelligently</span></h1>
           <p className="hero-subtitle">
             Netcradus delivers enterprise-grade cybersecurity and bespoke software solutions built for the threats of tomorrow.
           </p>

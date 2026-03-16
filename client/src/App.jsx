@@ -9,7 +9,9 @@ import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
+
 import { useReveal } from "./hooks/useReveal";
+import Platform from "./components/Platform";
 
 function AppLayout() {
   useReveal();
@@ -36,9 +38,11 @@ function App() {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
+          <Route path="platform" element={<Platform />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="acis" element={<ACISPage />} />
           <Route path="about" element={<AboutPage />} />
+          {/* <Route path="pricing" element={<Pricing />} /> */}
           <Route path="blog" element={<BlogPage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
