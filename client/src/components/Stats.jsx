@@ -41,20 +41,7 @@ const Stats = () => {
     { label: "Monitoring coverage", value: 24, suffix: "/7" }
   ];
 
-  const testimonials = [
-    {
-      text: "Netcradus transformed our security posture. ACIS is the most capable AI tool we've ever integrated.",
-      author: "James Wilson",
-      role: "CISO",
-      company: "HealthTrust UK"
-    },
-    {
-      text: "The speed of response is what sets them apart. We sleep better knowing Netcradus is on watch.",
-      author: "Sarah Chen",
-      role: "Head of Infrastructure",
-      company: "FinGlobal"
-    }
-  ];
+
 
   return (
     <section id="stats" className="stats-section">
@@ -72,24 +59,7 @@ const Stats = () => {
         </div>
       </div>
 
-      <div className="container testimonials-container">
-        <div className="testimonials-grid">
-          {testimonials.map((t, index) => (
-            <div key={index} className="testimonial-card reveal glass" style={{ transitionDelay: `${index * 0.2}s` }}>
-              <div className="stars">
-                {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="var(--primary-accent)" color="var(--primary-accent)" />)}
-              </div>
-              <blockquote className="testimonial-text">"{t.text}"</blockquote>
-              <div className="testimonial-author">
-                <div className="author-info">
-                  <span className="author-name">{t.author}</span>
-                  <span className="author-role">{t.role}, {t.company}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+
     </section>
   );
 };

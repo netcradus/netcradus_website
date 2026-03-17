@@ -1,13 +1,14 @@
 .cta-banner {
   margin: 6rem 1rem;
   padding: 8rem 2rem;
-  background: linear-gradient(135deg,#ff8a1f 0%,#ff2d8f 100%);
+  background: var(--accent-gradient);
   border-radius: 28px;
   position: relative;
   overflow: hidden;
   text-align: center;
-  color: #fff;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+  color: #FFFFFF;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
 }
 
 /* ambient glow */
@@ -50,6 +51,7 @@
   font-weight:500;
   letter-spacing:-0.02em;
   margin-bottom:1.5rem;
+  color: #FFFFFF;
 }
 
 /* subtext */
@@ -70,10 +72,10 @@
 
 /* white button */
 .cta-btn-white{
-  background:#fff;
-  color:#ff2d8f;
+  background:#FFFFFF;
+  color:var(--secondary-accent);
   font-family:"Inter",sans-serif;
-  font-weight:600;
+  font-weight:700;
   padding:0.9rem 1.6rem;
   border-radius:10px;
   transition:all .3s;

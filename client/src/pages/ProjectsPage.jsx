@@ -22,7 +22,7 @@ export default function ProjectsPage() {
                             Action
                         </span>
                     </h1>
-                    <p className="text-gray-400 font-sans text-sm md:text-lg leading-relaxed max-w-3xl mx-auto">
+                    <p className="text-[var(--text-secondary)] font-sans text-sm md:text-lg leading-relaxed max-w-3xl mx-auto">
                         Explore our flagship proprietary technologies and bespoke scalable solutions that are redefining enterprise architecture, security, and relationship management.
                     </p>
                 </AnimatedReveal>
@@ -35,10 +35,10 @@ export default function ProjectsPage() {
                     <AnimatedReveal className="text-center lg:text-left">
                         <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
                             <Cpu className="text-primary w-6 h-6 md:w-8 md:h-8" />
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white">Project: ACIS</h2>
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-[var(--text-primary)]">Project: ACIS</h2>
                         </div>
                         <h3 className="text-lg md:text-xl text-primary font-sans mb-6">Autonomous Cyber Immune System</h3>
-                        <div className="space-y-6 text-gray-400 font-sans text-sm md:text-base leading-relaxed text-left inline-block">
+                        <div className="space-y-6 text-[var(--text-secondary)] font-sans text-sm md:text-base leading-relaxed text-left inline-block">
                             <p>
                                 ACIS is our revolutionary, proprietary AI-driven cybersecurity platform. Designed to eliminate the lag between threat detection and response, ACIS operates autonomously to identify, isolate, and neutralize cyber threats without requiring manual human intervention.
                             </p>
@@ -74,8 +74,8 @@ export default function ProjectsPage() {
                             <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-8 shadow-[0_0_30px_rgba(255,107,0,0.2)]">
                                 <Cpu size={32} />
                             </div>
-                            <h4 className="text-2xl font-display font-bold text-white mb-4">The Future of Cyber Defense</h4>
-                            <p className="text-gray-400 leading-relaxed">
+                            <h4 className="text-2xl font-display font-bold text-[var(--text-primary)] mb-4">The Future of Cyber Defense</h4>
+                            <p className="text-[var(--text-secondary)] leading-relaxed">
                                 ACIS is currently in final development stages. It represents a monumental shift from tools that simply generate alerts to a platform that generates actual security outcomes out-of-the-box.
                             </p>
                         </GlassCard>

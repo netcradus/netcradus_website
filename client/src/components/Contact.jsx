@@ -56,10 +56,10 @@ const Contact = () => {
                         Establish Connection
                     </span>
                     <h2 className="section-title text-4xl md:text-7xl font-display font-extrabold mb-8 tracking-tighter leading-none">
-                        Ready to <br />
-                        <span className="text-gray-500 italic">fortify?</span>
+                        <span className="text-[var(--text-primary)]">Ready to</span> <br />
+                        <span className="text-[var(--text-secondary)] opacity-80 italic">fortify?</span>
                     </h2>
-                    <p className="section-desc max-w-md mx-auto text-gray-500 font-sans text-lg leading-relaxed opacity-80 mb-16">
+                    <p className="section-desc max-w-md mx-auto text-[var(--text-secondary)] font-sans text-lg leading-relaxed mb-16">
                         Our strategists are standing by to engineer your digital shield. Initiate the 60-minute executive briefing.
                     </p>
                 </div>

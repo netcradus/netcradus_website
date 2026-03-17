@@ -13,7 +13,7 @@ const cards = [
 
 export default function CloudAISection() {
     return (
-        <section className="relative py-16 md:py-24 bg-[#07090d] overflow-hidden">
+        <section className="relative py-16 md:py-24 bg-background overflow-hidden transition-colors duration-300">
             {/* Background Image & Overlay */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <img
@@ -26,9 +26,9 @@ export default function CloudAISection() {
 
             <div className="relative z-10">
                 <SectionWrapper>
-                    <AnimatedReveal className="mb-16 text-center">
-                        <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Cloud & AI Solutions</h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto font-sans">
+                    <AnimatedReveal className="mb-12 md:mb-16 text-center">
+                        <h2 className="text-3xl md:text-5xl font-display font-bold mb-4 text-[var(--text-primary)]">Cloud & AI Solutions</h2>
+                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto font-sans text-sm md:text-base">
                             Scale seamlessly and intelligently with next-generation cloud architectures and integrated AI models.
                         </p>
                     </AnimatedReveal>
@@ -45,7 +45,7 @@ export default function CloudAISection() {
                                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 ring-1 ring-primary/20">
                                         <card.icon size={28} strokeWidth={1.5} />
                                     </div>
-                                    <h3 className="text-lg font-display font-semibold text-white">{card.name}</h3>
+                                    <h3 className="text-lg font-display font-semibold text-[var(--text-primary)]">{card.name}</h3>
                                 </div>
                             </GlassCard>
                         ))}

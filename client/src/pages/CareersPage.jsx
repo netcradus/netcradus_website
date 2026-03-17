@@ -104,16 +104,16 @@ export default function CareersPage() {
                 <div className="max-w-4xl mx-auto text-center">
                     <AnimatedReveal>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-                            Careers at <span className="text-transparent bg-clip-text bg-cyber-gradient">Netcradus</span>
+                            Careers at <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Netcradus</span>
                         </h1>
                     </AnimatedReveal>
                     <AnimatedReveal delay={0.1}>
-                        <p className="text-xl md:text-2xl text-gray-300 mb-8 font-light">
+                        <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-8 font-light">
                             Join the Team That Is Redefining Cybersecurity and Enterprise Technology.
                         </p>
                     </AnimatedReveal>
                     <AnimatedReveal delay={0.2}>
-                        <p className="text-lg text-gray-400 leading-relaxed mb-8 max-w-3xl mx-auto">
+                        <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8 max-w-3xl mx-auto">
                             Netcradus is a rapidly growing technology company at an extraordinary point in its journey. With the development of ACIS, our expansion across international markets, and a growing client base, we are actively building a team of exceptional people who want to make a genuine difference — to their clients, to their profession, and to the security of the digital world.
                             <br /><br />
                             We do not offer generic IT jobs. We offer the opportunity to work on genuinely challenging problems, with access to cutting-edge technology, under the mentorship of experienced practitioners — in an environment that takes your development as seriously as you do.
@@ -123,7 +123,7 @@ export default function CareersPage() {
             </SectionWrapper>
 
             {/* Why Work at Netcradus */}
-            <SectionWrapper className="bg-white/5 border-y border-white/5">
+            <SectionWrapper className="bg-surface-color/50 border-y border-[var(--border-color)]">
                 <AnimatedReveal>
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Why Work at Netcradus?</h2>
@@ -135,11 +135,13 @@ export default function CareersPage() {
                     {BENEFITS.map((benefit, index) => (
                         <AnimatedReveal key={index} delay={index * 0.1} className="h-full">
                             <GlassCard className="h-full p-8 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
-                                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6">
+                                <div className="w-12 h-12 rounded-xl bg-surface-color border border-[var(--border-color)] flex items-center justify-center mb-6">
                                     {benefit.icon}
                                 </div>
-                                <h3 className="text-xl font-display font-bold mb-3">{benefit.title}</h3>
-                                <p className="text-gray-400 leading-relaxed text-sm flex-grow">
+                                <h3 className="text-xl font-display font-bold mb-3">
+                                    <span className="text-[var(--text-primary)]">{benefit.title}</span>
+                                </h3>
+                                <p className="text-[var(--text-secondary)] leading-relaxed text-sm flex-grow">
                                     {benefit.description}
                                 </p>
                             </GlassCard>
@@ -154,7 +156,7 @@ export default function CareersPage() {
                     <AnimatedReveal>
                         <div className="text-center mb-16">
                             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Roles We Typically Recruit For</h2>
-                            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
                                 We are always looking for exceptional talent across multiple disciplines.
                             </p>
                         </div>
@@ -163,15 +165,15 @@ export default function CareersPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {ROLES.map((role, idx) => (
                             <AnimatedReveal key={idx} delay={idx * 0.05}>
-                                <div className="group p-6 bg-[#0a0d14] border border-white/5 rounded-xl hover:border-primary/50 transition-all duration-300 h-full flex flex-col">
+                                <div className="group p-6 bg-surface-color/50 border border-[var(--border-color)] rounded-xl hover:border-primary/50 transition-all duration-300 h-full flex flex-col backdrop-blur-sm">
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="text-3xl">{role.icon}</div>
                                         <div>
-                                            <h3 className="font-display font-bold text-lg text-white group-hover:text-primary transition-colors">{role.title}</h3>
+                                            <h3 className="font-display font-bold text-lg text-[var(--text-primary)] group-hover:text-primary transition-colors">{role.title}</h3>
                                             <span className="text-xs font-semibold text-secondary uppercase tracking-wider">{role.department}</span>
                                         </div>
                                     </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed flex-grow">
+                                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed flex-grow">
                                         {role.description}
                                     </p>
                                 </div>
@@ -183,13 +185,13 @@ export default function CareersPage() {
 
             {/* CTA Section */}
             <SectionWrapper className="pb-0">
-                <GlassCard className="max-w-4xl mx-auto p-12 text-center bg-gradient-to-br from-white/5 to-primary/10 border-primary/20 relative overflow-hidden">
+                <GlassCard className="max-w-4xl mx-auto p-12 text-center bg-gradient-to-br from-surface-color/5 to-primary/10 border-primary/20 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] rounded-full mix-blend-screen pointer-events-none" />
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 blur-[100px] rounded-full mix-blend-screen pointer-events-none" />
 
                     <AnimatedReveal>
                         <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Ready to Join the Mission?</h2>
-                        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                        <p className="text-lg text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
                             To apply or explore opportunities, send your CV to our talent team with the role title in the subject line. We review all applications within 5 business days and respond to every candidate.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

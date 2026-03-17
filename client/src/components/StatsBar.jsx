@@ -27,7 +27,7 @@ function Counter({ from, to, suffix = "", prefix = "" }) {
         });
     }, [springValue, prefix, suffix]);
 
-    return <span ref={ref} className="font-display font-extrabold text-4xl md:text-5xl text-white tracking-tighter">{from}</span>;
+    return <span ref={ref} className="font-display font-extrabold text-4xl md:text-5xl text-[var(--text-primary)] tracking-tighter">{from}</span>;
 }
 
 const stats = [
@@ -40,7 +40,7 @@ const stats = [
 export default function StatsBar() {
     return (
         <SectionWrapper className="z-10 bg-background">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-px border-y border-white/[0.05] bg-white/[0.02]">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-px border-y border-[var(--border-color)] bg-surface-color/5">
                 {stats.map((stat, idx) => (
                     <div
                         key={idx}
@@ -54,12 +54,12 @@ export default function StatsBar() {
                             {stat.count ? (
                                 <Counter from={0} to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                             ) : (
-                                <div className="text-5xl md:text-6xl font-display font-extrabold text-white tracking-tighter">
+                                <div className="text-5xl md:text-6xl font-display font-extrabold text-[var(--text-primary)] tracking-tighter">
                                     {stat.prefix}{stat.value}{stat.suffix}
                                 </div>
                             )}
                         </div>
-                        <div className="mono-label !text-gray-600 mt-6 transition-colors group-hover:!text-primary font-bold">
+                        <div className="mono-label text-[var(--text-secondary)]/60 mt-6 transition-colors group-hover:text-primary font-bold">
                             {stat.label.replace(" ", "_").toUpperCase()}
                         </div>
                     </div>

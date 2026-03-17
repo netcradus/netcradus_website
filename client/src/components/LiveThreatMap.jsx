@@ -25,34 +25,34 @@ const attacks = [
 
 export default function LiveThreatMap() {
     return (
-        <SectionWrapper id="threat-map" className="pt-16 md:pt-32 pb-8 md:pb-16 bg-[#050505] relative overflow-hidden">
+        <SectionWrapper id="threat-map" className="pt-16 md:pt-32 pb-8 md:pb-16 bg-background relative overflow-hidden transition-colors duration-300">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,124,255,0.05)_0%,transparent_70%)] z-0" />
 
             <AnimatedReveal className="mb-20 text-center relative z-10">
                 <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-primary uppercase mb-6 block">
                     Global Intelligence
                 </span>
-                <h2 className="text-4xl md:text-7xl font-display font-extrabold text-white mb-6 tracking-tighter leading-none">
-                    Operative <span className="text-gray-500">grid.</span>
+                <h2 className="text-4xl md:text-7xl font-display font-extrabold text-[var(--text-primary)] mb-6 tracking-tighter leading-none">
+                    Operative <span className="text-[var(--text-secondary)] opacity-60">grid.</span>
                 </h2>
                 <div className="flex flex-col items-center gap-4">
-                    <p className="text-gray-600 font-mono text-[10px] tracking-widest uppercase mb-4">
+                    <p className="text-[var(--text-secondary)] opacity-60 font-mono text-[10px] tracking-widest uppercase mb-4">
                         3,220,737 Anomalies Neutralized Today
                     </p>
                     <div className="flex gap-4 items-center">
                         <div className="flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-primary" />
-                            <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Active nodes</span>
+                            <span className="text-[9px] font-bold text-[var(--text-secondary)] uppercase tracking-widest">Active nodes</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-accent" />
-                            <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">Neural Link</span>
+                            <span className="text-[9px] font-bold text-[var(--text-secondary)] uppercase tracking-widest">Neural Link</span>
                         </div>
                     </div>
                 </div>
             </AnimatedReveal>
 
-            <div className="relative max-w-6xl mx-auto w-full border border-white/[0.05] rounded-3xl bg-black/40 backdrop-blur-3xl overflow-hidden p-8 shadow-2xl z-10">
+            <div className="relative max-w-6xl mx-auto w-full border border-[var(--border-color)] rounded-3xl bg-surface-color/40 backdrop-blur-3xl overflow-hidden p-8 shadow-2xl z-10">
                 <ComposableMap
                     projection="geoEquirectangular"
                     projectionConfig={{ scale: 160 }}
@@ -60,7 +60,7 @@ export default function LiveThreatMap() {
                 >
                     <defs>
                         <pattern id="dots" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-                            <circle fill="#1a1a1a" cx="1" cy="1" r="1"></circle>
+                            <circle fill="currentColor" cx="1" cy="1" r="1" className="text-[var(--border-color)] opacity-30"></circle>
                         </pattern>
                     </defs>
 
@@ -71,11 +71,12 @@ export default function LiveThreatMap() {
                                     key={geo.rsmKey}
                                     geography={geo}
                                     fill="url(#dots)"
-                                    stroke="rgba(255,255,255,0.02)"
+                                    stroke="var(--border-color)"
+                                    strokeOpacity={0.2}
                                     strokeWidth={0.5}
                                     style={{
                                         default: { outline: "none" },
-                                        hover: { fill: "#1a1a1a", outline: "none" },
+                                        hover: { fill: "var(--primary-accent)", fillOpacity: 0.1, outline: "none" },
                                     }}
                                 />
                             ))
@@ -111,13 +112,13 @@ export default function LiveThreatMap() {
                     {Object.entries(locations).map(([name, coord], i) => (
                         <Marker key={name} coordinates={coord}>
                             <circle r={8} fill="transparent" stroke={i % 2 === 0 ? "#007CFF" : "#00F5A0"} strokeWidth={0.5} className="animate-ping" style={{ animationDuration: '3s' }} />
-                            <circle r={2} fill="white" />
+                            <circle r={2} fill="var(--text-primary)" />
                         </Marker>
                     ))}
                 </ComposableMap>
 
                 {/* HUD Overlay */}
-                <div className="absolute top-8 left-8 text-[8px] font-mono text-gray-700 uppercase tracking-widest flex flex-col gap-2">
+                <div className="absolute top-8 left-8 text-[8px] font-mono text-[var(--text-secondary)] opacity-40 uppercase tracking-widest flex flex-col gap-2">
                     <div>Feed: Live_Signal</div>
                     <div>Latency: 14ms</div>
                     <div>Source: GRS_Satellite_Link</div>

@@ -125,7 +125,7 @@
 }
 
 .mobile-link {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--text-primary);
@@ -133,7 +133,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
 }
 
 @media (max-width: 768px) {
@@ -152,7 +152,7 @@
   }
 
   .navbar.scrolled {
-    padding: 0.6rem 0;
+    padding: 0.5rem 0;
   }
 
   .logo-image {

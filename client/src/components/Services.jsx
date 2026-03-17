@@ -68,10 +68,10 @@ const Services = () => {
                                 </ul>
                                 <Link to="/contact" className="btn btn-primary px-6 py-3 no-underline inline-block">Request Infrastructure Audit</Link>
                             </div>
-                            <div className="tab-visual relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                                <img src="/generated/cyber_server_room_1773394493658.png" alt="Managed IT Services Server Room" className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-700" />
+                            <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">
+                                <img src="/generated/cyber_server_room_autonomous.png" alt="Managed IT Services Server Room" className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-700" />
                                 <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[var(--bg-color)] to-transparent">
-                                    <div className="abstract-card glass !border-none !bg-black/40 backdrop-blur-md">
+                                    <div className="abstract-card glass !border-none !bg-[var(--surface-color)]/60 backdrop-blur-md">
                                         <div className="status-bar"><span className="dot green"></span> System Nominal</div>
                                         <div className="metrics mono">
                                             <div className="metric"><span>UPTIME</span> <span>99.98%</span></div>
@@ -115,10 +115,10 @@ const Services = () => {
                                     <li>Secure Data Migration</li>
                                 </ul>
                             </div>
-                             <div className="tab-visual relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                                <img src="/generated/cloud_architecture_1773394719675.png" alt="Cloud Architecture" className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-700" />
-                                <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                                    <div className="ai-node-mockup glass !border-none !bg-black/40 backdrop-blur-md">
+                             <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">
+                                <img src="/generated/cloud_ai_infrastructure_secure.png" alt="Cloud Architecture" className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-700" />
+                                <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg-color)]/20">
+                                    <div className="ai-node-mockup glass !border-none !bg-[var(--surface-color)]/60 backdrop-blur-md">
                                         <div className="pulse-circle"></div>
                                         <span className="mono">Neural_Engine::v2</span>
                                     </div>
@@ -138,10 +138,10 @@ const Services = () => {
                                     <li>Secure CI/CD Pipelines</li>
                                 </ul>
                             </div>
-                             <div className="tab-visual relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                             <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">
                                 <img src="/generated/secure_shield_concept_1773394778055.png" alt="Secure Software Engineering" className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-700" />
                                 <div className="absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-t from-[var(--bg-color)] to-transparent">
-                                    <div className="code-mockup glass mono w-full !bg-black/60 backdrop-blur-md">
+                                    <div className="code-mockup glass mono w-full !bg-[var(--surface-color)]/80 backdrop-blur-md">
                                         <div className="code-line"><span className="keyword">class</span> <span className="entity">SecureNode</span> {'{'}</div>
                                         <div className="code-line" style={{paddingLeft: '1rem'}}><span className="keyword">func</span> <span className="entity">init</span>() {'{'}</div>
                                         <div className="code-line" style={{paddingLeft: '2rem'}}>this.encryption = <span className="string">"AES-256"</span>;</div>

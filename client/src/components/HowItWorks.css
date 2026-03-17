@@ -1,7 +1,8 @@
 .how-it-works-section{
   padding:6rem 0;
-  background:#050505;
+  background:var(--bg-color);
   position:relative;
+  transition: background-color 0.3s;
 }
 
 /* header */
@@ -15,7 +16,7 @@
   font-family:"Inter",sans-serif;
   font-size:11px;
   letter-spacing:0.35em;
-  color:#ff8a1f;
+  color: var(--primary-accent);
   text-transform:uppercase;
   display:block;
   margin-bottom:1.5rem;
@@ -24,7 +25,7 @@
 .section-title{
   font-family:"Playfair Display",serif;
   font-size:clamp(2.5rem,5vw,3.5rem);
-  color:white;
+  color:var(--text-primary);
   font-weight:500;
   margin-bottom:1rem;
 }
@@ -33,12 +34,13 @@
   font-style:italic;
   background:linear-gradient(90deg,#ff8a1f,#ff2d8f);
   -webkit-background-clip:text;
+  background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .section-subtitle{
   font-family:"Inter",sans-serif;
-  color:#8a8a8a;
+  color:var(--text-secondary);
   max-width:600px;
   margin:auto;
   font-size:1rem;
@@ -58,8 +60,8 @@
 .step-card{
   padding:2rem;
   border-radius:18px;
-  border:1px solid rgba(255,255,255,0.05);
-  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border-color);
+  background:var(--surface-color);
   backdrop-filter:blur(10px);
   transition:all .4s ease;
   position:relative;
@@ -68,7 +70,7 @@
 .step-card:hover{
   border-color:rgba(255,138,31,0.4);
   transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 /* step header */
@@ -82,7 +84,7 @@
 
 .step-num{
   font-family:"JetBrains Mono",monospace;
-  color:#ff8a1f;
+  color: var(--primary-accent);
   font-size:0.9rem;
   letter-spacing:0.2em;
 }
@@ -94,31 +96,32 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(255,138,31,0.1);
-  color:#ff8a1f;
+  background: rgba(255, 138, 31, 0.1);
+  color: var(--primary-accent);
 }
 
 /* text */
 
 .step-label{
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;
-  color:#888;
-  letter-spacing:0.25em;
-  text-transform:uppercase;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
 .step-title{
   font-family:"Playfair Display",serif;
   font-size:1.4rem;
-  color:white;
+  color:var(--text-primary);
   margin:0.6rem 0;
 }
 
 .step-desc{
   font-family:"Inter",sans-serif;
   font-size:0.95rem;
-  color:#9a9a9a;
+  color:var(--text-secondary);
   line-height:1.6;
 }
 

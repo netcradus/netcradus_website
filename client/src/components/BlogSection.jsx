@@ -42,20 +42,20 @@ const BLOG_POSTS = [
 
 export default function BlogSection() {
     return (
-        <SectionWrapper className="py-16 md:py-24 border-t border-white/5 bg-black/20">
+        <SectionWrapper className="py-16 md:py-24 border-t border-[var(--border-color)] bg-surface-color/5 transition-colors duration-300">
             <AnimatedReveal className="flex flex-col md:flex-row md:items-end justify-between items-center text-center md:text-left gap-6 mb-16">
                 <div className="flex flex-col items-center md:items-start">
                     <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] md:text-xs font-bold tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(0,245,160,0.2)]">
                         Insights & Intelligence
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">
+                    <h2 className="text-3xl md:text-5xl font-display font-bold text-[var(--text-primary)] mb-4">
                         Latest from the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Netcradus Lab</span>
                     </h2>
-                    <p className="text-gray-400 max-w-2xl font-sans text-sm md:text-base tracking-wide px-4 md:px-0">
+                    <p className="text-[var(--text-secondary)] max-w-2xl font-sans text-sm md:text-base tracking-wide px-4 md:px-0">
                         Expert perspectives, threat intelligence briefings, and architectural thought leadership from our engineers and analysts.
                     </p>
                 </div>
-                <Link to="/blog" className="shrink-0 flex items-center justify-center gap-2 text-primary font-bold hover:text-white transition-colors group px-6 py-3 border border-white/10 rounded-lg hover:border-primary/50 bg-white/5 text-xs md:text-sm">
+                <Link to="/blog" className="shrink-0 flex items-center justify-center gap-2 text-primary font-bold hover:text-[var(--text-primary)] transition-colors group px-6 py-3 border border-[var(--border-color)] rounded-lg hover:border-primary/50 bg-surface-color/10 text-xs md:text-sm">
                     View All Articles
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -70,24 +70,24 @@ export default function BlogSection() {
             >
                 {BLOG_POSTS.map((post, index) => (
                     <motion.div key={post.id} variants={fadeUp} className="h-full flex">
-                        <GlassCard className="flex flex-col h-full overflow-hidden p-0 group hover:border-white/20 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <GlassCard className="flex flex-col h-full overflow-hidden p-0 group hover:border-[var(--primary-accent)]/30 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
                             <div className="relative h-48 overflow-hidden w-full">
-                                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10 mix-blend-multiply" />
+                                <div className="absolute inset-0 bg-[var(--bg-color)]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                                 <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                                <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-black/60 backdrop-blur-md rounded border border-white/10 text-xs font-bold text-white tracking-wider">
+                                <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-[var(--bg-color)]/60 backdrop-blur-md rounded border border-[var(--border-color)] text-xs font-bold text-[var(--text-primary)] tracking-wider">
                                     {post.category}
                                 </div>
                             </div>
 
                             <div className="p-6 md:p-8 flex flex-col flex-grow">
-                                <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                                <h3 className="text-xl font-display font-bold text-[var(--text-primary)] mb-3 group-hover:text-primary transition-colors line-clamp-2">
                                     {post.title}
                                 </h3>
-                                <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                                <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
                                     {post.excerpt}
                                 </p>
 
-                                <div className="flex items-center justify-between text-xs text-gray-500 font-sans border-t border-white/10 pt-4 mt-auto">
+                                <div className="flex items-center justify-between text-xs text-[var(--text-secondary)] opacity-60 font-sans border-t border-[var(--border-color)] pt-4 mt-auto">
                                     <div className="flex items-center gap-2">
                                         <User size={14} className="text-primary/70" />
                                         <span>{post.author}</span>

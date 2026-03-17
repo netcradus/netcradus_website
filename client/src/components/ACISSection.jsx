@@ -5,21 +5,21 @@ import AcisOrbit from "./AcisOrbit";
 import './ACISSection.css';
 
 const ARCHITECTURE_LAYERS = [
-    {
-        title: "Layer 1 - SIEM",
-        content: "Real-time log normalization using LSTM networks and Isolation Forest algorithms to establish behavioral baselines.",
-        icon: Activity
-    },
-    {
-        title: "Layer 2 - SOAR",
-        content: "Autonomous threat containment with sub-10 second response orchestration across the dynamic edge nodes.",
-        icon: Cpu
-    },
-    {
-        title: "Layer 3 - Red Simulator",
-        content: "Continuous, non-disruptive penetration testing via reinforcement learning attack path mapping.",
-        icon: ShieldAlert
-    }
+  {
+    title: "Layer 1 - SIEM",
+    content: "Real-time log normalization using LSTM networks and Isolation Forest algorithms to establish behavioral baselines.",
+    icon: Activity
+  },
+  {
+    title: "Layer 2 - SOAR",
+    content: "Autonomous threat containment with sub-10 second response orchestration across the dynamic edge nodes.",
+    icon: Cpu
+  },
+  {
+    title: "Layer 3 - Red Simulator",
+    content: "Continuous, non-disruptive penetration testing via reinforcement learning attack path mapping.",
+    icon: ShieldAlert
+  }
 ];
 
 const ACISSection = () => {
@@ -42,9 +42,9 @@ const ACISSection = () => {
               <span className="pulse-dot"></span>
               Autonomous Response Active
             </div>
-<h2 className="acis-title">
-ACIS — Autonomous Cyber <span>Immune System.</span>
-</h2>            <p className="acis-desc mt-6 mb-8 text-lg">
+            <h2 className="acis-title">
+              ACIS — Autonomous Cyber <span>Immune System.</span>
+            </h2>            <p className="acis-desc mt-6 mb-8 text-lg">
               ACIS is our revolutionary, proprietary AI-driven cybersecurity platform. Designed to eliminate the lag between threat detection and response, ACIS operates autonomously to identify, isolate, and neutralize cyber threats without requiring manual human intervention.
             </p>
             <div className="feature-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -57,7 +57,7 @@ ACIS — Autonomous Cyber <span>Immune System.</span>
                 <p className="text-sm opacity-70">Sophisticated User and Entity Behavior Analytics to spot anomalies that traditional tools miss.</p>
               </div>
             </div>
-            
+
             <div className="acis-pills">
               <span className="pill">Adaptive Learning</span>
               <span className="pill">Real-time Isolation</span>
@@ -83,41 +83,41 @@ ACIS — Autonomous Cyber <span>Immune System.</span>
             <Link to="/contact" className="btn btn-primary inline-block no-underline">Download Technical Whitepaper</Link>
           </div>
 
-          <div className="acis-mockup reveal" style={{transitionDelay: '0.2s'}}>
+          <div className="acis-mockup reveal" style={{ transitionDelay: '0.2s' }}>
             <AcisOrbit />
           </div>
         </div>
 
         {/* Architecture Section from previous designs */}
         <div className="architecture-interactive reveal mt-24">
-            <div className="section-label text-center">// SYSTEM ARCHITECTURE</div>
-            <h3 className="section-title text-center">Multi-Layered Intelligence.</h3>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12 items-center">
-              <div className="arch-layout m-0 w-full relative z-10">
-                  <div className="arch-nav">
-                      {ARCHITECTURE_LAYERS.map((layer, idx) => (
-                          <button 
-                              key={idx} 
-                              onClick={() => setActiveLayer(idx)}
-                              className={`arch-tab ${activeLayer === idx ? 'active' : ''}`}
-                          >
-                              <div className="arch-tab-icon">{<layer.icon size={18} />}</div>
-                              <span className="mono">{layer.title}</span>
-                          </button>
-                      ))}
-                  </div>
-                  <div className="arch-content glass">
-                      <h4 className="mono">{ARCHITECTURE_LAYERS[activeLayer].title}</h4>
-                      <p>{ARCHITECTURE_LAYERS[activeLayer].content}</p>
-                      <Link to="/services" className="text-btn inline-flex items-center no-underline">Technical Specs <ArrowRight size={14} className="ml-2" /></Link>
-                  </div>
+          <div className="section-label text-center">// SYSTEM ARCHITECTURE</div>
+          <h3 className="section-title text-center">Multi-Layered Intelligence.</h3>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12 items-center">
+            <div className="arch-layout m-0 w-full relative z-10">
+              <div className="arch-nav">
+                {ARCHITECTURE_LAYERS.map((layer, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveLayer(idx)}
+                    className={`arch-tab ${activeLayer === idx ? 'active' : ''}`}
+                  >
+                    <div className="arch-tab-icon">{<layer.icon size={18} />}</div>
+                    <span className="mono">{layer.title}</span>
+                  </button>
+                ))}
               </div>
-              <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative h-[400px]">
-                <img src="/generated/ai_data_network_1773394527444.png" alt="AI Neural Network Analyzing Data" className="w-full h-full object-cover opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[var(--bg-color)] to-transparent mix-blend-multiply opacity-50"></div>
+              <div className="arch-content glass">
+                <h4 className="mono">{ARCHITECTURE_LAYERS[activeLayer].title}</h4>
+                <p>{ARCHITECTURE_LAYERS[activeLayer].content}</p>
+                <Link to="/services" className="text-btn inline-flex items-center no-underline">Technical Specs <ArrowRight size={14} className="ml-2" /></Link>
               </div>
             </div>
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[var(--border-color)] relative h-[400px]">
+              <img src="/generated/cyber_ai_shield_defense.png" alt="AI Neural Network Analyzing Data" className="w-full h-full object-cover opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--bg-color)] to-transparent mix-blend-overlay opacity-50"></div>
+            </div>
+          </div>
         </div>
 
         <div className="acis-timeline reveal">

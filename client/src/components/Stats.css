@@ -5,9 +5,10 @@
 
 .stats-strip {
   background-color: var(--surface-color);
-  padding: 5rem 0;
+  padding: 4rem 0;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s;
 }
 
 .stats-grid {
@@ -84,6 +85,9 @@
 }
 
 @media (max-width: 768px) {
+  .stats-strip {
+    padding: 3rem 0;
+  }
   .testimonials-grid {
     grid-template-columns: 1fr;
   }

@@ -28,7 +28,7 @@ const testimonials = [
 
 export default function Testimonials() {
     return (
-        <SectionWrapper className="bg-[#020203] border-y border-white/[0.03]">
+        <SectionWrapper className="bg-background border-y border-[var(--border-color)] transition-colors duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24 items-center">
                 
                 {/* Left: Narrative Focus */}
@@ -37,15 +37,15 @@ export default function Testimonials() {
                         <div className="w-1 h-3 bg-primary" />
                         <span className="mono-label text-primary">DOSSIER_FEEDBACK: 04</span>
                     </div>
-                    <h2 className="text-5xl md:text-7xl font-display font-extrabold text-white mb-8 tracking-tighter leading-none uppercase">
+                    <h2 className="text-5xl md:text-7xl font-display font-extrabold text-[var(--text-primary)] mb-8 tracking-tighter leading-none uppercase">
                         Trusted by <br />
-                        <span className="text-gray-600 italic">LEADERS.</span>
+                        <span className="text-[var(--text-secondary)] opacity-40 italic">LEADERS.</span>
                     </h2>
-                    <p className="text-gray-500 font-sans text-sm md:text-lg leading-relaxed opacity-80 mb-12 max-w-sm">
+                    <p className="text-[var(--text-secondary)] font-sans text-sm md:text-lg leading-relaxed mb-12 max-w-sm">
                         Securing the infrastructure of the world's most resilient organizations through strategic intelligence.
                     </p>
                     
-                    <button className="mono-label text-white hover:text-primary transition-colors flex items-center gap-3 border-b border-white/10 pb-2 group">
+                    <button className="mono-label text-[var(--text-primary)] hover:text-primary transition-colors flex items-center gap-3 border-b border-[var(--border-color)] pb-2 group">
                         ACCESS_CLIENT_LOGS <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </button>
                 </div>
@@ -54,21 +54,21 @@ export default function Testimonials() {
                 <div className="lg:col-span-2 space-y-16">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {testimonials.map((item, idx) => (
-                            <GlassCard key={idx} delay={idx * 0.1} className="p-10 border-white/5 bg-white/[0.01]">
+                            <GlassCard key={idx} delay={idx * 0.1} className="p-10 border-[var(--border-color)] bg-surface-color/5">
                                 <Quote className="absolute top-8 right-8 text-primary/10 w-12 h-12" strokeWidth={1} />
-                                <p className="text-white font-sans text-sm md:text-lg leading-relaxed mb-10 opacity-70 italic relative z-10">
+                                <p className="text-[var(--text-primary)] font-sans text-sm md:text-lg leading-relaxed mb-10 opacity-80 italic relative z-10">
                                     "{item.quote}"
                                 </p>
-                                <div className="relative z-10 pt-6 border-t border-white/5">
+                                <div className="relative z-10 pt-6 border-t border-[var(--border-color)]">
                                     <h4 className="mono-label !text-primary mb-1">{item.author}</h4>
-                                    <p className="font-mono text-[9px] text-gray-600 uppercase tracking-widest">{item.company}</p>
+                                    <p className="font-mono text-[9px] text-[var(--text-secondary)] uppercase tracking-widest">{item.company}</p>
                                 </div>
                             </GlassCard>
                         ))}
                     </div>
 
                     {/* Monochromatic Logo Grid */}
-                    <div className="pt-12 border-t border-white/[0.03]">
+                    <div className="pt-12 border-t border-[var(--border-color)]">
                         <div className="grid grid-cols-3 md:grid-cols-6 items-center gap-12 group/logos">
                             {clientLogos.map((logo, idx) => (
                                 <img 

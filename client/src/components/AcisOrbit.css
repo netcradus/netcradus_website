@@ -13,12 +13,13 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(circle at center, black 45%, transparent 95%);
   -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 95%);
   pointer-events: none;
+  opacity: 0.2;
 }
 
 .orbit-ambient-glow {
@@ -150,9 +151,9 @@
   letter-spacing: 0.16em;
   font-size: 0.62rem;
   line-height: 1;
-  background: rgba(21, 8, 19, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   z-index: 40;
 }
 

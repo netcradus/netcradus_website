@@ -27,19 +27,19 @@
 }
 
 [data-theme="light"] {
-  --bg-color: #FFF8F6;
+  --bg-color: #FAFAFA;
   --surface-color: #FFFFFF;
-  --border-color: #F0D6DE;
+  --border-color: #E2E8F0;
 
   --primary-accent: #F97316;   /* warm orange */
   --secondary-accent: #E11D74; /* strong pink */
   --accent-gradient: linear-gradient(135deg, #F97316 0%, #FB923C 40%, #E11D74 100%);
 
-  --text-primary: #2A1A22;
-  --text-secondary: #6E5560;
+  --text-primary: #020617;     /* High contrast dark blue-black */
+  --text-secondary: #334155;   /* Darker slate */
 
-  --glass-bg: rgba(255, 255, 255, 0.82);
-  --glass-border: rgba(225, 29, 116, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(226, 232, 240, 0.8);
 }
 
 * {
@@ -55,12 +55,19 @@ html {
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: var(--font-main);
-  line-height: 1.7;
-  font-size: 16px;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+    line-height: 1.7;
+  }
 }
 
 /* Typography */
@@ -71,13 +78,13 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
-h2 { font-size: clamp(2rem, 6vw, 3.5rem); }
-h3 { font-size: clamp(1.5rem, 4vw, 2.2rem); }
+h1 { font-size: clamp(2rem, 8vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 6vw, 3.5rem); }
+h3 { font-size: clamp(1.4rem, 4vw, 2.2rem); }
 
 p {
   color: var(--text-secondary);
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
 }
 
 .mono {
@@ -89,7 +96,7 @@ p {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
@@ -192,4 +199,20 @@ p {
 
 ::-webkit-scrollbar-thumb:hover {
   filter: brightness(1.1);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

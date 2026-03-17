@@ -29,14 +29,14 @@ export default function AboutSection() {
             Architectural Excellence
           </span>
 
-          <h2 className="mb-8 font-display text-4xl font-medium leading-[1.02] tracking-tight text-white md:text-7xl">
+          <h2 className="mb-8 font-display text-4xl font-medium leading-[1.02] tracking-tight text-[var(--text-primary)] md:text-7xl">
             Outcomes, <br />
             <span className="bg-heading-gradient bg-clip-text italic text-transparent">
               not just services.
             </span>
           </h2>
 
-          <p className="mx-auto mb-12 max-w-lg font-sans text-lg leading-relaxed text-gray-400 lg:mx-0">
+          <p className="mx-auto mb-12 max-w-lg font-sans text-lg leading-relaxed text-[var(--text-secondary)] lg:mx-0">
             We engineer resilience. Netcradus builds the digital infrastructure
             that doesn&apos;t just survive attacks—it anticipates them.
           </p>
@@ -45,7 +45,7 @@ export default function AboutSection() {
             {highlights.map((item, idx) => (
               <div key={idx} className="group flex items-start gap-3">
                 <div className="mt-2 h-1.5 w-1.5 rounded-full bg-accent/50 transition-colors duration-500 group-hover:bg-primary" />
-                <span className="font-sans text-sm leading-relaxed text-gray-400 transition-colors duration-500 group-hover:text-white">
+                <span className="font-sans text-sm leading-relaxed text-[var(--text-secondary)] transition-colors duration-500 group-hover:text-[var(--text-primary)]">
                   {item}
                 </span>
               </div>
@@ -53,7 +53,7 @@ export default function AboutSection() {
           </div>
 
           <MagneticWrapper strength={0.2}>
-            <button className="group inline-flex items-center gap-4 font-sans text-[10px] font-bold uppercase tracking-[0.3em] text-white md:text-xs">
+            <button className="group inline-flex items-center gap-4 font-sans text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--text-primary)] md:text-xs">
               Our Philosophy
               <ArrowRight
                 size={14}
@@ -67,19 +67,19 @@ export default function AboutSection() {
         <AnimatedReveal delay={0.2} className="relative flex items-center justify-center">
           <div className="relative flex aspect-square w-full max-w-[500px] items-center justify-center">
             {/* Rings */}
-            <div className="absolute inset-0 rounded-full border border-white/[0.05]" />
-            <div className="absolute inset-10 animate-[spin_40s_linear_infinite] rounded-full border border-white/[0.05] border-dashed" />
-            <div className="absolute inset-20 rounded-full border border-white/[0.05]" />
+            <div className="absolute inset-0 rounded-full border border-[var(--border-color)]" />
+            <div className="absolute inset-10 animate-[spin_40s_linear_infinite] rounded-full border border-[var(--border-color)] border-dashed" />
+            <div className="absolute inset-20 rounded-full border border-[var(--border-color)]" />
 
             {/* Glow */}
             <div className="absolute inset-0 rounded-full bg-brand-gradient-soft blur-[120px]" />
 
             {/* Core */}
             <div className="relative z-10 flex h-48 w-48 items-center justify-center md:h-64 md:w-64">
-              <div className="absolute inset-0 rounded-full border border-white/10 bg-black/40 shadow-brand-lg backdrop-blur-3xl" />
+              <div className="absolute inset-0 rounded-full border border-[var(--border-color)] bg-surface-color/40 shadow-brand-lg backdrop-blur-3xl" />
               <Shield
                 strokeWidth={0.6}
-                className="h-32 w-32 text-white/20 drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] md:h-44 md:w-44"
+                className="h-32 w-32 text-[var(--text-primary)] opacity-20 drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] md:h-44 md:w-44"
               />
 
               {/* Orbit Top */}
@@ -88,7 +88,7 @@ export default function AboutSection() {
                 transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                 className="pointer-events-none absolute inset-[-40px]"
               >
-                <div className="absolute left-1/2 top-0 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-xl border border-white/10 bg-black shadow-2xl">
+                <div className="absolute left-1/2 top-0 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-xl border border-[var(--border-color)] bg-surface shadow-2xl">
                   <Lock size={16} className="text-primary" />
                 </div>
               </motion.div>
@@ -99,14 +99,14 @@ export default function AboutSection() {
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 className="pointer-events-none absolute inset-[-40px]"
               >
-                <div className="absolute bottom-0 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-xl border border-white/10 bg-black shadow-2xl">
+                <div className="absolute bottom-0 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-xl border border-[var(--border-color)] bg-surface shadow-2xl">
                   <Server size={16} className="text-accent" />
                 </div>
               </motion.div>
             </div>
 
             {/* Labels */}
-            <div className="pointer-events-none absolute inset-0 font-mono text-[8px] uppercase tracking-[0.3em] text-gray-700">
+            <div className="pointer-events-none absolute inset-0 font-mono text-[8px] uppercase tracking-[0.3em] text-[var(--text-secondary)] opacity-50">
               <div className="absolute left-0 top-0">ARCH_TYPE: MONOLITH</div>
               <div className="absolute bottom-10 right-0">Uptime: 99.98%</div>
             </div>

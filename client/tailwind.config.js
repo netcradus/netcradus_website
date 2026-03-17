@@ -7,13 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#050505",
-        surface: "#0D0A0F",
+        background: "var(--bg-color)",
+        surface: "var(--surface-color)",
 
         /* Brand colors from logo */
-        primary: "#FF8A1F",   // orange
-        secondary: "#FF5A3D", // warm transition orange-red
-        accent: "#FF2D8F",    // pink/magenta
+        primary: "var(--primary-accent)",
+        secondary: "var(--secondary-accent)",
+        accent: "var(--secondary-accent)", // Map accent to secondary for consistency with index.css
 
         /* Optional named shades */
         "brand-orange": "#FF8A1F",
@@ -58,16 +58,14 @@ export default {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 
         /* Main brand gradient */
-        "brand-gradient":
-          "linear-gradient(135deg, #FF8A1F 0%, #FF5A3D 45%, #FF2D8F 100%)",
+        "brand-gradient": "var(--accent-gradient)",
 
         /* Softer version for backgrounds */
         "brand-gradient-soft":
-          "linear-gradient(135deg, rgba(255,138,31,0.18) 0%, rgba(255,90,61,0.14) 45%, rgba(255,45,143,0.16) 100%)",
+          "linear-gradient(135deg, rgba(255,138,31,0.12) 0%, rgba(255,90,61,0.1) 45%, rgba(255,45,143,0.12) 100%)",
 
         /* Hero text gradient */
-        "heading-gradient":
-          "linear-gradient(90deg, #FF8A1F 0%, #FF5A3D 40%, #FF2D8F 100%)",
+        "heading-gradient": "var(--accent-gradient)",
       },
 
       boxShadow: {
