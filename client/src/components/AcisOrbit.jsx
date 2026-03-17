@@ -51,51 +51,38 @@ export default function AcisOrbit() {
       <div className="orbit-grid" />
       <div className="orbit-ambient-glow" />
 
-      {/* Center Core */}
+      {/* Core */}
       <div className="orbit-core">
         <motion.div
           className="core-pulse"
           animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.65, 0.35] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 4, repeat: Infinity }}
         />
         <div className="core-sphere">
-          <div className="core-shield">
-            <svg
-              width="26"
-              height="26"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-            >
-              <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" />
-              <path d="m9.5 12 1.7 1.7 3.8-4.2" />
-            </svg>
-          </div>
           <div className="core-text mono">ACIS CORE</div>
         </div>
       </div>
 
-      {/* Static badges */}
-      <StaticBadge label="THREAT DETECT" angle={-90} radius={300} tone="violet" />
-      <StaticBadge label="AI ENGINE" angle={-25} radius={300} tone="pink" />
-      <StaticBadge label="AUTO HEAL" angle={25} radius={300} tone="orange" />
-      <StaticBadge label="ZERO TRUST" angle={90} radius={300} tone="violet" />
-      <StaticBadge label="INTEL FEED" angle={155} radius={300} tone="pink" />
-      <StaticBadge label="MESH NET" angle={205} radius={300} tone="orange" />
+      {/* BADGES (reduced radius) */}
+      <StaticBadge label="THREAT DETECT" angle={-90} radius={220} tone="violet" />
+      <StaticBadge label="AI ENGINE" angle={-25} radius={220} tone="pink" />
+      <StaticBadge label="AUTO HEAL" angle={25} radius={220} tone="orange" />
+      <StaticBadge label="ZERO TRUST" angle={90} radius={220} tone="violet" />
+      <StaticBadge label="INTEL FEED" angle={155} radius={220} tone="pink" />
+      <StaticBadge label="MESH NET" angle={205} radius={220} tone="orange" />
 
-      {/* Orbit rings with moving dots only */}
-      <OrbitRing size={220} duration={18} className="ring-inner">
-        <OrbitDot angle={320} radius={110} tone="orange" />
+      {/* SMALLER ORBITS */}
+      <OrbitRing size={180} duration={18} className="ring-inner">
+        <OrbitDot angle={320} radius={90} tone="orange" />
       </OrbitRing>
 
-      <OrbitRing size={360} duration={28} reverse className="ring-middle">
-        <OrbitDot angle={330} radius={180} tone="orange" />
-        <OrbitDot angle={150} radius={180} tone="pink" />
+      <OrbitRing size={300} duration={28} reverse className="ring-middle">
+        <OrbitDot angle={330} radius={150} tone="orange" />
+        <OrbitDot angle={150} radius={150} tone="pink" />
       </OrbitRing>
 
-      <OrbitRing size={500} duration={40} className="ring-outer">
-        <OrbitDot angle={210} radius={250} tone="violet" />
+      <OrbitRing size={420} duration={40} className="ring-outer">
+        <OrbitDot angle={210} radius={210} tone="violet" />
       </OrbitRing>
     </div>
   );
