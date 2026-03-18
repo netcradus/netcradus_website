@@ -65,23 +65,34 @@ const Hero = () => {
   return (
     <section className="hero">
       <canvas ref={canvasRef} className="hero-canvas"></canvas>
-      <div className="container hero-container">
-        <div className="hero-content reveal">
-          <span className="section-label">// DEFEND WHAT MATTERS</span>
-      
-          <h1 className="hero-title">Defend What Matters <span>Intelligently</span></h1>
-          <p className="hero-subtitle">
-            Netcradus delivers enterprise-grade cybersecurity and bespoke software solutions built for the threats of tomorrow.
-          </p>
-          <div className="hero-ctas">
-            <Link to="/acis" className="btn btn-primary">
-              Explore ACIS <ArrowRight size={18} style={{marginLeft: '0.5rem'}} />
-            </Link>
-            <Link to="/services" className="btn btn-ghost">
-              Our Services
-            </Link>
-          </div>
-        </div>
+       {/* 🔥 FULL WIDTH IMAGE */}
+  <div className="hero-banner">
+    <img src="/img/hero.jpg" alt="SIEM" />
+  </div>
+     <div className="container hero-container">
+
+  
+
+  <div className="hero-content reveal">
+    <span className="section-label">// DEFEND WHAT MATTERS</span>
+
+    <h1 className="hero-title">
+      Defend What Matters <span>Intelligently</span>
+    </h1>
+
+    <p className="hero-subtitle">
+      Netcradus delivers enterprise-grade cybersecurity and bespoke software solutions built for the threats of tomorrow.
+    </p>
+
+    <div className="hero-ctas">
+      <Link to="/acis" className="btn btn-primary">
+        Explore ACIS <ArrowRight size={18} style={{ marginLeft: "0.5rem" }} />
+      </Link>
+      <Link to="/services" className="btn btn-ghost">
+        Our Services
+      </Link>
+    </div>
+  </div>
 
         <div className="trust-strip reveal" style={{transitionDelay: '0.4s'}}>
           <p className="trust-label">Trusted by organisations across...</p>

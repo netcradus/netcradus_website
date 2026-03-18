@@ -39,13 +39,13 @@
 }
 
 .logo-image {
-  height: 48px;
+  height: 70px;
   width: auto;
   transition: height 0.3s ease;
 }
 
 .navbar.scrolled .logo-image {
-  height: 40px;
+  height: 70px;
 }
 
 .nav-links {
@@ -156,6 +156,6 @@
   }
 
   .logo-image {
-    height: 36px !important;
+    height: 40px !important;
   }
 }

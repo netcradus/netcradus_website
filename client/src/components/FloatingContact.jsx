@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Instagram, Phone, Mail, Linkedin } from 'lucide-react';
+import { Instagram, Phone, Mail, Linkedin, MessageCircle } from 'lucide-react';
 
 const FloatingContact = () => {
     const contacts = [
@@ -8,6 +8,8 @@ const FloatingContact = () => {
         { icon: <Linkedin size={18} />, href: "https://uk.linkedin.com/company/netcradus-limited?trk=public_post_follow-view-profile", label: "LinkedIn", color: "bg-blue-600" },
         { icon: <Mail size={18} />, href: "mailto:contact@netcradus.com", label: "Email", color: "bg-red-500" },
         { icon: <Phone size={18} />, href: "tel:+1234567890", label: "Phone", color: "bg-orange-500" },
+        {icon: <MessageCircle size={18} />,href: "https://wa.me/917290909571",label: "WhatsApp",color: "bg-green-500"
+}
     ];
 
     return (

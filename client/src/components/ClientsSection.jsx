@@ -24,14 +24,17 @@ const ClientsSection = () => {
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Trusted by Industry Leaders</h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-[var(--primary-accent)] to-[var(--secondary-accent)] mx-auto rounded-full" />
                 </div>
-                
+
                 <div className="relative flex overflow-x-hidden">
                     <div className="py-12 animate-marquee whitespace-nowrap flex items-center">
                         {clients.concat(clients).map((client, index) => (
-                            <div key={index} className="mx-12 flex-shrink-0 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                                <img 
-                                    src={client.logo} 
-                                    alt={client.name} 
+                            <div
+                                key={index}
+                                className="mx-12 flex-shrink-0"
+                            >
+                                <img
+                                    src={client.logo}
+                                    alt={client.name}
                                     className="h-16 md:h-20 w-auto object-contain"
                                 />
                             </div>
