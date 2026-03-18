@@ -1,15 +1,36 @@
 .hero {
   position: relative;
-  height: auto;
   min-height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: center;
   overflow: hidden;
   background-color: var(--bg-color);
-  padding: 100px 0 60px;
+  padding: 30px 0 60px; /* extra top space for image */
 }
 
+/* Container layout */
+.hero-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center everything */
+  text-align: center;
+}
+
+/* HERO IMAGE */
+.hero-banner {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 3rem;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
 .hero-canvas {
   position: absolute;
   top: 0;
@@ -38,8 +59,8 @@
 
 .hero-content {
   max-width: 850px;
+  text-align: center;   /* ✅ ensures buttons + text align properly */
 }
-
 /* MAIN HEADING */
 .hero-title {
   font-family: "Playfair Display", serif;
@@ -65,15 +86,19 @@
   font-family: "Inter", sans-serif;
   font-size: 1.2rem;
   color: var(--text-secondary);
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;   /* ✅ centers horizontally */
   max-width: 600px;
   line-height: 1.8;
+  text-align: center;    /* ✅ ensures text is centered */
 }
-
 .hero-ctas {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 5rem;
+
+  justify-content: center;   /* ✅ center horizontally */
+  align-items: center;       /* ✅ align vertically */
+  flex-wrap: wrap;           /* ✅ better responsiveness */
 }
 
 .trust-strip {

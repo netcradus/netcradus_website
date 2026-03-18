@@ -114,7 +114,7 @@ const ACISSection = () => {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[var(--border-color)] relative h-[400px]">
-              <img src="/generated/cyber_ai_shield_defense.png" alt="AI Neural Network Analyzing Data" className="w-full h-full object-cover opacity-80" />
+              <img src="/generated/secure_shield_concept_1773394778055.png" alt="AI Neural Network Analyzing Data" className="w-full h-full object-cover opacity-80" />
               <div className="absolute inset-0 bg-gradient-to-tr from-[var(--bg-color)] to-transparent mix-blend-overlay opacity-50"></div>
             </div>
           </div>

@@ -26,12 +26,28 @@ export default function Footer() {
                     </p>
 
                     {/* Ghost White Logos */}
-                    <div className="pt-2 flex flex-wrap items-center gap-6 saturate-0 opacity-30 hover:saturate-100 hover:opacity-100 transition-all duration-700">
-                        <img src={isoLogo} alt="ISO 27001" className="h-12 w-auto object-contain" />
-                        <img src={iso27701Logo} alt="ISO 27701" className="h-12 w-auto object-contain" />
-                        <img src={msmeLogo} alt="MSME" className="h-10 w-auto object-contain" />
-                        <img src={kasperskyLogo} alt="Kaspersky" className="h-10 w-auto object-contain" />
-                    </div>
+                  <div className="pt-2 flex flex-wrap items-center gap-8">
+  <img
+    src={isoLogo}
+    alt="ISO 27001"
+    className="h-16 w-auto object-contain"
+  />
+  <img
+    src={iso27701Logo}
+    alt="ISO 27701"
+    className="h-16 w-auto object-contain"
+  />
+  <img
+    src={msmeLogo}
+    alt="MSME"
+    className="h-14 w-auto object-contain"
+  />
+  <img
+    src={kasperskyLogo}
+    alt="Kaspersky"
+    className="h-14 w-auto object-contain"
+  />
+</div>
 
                     <div className="flex items-center gap-4">
                         {[

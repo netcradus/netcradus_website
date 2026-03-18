@@ -9,7 +9,7 @@ import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
 import CareersPage from "./pages/CareersPage";
 import ScrollToTop from "./components/ScrollToTop";
-import WhatsAppButton from "./components/WhatsAppButton";
+// import WhatsAppButton from "./components/WhatsAppButton";
 
 import { useReveal } from "./hooks/useReveal";
 import Platform from "./components/Platform";
@@ -37,7 +37,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <WhatsAppButton />
+      {/* <WhatsAppButton /> */}
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
