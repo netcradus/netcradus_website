@@ -4,7 +4,7 @@
   width: 100%;
   overflow: hidden;
   background-color: var(--bg-color);
-  padding: 30px 0 60px; /* extra top space for image */
+  padding: 100px 0 80px; /* Increased top space for navbar clearance */
 }
 
 /* Container layout */
@@ -13,23 +13,30 @@
   z-index: 10;
   display: flex;
   flex-direction: column;
-  align-items: center; /* center everything */
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 /* HERO IMAGE */
-.hero-banner {
+/* HERO VISUAL */
+.hero-visual {
   width: 100%;
   position: relative;
   z-index: 2;
-  margin-bottom: 3rem;
+  transition: all 0.5s ease;
 }
 
-.hero-banner img {
+.hero-visual img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.hero-visual:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 30px 60px rgba(255, 138, 31, 0.15);
 }
 .hero-canvas {
   position: absolute;
@@ -84,21 +91,18 @@
 /* SUBTITLE */
 .hero-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
-  margin: 0 auto 3rem;   /* ✅ centers horizontally */
-  max-width: 600px;
+  margin-bottom: 3rem;
+  max-width: 550px;
   line-height: 1.8;
-  text-align: center;    /* ✅ ensures text is centered */
 }
+
 .hero-ctas {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 5rem;
-
-  justify-content: center;   /* ✅ center horizontally */
-  align-items: center;       /* ✅ align vertically */
-  flex-wrap: wrap;           /* ✅ better responsiveness */
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
 }
 
 .trust-strip {
@@ -117,26 +121,23 @@
 
 .trust-logos {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   flex-wrap: wrap;
-}
-
-.trust-icon {
-  opacity: 0.5;
-  transition: opacity 0.3s;
-  display: flex;
   align-items: center;
 }
 
-.trust-icon:hover {
-  opacity: 1;
+.trust-icon {
+  transition: all 0.3s ease;
 }
 
 .sector-name {
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--text-primary);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.trust-icon:hover .sector-name {
+  color: var(--primary-accent);
+  text-shadow: 0 0 15px var(--primary-accent);
 }
 
 .scroll-indicator {

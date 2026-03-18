@@ -65,41 +65,42 @@ const Hero = () => {
   return (
     <section className="hero">
       <canvas ref={canvasRef} className="hero-canvas"></canvas>
-       {/* 🔥 FULL WIDTH IMAGE */}
-  <div className="hero-banner">
-    <img src="/img/hero.png" alt="SIEM" />
-  </div>
-     <div className="container hero-container">
+      <div className="container hero-container flex flex-col justify-center min-h-[calc(100vh-80px)]">
+        
+        <div className="grid md:grid-cols-2 gap-12 items-center w-full">
+          <div className="hero-content reveal text-left">
+            <span className="section-label">// DEFEND WHAT MATTERS</span>
 
-  
+            <h1 className="hero-title">
+              Defend What Matters <span>Intelligently</span>
+            </h1>
 
-  <div className="hero-content reveal">
-    <span className="section-label">// DEFEND WHAT MATTERS</span>
+            <p className="hero-subtitle !text-left !mx-0">
+              Netcradus delivers enterprise-grade cybersecurity and bespoke software solutions built for the threats of tomorrow.
+            </p>
 
-    <h1 className="hero-title">
-      Defend What Matters <span>Intelligently</span>
-    </h1>
+            <div className="hero-ctas !justify-start">
+              <Link to="/acis" className="btn btn-primary">
+                Explore ACIS <ArrowRight size={18} style={{ marginLeft: "0.5rem" }} />
+              </Link>
+              <Link to="/services" className="btn btn-ghost">
+                Our Services
+              </Link>
+            </div>
+          </div>
 
-    <p className="hero-subtitle">
-      Netcradus delivers enterprise-grade cybersecurity and bespoke software solutions built for the threats of tomorrow.
-    </p>
+          <div className="hero-visual reveal shadow-2xl rounded-2xl overflow-hidden border border-[var(--border-color)] bg-surface/5" style={{transitionDelay: '0.2s'}}>
+            <img src="/generated/netcradus_hero_v3.png" alt="Netcradus Security Platform" className="w-full h-auto object-cover max-h-[500px]" />
+            {/* Alternatively use the provided image: src="/generated/hero-web.png" */}
+          </div>
+        </div>
 
-    <div className="hero-ctas">
-      <Link to="/acis" className="btn btn-primary">
-        Explore ACIS <ArrowRight size={18} style={{ marginLeft: "0.5rem" }} />
-      </Link>
-      <Link to="/services" className="btn btn-ghost">
-        Our Services
-      </Link>
-    </div>
-  </div>
-
-        <div className="trust-strip reveal" style={{transitionDelay: '0.4s'}}>
-          <p className="trust-label">Trusted by organisations across...</p>
-          <div className="trust-logos">
+        <div className="trust-strip reveal mt-12 md:mt-24" style={{transitionDelay: '0.4s'}}>
+          <p className="trust-label text-left">Trusted by organisations across...</p>
+          <div className="trust-logos mt-4">
             {['Healthcare', 'Finance', 'Government', 'Energy'].map((sector) => (
               <div key={sector} className="trust-icon">
-                <span className="sector-name">{sector}</span>
+                <span className="sector-name text-xs md:text-sm font-mono tracking-widest opacity-60 hover:opacity-100 transition-opacity">[{sector.toUpperCase()}]</span>
               </div>
             ))}
           </div>
