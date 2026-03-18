@@ -67,7 +67,7 @@ const Hero = () => {
       <canvas ref={canvasRef} className="hero-canvas"></canvas>
        {/* 🔥 FULL WIDTH IMAGE */}
   <div className="hero-banner">
-    <img src="/img/hero.jpg" alt="SIEM" />
+    <img src="/img/hero.png" alt="SIEM" />
   </div>
      <div className="container hero-container">
 
