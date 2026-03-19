@@ -80,8 +80,14 @@ const ACISSection = () => {
               </div>
             </div>
 
-            <Link to="/contact" className="btn btn-primary inline-block no-underline">Download Technical Whitepaper</Link>
-          </div>
+<a
+  href="https://acis.netcradus.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn btn-primary inline-block no-underline"
+>
+  Explore ACIS
+</a>          </div>
 
           <div className="acis-mockup reveal" style={{ transitionDelay: '0.2s' }}>
             <AcisOrbit />

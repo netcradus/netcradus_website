@@ -85,9 +85,15 @@ const Hero = () => {
     </p>
 
     <div className="hero-ctas">
-      <Link to="/acis" className="btn btn-primary">
-        Explore ACIS <ArrowRight size={18} style={{ marginLeft: "0.5rem" }} />
-      </Link>
+     <a
+  href="https://acis.netcradus.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn btn-primary"
+>
+  Explore ACIS
+  <ArrowRight size={18} style={{ marginLeft: "0.5rem" }} />
+</a>
       <Link to="/services" className="btn btn-ghost">
         Our Services
       </Link>
