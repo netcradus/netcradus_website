@@ -86,7 +86,7 @@ const ACISSection = () => {
   rel="noopener noreferrer"
   className="btn btn-primary inline-block no-underline"
 >
-  Explore ACIS
+  Explore ACIS <ArrowRight size={18} style={{ marginLeft: "0.5rem" }} />
 </a>          </div>
 
           <div className="acis-mockup reveal" style={{ transitionDelay: '0.2s' }}>
