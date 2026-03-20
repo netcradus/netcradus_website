@@ -24,6 +24,16 @@ const attacks = [
 ];
 
 export default function LiveThreatMap() {
+    const [geoData, setGeoData] = useState(null);
+
+    useEffect(() => {
+        // Fetch map data manually to allow for future SRI/integrity checks
+        fetch(geoUrl)
+            .then(res => res.json())
+            .then(data => setGeoData(data))
+            .catch(err => console.error("Map data error:", err));
+    }, []);
+
     return (
         <SectionWrapper id="threat-map" className="pt-16 md:pt-32 pb-8 md:pb-16 bg-background relative overflow-hidden transition-colors duration-300">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,124,255,0.05)_0%,transparent_70%)] z-0" />
@@ -64,7 +74,7 @@ export default function LiveThreatMap() {
                         </pattern>
                     </defs>
 
-                    <Geographies geography={geoUrl}>
+                    <Geographies geography={geoData || geoUrl}>
                         {({ geographies }) =>
                             geographies.map((geo) => (
                                 <Geography
