@@ -1,0 +1,35 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 9 * * 1' # Every Monday at 9am UTC
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install dependencies
+        working-directory: client
+        run: npm ci
+
+      - name: Run security audit
+        working-directory: client
+        run: |
+          npm audit --audit-level=critical || (
+            echo "::error::Critical security vulnerabilities found in dependencies. Please run 'npm audit fix' locally and commit the updated package-lock.json."
+            exit 1
+          )
