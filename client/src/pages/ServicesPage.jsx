@@ -10,7 +10,7 @@ const ServicesPage = () => {
     }, []);
 
     return (
-        <>
+        <div className="bg-background transition-colors duration-500">
             <SubHero 
                 label="// OUR CAPABILITIES"
                 title="Expertise tailored for enterprise resilience."
@@ -19,7 +19,7 @@ const ServicesPage = () => {
             <Services />
             <Industries />
             <CTABanner />
-        </>
+        </div>
     );
 };
 

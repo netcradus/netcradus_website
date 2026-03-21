@@ -3,8 +3,8 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at top left, rgba(255,138,31,0.08), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255,45,143,0.08), transparent 30%),
+    radial-gradient(circle at top left, rgba(204,0,0,0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(204,0,0,0.08), transparent 30%),
     var(--bg-color);
   transition: background-color 0.3s;
 }
@@ -30,10 +30,11 @@
 
 .acis-title span {
   font-style: italic;
-  background: linear-gradient(90deg,#ff8a1f,#ff2d8f);
+  background: linear-gradient(90deg,#e8400a,#ff5520);
+  -webkit-background-clip:text;
   background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color:transparent;
+  color:#e8400a;
 }
 
 /* Description */
@@ -53,21 +54,23 @@
   gap: 0.7rem;
   padding: 0.55rem 1.1rem;
   border-radius: 999px;
-  background: rgba(255,138,31,0.08);
-  border: 1px solid rgba(255,138,31,0.18);
-  color: #ff8a1f;
+  background: rgba(232,64,10,0.08);
+  border: 1px solid rgba(232,64,10,0.18);
+  color: #e8400a;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   margin-bottom: 1.5rem;
 }
 
-.pulse-dot {
-  width:6px;
-  height:6px;
+.acis-badge span.pulse-dot {
+  display:inline-block;
+  width:8px;height:8px;
+  background:#e8400a;
   border-radius:50%;
-  background:#ff8a1f;
-  box-shadow:0 0 8px #ff8a1f;
+  margin-right:8px;
+  box-shadow:0 0 8px #e8400a;
+  animation:pulse 2s infinite
 }
 
 /* Feature cards */
@@ -78,8 +81,8 @@
 
 .feature-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,138,31,0.25);
-  box-shadow: 0 15px 40px rgba(255,45,143,0.1);
+  border-color: rgba(232,64,10,0.25);
+  box-shadow: 0 15px 40px rgba(232,64,10,0.1);
 }
 
 /* Pills */
@@ -120,7 +123,7 @@
 }
 
 .acis-icon {
-  color:#ff8a1f;
+  color:#e8400a;
 }
 
 /* Architecture */
@@ -130,18 +133,22 @@
   align-items:center;
   gap:1.2rem;
   padding:1.2rem 1.5rem;
-  border-radius:14px;
+  border-radius:12px;
   border:1px solid var(--border-color);
   background:var(--surface-color);
   color:var(--text-secondary);
   transition:all .3s;
 }
 
+.arch-tab:hover {
+  border-color: rgba(232, 64, 10, 0.4);
+}
+
 .arch-tab.active {
-  background:rgba(255,138,31,0.08);
-  border-color:rgba(255,138,31,0.25);
+  background:rgba(232,64,10,0.1);
+  border-color:#e8400a;
   color:var(--text-primary);
-  box-shadow:0 10px 25px rgba(255,45,143,0.1);
+  box-shadow:0 10px 25px rgba(232,64,10,0.1);
 }
 
 .arch-content {
@@ -154,7 +161,7 @@
   font-size:0.75rem;
   letter-spacing:.25em;
   text-transform:uppercase;
-  color:#ff8a1f;
+  color:#e8400a;
 }
 
 .arch-content p {
@@ -193,14 +200,14 @@
 
 .timeline-item:hover {
   transform:translateY(-6px);
-  border-color:rgba(255,138,31,0.25);
+  border-color:rgba(232,64,10,0.25);
 }
 
 .phase-label {
   font-family:"Inter",sans-serif;
   font-size:.7rem;
   letter-spacing:.18em;
-  color:#ff8a1f;
+  color:#cc0000;
   margin-bottom:.8rem;
   display:block;
 }

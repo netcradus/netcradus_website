@@ -18,11 +18,12 @@ const clients = [
 
 const ClientsSection = () => {
     return (
-        <section className="py-20 bg-[var(--bg-color)] overflow-hidden">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Trusted by Industry Leaders</h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-[var(--primary-accent)] to-[var(--secondary-accent)] mx-auto rounded-full" />
+        <section className="py-24 bg-premium-radial relative overflow-hidden transition-all duration-500">
+            <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+                <div className="text-center mb-20">
+                    <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">Strategic Alliances</span>
+                    <h2 className="text-3xl md:text-5xl font-display font-black text-zinc-900 dark:text-white mb-6 uppercase tracking-wider">Trusted by Industry <span className="text-accent italic text-4xl md:text-6xl">Leaders.</span></h2>
+                    <div className="w-32 h-[1px] bg-accent/30 mx-auto rounded-full" />
                 </div>
 
                 <div className="relative flex overflow-x-hidden">
@@ -30,12 +31,12 @@ const ClientsSection = () => {
                         {clients.concat(clients).map((client, index) => (
                             <div
                                 key={index}
-                                className="mx-12 flex-shrink-0"
+                                className="mx-16 flex-shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 dark:brightness-200 dark:invert"
                             >
                                 <img
                                     src={client.logo}
                                     alt={client.name}
-                                    className="h-16 md:h-20 w-auto object-contain"
+                                    className="h-14 md:h-16 w-auto object-contain"
                                 />
                             </div>
                         ))}

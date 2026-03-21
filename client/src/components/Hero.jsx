@@ -1,114 +1,81 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import HeroVisual from './HeroVisual';
+import AnimatedReveal from './ui/AnimatedReveal';
+import MagneticWrapper from './ui/MagneticWrapper';
 import './Hero.css';
 
 const Hero = () => {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let animationFrameId;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', resize);
-    resize();
-
-    // Subtle Grid / Line Animation
-    const lines = [];
-    for (let i = 0; i < 15; i++) {
-        lines.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            length: Math.random() * 80 + 40,
-            speed: Math.random() * 0.4 + 0.1,
-            opacity: Math.random() * 0.2
-        });
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      // Draw moving lines
-      lines.forEach(line => {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(0, 194, 255, ${line.opacity})`;
-          ctx.lineWidth = 1;
-          ctx.moveTo(line.x, line.y);
-          ctx.lineTo(line.x + line.length, line.y);
-          ctx.stroke();
-          
-          line.x += line.speed;
-          if (line.x > canvas.width) {
-              line.x = -line.length;
-              line.y = Math.random() * canvas.height;
-          }
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
   return (
-    <section className="hero">
-      <canvas ref={canvasRef} className="hero-canvas"></canvas>
-      <div className="container hero-container flex flex-col justify-center min-h-[calc(100vh-80px)]">
-        
-        <div className="grid md:grid-cols-2 gap-12 items-center w-full">
-          <div className="hero-content reveal text-left">
-            <span className="section-label">// DEFEND WHAT MATTERS</span>
+    <section className="hero relative overflow-hidden bg-premium-radial py-24 min-h-screen flex items-center transition-colors duration-500">
+      {/* Dynamic Background Glows */}
+      <div className="absolute top-1/4 right-0 w-[60%] h-[60%] bg-accent/5 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 left-0 w-[40%] h-[40%] bg-accent/3 blur-[100px] rounded-full pointer-events-none z-0" />
+      
+      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="hero-content text-left">
+            <AnimatedReveal>
+              <div className="max-w-4xl pt-10">
+                <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent-bright uppercase mb-8 block opacity-80">
+                  Autonomous Cybersecurity Intelligence System
+                </span>
+                <h1 className="text-[clamp(3.5rem,7vw,5.5rem)] font-display font-black text-text-primary mb-8 tracking-[-0.04em] leading-[0.95] drop-shadow-sm">
+                  Enterprise <br />
+                  <span className="text-accent italic">Defensive</span> <br />
+                  Operative.
+                </h1>
+                
+                <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-sans leading-relaxed mb-12 max-w-xl">
+                  Netcradus delivers enterprise-grade cybersecurity and bespoke software solutions built for the threats of tomorrow.
+                </p>
 
-            <h1 className="hero-title">
-              Defend What Matters <span>Intelligently</span>
-            </h1>
-
-            <p className="hero-subtitle !text-left !mx-0">
-              Netcradus delivers enterprise-grade cybersecurity and bespoke software solutions built for the threats of tomorrow.
-            </p>
-
-            <div className="hero-ctas !justify-start">
-              <Link to="/acis" className="btn btn-primary">
-                Explore ACIS <ArrowRight size={18} style={{ marginLeft: "0.5rem" }} />
-              </Link>
-              <Link to="/services" className="btn btn-ghost">
-                Our Services
-              </Link>
-            </div>
+                <div className="flex flex-wrap gap-6 mt-12">
+                  <Link to="/contact">
+                    <MagneticWrapper strength={0.3}>
+                      <button className="btn-primary px-12 py-5 text-white font-display font-bold text-xs uppercase tracking-[0.2em] shadow-xl">
+                        Initiate Command
+                      </button>
+                    </MagneticWrapper>
+                  </Link>
+                  <Link to="/platform">
+                    <MagneticWrapper strength={0.3}>
+                      <button className="px-10 py-5 bg-surface-raised/50 border border-border text-text-primary font-display font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-surface-raised transition-all flex items-center gap-3">
+                        Analyze Platform
+                        <ArrowRight size={14} className="text-accent" />
+                      </button>
+                    </MagneticWrapper>
+                  </Link>
+                </div>
+              </div>
+            </AnimatedReveal>
           </div>
 
-          <div className="hero-visual reveal shadow-2xl rounded-2xl overflow-hidden border border-[var(--border-color)] bg-surface/5" style={{transitionDelay: '0.2s'}}>
-            <img src="/generated/netcradus_hero_v3.png" alt="Netcradus Security Platform" className="w-full h-auto object-cover max-h-[500px]" />
-            {/* Alternatively use the provided image: src="/generated/hero-web.png" */}
+          <div className="hero-visual-container relative h-[500px] hidden lg:block">
+            <HeroVisual />
           </div>
         </div>
 
-        <div className="trust-strip reveal mt-12 md:mt-24" style={{transitionDelay: '0.4s'}}>
-          <p className="trust-label text-left">Trusted by organisations across...</p>
-          <div className="trust-logos mt-4">
-            {['Healthcare', 'Finance', 'Government', 'Energy'].map((sector) => (
-              <div key={sector} className="trust-icon">
-                <span className="sector-name text-xs md:text-sm font-mono tracking-widest opacity-60 hover:opacity-100 transition-opacity">[{sector.toUpperCase()}]</span>
+        {/* Global Operative Grid Label */}
+        <div className="mt-24 pt-12 border-t border-zinc-200 dark:border-zinc-800">
+          <p className="text-[9px] font-display font-bold text-zinc-500 dark:text-zinc-500 uppercase tracking-[0.4em] mb-8 lg:mb-12">
+            Trusted by organizations across critical nodes
+          </p>
+          <div className="flex flex-wrap gap-x-12 gap-y-6 opacity-60 hover:opacity-100 transition-opacity duration-700">
+            {['Healthcare', 'Financial Services', 'Infra Node', 'Gov Sector'].map((sector) => (
+              <div key={sector} className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-zinc-600 dark:text-zinc-400">[{sector}]</span>
               </div>
             ))}
           </div>
         </div>
       </div>
       
-      <div className="scroll-indicator">
-        <ChevronDown size={32} />
+      {/* Scroll Tip */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40 hover:opacity-100 transition-opacity">
+        <ChevronDown size={24} className="text-zinc-500 dark:text-zinc-500" />
       </div>
     </section>
   );

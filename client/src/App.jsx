@@ -19,9 +19,9 @@ function AppLayout() {
   useReveal();
 
   return (
-    <div className="bg-[var(--bg-color)] min-h-screen text-[var(--text-primary)] font-sans overflow-x-hidden pt-20 transition-colors duration-300">
-      {/* Global Background Grid */}
-      <div className="fixed inset-0 z-0 bg-[linear-gradient(to_right,var(--border-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--border-color)_1px,transparent_1px)] bg-[size:32px_32px] opacity-[0.15] pointer-events-none"></div>
+    <div className="bg-background min-h-screen text-text-primary font-sans overflow-x-hidden pt-20 transition-colors duration-500 selection:bg-accent/30">
+      {/* Global Background Grid - Premium feel */}
+      <div className="fixed inset-0 z-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none"></div>
       
       <Navbar />
       <FloatingContact />
