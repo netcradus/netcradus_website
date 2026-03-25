@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import client1 from "../assets/clientsList/client_1-removebg.png";
 import client2 from "../assets/clientsList/client_2-removebg.png";
 import client3 from "../assets/clientsList/client_3-removebg.png";
@@ -9,7 +8,7 @@ import client6 from "../assets/clientsList/client_6-removebg.png";
 
 const clients = [
     { name: "Client 1", logo: client1 },
-    { name: "Client 2", logo: client2 },
+    { name: "Client 2", logo: client2, needsLightBg: true },
     { name: "Client 3", logo: client3 },
     { name: "Client 4", logo: client4 },
     { name: "Client 5", logo: client5 },
@@ -31,12 +30,14 @@ const ClientsSection = () => {
                         {clients.concat(clients).map((client, index) => (
                             <div
                                 key={index}
-                                className="mx-16 flex-shrink-0 opacity-60 hover:opacity-100 transition-all duration-1000 brightness-0 dark:invert"
+                                className="mx-16 flex-shrink-0"
                             >
                                 <img
                                     src={client.logo}
                                     alt={client.name}
-                                    className="h-14 md:h-16 w-auto object-contain dark:opacity-90"
+                                    className={`h-14 md:h-16 w-auto object-contain ${
+                                        client.needsLightBg ? "bg-white/90 rounded-md px-3 py-2" : ""
+                                    }`}
                                 />
                             </div>
                         ))}
