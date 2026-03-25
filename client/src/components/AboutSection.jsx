@@ -17,7 +17,7 @@ export default function AboutSection() {
   return (
     <SectionWrapper
       id="about"
-      className="relative overflow-hidden bg-background py-16 md:py-32"
+      className="relative overflow-hidden bg-premium-radial py-24"
     >
       {/* Brand Background Glow */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_20%_35%,rgba(255,138,31,0.08)_0%,transparent_35%),radial-gradient(circle_at_80%_70%,rgba(255,45,143,0.08)_0%,transparent_35%)]" />
@@ -25,18 +25,18 @@ export default function AboutSection() {
       <div className="relative z-10 grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
         {/* Left Content */}
         <AnimatedReveal className="text-center lg:text-left">
-          <span className="mb-8 block font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-primary md:text-[12px]">
+          <span className="mb-8 block font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]">
             Architectural Excellence
           </span>
 
-          <h2 className="mb-8 font-display text-4xl font-medium leading-[1.02] tracking-tight text-[var(--text-primary)] md:text-7xl">
+          <h2 className="mb-8 font-display text-4xl md:text-7xl font-black leading-[1.02] tracking-tighter text-zinc-900 dark:text-white">
             Outcomes, <br />
-            <span className="bg-heading-gradient bg-clip-text italic text-transparent">
+            <span className="text-accent italic">
               not just services.
             </span>
           </h2>
 
-          <p className="mx-auto mb-12 max-w-lg font-sans text-lg leading-relaxed text-[var(--text-secondary)] lg:mx-0">
+          <p className="mx-auto mb-12 max-w-lg font-sans text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 lg:mx-0">
             We engineer resilience. Netcradus builds the digital infrastructure
             that doesn&apos;t just survive attacks—it anticipates them.
           </p>
@@ -44,8 +44,8 @@ export default function AboutSection() {
           <div className="mb-12 grid grid-cols-1 gap-5 text-left sm:grid-cols-2">
             {highlights.map((item, idx) => (
               <div key={idx} className="group flex items-start gap-3">
-                <div className="mt-2 h-1.5 w-1.5 rounded-full bg-accent/50 transition-colors duration-500 group-hover:bg-primary" />
-                <span className="font-sans text-sm leading-relaxed text-[var(--text-secondary)] transition-colors duration-500 group-hover:text-[var(--text-primary)]">
+                <div className="mt-2 h-1.5 w-1.5 rounded-full bg-accent/30 transition-colors duration-500 group-hover:bg-accent" />
+                <span className="font-sans text-sm leading-relaxed text-zinc-500 dark:text-zinc-500 transition-colors duration-500 group-hover:text-zinc-900 dark:group-hover:text-white">
                   {item}
                 </span>
               </div>
@@ -76,10 +76,10 @@ export default function AboutSection() {
 
             {/* Core */}
             <div className="relative z-10 flex h-48 w-48 items-center justify-center md:h-64 md:w-64">
-              <div className="absolute inset-0 rounded-full border border-[var(--border-color)] bg-surface-color/40 shadow-brand-lg backdrop-blur-3xl" />
+              <div className="absolute inset-0 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/40 dark:bg-zinc-900/40 shadow-premium backdrop-blur-3xl" />
               <Shield
                 strokeWidth={0.6}
-                className="h-32 w-32 text-[var(--text-primary)] opacity-20 drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] md:h-44 md:w-44"
+                className="h-32 w-32 text-zinc-900 dark:text-white opacity-10 drop-shadow-[0_0_20px_rgba(232,64,10,0.1)] md:h-44 md:w-44"
               />
 
               {/* Orbit Top */}
@@ -88,9 +88,9 @@ export default function AboutSection() {
                 transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                 className="pointer-events-none absolute inset-[-40px]"
               >
-                <div className="absolute left-1/2 top-0 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-xl border border-[var(--border-color)] bg-surface shadow-2xl">
-                  <Lock size={16} className="text-primary" />
-                </div>
+                  <div className="absolute left-1/2 top-0 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xl">
+                    <Lock size={16} className="text-accent" />
+                  </div>
               </motion.div>
 
               {/* Orbit Bottom */}

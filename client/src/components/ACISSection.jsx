@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Target, ShieldCheck, Zap, Activity, Cpu, ShieldAlert, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import AcisOrbit from "./AcisOrbit";
+import DottedGlobe from "./DottedGlobe";
 import './ACISSection.css';
 
 const ARCHITECTURE_LAYERS = [
@@ -35,7 +35,7 @@ const ACISSection = () => {
 
   return (
     <section id="acis" className="acis-section">
-      <div className="container">
+      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
         <div className="acis-grid">
           <div className="acis-content reveal">
             <div className="acis-badge mono">
@@ -43,48 +43,55 @@ const ACISSection = () => {
               Autonomous Response Active
             </div>
             <h2 className="acis-title">
-              ACIS — Autonomous Cyber <span>Immune System.</span>
-            </h2>            <p className="acis-desc mt-6 mb-8 text-lg">
+              ACIS — Autonomous Cyber <span className="text-accent italic">Immune System.</span>
+            </h2>
+            <p className="acis-desc mb-12 max-w-xl">
               ACIS is our revolutionary, proprietary AI-driven cybersecurity platform. Designed to eliminate the lag between threat detection and response, ACIS operates autonomously to identify, isolate, and neutralize cyber threats without requiring manual human intervention.
             </p>
             <div className="feature-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <div className="feature-card glass p-6 rounded-2xl border border-[var(--border-color)]">
-                <h4 className="font-bold mb-2 flex items-center gap-2"><ShieldCheck className="text-primary" size={18} /> Sub-second Containment</h4>
-                <p className="text-sm opacity-70">Detects and neutralizes threats in real-time, preventing lateral movement before it starts.</p>
+              <div className="premium-card p-8 border-l-4 border-l-accent">
+                <h4 className="font-bold text-text-primary mb-3 flex items-center gap-2">
+                  <ShieldCheck className="text-accent" size={20} /> 
+                  Sub-second Containment
+                </h4>
+                <p className="text-sm text-text-secondary leading-relaxed">Detects and neutralizes threats in real-time, preventing lateral movement before it starts.</p>
               </div>
-              <div className="feature-card glass p-6 rounded-2xl border border-[var(--border-color)]">
-                <h4 className="font-bold mb-2 flex items-center gap-2"><Zap className="text-primary" size={18} /> AI-Powered UEBA</h4>
-                <p className="text-sm opacity-70">Sophisticated User and Entity Behavior Analytics to spot anomalies that traditional tools miss.</p>
+              <div className="premium-card p-8 border-l-4 border-l-accent">
+                <h4 className="font-bold text-text-primary mb-3 flex items-center gap-2">
+                  <Zap className="text-accent" size={20} /> 
+                  AI-Powered UEBA
+                </h4>
+                <p className="text-sm text-text-secondary leading-relaxed">Sophisticated User and Entity Behavior Analytics to spot anomalies that traditional tools miss.</p>
               </div>
             </div>
 
-            <div className="acis-pills">
+            <div className="acis-pills flex flex-wrap gap-2 mb-8">
               <span className="pill">Adaptive Learning</span>
               <span className="pill">Real-time Isolation</span>
               <span className="pill">Zero-Trust Ready</span>
               <span className="pill">UK Data Sovereignty</span>
             </div>
 
-            <div className="acis-features">
-              <div className="acis-feature">
-                <Target className="acis-icon" size={20} />
-                <span>Self-Learning AI Algorithms</span>
+            <div className="acis-features space-y-5 mb-12">
+              <div className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span className="text-sm font-bold tracking-widest uppercase text-text-secondary">Self-Learning AI Algorithms</span>
               </div>
-              <div className="acis-feature">
-                <ShieldCheck className="acis-icon" size={20} />
-                <span>Micro-Segmentation Control</span>
+              <div className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span className="text-sm font-bold tracking-widest uppercase text-text-secondary">Micro-Segmentation Control</span>
               </div>
-              <div className="acis-feature">
-                <Zap className="acis-icon" size={20} />
-                <span>Instant Threat Neutralization</span>
+              <div className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span className="text-sm font-bold tracking-widest uppercase text-text-secondary">Instant Threat Neutralization</span>
               </div>
             </div>
 
             <Link to="/contact" className="btn btn-primary inline-block no-underline">Download Technical Whitepaper</Link>
           </div>
 
-          <div className="acis-mockup reveal" style={{ transitionDelay: '0.2s' }}>
-            <AcisOrbit />
+          <div className="acis-mockup reveal flex justify-center items-center overflow-visible" style={{ transitionDelay: '0.2s' }}>
+            <DottedGlobe />
           </div>
         </div>
 
@@ -95,27 +102,31 @@ const ACISSection = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12 items-center">
             <div className="arch-layout m-0 w-full relative z-10">
-              <div className="arch-nav">
+              <div className="arch-nav flex flex-col gap-3">
                 {ARCHITECTURE_LAYERS.map((layer, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveLayer(idx)}
-                    className={`arch-tab ${activeLayer === idx ? 'active' : ''}`}
+                    className={`arch-tab group flex items-center gap-4 p-5 rounded-2xl border transition-all duration-300 ${activeLayer === idx ? 'bg-accent/10 border-accent shadow-premium' : 'bg-surface border-border hover:border-accent/30'}`}
                   >
-                    <div className="arch-tab-icon">{<layer.icon size={18} />}</div>
-                    <span className="mono">{layer.title}</span>
+                    <div className={`p-2.5 rounded-xl transition-all duration-500 ${activeLayer === idx ? 'bg-accent text-white shadow-lg' : 'bg-surface-raised group-hover:bg-accent/10'}`}>{<layer.icon size={20} />}</div>
+                    <span className={`text-xs font-bold tracking-[0.2em] uppercase ${activeLayer === idx ? 'text-text-primary' : 'text-text-secondary'}`}>{layer.title}</span>
                   </button>
                 ))}
               </div>
-              <div className="arch-content glass">
-                <h4 className="mono">{ARCHITECTURE_LAYERS[activeLayer].title}</h4>
-                <p>{ARCHITECTURE_LAYERS[activeLayer].content}</p>
-                <Link to="/services" className="text-btn inline-flex items-center no-underline">Technical Specs <ArrowRight size={14} className="ml-2" /></Link>
+              <div className="premium-card p-10 mt-8 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 blur-3xl rounded-full" />
+                <h4 className="font-display font-black text-2xl text-text-primary mb-6 uppercase tracking-wider">{ARCHITECTURE_LAYERS[activeLayer].title}</h4>
+                <p className="text-text-secondary text-lg leading-relaxed mb-8">{ARCHITECTURE_LAYERS[activeLayer].content}</p>
+                <Link to="/services" className="btn-primary px-8 py-3 text-xs inline-flex items-center gap-3 no-underline">
+                  View Specifications 
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[var(--border-color)] relative h-[400px]">
-              <img src="/generated/secure_shield_concept_1773394778055.png" alt="AI Neural Network Analyzing Data" className="w-full h-full object-cover opacity-80" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--bg-color)] to-transparent mix-blend-overlay opacity-50"></div>
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative h-[400px]">
+              <img src="/generated/secure_shield_concept_1773394778055.png" alt="AI Neural Network Analyzing Data" className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent opacity-80"></div>
             </div>
           </div>
         </div>

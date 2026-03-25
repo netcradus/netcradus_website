@@ -44,16 +44,16 @@ const Stats = () => {
 
 
   return (
-    <section id="stats" className="stats-section">
-      <div className="stats-strip">
-        <div className="container stats-grid">
+    <section id="stats" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
+      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
           {stats.map((stat, index) => (
-            <div key={index} className="stat-card reveal">
-              <div className="stat-value">
+            <div key={index} className="reveal group">
+              <div className="text-4xl md:text-6xl font-display font-black text-text-primary mb-4 tracking-tighter">
                 {stat.prefix}
                 <Counter end={stat.value === 99.7 ? 99 : stat.value} duration={2000} suffix={stat.value === 99.7 ? ".7" + stat.suffix : stat.suffix} />
               </div>
-              <p className="stat-label">{stat.label}</p>
+              <p className="text-[10px] md:text-xs font-bold text-text-secondary uppercase tracking-[0.4em] group-hover:text-accent transition-colors duration-500 font-display">{stat.label}</p>
             </div>
           ))}
         </div>

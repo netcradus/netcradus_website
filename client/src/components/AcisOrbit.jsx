@@ -53,36 +53,41 @@ export default function AcisOrbit() {
 
       {/* Core */}
       <div className="orbit-core">
+        {/* Central AI Node */}
+        <div className="absolute w-24 h-24 rounded-full bg-accent/20 blur-2xl animate-pulse" />
+        <div className="absolute w-12 h-12 rounded-full border border-accent/40 flex items-center justify-center animate-spin-slow">
+          <div className="w-6 h-6 rounded-full bg-accent-bright animate-ping opacity-40" />
+        </div>
         <motion.div
-          className="core-pulse"
-          animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.65, 0.35] }}
-          transition={{ duration: 4, repeat: Infinity }}
+          className="core-pulse bg-accent"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 3, repeat: Infinity }}
         />
-        <div className="core-sphere">
-          <div className="core-text mono">ACIS CORE</div>
+        <div className="core-sphere bg-crimson-deep shadow-red-glow">
+          <div className="core-text mono text-white">ACIS CORE</div>
         </div>
       </div>
 
-      {/* BADGES (reduced radius) */}
-      <StaticBadge label="THREAT DETECT" angle={-90} radius={220} tone="violet" />
-      <StaticBadge label="AI ENGINE" angle={-25} radius={220} tone="pink" />
-      <StaticBadge label="AUTO HEAL" angle={25} radius={220} tone="orange" />
-      <StaticBadge label="ZERO TRUST" angle={90} radius={220} tone="violet" />
-      <StaticBadge label="INTEL FEED" angle={155} radius={220} tone="pink" />
-      <StaticBadge label="MESH NET" angle={205} radius={220} tone="orange" />
+      {/* BADGES */}
+      <StaticBadge label="THREAT DETECT" angle={-90} radius={220} tone="crimson" />
+      <StaticBadge label="AI ENGINE" angle={-25} radius={220} tone="crimson" />
+      <StaticBadge label="AUTO HEAL" angle={25} radius={220} tone="crimson" />
+      <StaticBadge label="ZERO TRUST" angle={90} radius={220} tone="crimson" />
+      <StaticBadge label="INTEL FEED" angle={155} radius={220} tone="crimson" />
+      <StaticBadge label="MESH NET" angle={205} radius={220} tone="crimson" />
 
       {/* SMALLER ORBITS */}
-      <OrbitRing size={180} duration={18} className="ring-inner">
-        <OrbitDot angle={320} radius={90} tone="orange" />
+      <OrbitRing size={180} duration={18} className="ring-inner border-crimson/20">
+        <OrbitDot angle={320} radius={90} tone="crimson" />
       </OrbitRing>
 
-      <OrbitRing size={300} duration={28} reverse className="ring-middle">
-        <OrbitDot angle={330} radius={150} tone="orange" />
-        <OrbitDot angle={150} radius={150} tone="pink" />
+      <OrbitRing size={300} duration={28} reverse className="ring-middle border-crimson/15">
+        <OrbitDot angle={330} radius={150} tone="crimson" />
+        <OrbitDot angle={150} radius={150} tone="crimson-bright" />
       </OrbitRing>
 
-      <OrbitRing size={420} duration={40} className="ring-outer">
-        <OrbitDot angle={210} radius={210} tone="violet" />
+      <OrbitRing size={420} duration={40} className="ring-outer border-crimson/10">
+        <OrbitDot angle={210} radius={210} tone="crimson" />
       </OrbitRing>
     </div>
   );

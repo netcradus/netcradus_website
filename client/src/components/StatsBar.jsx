@@ -27,7 +27,7 @@ function Counter({ from, to, suffix = "", prefix = "" }) {
         });
     }, [springValue, prefix, suffix]);
 
-    return <span ref={ref} className="font-display font-extrabold text-4xl md:text-5xl text-[var(--text-primary)] tracking-tighter">{from}</span>;
+    return <span ref={ref} className="font-display font-black text-4xl md:text-6xl text-zinc-900 dark:text-white tracking-tighter leading-none">{from}</span>;
 }
 
 const stats = [
@@ -39,16 +39,16 @@ const stats = [
 
 export default function StatsBar() {
     return (
-        <SectionWrapper className="z-10 bg-background">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-px border-y border-[var(--border-color)] bg-surface-color/5">
+        <SectionWrapper className="z-10 bg-premium-radial py-24">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-px border-y border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-800/10">
                 {stats.map((stat, idx) => (
                     <div
                         key={idx}
-                        className="flex flex-col items-center justify-center text-center p-12 md:p-16 group relative bg-background/50 hover:bg-background transition-all duration-700 overflow-hidden"
+                        className="flex flex-col items-center justify-center text-center p-12 md:p-20 group relative bg-transparent hover:bg-zinc-100/50 dark:hover:bg-zinc-800/20 transition-all duration-700 overflow-hidden"
                     >
                         {/* Ignition Background Glow */}
-                        <div className="absolute inset-x-0 bottom-0 h-[2px] bg-primary/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-                        <div className="absolute inset-0 bg-primary/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                        <div className="absolute inset-x-0 bottom-0 h-[3px] bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+                        <div className="absolute inset-0 bg-accent/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                         
                         <div className="relative">
                             {stat.count ? (
@@ -59,8 +59,8 @@ export default function StatsBar() {
                                 </div>
                             )}
                         </div>
-                        <div className="mono-label text-[var(--text-secondary)]/60 mt-6 transition-colors group-hover:text-primary font-bold">
-                            {stat.label.replace(" ", "_").toUpperCase()}
+                        <div className="text-[10px] font-bold text-zinc-400 dark:text-zinc-600 mt-8 tracking-[0.4em] uppercase transition-colors group-hover:text-accent font-sans">
+                            {stat.label.replace(" ", " ")}
                         </div>
                     </div>
                 ))}

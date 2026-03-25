@@ -29,15 +29,15 @@ const CYBER_SERVICES = [
 ];
 
 const Services = () => {
-    const [activeTab, setActiveTab] = useState("mssp");
+    const [activeTab, setActiveTab] = useState("msp");
 
     return (
-        <section id="services" className="services-section">
-            <div className="container">
-                <div className="section-header reveal text-center">
-                    <span className="section-label">// OUR CAPABILITIES</span>
-                    <h2 className="section-title">Engineered for Resilience.</h2>
-                    <p className="section-desc max-w-2xl mx-auto">
+        <section id="services" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
+            <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+                <div className="reveal text-center mb-16">
+                    <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent font-display uppercase mb-6 block">// OUR CAPABILITIES</span>
+                    <h2 className="text-4xl md:text-6xl font-display font-black text-text-primary mb-6">Engineered for <span className="text-accent italic">Resilience.</span></h2>
+                    <p className="text-text-secondary text-lg md:text-xl font-sans leading-relaxed max-w-2xl mx-auto">
                         A comprehensive ecosystem designed to protect, scale, and accelerate the modern enterprise.
                     </p>
                 </div>
@@ -58,26 +58,30 @@ const Services = () => {
                 <div className="service-content-pillar reveal" style={{transitionDelay: '0.4s'}}>
                     {activeTab === "msp" && (
                         <div className="tab-grid staggered">
-                            <div className="tab-info">
-                                <h3>Managed IT Operations.</h3>
-                                <p>Your entire IT infrastructure — expertly managed, always operational. Netcradus MSP delivers a fully outsourced, enterprise-grade technology office.</p>
-                                <ul className="feature-list">
-                                    <li>24/7 Proactive Monitoring</li>
-                                    <li>Multi-Tier UK & India Helpdesk</li>
-                                    <li>SD-WAN & Network Management</li>
+                            <div className="tab-info space-y-8">
+                                <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Managed IT <span className="text-accent italic">Operations.</span></h3>
+                                <p className="text-text-secondary text-lg leading-relaxed">Your entire IT infrastructure — expertly managed, always operational. Netcradus MSP delivers a fully outsourced, enterprise-grade technology office.</p>
+                                <ul className="space-y-4">
+                                    {["24/7 Proactive Monitoring", "Multi-Tier UK & India Helpdesk", "SD-WAN & Network Management"].map(item => (
+                                        <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                                            {item}
+                                        </li>
+                                    ))}
                                 </ul>
-                                <Link to="/contact" className="btn btn-primary px-6 py-3 no-underline inline-block">Request Infrastructure Audit</Link>
+                                <Link to="/contact" className="btn-primary px-10 py-4 no-underline inline-block rounded-xl">Request Infrastructure Audit</Link>
                             </div>
-                            <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">
-                                <img src="/generated/cyber_server_room_autonomous.png" alt="Managed IT Services Server Room" className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-700" />
-                                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[var(--bg-color)] to-transparent">
-                                    <div className="abstract-card glass !border-none !bg-[var(--surface-color)]/60 backdrop-blur-md">
-                                        <div className="status-bar"><span className="dot green"></span> System Nominal</div>
-                                        <div className="metrics mono">
-                                            <div className="metric"><span>UPTIME</span> <span>99.98%</span></div>
-                                            <div className="metric"><span>LATENCY</span> <span>12ms</span></div>
-                                            <div className="metric"><span>LOAD</span> <span>24%</span></div>
-                                        </div>
+                            <div className="tab-visual relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium group">
+                                <img src="/generated/cyber_server_room_autonomous.png" alt="Managed IT Services Server Room" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000 grayscale group-hover:grayscale-0" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                                <div className="absolute inset-x-8 bottom-8 p-8 glass-main rounded-2xl shadow-brand-lg">
+                                    <div className="flex items-center gap-2 text-[10px] font-bold text-green-500 uppercase tracking-widest mb-4">
+                                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div> System Nominal
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-6">
+                                        <div className="flex flex-col"><span className="text-[8px] font-bold text-white/50 uppercase tracking-widest mb-1">UPTIME</span><span className="text-lg font-black text-white">99.98%</span></div>
+                                        <div className="flex flex-col"><span className="text-[8px] font-bold text-white/50 uppercase tracking-widest mb-1">LATENCY</span><span className="text-lg font-black text-white">12ms</span></div>
+                                        <div className="flex flex-col"><span className="text-[8px] font-bold text-white/50 uppercase tracking-widest mb-1">LOAD</span><span className="text-lg font-black text-white">24%</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -88,12 +92,12 @@ const Services = () => {
                         <div className="cyber-catalog">
                             <div className="cyber-grid">
                                 {CYBER_SERVICES.map((service, idx) => (
-                                    <div key={idx} className="cyber-card glass">
-                                        <div className="cyber-icon">{service.icon}</div>
-                                        <h4>{service.title}</h4>
-                                        <p>{service.desc}</p>
-                                        <div className="mini-tags">
-                                            {service.items.map(item => <span key={item} className="mini-tag">{item}</span>)}
+                                    <div key={idx} className="premium-card p-10 group hover:-translate-y-2 transition-all duration-500 bg-surface border-border">
+                                        <div className="w-14 h-14 rounded-2xl bg-surface-raised flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white shadow-lg transition-all">{service.icon}</div>
+                                        <h4 className="text-xl font-display font-black text-text-primary mb-4 uppercase tracking-wider">{service.title}</h4>
+                                        <p className="text-text-secondary text-sm leading-relaxed mb-6">{service.desc}</p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {service.items.map(item => <span key={item} className="text-[9px] font-bold text-accent uppercase tracking-widest px-3 py-1 bg-accent/5 rounded-full border border-accent/10">{item}</span>)}
                                         </div>
                                     </div>
                                 ))}
@@ -106,21 +110,24 @@ const Services = () => {
 
                     {activeTab === "cloud-ai" && (
                         <div className="tab-grid">
-                            <div className="tab-info">
-                                <h3>Cloud & AI Integration.</h3>
-                                <p>Architecting scalable, sovereign cloud deployments and integrating intelligent process automation to drive operational excellence safely.</p>
-                                <ul className="feature-list">
-                                    <li>AWS / Azure / GCP Architecture</li>
-                                    <li>LLM Integration & Fine-Tuning</li>
-                                    <li>Secure Data Migration</li>
+                            <div className="tab-info space-y-8">
+                                <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Cloud & AI <span className="text-accent italic">Integration.</span></h3>
+                                <p className="text-text-secondary text-lg leading-relaxed">Architecting scalable, sovereign cloud deployments and integrating intelligent process automation to drive operational excellence safely.</p>
+                                <ul className="space-y-4">
+                                    {["AWS / Azure / GCP Architecture", "LLM Integration & Fine-Tuning", "Secure Data Migration"].map(item => (
+                                        <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                                            {item}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
-                             <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">
-                                <img src="/generated/cloud_ai_infrastructure_secure.png" alt="Cloud Architecture" className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-700" />
-                                <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg-color)]/20">
-                                    <div className="ai-node-mockup glass !border-none !bg-[var(--surface-color)]/60 backdrop-blur-md">
-                                        <div className="pulse-circle"></div>
-                                        <span className="mono">Neural_Engine::v2</span>
+                             <div className="tab-visual relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium group min-h-[400px]">
+                                <img src="/generated/cloud_ai_infrastructure_secure.png" alt="Cloud Architecture" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000 grayscale group-hover:grayscale-0" />
+                                <div className="absolute inset-0 flex items-center justify-center bg-zinc-900/40 backdrop-blur-[2px]">
+                                    <div className="glass-main p-8 rounded-2xl shadow-brand-lg flex flex-col items-center gap-4">
+                                        <div className="w-12 h-12 rounded-full border-2 border-accent border-t-transparent animate-spin"></div>
+                                        <span className="text-[10px] font-bold text-white uppercase tracking-[0.4em]">Neural_Engine::v2</span>
                                     </div>
                                 </div>
                             </div>
@@ -130,12 +137,15 @@ const Services = () => {
                     {activeTab === "software" && (
                         <div className="tab-grid staggered">
                             <div className="tab-info">
-                                <h3>Software Engineering.</h3>
-                                <p>Bespoke, security-first enterprise software designed to scale natively with your operations, from legacy modernization to custom CRM solutions.</p>
-                                <ul className="feature-list">
-                                    <li>Custom Enterprise Applications</li>
-                                    <li>Legacy System Modernization</li>
-                                    <li>Secure CI/CD Pipelines</li>
+                                <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Software <span className="text-accent italic">Engineering.</span></h3>
+                                <p className="text-text-secondary text-lg leading-relaxed">Bespoke, security-first enterprise software designed to scale natively with your operations, from legacy modernization to custom CRM solutions.</p>
+                                <ul className="space-y-4 mb-8">
+                                    {["Custom Enterprise Applications", "Legacy System Modernization", "Secure CI/CD Pipelines"].map(item => (
+                                        <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                                            {item}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                              <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">

@@ -10,18 +10,18 @@ import MagneticWrapper from "./ui/MagneticWrapper";
 
 export default function Footer() {
     return (
-        <footer className="border-t border-[var(--border-color)] bg-[var(--bg-color)] pt-8 md:pt-16 pb-6 z-10 relative mt-16 md:mt-20 transition-colors duration-300">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
+        <footer className="border-t border-border bg-background pt-16 pb-12 z-10 relative mt-24 transition-colors duration-500">
+            <div className="max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
                 {/* Brand & Mission */}
                 <div className="col-span-1 md:col-span-1 space-y-6">
                     <div className="flex items-center gap-3">
                         <img
                             src={companyLogoImage}
                             alt="Netcradus Logo"
-                            className="h-12 md:h-14 w-auto object-contain brightness-150 drop-shadow-[0_0_10px_rgba(0,124,255,0.2)]"
+                            className="h-12 md:h-14 w-auto object-contain brightness-150 drop-shadow-[0_0_10px_rgba(232,64,10,0.2)]"
                         />
                     </div>
-                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed font-sans max-w-xs">
+                    <p className="text-text-secondary text-sm leading-relaxed font-sans max-w-xs">
                         Netcradus is an elite cybersecurity ecosystem engineered for the modern enterprise. We redefine digital defense through autonomous intelligence and architectural excellence.
                     </p>
 
@@ -61,7 +61,7 @@ export default function Footer() {
                                     href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-full border border-[var(--border-color)] flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--primary-accent)] hover:border-[var(--primary-accent)] transition-all bg-[var(--surface-color)]"
+                                    className="w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-text-secondary hover:text-accent hover:border-accent/40 transition-all bg-zinc-50 dark:bg-zinc-900"
                                 >
                                     <Icon size={16} />
                                 </a>
@@ -76,9 +76,9 @@ export default function Footer() {
                     <ul className="space-y-3 text-sm font-sans">
                         {["Managed IT", "Cybersecurity", "AI", "Cloud Architecture", "ACIS Engine"].map((item) => (
                             <li key={item}>
-                                <Link to="/services" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] transition-colors flex items-center group">
+                                <Link to="/services" className="text-[var(--color-text-secondary)] hover:text-accent-bright transition-colors flex items-center group">
                                     {item}
-                                    <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all text-primary" />
+                                    <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all text-accent-bright" />
                                 </Link>
                             </li>
                         ))}
@@ -90,9 +90,9 @@ export default function Footer() {
                     <ul className="space-y-3 text-sm font-sans">
                         {["Financial Services", "Critical Infrastructure", "Healthcare", "Government"].map((item) => (
                             <li key={item}>
-                                <Link to="/industries" className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] transition-colors flex items-center group">
+                                <Link to="/industries" className="text-[var(--color-text-secondary)] hover:text-accent-bright transition-colors flex items-center group">
                                     {item}
-                                    <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all text-primary" />
+                                    <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all text-accent-bright" />
                                 </Link>
                             </li>
                         ))}
@@ -106,10 +106,10 @@ export default function Footer() {
                             <li key={item}>
                                 <Link
                                     to={item === "Career Openings" ? "/careers" : "/about"}
-                                    className="text-[var(--text-secondary)] hover:text-[var(--primary-accent)] transition-colors flex items-center group"
+                                    className="text-text-secondary hover:text-accent transition-colors flex items-center group"
                                 >
                                     {item}
-                                    <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all text-primary" />
+                                    <ArrowUpRight size={12} className="ml-1 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all text-accent-bright" />
                                 </Link>
                             </li>
                         ))}
@@ -117,10 +117,10 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 mt-12 md:mt-16 pt-6 md:pt-8 border-t border-[var(--border-color)] flex flex-col md:flex-row justify-between items-center text-[9px] md:text-[10px] font-display font-bold text-[var(--text-secondary)] tracking-[0.2em] uppercase gap-4 md:gap-6">
+            <div className="max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 mt-16 pt-10 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center text-[10px] font-display font-bold text-text-secondary tracking-[0.3em] uppercase gap-6">
                 <div className="flex items-center gap-4">
                     <span>UK & INDIA</span>
-                    <span className="w-1 h-1 rounded-full bg-primary/20" />
+                    <span className="w-1 h-1 rounded-full bg-accent/20" />
                     <span>GLOBAL MSSP OPERATIVE</span>
                 </div>
                 <div className="flex items-center gap-8">
