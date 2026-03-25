@@ -1,1 +1,16 @@
-/* Redundant - Styles moved to CTABanner.jsx and index.css */
+.cta-banner-section {
+  background: var(--color-accent) !important;
+}
+
+.cta-banner-section h2,
+.cta-banner-section p {
+  color: white !important;
+}
+
+.cta-banner h2 {
+  font-family: "Inter", sans-serif;
+}
+
+.cta-banner p {
+  font-family: "Inter", sans-serif;
+}

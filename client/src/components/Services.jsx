@@ -29,15 +29,15 @@ const CYBER_SERVICES = [
 ];
 
 const Services = () => {
-    const [activeTab, setActiveTab] = useState("mssp");
+    const [activeTab, setActiveTab] = useState("msp");
 
     return (
         <section id="services" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
             <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
                 <div className="reveal text-center mb-16">
-                    <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// OUR CAPABILITIES</span>
-                    <h2 className="text-4xl md:text-6xl font-display font-black text-zinc-900 dark:text-white mb-6">Engineered for <span className="text-accent italic">Resilience.</span></h2>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-sans leading-relaxed max-w-2xl mx-auto">
+                    <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent font-display uppercase mb-6 block">// OUR CAPABILITIES</span>
+                    <h2 className="text-4xl md:text-6xl font-display font-black text-text-primary mb-6">Engineered for <span className="text-accent italic">Resilience.</span></h2>
+                    <p className="text-text-secondary text-lg md:text-xl font-sans leading-relaxed max-w-2xl mx-auto">
                         A comprehensive ecosystem designed to protect, scale, and accelerate the modern enterprise.
                     </p>
                 </div>
@@ -59,11 +59,11 @@ const Services = () => {
                     {activeTab === "msp" && (
                         <div className="tab-grid staggered">
                             <div className="tab-info space-y-8">
-                                <h3 className="text-3xl md:text-5xl font-display font-black text-zinc-900 dark:text-white tracking-tight">Managed IT <span className="text-accent italic">Operations.</span></h3>
-                                <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed">Your entire IT infrastructure — expertly managed, always operational. Netcradus MSP delivers a fully outsourced, enterprise-grade technology office.</p>
+                                <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Managed IT <span className="text-accent italic">Operations.</span></h3>
+                                <p className="text-text-secondary text-lg leading-relaxed">Your entire IT infrastructure — expertly managed, always operational. Netcradus MSP delivers a fully outsourced, enterprise-grade technology office.</p>
                                 <ul className="space-y-4">
                                     {["24/7 Proactive Monitoring", "Multi-Tier UK & India Helpdesk", "SD-WAN & Network Management"].map(item => (
-                                        <li key={item} className="flex items-center gap-3 text-zinc-900 dark:text-white font-bold text-sm tracking-wide">
+                                        <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
                                             <div className="w-1.5 h-1.5 rounded-full bg-accent" />
                                             {item}
                                         </li>
@@ -74,7 +74,7 @@ const Services = () => {
                             <div className="tab-visual relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium group">
                                 <img src="/generated/cyber_server_room_autonomous.png" alt="Managed IT Services Server Room" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000 grayscale group-hover:grayscale-0" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                                <div className="absolute inset-x-8 bottom-8 p-8 bg-white/10 dark:bg-black/20 backdrop-blur-3xl rounded-2xl border border-white/10 shadow-2xl">
+                                <div className="absolute inset-x-8 bottom-8 p-8 glass-main rounded-2xl shadow-brand-lg">
                                     <div className="flex items-center gap-2 text-[10px] font-bold text-green-500 uppercase tracking-widest mb-4">
                                         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div> System Nominal
                                     </div>
@@ -92,10 +92,10 @@ const Services = () => {
                         <div className="cyber-catalog">
                             <div className="cyber-grid">
                                 {CYBER_SERVICES.map((service, idx) => (
-                                    <div key={idx} className="premium-card p-10 group hover:-translate-y-2 transition-all duration-500">
-                                        <div className="w-14 h-14 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white shadow-lg transition-all">{service.icon}</div>
-                                        <h4 className="text-xl font-display font-black text-zinc-900 dark:text-white mb-4 uppercase tracking-wider">{service.title}</h4>
-                                        <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-6">{service.desc}</p>
+                                    <div key={idx} className="premium-card p-10 group hover:-translate-y-2 transition-all duration-500 bg-surface border-border">
+                                        <div className="w-14 h-14 rounded-2xl bg-surface-raised flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white shadow-lg transition-all">{service.icon}</div>
+                                        <h4 className="text-xl font-display font-black text-text-primary mb-4 uppercase tracking-wider">{service.title}</h4>
+                                        <p className="text-text-secondary text-sm leading-relaxed mb-6">{service.desc}</p>
                                         <div className="flex flex-wrap gap-2">
                                             {service.items.map(item => <span key={item} className="text-[9px] font-bold text-accent uppercase tracking-widest px-3 py-1 bg-accent/5 rounded-full border border-accent/10">{item}</span>)}
                                         </div>
@@ -111,11 +111,11 @@ const Services = () => {
                     {activeTab === "cloud-ai" && (
                         <div className="tab-grid">
                             <div className="tab-info space-y-8">
-                                <h3 className="text-3xl md:text-5xl font-display font-black text-zinc-900 dark:text-white tracking-tight">Cloud & AI <span className="text-accent italic">Integration.</span></h3>
-                                <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed">Architecting scalable, sovereign cloud deployments and integrating intelligent process automation to drive operational excellence safely.</p>
+                                <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Cloud & AI <span className="text-accent italic">Integration.</span></h3>
+                                <p className="text-text-secondary text-lg leading-relaxed">Architecting scalable, sovereign cloud deployments and integrating intelligent process automation to drive operational excellence safely.</p>
                                 <ul className="space-y-4">
                                     {["AWS / Azure / GCP Architecture", "LLM Integration & Fine-Tuning", "Secure Data Migration"].map(item => (
-                                        <li key={item} className="flex items-center gap-3 text-zinc-900 dark:text-white font-bold text-sm tracking-wide">
+                                        <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
                                             <div className="w-1.5 h-1.5 rounded-full bg-accent" />
                                             {item}
                                         </li>
@@ -125,7 +125,7 @@ const Services = () => {
                              <div className="tab-visual relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium group min-h-[400px]">
                                 <img src="/generated/cloud_ai_infrastructure_secure.png" alt="Cloud Architecture" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000 grayscale group-hover:grayscale-0" />
                                 <div className="absolute inset-0 flex items-center justify-center bg-zinc-900/40 backdrop-blur-[2px]">
-                                    <div className="bg-white/10 dark:bg-black/20 backdrop-blur-3xl p-8 rounded-2xl border border-white/10 shadow-2xl flex flex-col items-center gap-4">
+                                    <div className="glass-main p-8 rounded-2xl shadow-brand-lg flex flex-col items-center gap-4">
                                         <div className="w-12 h-12 rounded-full border-2 border-accent border-t-transparent animate-spin"></div>
                                         <span className="text-[10px] font-bold text-white uppercase tracking-[0.4em]">Neural_Engine::v2</span>
                                     </div>
@@ -137,12 +137,15 @@ const Services = () => {
                     {activeTab === "software" && (
                         <div className="tab-grid staggered">
                             <div className="tab-info">
-                                <h3>Software Engineering.</h3>
-                                <p>Bespoke, security-first enterprise software designed to scale natively with your operations, from legacy modernization to custom CRM solutions.</p>
-                                <ul className="feature-list">
-                                    <li>Custom Enterprise Applications</li>
-                                    <li>Legacy System Modernization</li>
-                                    <li>Secure CI/CD Pipelines</li>
+                                <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Software <span className="text-accent italic">Engineering.</span></h3>
+                                <p className="text-text-secondary text-lg leading-relaxed">Bespoke, security-first enterprise software designed to scale natively with your operations, from legacy modernization to custom CRM solutions.</p>
+                                <ul className="space-y-4 mb-8">
+                                    {["Custom Enterprise Applications", "Legacy System Modernization", "Secure CI/CD Pipelines"].map(item => (
+                                        <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                                            {item}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                              <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">

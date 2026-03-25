@@ -1,227 +1,296 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Activity, Lock, Zap } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 const HeroVisual = () => {
-    const canvasRef = useRef(null);
-    const containerRef = useRef(null);
-    const [tilt, setTilt] = useState({ x: 0, y: 0 });
-    const [isMounted, setIsMounted] = useState(false);
+  const mountRef = useRef(null);
 
-    useEffect(() => {
-        setIsMounted(true);
-        
-        // --- LAYER 1: CANVAS PARTICLES ---
-        const canvas = canvasRef.current;
-        if (!canvas) return;
+  useEffect(() => {
+    if (!mountRef.current) return;
 
-        const ctx = canvas.getContext('2d');
-        let animationFrameId;
-        
-        const particleCount = 60;
-        const particles = [];
-        const connectionDistance = 150;
-        
-        const initParticles = () => {
-            particles.length = 0;
-            const width = canvas.width / (window.devicePixelRatio || 1);
-            const height = canvas.height / (window.devicePixelRatio || 1);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                    radius: Math.random() * 0.8 + 0.5,
-                    color: Math.random() > 0.3 ? 'rgba(232, 64, 10, ' : 'rgba(255, 255, 255, '
-                });
-            }
-        };
+    // SCENE & CAMERA
+    const scene = new THREE.Scene();
 
-        const resize = () => {
-            const dpr = window.devicePixelRatio || 1;
-            const parent = canvas.parentElement;
-            canvas.width = parent.offsetWidth * dpr;
-            canvas.height = parent.offsetHeight * dpr;
-            ctx.scale(dpr, dpr);
-            initParticles();
-        };
+    const camera = new THREE.PerspectiveCamera(45, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 100);
+    camera.position.set(0, 15, 30);
+    camera.lookAt(0, 2, 0);
 
-        const animate = () => {
-            const width = canvas.width / (window.devicePixelRatio || 1);
-            const height = canvas.height / (window.devicePixelRatio || 1);
-            ctx.clearRect(0, 0, width, height);
+    // RENDERER
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    
+    if (!mountRef.current.contains(renderer.domElement)) {
+        mountRef.current.appendChild(renderer.domElement);
+    }
 
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
+    // LIGHTING
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambientLight);
 
-                if (p.x < 0) p.x = width;
-                if (p.x > width) p.x = 0;
-                if (p.y < 0) p.y = height;
-                if (p.y > height) p.y = 0;
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    dirLight.position.set(10, 20, 10);
+    scene.add(dirLight);
 
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = p.color + '0.3)';
-                ctx.fill();
+    // Front Light explicitly for the shield!
+    const frontLight = new THREE.PointLight(0xffffff, 2.0, 50);
+    frontLight.position.set(0, 5, 20);
+    scene.add(frontLight);
 
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+    const spotLight = new THREE.SpotLight(0x00ffff, 3); // Reduced cyan spotlight
+    spotLight.position.set(0, 5, 0);
+    spotLight.angle = Math.PI / 4;
+    spotLight.penumbra = 0.5;
+    spotLight.decay = 2;
+    spotLight.distance = 50;
+    scene.add(spotLight);
 
-                    if (dist < connectionDistance) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(232, 64, 10, ${0.1 * (1 - dist / connectionDistance)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            animationFrameId = requestAnimationFrame(animate);
-        };
+    // Theme Observer Hook using "data-theme"
+    const updateTheme = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      // Sync background exact colors with CSS root
+      scene.background = new THREE.Color(isDark ? 0x0a0a0a : 0xfaf8f5);
+      // Keep lighting steady so dark objects don't wash out in Light Mode!
+      ambientLight.intensity = isDark ? 0.3 : 0.6;
+      dirLight.intensity = isDark ? 1.5 : 2.0;
+      frontLight.intensity = isDark ? 2.0 : 2.5;
+    };
+    
+    // Check initial
+    updateTheme();
+    
+    // Watch for data-theme attribute on HTML tag
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-        window.addEventListener('resize', resize);
-        resize();
-        animate();
+    // GLOW MATERIALS (Cyan & Orange)
+    const cyanGlowMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffff });
+    const orangeGlowMaterial = new THREE.MeshBasicMaterial({ color: 0xff5520 }); // Brand Accent Bright
 
-        return () => {
-            window.removeEventListener('resize', resize);
-            cancelAnimationFrame(animationFrameId);
-        };
-    }, []);
+    // 1. BASE (Rounded Squircle)
+    const baseWidth = 12;
+    const baseHeight = 2.5;
+    const baseDepth = 12;
+    const baseGeometry = new RoundedBoxGeometry(baseWidth, baseHeight, baseDepth, 6, 1.5);
+    
+    // Dark plastic material
+    const baseMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0x11161d,
+      metalness: 0.5,
+      roughness: 0.3,
+      clearcoat: 0.5,
+      clearcoatRoughness: 0.2,
+    });
+    const base = new THREE.Mesh(baseGeometry, baseMaterial);
+    base.position.y = -2;
+    scene.add(base);
 
+    // Base glowing slit - Using Brand Orange
+    const slitGeometry = new THREE.BoxGeometry(baseWidth + 0.5, 0.2, baseDepth + 0.5);
+    const baseSlit = new THREE.Mesh(slitGeometry, orangeGlowMaterial);
+    baseSlit.position.y = -2.8;
+    scene.add(baseSlit);
+
+    // 2. TUBE RING (Torus)
+    const ringRadius = 5.5;
+    const tubeRadius = 0.8;
+    const ringGeometry = new THREE.TorusGeometry(ringRadius, tubeRadius, 32, 100);
+    
+    // Rubber Material for back half
+    const rubberMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0x111111,
+      metalness: 0.3,
+      roughness: 0.8,
+    });
+    
+    // Glass Material for front half
+    const glassMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      transmission: 0.9,
+      opacity: 1,
+      metalness: 0.1,
+      roughness: 0.1,
+      ior: 1.5,
+      thickness: 1.0,
+      transparent: true,
+    });
+
+    const ring = new THREE.Mesh(ringGeometry, rubberMaterial);
+    ring.rotation.x = Math.PI / 2;
+    ring.position.y = 1;
+    scene.add(ring);
+
+    // Inner glowing tube (liquid) - Using Brand Orange
+    const liquidGeometry = new THREE.TorusGeometry(ringRadius, tubeRadius * 0.4, 16, 100, Math.PI); // half circle
+    const liquid = new THREE.Mesh(liquidGeometry, orangeGlowMaterial);
+    liquid.rotation.x = Math.PI / 2;
+    liquid.position.y = 1;
+    scene.add(liquid);
+
+    // 3. SHIELD (Thick Extruded Shape)
+    const shieldShape = new THREE.Shape();
+    shieldShape.moveTo(0, 4);
+    shieldShape.lineTo(3, 3);
+    shieldShape.lineTo(3, -1);
+    shieldShape.quadraticCurveTo(3, -3, 0, -5);
+    shieldShape.quadraticCurveTo(-3, -3, -3, -1);
+    shieldShape.lineTo(-3, 3);
+    shieldShape.lineTo(0, 4);
+
+    const extrudeSettings = {
+      depth: 1.5,
+      bevelEnabled: true,
+      bevelSegments: 3,
+      steps: 1,
+      bevelSize: 0.3,
+      bevelThickness: 0.3
+    };
+
+    const shieldGeometry = new THREE.ExtrudeGeometry(shieldShape, extrudeSettings);
+    // Center geometry
+    shieldGeometry.computeBoundingBox();
+    const centerOffset = -0.5 * (shieldGeometry.boundingBox.max.z - shieldGeometry.boundingBox.min.z);
+    shieldGeometry.translate(0, 0, centerOffset);
+
+    const shieldMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0x181e25,
+      metalness: 0.3,
+      roughness: 0.5,
+      clearcoat: 0.5,
+    });
+
+    const shield = new THREE.Mesh(shieldGeometry, shieldMaterial);
+    shield.position.y = 5.5;
+    scene.add(shield);
+
+    // 4. Glowing Exact Ethereum Logo - Reduced Brightness Cyan
+    const ethGroup = new THREE.Group();
+    ethGroup.position.z = 0.6; // Slightly in front of shield
+    
+    // Top Diamond
+    const ethTopShape = new THREE.Shape();
+    ethTopShape.moveTo(0, 1.8);
+    ethTopShape.lineTo(0.9, 0);
+    ethTopShape.lineTo(0, -0.6);
+    ethTopShape.lineTo(-0.9, 0);
+    ethTopShape.lineTo(0, 1.8);
+    const topGeom = new THREE.ExtrudeGeometry(ethTopShape, { depth: 0.2, bevelEnabled: true, bevelSize: 0.05, bevelThickness: 0.05 });
+    
+    // Bottom Triangle
+    const ethBotShape = new THREE.Shape();
+    ethBotShape.moveTo(0, -0.9);
+    ethBotShape.lineTo(0.7, -0.3);
+    ethBotShape.lineTo(0, -1.8);
+    ethBotShape.lineTo(-0.7, -0.3);
+    ethBotShape.lineTo(0, -0.9);
+    const botGeom = new THREE.ExtrudeGeometry(ethBotShape, { depth: 0.2, bevelEnabled: true, bevelSize: 0.05, bevelThickness: 0.05 });
+
+    const topEth = new THREE.Mesh(topGeom, cyanGlowMaterial);
+    const botEth = new THREE.Mesh(botGeom, cyanGlowMaterial);
+    ethGroup.add(topEth);
+    ethGroup.add(botEth);
+    
+    shield.add(ethGroup);
+
+    // POST-PROCESSING (BLOOM)
+    const composer = new EffectComposer(renderer);
+    const renderPass = new RenderPass(scene, camera);
+    composer.addPass(renderPass);
+
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.5, 0.4, 0.85); // Reduced Bloom
+    bloomPass.threshold = 0.2;
+    bloomPass.strength = 0.5; // Halved intense glow
+    bloomPass.radius = 0.2;
+    composer.addPass(bloomPass);
+
+    // ANIMATION LOOP
+    let frameId;
+    const clock = new THREE.Clock();
+
+    const animate = () => {
+      frameId = requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      // Float the shield
+      shield.position.y = 6 + Math.sin(elapsedTime * 2) * 0.5;
+      
+      // Rotate the glowing liquid inside the tube
+      liquid.rotation.z = -elapsedTime * 0.5;
+
+      // Slowly rotate the whole scene slightly for 3D effect
+      scene.rotation.y = Math.sin(elapsedTime * 0.5) * 0.1;
+
+      // Render with bloom
+      composer.render();
+    };
+
+    animate();
+
+    // RESIZE HANDLER
+    const handleResize = () => {
+      if (!mountRef.current) return;
+      camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+      composer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    };
+    window.addEventListener('resize', handleResize);
+
+    // MOUSE INTERACTION
     const handleMouseMove = (e) => {
-        if (!containerRef.current) return;
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        setTilt({ x: y * 12, y: x * -12 });
+      if (!mountRef.current) return;
+      const rect = mountRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      // Tilt the base/scene based on mouse
+      scene.rotation.x = y * 0.5;
+      scene.rotation.y = x * 0.5;
     };
+    window.addEventListener('mousemove', handleMouseMove);
 
-    const handleMouseLeave = () => {
-        setTilt({ x: 0, y: 0 });
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (observer) observer.disconnect();
+      if (mountRef.current && renderer.domElement.parentNode === mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
+      // dispose memory
+      scene.clear();
+      renderer.dispose();
     };
+  }, []);
 
-    return (
-        <div 
-            ref={containerRef}
-            className="relative w-full h-[500px] flex items-center justify-center overflow-visible select-none transition-all duration-700 ease-out"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ perspective: '1200px' }}
-        >
-            {/* Layer 1: Particles */}
-            <canvas 
-                ref={canvasRef} 
-                className="absolute inset-0 w-full h-full pointer-events-none opacity-50"
-            />
-
-            {/* Layer 2: Floating UI Cards Group */}
-            <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="relative z-10 w-[400px] h-[300px] flex items-center justify-center"
-                style={{ 
-                    transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-                    transformStyle: 'preserve-3d',
-                    transition: tilt.x === 0 ? 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)' : 'none'
-                }}
-            >
-                {/* 1. Main Dashboard Card */}
-                <div className="glass-main w-[320px] p-6 animate-float relative z-20">
-                    <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-accent-bright animate-pulse shadow-[0_0_10px_#ff5520]" />
-                            <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-500 dark:text-zinc-500 uppercase">ACIS THREAT MONITOR</span>
-                        </div>
-                        <Activity size={14} className="text-accent opacity-50" />
-                    </div>
-                    
-                    <div className="h-[1px] w-full bg-zinc-200 dark:bg-zinc-800 mb-6" />
-                    
-                    <div className="mb-6">
-                        <div className="flex items-baseline gap-2">
-                            <span className="text-4xl font-bold text-accent-bright tracking-tighter">99.8%</span>
-                            <span className="text-[10px] font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">Accuracy Rate</span>
-                        </div>
-                        <p className="text-[11px] text-zinc-500 dark:text-zinc-600 mt-1 font-sans">Neural node processing active across 4 nodes.</p>
-                    </div>
-
-                    <div className="flex gap-2 mb-6">
-                        {['Real-time', 'AI-Powered', 'Zero Trust'].map(pill => (
-                            <span key={pill} className="text-[9px] font-bold px-2 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent-bright uppercase tracking-wider">
-                                {pill}
-                            </span>
-                        ))}
-                    </div>
-
-                    <div className="space-y-2">
-                        <div className="flex items-center justify-between text-[9px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">
-                            <span>Scanning Infrastructure</span>
-                            <span>73%</span>
-                        </div>
-                        <div className="h-1.5 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
-                            <motion.div 
-                                initial={{ width: 0 }}
-                                animate={{ width: isMounted ? '73%' : 0 }}
-                                transition={{ duration: 2, delay: 1, ease: 'circOut' }}
-                                className="h-full bg-gradient-to-r from-accent to-accent-bright shadow-[0_0_12px_rgba(232,64,10,0.4)]"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                {/* 2. Satellite Top-Right: Security Status */}
-                <div 
-                    className="glass-main absolute -top-10 -right-12 w-[160px] p-4 animate-float z-30" 
-                    style={{ animationDelay: '-2s', transform: 'translateZ(40px)' }}
-                >
-                    <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 rounded-lg bg-accent/10 text-accent">
-                            <Shield size={18} />
-                        </div>
-                        <div>
-                            <div className="text-xs font-bold text-zinc-900 dark:text-white">0 Breaches</div>
-                            <div className="text-[9px] font-medium text-zinc-500 uppercase tracking-widest">Last 30 Days</div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 3. Satellite Bottom-Left: Active Shields */}
-                <div 
-                    className="glass-main absolute -bottom-8 -left-10 w-[150px] p-4 animate-float z-10" 
-                    style={{ animationDelay: '-1s', transform: 'translateZ(-20px)' }}
-                >
-                    <div className="flex items-end gap-1.5 mb-3 h-8">
-                        {[0.5, 0.7, 1, 0.6].map((op, i) => (
-                            <motion.div 
-                                key={i}
-                                initial={{ height: 0 }}
-                                animate={{ height: [12, 24, 16, 32, 20][i] }}
-                                transition={{ duration: 1, delay: 1.2 + i*0.1 }}
-                                className="w-full bg-accent rounded-t-sm" 
-                                style={{ opacity: op }} 
-                            />
-                        ))}
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <Lock size={10} className="text-accent" />
-                        <span className="text-[10px] font-bold text-zinc-500 dark:text-zinc-500 uppercase tracking-widest">Active Shields</span>
-                    </div>
-                </div>
-            </motion.div>
-
-            {/* Decorative Bloom */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-accent/10 blur-[100px] rounded-full pointer-events-none" />
-        </div>
-    );
+  return (
+    <div className="relative w-full h-[600px] flex items-center justify-center pointer-events-none">
+      {/* 3D Canvas Container */}
+      <div ref={mountRef} className="absolute inset-0 z-10 w-full h-full pointer-events-auto" />
+      
+      {/* Keeping some of the floating UI Cards outside the canvas for UI clarity */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
+         {/* ... User's UI cards can go back here if needed, keeping simple for rendering test */}
+         <div 
+            className="glass-main absolute"
+            style={{ top: '80px', left: '20px', width: '280px', padding: '20px' }}
+          >
+              <div className="flex items-center gap-2 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-accent-bright animate-pulse" />
+                  <span className="text-[10px] font-bold text-zinc-300 uppercase">ACIS THREAT MONITOR</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-bold text-accent-bright">99.8%</span>
+                  <span className="text-[9px] font-semibold text-zinc-400 uppercase">Accuracy</span>
+              </div>
+          </div>
+      </div>
+    </div>
+  );
 };
 
 export default HeroVisual;

@@ -113,7 +113,7 @@ export default function ContactSection() {
                 {/* Right: Immersive Form */}
                 <AnimatedReveal delay={0.2}>
                     <div className="relative p-[1px] rounded-2xl overflow-hidden bg-gradient-to-br from-zinc-200 dark:from-zinc-800 to-transparent">
-                        <div className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-3xl p-8 md:p-12 rounded-2xl relative z-10 border border-zinc-200 dark:border-zinc-800 shadow-premium">
+                        <div className="glass-main p-8 md:p-12 rounded-2xl relative z-10 shadow-premium">
                             {/* Success Overlay */}
                             {status === "success" && (
                                 <motion.div

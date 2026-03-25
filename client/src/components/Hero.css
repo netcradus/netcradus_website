@@ -1,13 +1,21 @@
+:root {
+  --text-secondary: var(--color-text-secondary);
+  --border-color: var(--color-border);
+  --surface-raised: var(--color-surface-raised);
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: radial-gradient(ellipse at 65% 50%, rgba(232, 64, 10, 0.13) 0%, transparent 65%), #0a0a0a;
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  background: 
+    radial-gradient(ellipse at 65% 50%, rgba(232, 64, 10, 0.08) 0%, transparent 65%),
+    var(--color-bg);
+  width: 100%;
+  transition: background-color 0.8s ease;
+  padding: 120px 0 100px;
 }
 
 .hero::after {
@@ -52,8 +60,9 @@
 }
 
 .hero-visual:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 30px 60px rgba(255, 138, 31, 0.15);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-premium-hover);
+  border-color: var(--color-accent);
 }
 .hero-canvas {
   position: absolute;
@@ -87,13 +96,13 @@
 }
 /* MAIN HEADING */
 .hero-title {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3.5rem, 8vw, 6.5rem);
-  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 800;
   margin-bottom: 1.5rem;
-  line-height: 1.1;
+  line-height: 1;
   color: var(--color-text-primary);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
 }
 
 /* Gradient italic word (Intelligently) */
@@ -108,11 +117,11 @@
 /* SUBTITLE */
 .hero-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
-  margin-bottom: 3rem;
-  max-width: 550px;
-  line-height: 1.8;
+  margin-bottom: 3.5rem;
+  max-width: 600px;
+  line-height: 1.7;
 }
 
 .hero-ctas {
@@ -129,9 +138,10 @@
 
 .trust-label {
   font-family: "Inter", sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
 }

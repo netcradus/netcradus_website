@@ -1,12 +1,20 @@
+:root {
+  --bg-color: var(--color-bg);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --border-color: var(--color-border);
+  --surface-color: var(--color-surface);
+}
+
 .acis-section {
-  padding: 8rem 0 4rem;
+  padding: 8rem 0;
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at top left, rgba(204,0,0,0.08), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(204,0,0,0.08), transparent 30%),
+    radial-gradient(circle at top left, rgba(232, 64, 10, 0.05), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(232, 64, 10, 0.05), transparent 40%),
     var(--bg-color);
-  transition: background-color 0.3s;
+  transition: background-color 0.5s ease;
 }
 
 .acis-grid {
@@ -20,11 +28,11 @@
 /* Heading */
 
 .acis-title {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.6rem,5vw,4rem);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
   color: var(--text-primary);
 }
 
@@ -41,8 +49,8 @@
 
 .acis-desc {
   font-family: "Inter", sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.9;
+  font-size: 1.15rem;
+  line-height: 1.75;
   color: var(--text-secondary);
 }
 
@@ -95,13 +103,22 @@
 }
 
 .pill {
-  padding:0.35rem 0.75rem;
-  border-radius:6px;
-  font-size:0.72rem;
-  font-family:"Inter",sans-serif;
-  color:var(--text-secondary);
-  background:var(--surface-color);
-  border:1px solid var(--border-color);
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.pill:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(232, 64, 10, 0.05);
 }
 
 /* Feature list */
@@ -114,12 +131,13 @@
 }
 
 .acis-feature {
-  display:flex;
-  align-items:center;
-  gap:0.9rem;
-  font-family:"Inter",sans-serif;
-  font-size:1rem;
-  color:var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
 .acis-icon {
@@ -157,18 +175,21 @@
 }
 
 .arch-content h4 {
-  font-family:"Inter",sans-serif;
-  font-size:0.75rem;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-  color:#e8400a;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e8400a;
+  margin-bottom: 1.5rem;
 }
 
 .arch-content p {
-  font-family:"Playfair Display",serif;
-  font-size:1.5rem;
-  line-height:1.6;
-  color:var(--text-primary);
+  font-family: "Inter", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
 }
 
 /* Timeline */
@@ -179,9 +200,11 @@
 }
 
 .timeline-section-title {
-  font-family:"Playfair Display",serif;
-  font-size:clamp(2rem,4vw,3rem);
-  margin-bottom:4rem;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 5rem;
+  letter-spacing: -0.03em;
 }
 
 .timeline-grid {
@@ -204,25 +227,28 @@
 }
 
 .phase-label {
-  font-family:"Inter",sans-serif;
-  font-size:.7rem;
-  letter-spacing:.18em;
-  color:#cc0000;
-  margin-bottom:.8rem;
-  display:block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .phase-title {
-  font-family:"Playfair Display",serif;
-  font-size:1.15rem;
-  margin-bottom:.6rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
 }
 
 .phase-desc {
-  font-family:"Inter",sans-serif;
-  font-size:.9rem;
-  line-height:1.7;
-  color:var(--text-secondary);
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
 }
 
 /* Responsive */

@@ -60,7 +60,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="premium-card p-10 flex flex-col md:flex-row items-center justify-between gap-8 group">
+            <div className="glass-main p-10 flex flex-col md:flex-row items-center justify-between gap-8 group rounded-3xl">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent"><ShieldCheck size={24} /></div>
                 <h4 className="text-xl font-display font-black text-zinc-900 dark:text-white uppercase tracking-widest">
@@ -102,7 +102,7 @@ const About = () => {
           <div
             className="lg:col-span-5 reveal relative lg:mt-32"
           >
-            <div className="premium-card p-10 space-y-10">
+            <div className="glass-main p-10 space-y-10 rounded-3xl">
               <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.4em] mb-4">Core Values</h3>
 
               <div className="space-y-8">

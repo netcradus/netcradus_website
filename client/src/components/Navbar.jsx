@@ -34,8 +34,8 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
       <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-2 group">
-          <img src={companyLogoImage} alt="Netcradus" className="h-9 w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
-          <span className="font-display font-black text-xl tracking-[-0.02em] text-text-primary">NETCRADUS</span>
+          <img src={companyLogoImage} alt="Netcradus" className="h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
+        
         </Link>
 
         <div className="nav-links desktop-only flex gap-8">

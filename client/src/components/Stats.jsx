@@ -49,11 +49,11 @@ const Stats = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
           {stats.map((stat, index) => (
             <div key={index} className="reveal group">
-              <div className="text-4xl md:text-6xl font-display font-black text-zinc-900 dark:text-white mb-4 tracking-tighter">
+              <div className="text-4xl md:text-6xl font-display font-black text-text-primary mb-4 tracking-tighter">
                 {stat.prefix}
                 <Counter end={stat.value === 99.7 ? 99 : stat.value} duration={2000} suffix={stat.value === 99.7 ? ".7" + stat.suffix : stat.suffix} />
               </div>
-              <p className="text-[10px] md:text-xs font-bold text-zinc-500 dark:text-zinc-500 uppercase tracking-[0.4em] group-hover:text-accent transition-colors duration-500">{stat.label}</p>
+              <p className="text-[10px] md:text-xs font-bold text-text-secondary uppercase tracking-[0.4em] group-hover:text-accent transition-colors duration-500 font-display">{stat.label}</p>
             </div>
           ))}
         </div>
