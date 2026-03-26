@@ -6,20 +6,35 @@ import './ACISSection.css';
 
 const ARCHITECTURE_LAYERS = [
   {
-    title: "Layer 1 - SIEM",
-    content: "Real-time log normalization using LSTM networks and Isolation Forest algorithms to establish behavioral baselines.",
-    icon: Activity
+    title: "Layer 1 — AI-Powered SIEM",
+    content:
+      "A real-time intelligent log and event analysis engine that continuously ingests telemetry across endpoints, networks, and cloud systems. Using advanced behavioral analytics, anomaly detection, and correlation models, it establishes dynamic baselines and detects threats with high precision and minimal false positives.",
+    icon: Activity,
   },
   {
-    title: "Layer 2 - SOAR",
-    content: "Autonomous threat containment with sub-10 second response orchestration across the dynamic edge nodes.",
-    icon: Cpu
+    title: "Layer 2 — Autonomous SOAR & Response Engine",
+    content:
+      "An autonomous orchestration layer that executes real-time threat response without human intervention. It prioritizes incidents, triggers playbooks, isolates compromised systems, and ensures sub-second containment across distributed infrastructure environments.",
+    icon: Cpu,
   },
   {
-    title: "Layer 3 - Red Simulator",
-    content: "Continuous, non-disruptive penetration testing via reinforcement learning attack path mapping.",
-    icon: ShieldAlert
-  }
+    title: "Layer 3 — AI Red Team Simulator",
+    content:
+      "A continuous adversarial simulation engine powered by reinforcement learning that mimics real-world attack vectors. It proactively identifies vulnerabilities, stress-tests defenses, and strengthens system resilience through intelligent attack path modeling.",
+    icon: ShieldAlert,
+  },
+  {
+    title: "Layer 4 — Self-Healing & Deception Engine",
+    content:
+      "A dynamic defense layer that automatically isolates compromised nodes, deploys deception traps, and rebuilds secure states. It misleads attackers while ensuring system continuity through automated remediation and adaptive recovery mechanisms.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Layer 5 — Threat Intelligence Swarm",
+    content:
+      "A distributed network of AI agents that continuously share and learn from global threat intelligence. This layer enables predictive defense by correlating emerging attack patterns and adapting security posture across the entire ecosystem.",
+    icon: Target,
+  },
 ];
 
 const ACISSection = () => {
@@ -87,8 +102,15 @@ const ACISSection = () => {
               </div>
             </div>
 
-            <Link to="/contact" className="btn btn-primary inline-block no-underline">Download Technical Whitepaper</Link>
-          </div>
+<a
+  href="https://acis.netcradus.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-primary acis-btn inline-flex items-center gap-2 no-underline px-4 py-2"
+>
+  Explore ACIS
+  <ArrowRight size={18} className="arrow-icon" />
+</a>         </div>
 
           <div className="acis-mockup reveal flex justify-center items-center overflow-visible" style={{ transitionDelay: '0.2s' }}>
             <DottedGlobe />
@@ -107,10 +129,29 @@ const ACISSection = () => {
                   <button
                     key={idx}
                     onClick={() => setActiveLayer(idx)}
-                    className={`arch-tab group flex items-center gap-4 p-5 rounded-2xl border transition-all duration-300 ${activeLayer === idx ? 'bg-accent/10 border-accent shadow-premium' : 'bg-surface border-border hover:border-accent/30'}`}
+                    className={`arch-tab group flex items-center gap-4 p-5 rounded-xl border transition-all duration-300 backdrop-blur-md
+${
+  activeLayer === idx
+    ? "bg-gradient-to-r from-accent/20 to-transparent border-accent shadow-[0_0_25px_rgba(232,64,10,0.2)] scale-[1.03]"
+    : "bg-surface border-border hover:border-accent/40 hover:scale-[1.02]"
+}`}
                   >
-                    <div className={`p-2.5 rounded-xl transition-all duration-500 ${activeLayer === idx ? 'bg-accent text-white shadow-lg' : 'bg-surface-raised group-hover:bg-accent/10'}`}>{<layer.icon size={20} />}</div>
-                    <span className={`text-xs font-bold tracking-[0.2em] uppercase ${activeLayer === idx ? 'text-text-primary' : 'text-text-secondary'}`}>{layer.title}</span>
+         <div className={`p-3 rounded-xl transition-all duration-500 
+${activeLayer === idx 
+  ? 'bg-accent text-white shadow-[0_0_15px_rgba(232,64,10,0.6)]' 
+  : 'bg-surface-raised group-hover:bg-accent/10'}`}>
+  <layer.icon size={20} />
+</div>
+
+<div className="flex flex-col items-start">
+  <span className="text-[10px] text-accent font-bold tracking-widest">
+    3.{idx + 1}
+  </span>
+  <span className={`text-xs font-bold tracking-[0.15em] uppercase 
+  ${activeLayer === idx ? 'text-text-primary' : 'text-text-secondary'}`}>
+    {layer.title}
+  </span>
+</div>
                   </button>
                 ))}
               </div>
@@ -124,9 +165,12 @@ const ACISSection = () => {
                 </Link>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative h-[260px] sm:h-[320px] lg:h-[400px]">
-              <img src="/generated/secure_shield_concept_1773394778055.png" alt="AI Neural Network Analyzing Data" className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent opacity-80"></div>
+<div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative">       
+ <img
+  src="/img/acis.jpg"
+  alt="ACIS Architecture"
+  className="w-full h-full object-cover object-center"
+/>
             </div>
           </div>
         </div>

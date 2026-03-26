@@ -14,6 +14,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { useReveal } from "./hooks/useReveal";
 import Platform from "./components/Platform";
 import FloatingContact from "./components/FloatingContact";
+import PolicyPage from "./pages/PolicyPage";
 
 function AppLayout() {
   useReveal();
@@ -46,10 +47,10 @@ function App() {
           <Route path="services" element={<ServicesPage />} />
           <Route path="acis" element={<ACISPage />} />
           <Route path="about" element={<AboutPage />} />
-          {/* <Route path="pricing" element={<Pricing />} /> */}
           <Route path="blog" element={<BlogPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="careers" element={<CareersPage />} />
+          <Route path="policy" element={<PolicyPage />} />
         </Route>
       </Routes>
     </>

@@ -1,126 +1,162 @@
-import React, { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 const DottedGlobe = () => {
   const mountRef = useRef(null);
-  const [globeSize, setGlobeSize] = useState(600);
 
   useEffect(() => {
-    // Scene setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const container = mountRef.current;
 
-    const updateRendererSize = () => {
-      const nextSize = Math.min(window.innerWidth * 0.9, 600);
-      setGlobeSize(nextSize);
-      renderer.setSize(nextSize, nextSize, false);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      camera.aspect = 1;
+    if (!container) return;
+
+    // Scene
+    const scene = new THREE.Scene();
+
+    // Camera
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
+    camera.position.z = 5;
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+    });
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // 🔥 RESPONSIVE SIZE HANDLER
+    const resize = () => {
+      const width = container.offsetWidth;
+      const height = container.offsetHeight;
+
+      if (!width || !height) return;
+
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+
+      // 👇 MOBILE ZOOM FIX
+      if (width < 500) {
+        camera.position.z = 6.5;
+      } else {
+        camera.position.z = 5;
+      }
+
       camera.updateProjectionMatrix();
     };
 
-    updateRendererSize();
-    mountRef.current.appendChild(renderer.domElement);
+    // ---------------- GLOBE ----------------
+    const isMobile = window.innerWidth < 500;
 
-    // Globe parameters
     const radius = 2;
-    const dotsCount = 4000;
-    const dotSize = 0.02;
+    const dotsCount = isMobile ? 2500 : 4000;
 
-    // Create points
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(dotsCount * 3);
     const colors = new Float32Array(dotsCount * 3);
 
-    const accentColor = new THREE.Color(0xe8400a); // Brand orange
-    const secondaryColor = new THREE.Color(0xff5520);
+    const c1 = new THREE.Color(0xe8400a);
+    const c2 = new THREE.Color(0xff5520);
 
     for (let i = 0; i < dotsCount; i++) {
-        const phi = Math.acos(-1 + (2 * i) / dotsCount);
-        const theta = Math.sqrt(dotsCount * Math.PI) * phi;
+      const phi = Math.acos(-1 + (2 * i) / dotsCount);
+      const theta = Math.sqrt(dotsCount * Math.PI) * phi;
 
-        const x = radius * Math.cos(theta) * Math.sin(phi);
-        const y = radius * Math.sin(theta) * Math.sin(phi);
-        const z = radius * Math.cos(phi);
+      const x = radius * Math.cos(theta) * Math.sin(phi);
+      const y = radius * Math.sin(theta) * Math.sin(phi);
+      const z = radius * Math.cos(phi);
 
-        positions[i * 3] = x;
-        positions[i * 3 + 1] = y;
-        positions[i * 3 + 2] = z;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
 
-        const mixedColor = accentColor.clone().lerp(secondaryColor, Math.random());
-        colors[i * 3] = mixedColor.r;
-        colors[i * 3 + 1] = mixedColor.g;
-        colors[i * 3 + 2] = mixedColor.b;
+      const mix = c1.clone().lerp(c2, Math.random());
+      colors[i * 3] = mix.r;
+      colors[i * 3 + 1] = mix.g;
+      colors[i * 3 + 2] = mix.b;
     }
 
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const material = new THREE.PointsMaterial({
-        size: dotSize,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.8,
-        blending: THREE.AdditiveBlending,
+      size: isMobile ? 0.015 : 0.02,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.85,
+      blending: THREE.AdditiveBlending,
     });
 
     const globe = new THREE.Points(geometry, material);
     scene.add(globe);
 
-    // Add scanning rings
-    const ringGeometry = new THREE.RingGeometry(2.1, 2.12, 64);
-    const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xe8400a, transparent: true, opacity: 0.2, side: THREE.DoubleSide });
+    // 🔥 CLEAN RING
+    const ringGeometry = new THREE.TorusGeometry(2.2, 0.01, 16, 100);
+    const ringMaterial = new THREE.MeshBasicMaterial({
+      color: 0xe8400a,
+      transparent: true,
+      opacity: 0.25,
+    });
+
     const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-    ring.rotation.x = Math.PI / 2;
     scene.add(ring);
 
-    camera.position.z = 4.5;
-
-    // Animation
+    // ---------------- ANIMATION ----------------
     const animate = () => {
-        requestAnimationFrame(animate);
-        globe.rotation.y += 0.002;
-        globe.rotation.x += 0.001;
-        
-        ring.rotation.z += 0.005;
-        ring.scale.set(1 + Math.sin(Date.now() * 0.001) * 0.05, 1 + Math.sin(Date.now() * 0.001) * 0.05, 1);
-        
-        renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+
+      globe.rotation.y += 0.002;
+      globe.rotation.x += 0.0008;
+
+      ring.rotation.x += 0.003;
+      ring.rotation.y += 0.002;
+
+      renderer.render(scene, camera);
     };
 
     animate();
 
-    window.addEventListener('resize', updateRendererSize);
+    // 🔥 IMPORTANT: delay resize (fixes mobile bug)
+    setTimeout(resize, 100);
+
+    // Resize observer (REAL FIX)
+    const observer = new ResizeObserver(resize);
+    observer.observe(container);
+
+    window.addEventListener("resize", resize);
 
     return () => {
-      window.removeEventListener('resize', updateRendererSize);
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      observer.disconnect();
+      window.removeEventListener("resize", resize);
+
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
       }
-        geometry.dispose();
-        material.dispose();
-        renderer.dispose();
+
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
     };
   }, []);
 
   return (
-    <div className="relative flex items-center justify-center overflow-visible">
-        {/* Luxury Glow Background */}
-      <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232, 64, 10, 0.1) 0%, transparent 70%) blur-3xl opacity-50" />
-        <div ref={mountRef} className="z-10" style={{ width: `${globeSize}px`, height: `${globeSize}px` }} />
-        
-        {/* Floating Accents */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20">
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-accent/20 rounded-full animate-pulse-slow"
-              style={{ width: `${Math.round(globeSize * 0.58)}px`, height: `${Math.round(globeSize * 0.58)}px` }}
-            />
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-accent/10 rounded-full animate-spin-slow opacity-30"
-              style={{ borderStyle: 'dashed', width: `${Math.round(globeSize * 0.75)}px`, height: `${Math.round(globeSize * 0.75)}px` }}
-            />
-        </div>
+    <div className="relative w-full flex justify-center">
+      
+      {/* Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(232,64,10,0.12),transparent_70%)] blur-3xl opacity-60" />
+
+      {/* 🔥 FIXED RESPONSIVE CONTAINER */}
+      <div
+        ref={mountRef}
+        className="
+          w-full 
+          max-w-[650px]
+          h-[280px]
+          sm:h-[380px]
+          md:h-[500px]
+          lg:h-[650px]
+        "
+      />
     </div>
   );
 };

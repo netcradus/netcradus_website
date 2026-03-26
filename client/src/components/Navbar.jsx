@@ -19,6 +19,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+  if (isMenuOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [isMenuOpen]);
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Platform', path: '/platform' },
@@ -61,30 +73,44 @@ const Navbar = () => {
           <Link to="/contact" className="btn-primary desktop-only px-8 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
             Initial Briefing
           </Link>
-          <button className="mobile-menu-toggle p-2 lg:hidden text-zinc-900 dark:text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="mobile-menu-toggle p-2 lg:hidden text-zinc-900 dark:text-white" onClick={() => setIsMenuOpen(prev => !prev)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-        <div className="mobile-links">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              to={link.path} 
-              className="mobile-link" 
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {link.name} <ChevronRight size={16} />
-            </Link>
-          ))}
-          <Link to="/contact" className="btn btn-primary" onClick={() => setIsMenuOpen(false)}>
-            Book a Demo
-          </Link>
-        </div>
-      </div>
+     <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+  {/* CLOSE BUTTON */}
+  <div className="mobile-header">
+    <button onClick={() => setIsMenuOpen(false)} className="mobile-close">
+      <X size={28} />
+    </button>
+  </div>
+
+  {/* LINKS */}
+  <div className="mobile-links">
+    {navLinks.map((link) => (
+      <Link 
+        key={link.name} 
+        to={link.path} 
+        className="mobile-link"
+        onClick={() => setIsMenuOpen(false)}
+      >
+        {link.name}
+        <ChevronRight size={18} />
+      </Link>
+    ))}
+
+    <Link 
+      to="/contact" 
+      className="btn-primary mt-6 text-center py-3"
+      onClick={() => setIsMenuOpen(false)}
+    >
+      Book a Demo
+    </Link>
+  </div>
+</div>
     </nav>
   );
 };

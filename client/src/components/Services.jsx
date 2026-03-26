@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { Server, Shield, Cloud, Code2, Target, FileSearch, Activity, ShieldAlert, CloudCog, MessageSquare, ShieldCheck, Lock, Terminal, GraduationCap, AppWindow, BrainCircuit, Search, Network, Radio, ArrowRight } from "lucide-react";
 import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import './Services.css';
 
 const SERVICES_TABS = [
-    { id: "msp", title: "Managed IT", icon: <Server size={20} /> },
-    { id: "mssp", title: "Cybersecurity", icon: <Shield size={20} /> },
-    { id: "cloud-ai", title: "Cloud & AI", icon: <Cloud size={20} /> },
-    { id: "software", title: "Software Dev", icon: <Code2 size={20} /> }
+    { id: "ai-data", title: "AI & Data", icon: <BrainCircuit size={20} /> },
+    { id: "cloud", title: "Cloud Solution", icon: <Cloud size={20} /> },
+    { id: "cognitive", title: "Cognitive Ops", icon: <Activity size={20} /> },
+    { id: "it", title: "Managed IT", icon: <Server size={20} /> },
+    { id: "cybersecurity", title: "Cybersecurity", icon: <Shield size={20} /> },
+    { id: "enterprise", title: "Enterprise Solution", icon: <AppWindow size={20} /> },
+    { id: "network", title: "Network Services", icon: <Network size={20} /> },
+    { id: "software", title: "Software Engineering", icon: <Code2 size={20} /> }
+
 ];
 
 const CYBER_SERVICES = [
@@ -29,7 +36,24 @@ const CYBER_SERVICES = [
 ];
 
 const Services = () => {
-    const [activeTab, setActiveTab] = useState("msp");
+
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState("ai-data");
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const tab = params.get("tab");
+
+        if (tab) {
+            setActiveTab(tab);
+
+            setTimeout(() => {
+                document.getElementById("services")?.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }, 100);
+        }
+    }, [location.search]);
 
     return (
         <section id="services" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
@@ -42,11 +66,14 @@ const Services = () => {
                     </p>
                 </div>
 
-                <div className="services-tabs reveal" style={{transitionDelay: '0.2s'}}>
+                <div className="services-tabs reveal" style={{ transitionDelay: '0.2s' }}>
                     {SERVICES_TABS.map((tab) => (
-                        <button 
-                            key={tab.id} 
-                            onClick={() => setActiveTab(tab.id)}
+                        <button
+                            key={tab.id}
+                            onClick={() => {
+                                setActiveTab(tab.id);
+                                window.history.replaceState(null, "", `?tab=${tab.id}`);
+                            }}
                             className={`service-tab-btn ${activeTab === tab.id ? 'active' : ''}`}
                         >
                             <span className="tab-icon">{tab.icon}</span>
@@ -55,42 +82,115 @@ const Services = () => {
                     ))}
                 </div>
 
-                <div className="service-content-pillar reveal" style={{transitionDelay: '0.4s'}}>
-                    {activeTab === "msp" && (
-                        <div className="tab-grid staggered">
+                <div className="service-content-pillar reveal" style={{ transitionDelay: '0.4s' }}>
+
+                    {activeTab === "ai-data" && (
+                        <div className="tab-grid">
                             <div className="tab-info space-y-8">
-                                <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Managed IT <span className="text-accent italic">Operations.</span></h3>
-                                <p className="text-text-secondary text-lg leading-relaxed">Your entire IT infrastructure â€” expertly managed, always operational. Netcradus MSP delivers a fully outsourced, enterprise-grade technology office.</p>
+                                <h3 className="text-3xl md:text-5xl font-display font-black">
+                                    Artificial Intelligence & <span className="text-accent italic">Data Analytics</span>
+                                </h3>
+                                <p className="text-text-secondary text-lg">
+                                    Unlock insights, automation, and predictive intelligence using advanced AI models and data pipelines.
+                                </p>
                                 <ul className="space-y-4">
-                                    {["24/7 Proactive Monitoring", "Multi-Tier UK & India Helpdesk", "SD-WAN & Network Management"].map(item => (
-                                        <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                                    {[
+                                        "Machine Learning Models",
+                                        "Predictive Analytics",
+                                        "Business Intelligence Dashboards",
+                                    ].map((item) => (
+                                        <li key={item} className="flex gap-3">
+                                            <div className="w-1.5 h-1.5 bg-accent rounded-full" />
                                             {item}
                                         </li>
                                     ))}
                                 </ul>
-                                <Link to="/contact" className="btn-primary px-10 py-4 no-underline inline-block rounded-xl">Request Infrastructure Audit</Link>
-                            </div>
-                            <div className="tab-visual relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium group">
-                                <img src="/generated/cyber_server_room_autonomous.png" alt="Managed IT Services Server Room" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000 grayscale group-hover:grayscale-0" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                                <div className="absolute inset-x-8 bottom-8 p-8 glass-main rounded-2xl shadow-brand-lg">
-                                    <div className="flex items-center gap-2 text-[10px] font-bold text-green-500 uppercase tracking-widest mb-4">
-                                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div> System Nominal
-                                    </div>
-                                    <div className="grid grid-cols-3 gap-6">
-                                        <div className="flex flex-col"><span className="text-[8px] font-bold text-white/50 uppercase tracking-widest mb-1">UPTIME</span><span className="text-lg font-black text-white">99.98%</span></div>
-                                        <div className="flex flex-col"><span className="text-[8px] font-bold text-white/50 uppercase tracking-widest mb-1">LATENCY</span><span className="text-lg font-black text-white">12ms</span></div>
-                                        <div className="flex flex-col"><span className="text-[8px] font-bold text-white/50 uppercase tracking-widest mb-1">LOAD</span><span className="text-lg font-black text-white">24%</span></div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     )}
 
-                    {activeTab === "mssp" && (
+                    {activeTab === "cloud" && (
+                        <div className="tab-grid">
+                            <div className="tab-info space-y-8">
+                                <h3 className="text-3xl md:text-5xl font-display font-black">
+                                    Cloud <span className="text-accent italic">Solutions</span>
+                                </h3>
+                                <p className="text-text-secondary text-lg">
+                                    Scalable, secure cloud architecture for modern businesses.
+                                </p>
+                                <ul className="space-y-4">
+                                    {[
+                                        "AWS / Azure / GCP Deployment",
+                                        "Cloud Migration",
+                                        "DevOps & CI/CD Pipelines",
+                                    ].map((item) => (
+                                        <li key={item} className="flex gap-3">
+                                            <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    )}
+
+                    {activeTab === "cognitive" && (
+                        <div className="tab-grid">
+                            <div className="tab-info space-y-8">
+                                <h3 className="text-3xl md:text-5xl font-display font-black">
+                                    Cognitive Business <span className="text-accent italic">Operations</span>
+                                </h3>
+                                <p className="text-text-secondary text-lg">
+                                    Automate operations using AI-driven workflows and intelligent systems.
+                                </p>
+                                <ul className="space-y-4">
+                                    {[
+                                        "Process Automation",
+                                        "AI Chatbots & Assistants",
+                                        "Operational Intelligence",
+                                    ].map((item) => (
+                                        <li key={item} className="flex gap-3">
+                                            <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    )}
+
+                    {activeTab === "it" && (
+                        <div className="tab-grid">
+                            <div className="tab-info space-y-8">
+                                <h3 className="text-3xl md:text-5xl font-display font-black">
+                                    IT <span className="text-accent italic">Consulting</span>
+                                </h3>
+                                <p className="text-text-secondary text-lg">
+                                    Strategic technology consulting to scale your business infrastructure.
+                                </p>
+                                <ul className="space-y-4">
+                                    {[
+                                        "IT Strategy Planning",
+                                        "Digital Transformation",
+                                        "Infrastructure Optimization",
+                                    ].map((item) => (
+                                        <li key={item} className="flex gap-3">
+                                            <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    )}
+
+
+                    {activeTab === "cybersecurity" && (
                         <div className="cyber-catalog">
                             <div className="cyber-grid">
+                                <h3 className="text-3xl md:text-5xl font-display font-black mb-5">
+                                    Cyber<span className="text-accent italic">Security</span>
+                                </h3>
                                 {CYBER_SERVICES.map((service, idx) => (
                                     <div key={idx} className="premium-card p-10 group hover:-translate-y-2 transition-all duration-500 bg-surface border-border">
                                         <div className="w-14 h-14 rounded-2xl bg-surface-raised flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white shadow-lg transition-all">{service.icon}</div>
@@ -107,29 +207,46 @@ const Services = () => {
                             </div>
                         </div>
                     )}
-
-                    {activeTab === "cloud-ai" && (
+                    {activeTab === "enterprise" && (
                         <div className="tab-grid">
                             <div className="tab-info space-y-8">
-                                <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Cloud & AI <span className="text-accent italic">Integration.</span></h3>
-                                <p className="text-text-secondary text-lg leading-relaxed">Architecting scalable, sovereign cloud deployments and integrating intelligent process automation to drive operational excellence safely.</p>
+                                <h3 className="text-3xl md:text-5xl font-display font-black">
+                                    Enterprise <span className="text-accent italic">Solutions</span>
+                                </h3>
                                 <ul className="space-y-4">
-                                    {["AWS / Azure / GCP Architecture", "LLM Integration & Fine-Tuning", "Secure Data Migration"].map(item => (
-                                        <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                                    {[
+                                        "ERP & CRM Systems",
+                                        "Business Process Integration",
+                                        "Enterprise Automation",
+                                    ].map((item) => (
+                                        <li key={item} className="flex gap-3">
+                                            <div className="w-1.5 h-1.5 bg-accent rounded-full" />
                                             {item}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                             <div className="tab-visual relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium group min-h-[400px]">
-                                <img src="/generated/cloud_ai_infrastructure_secure.png" alt="Cloud Architecture" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000 grayscale group-hover:grayscale-0" />
-                                <div className="absolute inset-0 flex items-center justify-center bg-zinc-900/40 backdrop-blur-[2px]">
-                                    <div className="glass-main p-8 rounded-2xl shadow-brand-lg flex flex-col items-center gap-4">
-                                        <div className="w-12 h-12 rounded-full border-2 border-accent border-t-transparent animate-spin"></div>
-                                        <span className="text-[10px] font-bold text-white uppercase tracking-[0.4em]">Neural_Engine::v2</span>
-                                    </div>
-                                </div>
+                        </div>
+                    )}
+
+                    {activeTab === "network" && (
+                        <div className="tab-grid">
+                            <div className="tab-info space-y-8">
+                                <h3 className="text-3xl md:text-5xl font-display font-black">
+                                    Network <span className="text-accent italic">Services</span>
+                                </h3>
+                                <ul className="space-y-4">
+                                    {[
+                                        "Network Design & Setup",
+                                        "Firewall & Security",
+                                        "Monitoring & Optimization",
+                                    ].map((item) => (
+                                        <li key={item} className="flex gap-3">
+                                            <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
                     )}
@@ -148,18 +265,18 @@ const Services = () => {
                                     ))}
                                 </ul>
                             </div>
-                             <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">
+                            {/* <div className="tab-visual relative rounded-2xl overflow-hidden border border-[var(--border-color)] shadow-2xl">
                                 <img src="/generated/secure_shield_concept_1773394778055.png" alt="Secure Software Engineering" className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-700" />
                                 <div className="absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-t from-[var(--bg-color)] to-transparent">
                                     <div className="code-mockup glass mono w-full !bg-[var(--surface-color)]/80 backdrop-blur-md">
                                         <div className="code-line"><span className="keyword">class</span> <span className="entity">SecureNode</span> {'{'}</div>
-                                        <div className="code-line" style={{paddingLeft: '1rem'}}><span className="keyword">func</span> <span className="entity">init</span>() {'{'}</div>
-                                        <div className="code-line" style={{paddingLeft: '2rem'}}>this.encryption = <span className="string">"AES-256"</span>;</div>
-                                        <div className="code-line" style={{paddingLeft: '1rem'}}>{'}'}</div>
+                                        <div className="code-line" style={{ paddingLeft: '1rem' }}><span className="keyword">func</span> <span className="entity">init</span>() {'{'}</div>
+                                        <div className="code-line" style={{ paddingLeft: '2rem' }}>this.encryption = <span className="string">"AES-256"</span>;</div>
+                                        <div className="code-line" style={{ paddingLeft: '1rem' }}>{'}'}</div>
                                         <div className="code-line">{'}'}</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     )}
                 </div>

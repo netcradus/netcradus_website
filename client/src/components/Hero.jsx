@@ -21,32 +21,39 @@ const Hero = () => {
                 <span className="text-[10px] md:text-[12px] font-bold tracking-[0.25em] sm:tracking-[0.4em] text-accent-bright font-display uppercase mb-8 block">
                   Autonomous Cybersecurity Intelligence System
                 </span>
-                <h1 className="text-[clamp(2.2rem,7vw,5.5rem)] font-display font-black text-text-primary mb-8 tracking-[-0.04em] leading-[0.95] drop-shadow-sm">
-                  Enterprise <br />
-                  <span className="text-accent italic">Defensive</span> <br />
-                  Operative.
+                <h1 className="text-[clamp(2.2rem,7vw,4rem)] font-display font-black text-text-primary mb-8 tracking-[-0.04em] leading-[0.95] drop-shadow-sm">
+                 Engineering Digital Resilience for the <br />
+                  <span className="text-accent italic"> Global Enterprise</span> <br />
+                 
                 </h1>
                 
                 <p className="hero-subtitle">
-                  Netcradus delivers enterprise-grade cybersecurity and bespoke software solutions built for the threats of tomorrow.
+                 Beyond detection. Beyond response. Netcradus delivers an Autonomous Cyber Immune System (ACIS) that predicts, 
+                 neutralizes, and adapts to threats in real-time. 
                 </p>
 
                 <div className="flex flex-wrap gap-6 mt-12">
                   <Link to="/contact">
                     <MagneticWrapper strength={0.3}>
-                      <button className="btn-primary px-7 sm:px-12 py-4 sm:py-5 text-white font-display font-bold text-xs uppercase tracking-[0.2em] shadow-xl">
-                        Initiate Command
+                      <button className="btn-primary px-5 sm:px-12 py-4 sm:py-5 text-white font-display font-bold text-xs uppercase tracking-[0.2em] shadow-xl">
+                        Request Infrastructure Audit
                       </button>
                     </MagneticWrapper>
                   </Link>
-                  <Link to="/platform">
+                 
                     <MagneticWrapper strength={0.3}>
-                      <button className="px-7 sm:px-10 py-4 sm:py-5 bg-surface-raised/50 border border-border text-text-primary font-display font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-surface-raised transition-all flex items-center gap-3">
-                        Analyze Platform
-                        <ArrowRight size={14} className="text-accent" />
-                      </button>
+                      
+                       <a
+                       href="https://acis.netcradus.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="px-7 sm:px-5 py-4 sm:py-5 bg-surface-raised/50 border border-border text-text-primary font-display font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-surface-raised transition-all flex items-center gap-3"
+                     >
+                      Explore the ACIS Engine
+                       <ArrowRight size={18} className="arrow-icon" />
+                     </a>
                     </MagneticWrapper>
-                  </Link>
+                  
                 </div>
               </div>
             </AnimatedReveal>
