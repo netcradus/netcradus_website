@@ -62,7 +62,7 @@ export default function ContactSection() {
             <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent/5 blur-[150px] rounded-full pointer-events-none -z-0" />
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,var(--color-border)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none" />
 
-            <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+            <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 relative z-10">
                 {/* Left: Strategic Hook */}
                 <AnimatedReveal>
@@ -232,3 +232,4 @@ export default function ContactSection() {
     </SectionWrapper>
     );
 }
+

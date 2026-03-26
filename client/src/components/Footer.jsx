@@ -11,7 +11,7 @@ import MagneticWrapper from "./ui/MagneticWrapper";
 export default function Footer() {
     return (
         <footer className="border-t border-border bg-background pt-16 pb-12 z-10 relative mt-24 transition-colors duration-500">
-            <div className="max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
+            <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
                 {/* Brand & Mission */}
                 <div className="col-span-1 md:col-span-1 space-y-6">
                     <div className="flex items-center gap-3">
@@ -117,17 +117,18 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 mt-16 pt-10 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center text-[10px] font-display font-bold text-text-secondary tracking-[0.3em] uppercase gap-6">
+            <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 mt-16 pt-10 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center text-[10px] font-display font-bold text-text-secondary tracking-[0.3em] uppercase gap-6">
                 <div className="flex items-center gap-4">
                     <span>UK & INDIA</span>
                     <span className="w-1 h-1 rounded-full bg-accent/20" />
                     <span>GLOBAL MSSP OPERATIVE</span>
                 </div>
                 <div className="flex items-center gap-8">
-                    <p>© 2026 Netcradus Limited.</p>
+                    <p>Â© 2026 Netcradus Limited.</p>
                     <p className="opacity-80">Designed for resilience.</p>
                 </div>
             </div>
         </footer>
     );
 }
+

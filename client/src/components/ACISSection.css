@@ -29,11 +29,12 @@
 
 .acis-title {
   font-family: "Inter", sans-serif;
-  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.04em;
   color: var(--text-primary);
+  text-wrap: balance;
 }
 
 .acis-title span {
@@ -261,5 +262,46 @@
 }
 
 @media (max-width:768px) {
+  .acis-title {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .acis-desc {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+  .acis-badge {
+    font-size: 0.64rem;
+    letter-spacing: 0.09em;
+    padding: 0.5rem 0.9rem;
+  }
+  .arch-tab {
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+  }
+  .arch-tab span {
+    letter-spacing: 0.12em;
+  }
+  .acis-features span {
+    letter-spacing: 0.08em;
+  }
+  .acis-section .feature-grid {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .acis-section .feature-grid .premium-card {
+    padding: 1.15rem;
+  }
+  .acis-section .architecture-interactive {
+    margin-top: 3rem;
+  }
+  .acis-section .premium-card {
+    padding: 1.25rem;
+  }
+  .timeline-item {
+    padding: 1.25rem;
+  }
   .timeline-grid { grid-template-columns:1fr; }
 }

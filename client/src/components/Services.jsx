@@ -33,7 +33,7 @@ const Services = () => {
 
     return (
         <section id="services" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
-            <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+            <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                 <div className="reveal text-center mb-16">
                     <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent font-display uppercase mb-6 block">// OUR CAPABILITIES</span>
                     <h2 className="text-4xl md:text-6xl font-display font-black text-text-primary mb-6">Engineered for <span className="text-accent italic">Resilience.</span></h2>
@@ -60,7 +60,7 @@ const Services = () => {
                         <div className="tab-grid staggered">
                             <div className="tab-info space-y-8">
                                 <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight">Managed IT <span className="text-accent italic">Operations.</span></h3>
-                                <p className="text-text-secondary text-lg leading-relaxed">Your entire IT infrastructure — expertly managed, always operational. Netcradus MSP delivers a fully outsourced, enterprise-grade technology office.</p>
+                                <p className="text-text-secondary text-lg leading-relaxed">Your entire IT infrastructure â€” expertly managed, always operational. Netcradus MSP delivers a fully outsourced, enterprise-grade technology office.</p>
                                 <ul className="space-y-4">
                                     {["24/7 Proactive Monitoring", "Multi-Tier UK & India Helpdesk", "SD-WAN & Network Management"].map(item => (
                                         <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
@@ -169,3 +169,4 @@ const Services = () => {
 };
 
 export default Services;
+

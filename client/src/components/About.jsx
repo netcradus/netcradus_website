@@ -35,7 +35,7 @@ const VALUES = [
 const About = () => {
   return (
     <section id="about" className="py-24 bg-premium-radial relative transition-colors duration-500">
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* Left */}
           <div className="lg:col-span-7 reveal space-y-12">
@@ -81,7 +81,7 @@ const About = () => {
                 <h3>The Mission</h3>
                 <p>
                   To empower organisations with intelligent, secure, and
-                  future-proof technology solutions — enabling growth without
+                  future-proof technology solutions â€” enabling growth without
                   boundaries.
                 </p>
               </div>

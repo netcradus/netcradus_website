@@ -14,7 +14,7 @@ const industries = [
 const Industries = () => {
   return (
     <section id="industries" className="py-24 bg-premium-radial relative transition-colors duration-500">
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 text-center">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 text-center">
         <div className="reveal mb-20">
           <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// SECTOR EXPERTISE</span>
           <h2 className="text-4xl md:text-7xl font-display font-black text-zinc-900 dark:text-white mb-6 tracking-tighter leading-none">Industries We <span className="text-accent italic">Empower.</span></h2>
@@ -39,3 +39,4 @@ const Industries = () => {
 };
 
 export default Industries;
+

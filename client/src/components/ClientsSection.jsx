@@ -18,7 +18,7 @@ const clients = [
 const ClientsSection = () => {
     return (
         <section className="py-24 bg-premium-radial relative overflow-hidden transition-all duration-500">
-            <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+            <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                 <div className="text-center mb-20">
                     <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent font-display uppercase mb-6 block">Strategic Alliances</span>
                     <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary mb-6 uppercase tracking-wider">Trusted by Industry <span className="text-accent italic text-4xl md:text-6xl">Leaders.</span></h2>
@@ -49,3 +49,4 @@ const ClientsSection = () => {
 };
 
 export default ClientsSection;
+

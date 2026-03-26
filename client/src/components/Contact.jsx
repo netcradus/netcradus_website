@@ -50,7 +50,7 @@ const Contact = () => {
 
     return (
         <section id="contact" className="py-24 bg-premium-radial relative transition-colors duration-500 overflow-hidden">
-            <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+            <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                 <div className="reveal text-center mb-20 max-w-3xl mx-auto">
                     <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">
                         Establish Connection
@@ -148,3 +148,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

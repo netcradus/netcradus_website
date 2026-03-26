@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 flex items-center justify-between h-20">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-2 group">
           <img src={companyLogoImage} alt="Netcradus" className="h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
         
@@ -90,3 +90,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

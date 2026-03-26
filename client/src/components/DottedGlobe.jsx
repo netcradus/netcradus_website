@@ -1,19 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 const DottedGlobe = () => {
   const mountRef = useRef(null);
+  const [globeSize, setGlobeSize] = useState(600);
 
   useEffect(() => {
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    
-    const width = 600;
-    const height = 600;
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio);
+
+    const updateRendererSize = () => {
+      const nextSize = Math.min(window.innerWidth * 0.9, 600);
+      setGlobeSize(nextSize);
+      renderer.setSize(nextSize, nextSize, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      camera.aspect = 1;
+      camera.updateProjectionMatrix();
+    };
+
+    updateRendererSize();
     mountRef.current.appendChild(renderer.domElement);
 
     // Globe parameters
@@ -84,13 +91,13 @@ const DottedGlobe = () => {
 
     animate();
 
-    // Resize handler (optional since size is fixed at 600)
-    // For luxury feel, we keep a consistent large presence
+    window.addEventListener('resize', updateRendererSize);
 
     return () => {
-        if (mountRef.current) {
-            mountRef.current.removeChild(renderer.domElement);
-        }
+      window.removeEventListener('resize', updateRendererSize);
+      if (mountRef.current) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
         geometry.dispose();
         material.dispose();
         renderer.dispose();
@@ -100,13 +107,19 @@ const DottedGlobe = () => {
   return (
     <div className="relative flex items-center justify-center overflow-visible">
         {/* Luxury Glow Background */}
-        <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232, 64, 10, 0.1) 0%, transparent 70%) blur-3xl opacity-50" />
-        <div ref={mountRef} className="z-10" style={{ width: '600px', height: '600px' }} />
+      <div className="absolute inset-0 bg-radial-gradient(circle, rgba(232, 64, 10, 0.1) 0%, transparent 70%) blur-3xl opacity-50" />
+        <div ref={mountRef} className="z-10" style={{ width: `${globeSize}px`, height: `${globeSize}px` }} />
         
         {/* Floating Accents */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] border border-accent/20 rounded-full animate-pulse-slow" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-accent/10 rounded-full animate-spin-slow opacity-30" style={{ borderStyle: 'dashed' }} />
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-accent/20 rounded-full animate-pulse-slow"
+              style={{ width: `${Math.round(globeSize * 0.58)}px`, height: `${Math.round(globeSize * 0.58)}px` }}
+            />
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-accent/10 rounded-full animate-spin-slow opacity-30"
+              style={{ borderStyle: 'dashed', width: `${Math.round(globeSize * 0.75)}px`, height: `${Math.round(globeSize * 0.75)}px` }}
+            />
         </div>
     </div>
   );

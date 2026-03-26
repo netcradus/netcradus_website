@@ -7,7 +7,7 @@ const CTABanner = () => {
     <section className="cta-banner-section py-24 relative overflow-hidden group">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_70%)] animate-pulse"></div>
       
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 flex flex-col items-center text-center relative z-10">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 flex flex-col items-center text-center relative z-10">
 
         <h2 className="text-4xl md:text-7xl font-display font-black text-white mb-8 tracking-tighter leading-none">
           Ready to Secure <br />

@@ -6,7 +6,7 @@ export default function Platform() {
 
       {/* HERO */}
       {/* HERO */}
-      <section className="max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
         <div className="reveal">
           <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">
@@ -38,7 +38,7 @@ export default function Platform() {
 
       {/* ACIS SECTION */}
 
-      <section className="max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-20 items-center">
+      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-20 items-center">
 
         <div className="rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium order-2 lg:order-1">
           <img
@@ -50,7 +50,7 @@ export default function Platform() {
 
         <div className="order-1 lg:order-2 space-y-8">
             <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight leading-tight">
-            ACIS — Autonomous Cyber Immune System
+            ACIS &mdash; Autonomous Cyber Immune System
           </h2>
 
           <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed font-sans">
@@ -75,7 +75,7 @@ export default function Platform() {
 
       {/* CRM SECTION */}
 
-      <section className="max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-20 items-center">
+      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-20 items-center">
 
         <div className="space-y-8">
           <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight leading-tight">
@@ -110,7 +110,7 @@ export default function Platform() {
 
       {/* PLATFORM FEATURES */}
 
-      <section className="max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 py-24">
+      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-24">
 
         <div className="text-center mb-16 space-y-6">
           <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight leading-tight">
