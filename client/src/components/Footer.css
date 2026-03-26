@@ -126,3 +126,21 @@ footer a:hover {
     transform: translateY(0);
   }
 }
+/* Ensure logos remain sharp and centered */
+.footer img {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    max-width: 100%;
+}
+
+/* Optional: Subtle glow on hover for the logos */
+.footer img:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+    transform: translateY(-1px);
+}
+/* Add this if it's not already in your separate CSS file */
+.footer img {
+  will-change: transform, filter;
+  /* Ensures logos look crisp on high-res screens */
+  image-rendering: -webkit-optimize-contrast; 
+}

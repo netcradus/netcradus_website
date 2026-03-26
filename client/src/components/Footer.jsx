@@ -3,6 +3,8 @@ import isoLogo from "../assets/ISO-Loogo-removebg.png";
 import iso27701Logo from "../assets/iso-27701-removebg.png";
 import msmeLogo from "../assets/msme-removebg.png";
 import kasperskyLogo from "../assets/kaspersky.png";
+import udyamLogo from "../assets/udyam.png";
+
 import kasp from "../assets/kas.png";
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, Linkedin, ArrowUpRight } from "lucide-react";
@@ -25,30 +27,26 @@ export default function Footer() {
                         Netcradus is an elite cybersecurity ecosystem engineered for the modern enterprise. We redefine digital defense through autonomous intelligence and architectural excellence.
                     </p>
 
-                    {/* Ghost White Logos */}
-                  <div className="pt-2 flex flex-wrap items-center gap-8">
-  <img
-    src={isoLogo}
-    alt="ISO 27001"
-    className="h-16 w-auto object-contain"
-  />
-  <img
-    src={iso27701Logo}
-    alt="ISO 27701"
-    className="h-16 w-auto object-contain"
-  />
-  <img
-    src={msmeLogo}
-    alt="MSME"
-    className="h-14 w-auto object-contain"
-  />
-  <img
-    src={kasperskyLogo}
-    alt="Kaspersky"
-    className="h-14 w-auto object-contain"
-  />
+   {/* Trust & Certification Logos */}
+<div className="pt-8 flex flex-wrap items-center gap-x-10 gap-y-8">
+  {[
+    { src: isoLogo, alt: "ISO 27001", h: "h-12" },
+    { src: iso27701Logo, alt: "ISO 27701", h: "h-12" },
+    { src: msmeLogo, alt: "MSME", h: "h-10" },
+    { src: kasperskyLogo, alt: "Kaspersky", h: "h-9" },
+    { src: udyamLogo, alt: "Udyam", h: "h-11" },
+  ].map((logo, index) => (
+    <div key={index} className="group relative">
+      <img
+        src={logo.src}
+        alt={logo.alt}
+        className={`${logo.h} w-auto object-contain transition-all duration-500 ease-out 
+          filter drop-shadow-sm group-hover:drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)] 
+          group-hover:-translate-y-2 group-hover:scale-105`}
+      />
+    </div>
+  ))}
 </div>
-
                     <div className="flex items-center gap-4">
                         {[
                             { Icon: Linkedin, href: "https://uk.linkedin.com/company/netcradus-limited?trk=public_post_follow-view-profile" },
