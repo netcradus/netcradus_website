@@ -4,7 +4,7 @@ import './SubHero.css';
 const SubHero = ({ title, subtitle, label }) => {
   return (
     <section className="py-24 bg-premium-radial relative min-h-[40vh] flex items-center transition-colors duration-500 overflow-hidden">
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 relative z-10">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10">
         <div className="reveal max-w-3xl">
           {label && <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">{label}</span>}
           <h1 className="text-4xl md:text-7xl font-display font-black text-text-primary mb-8 tracking-tighter leading-none">{title}</h1>
@@ -17,3 +17,4 @@ const SubHero = ({ title, subtitle, label }) => {
 };
 
 export default SubHero;
+

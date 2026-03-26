@@ -35,7 +35,7 @@ const ACISSection = () => {
 
   return (
     <section id="acis" className="acis-section">
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="acis-grid">
           <div className="acis-content reveal">
             <div className="acis-badge mono">
@@ -43,7 +43,7 @@ const ACISSection = () => {
               Autonomous Response Active
             </div>
             <h2 className="acis-title">
-              ACIS — Autonomous Cyber <span className="text-accent italic">Immune System.</span>
+              ACIS &mdash; Autonomous Cyber <span className="text-accent italic">Immune System.</span>
             </h2>
             <p className="acis-desc mb-12 max-w-xl">
               ACIS is our revolutionary, proprietary AI-driven cybersecurity platform. Designed to eliminate the lag between threat detection and response, ACIS operates autonomously to identify, isolate, and neutralize cyber threats without requiring manual human intervention.
@@ -124,7 +124,7 @@ const ACISSection = () => {
                 </Link>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative h-[400px]">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative h-[260px] sm:h-[320px] lg:h-[400px]">
               <img src="/generated/secure_shield_concept_1773394778055.png" alt="AI Neural Network Analyzing Data" className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" />
               <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent opacity-80"></div>
             </div>

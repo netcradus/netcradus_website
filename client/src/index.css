@@ -63,6 +63,7 @@
     letter-spacing: -0.03em;
     line-height: 1.1;
     color: var(--color-text-primary);
+    overflow-wrap: anywhere;
   }
 
   p {
@@ -205,4 +206,22 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+@media (max-width: 1024px) {
+  section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
 }

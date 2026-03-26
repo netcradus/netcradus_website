@@ -20,7 +20,7 @@ const Blog = () => {
 
   return (
     <section id="blog" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="reveal mb-16 text-center">
           <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// INTELLIGENCE FEED</span>
           <h2 className="text-4xl md:text-6xl font-display font-black text-zinc-900 dark:text-white mb-6">Latest from the <span className="text-accent italic">Lab.</span></h2>
@@ -94,7 +94,7 @@ const Blog = () => {
                   <h2 className="text-3xl md:text-5xl font-display font-black text-zinc-900 dark:text-white mb-6 tracking-tight leading-tight">{selectedBlog.title}</h2>
                   <div className="flex items-center gap-4 text-xs font-bold text-zinc-500 uppercase tracking-widest mb-10 border-b border-zinc-200 dark:border-zinc-800 pb-6">
                     <span>{selectedBlog.date}</span>
-                    <span className="opacity-30">•</span>
+                    <span className="opacity-30">â€¢</span>
                     <span className="flex items-center gap-2"><Clock size={14} className="text-accent" /> {selectedBlog.readTime || "5 min read"}</span>
                   </div>
                   <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
@@ -111,3 +111,4 @@ const Blog = () => {
 };
 
 export default Blog;
+

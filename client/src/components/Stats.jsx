@@ -45,7 +45,7 @@ const Stats = () => {
 
   return (
     <section id="stats" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
           {stats.map((stat, index) => (
             <div key={index} className="reveal group">
@@ -65,3 +65,4 @@ const Stats = () => {
 };
 
 export default Stats;
+

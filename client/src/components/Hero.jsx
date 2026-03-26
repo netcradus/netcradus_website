@@ -13,15 +13,15 @@ const Hero = () => {
       <div className="absolute top-1/4 right-0 w-[60%] h-[60%] bg-accent/5 blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="absolute bottom-1/4 left-0 w-[40%] h-[40%] bg-accent/3 blur-[100px] rounded-full pointer-events-none z-0" />
       
-      <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24 relative z-10">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="hero-content text-left">
             <AnimatedReveal>
               <div className="max-w-4xl pt-10">
-                <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent-bright font-display uppercase mb-8 block">
+                <span className="text-[10px] md:text-[12px] font-bold tracking-[0.25em] sm:tracking-[0.4em] text-accent-bright font-display uppercase mb-8 block">
                   Autonomous Cybersecurity Intelligence System
                 </span>
-                <h1 className="text-[clamp(3.5rem,7vw,5.5rem)] font-display font-black text-text-primary mb-8 tracking-[-0.04em] leading-[0.95] drop-shadow-sm">
+                <h1 className="text-[clamp(2.2rem,7vw,5.5rem)] font-display font-black text-text-primary mb-8 tracking-[-0.04em] leading-[0.95] drop-shadow-sm">
                   Enterprise <br />
                   <span className="text-accent italic">Defensive</span> <br />
                   Operative.
@@ -34,14 +34,14 @@ const Hero = () => {
                 <div className="flex flex-wrap gap-6 mt-12">
                   <Link to="/contact">
                     <MagneticWrapper strength={0.3}>
-                      <button className="btn-primary px-12 py-5 text-white font-display font-bold text-xs uppercase tracking-[0.2em] shadow-xl">
+                      <button className="btn-primary px-7 sm:px-12 py-4 sm:py-5 text-white font-display font-bold text-xs uppercase tracking-[0.2em] shadow-xl">
                         Initiate Command
                       </button>
                     </MagneticWrapper>
                   </Link>
                   <Link to="/platform">
                     <MagneticWrapper strength={0.3}>
-                      <button className="px-10 py-5 bg-surface-raised/50 border border-border text-text-primary font-display font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-surface-raised transition-all flex items-center gap-3">
+                      <button className="px-7 sm:px-10 py-4 sm:py-5 bg-surface-raised/50 border border-border text-text-primary font-display font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-surface-raised transition-all flex items-center gap-3">
                         Analyze Platform
                         <ArrowRight size={14} className="text-accent" />
                       </button>

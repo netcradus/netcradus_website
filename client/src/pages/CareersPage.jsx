@@ -9,12 +9,12 @@ import { Rocket, Globe, BookOpen, Users, DollarSign, ArrowUpCircle } from "lucid
 const BENEFITS = [
     {
         title: "Work at the Frontier",
-        description: "Contribute to ACIS — our AI cybersecurity platform — and other proprietary technology initiatives that are shaping the future of digital security.",
+        description: "Contribute to ACIS â€” our AI cybersecurity platform â€” and other proprietary technology initiatives that are shaping the future of digital security.",
         icon: <Rocket className="w-6 h-6 text-primary" />
     },
     {
         title: "Global Exposure",
-        description: "Work with clients across the UK, India, Europe, and beyond — gaining international experience and cross-cultural capability that accelerates careers.",
+        description: "Work with clients across the UK, India, Europe, and beyond â€” gaining international experience and cross-cultural capability that accelerates careers.",
         icon: <Globe className="w-6 h-6 text-secondary" />
     },
     {
@@ -29,7 +29,7 @@ const BENEFITS = [
     },
     {
         title: "Competitive Compensation",
-        description: "Market-competitive salaries, performance bonuses, and equity participation for senior roles — structured to reward the people who build our success.",
+        description: "Market-competitive salaries, performance bonuses, and equity participation for senior roles â€” structured to reward the people who build our success.",
         icon: <DollarSign className="w-6 h-6 text-secondary" />
     },
     {
@@ -43,55 +43,55 @@ const ROLES = [
     {
         title: "SOC Analyst (L1/L2/L3)",
         department: "Cybersecurity",
-        icon: "🔐",
+        icon: "ðŸ”",
         description: "SIEM monitoring, threat investigation, and incident response across our 24/7 Security Operations Centre."
     },
     {
         title: "Penetration Tester",
         department: "Offensive Security",
-        icon: "🧪",
+        icon: "ðŸ§ª",
         description: "Web app, network, and mobile penetration testing. OSCP or CEH preferred. Remote with occasional client-site work."
     },
     {
         title: "Cloud Architect (AWS/Azure/GCP)",
         department: "Cloud & Infrastructure",
-        icon: "☁️",
+        icon: "â˜ï¸",
         description: "Multi-cloud architecture design, migration delivery, and ongoing CloudOps management for enterprise clients."
     },
     {
         title: "ML / AI Engineer",
         department: "AI & Data",
-        icon: "🤖",
-        description: "Model development, MLOps, and AI integration projects — including ACIS platform development."
+        icon: "ðŸ¤–",
+        description: "Model development, MLOps, and AI integration projects â€” including ACIS platform development."
     },
     {
         title: "Full-Stack Developer",
         department: "Software Engineering",
-        icon: "💻",
+        icon: "ðŸ’»",
         description: "CRM, ERP, and custom application development across our software practice. React, Node.js, Python, and C#."
     },
     {
         title: "GRC / Compliance Consultant",
         department: "Governance & Risk",
-        icon: "📋",
+        icon: "ðŸ“‹",
         description: "ISO 27001, Cyber Essentials, GDPR, and PCI DSS advisory for clients across multiple sectors."
     },
     {
         title: "Account Manager",
         department: "Client Engagement",
-        icon: "🎯",
+        icon: "ðŸŽ¯",
         description: "Strategic client relationship management for our UK enterprise client base. Technology background preferred."
     },
     {
         title: "Business Development Manager",
         department: "Sales",
-        icon: "📊",
+        icon: "ðŸ“Š",
         description: "New business development across our core service lines. Both UK and India-based positions available."
     },
     {
         title: "DevSecOps Engineer",
         department: "DevSecOps",
-        icon: "🏗️",
+        icon: "ðŸ—ï¸",
         description: "CI/CD security integration, IaC security, and container security across our cloud-native development practice."
     }
 ];
@@ -101,7 +101,7 @@ export default function CareersPage() {
         <div className="bg-white dark:bg-zinc-950 transition-colors duration-500 overflow-hidden">
             {/* Hero Section */}
             <section className="py-24 bg-premium-radial relative min-h-[50vh] flex items-center">
-                <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+                <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                     <div className="max-w-4xl reveal">
                         <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// JOIN THE MISSION</span>
                         <h1 className="text-4xl md:text-7xl font-display font-black text-zinc-900 dark:text-white mb-8 tracking-tighter leading-none">
@@ -120,7 +120,7 @@ export default function CareersPage() {
 
             {/* Why Work at Netcradus */}
             <section className="py-24 border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/30 transition-colors duration-500">
-                <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+                <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                     <div className="reveal text-center mb-20 max-w-3xl mx-auto">
                         <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// THE ADVANTAGE</span>
                         <h2 className="text-4xl md:text-6xl font-display font-black text-zinc-900 dark:text-white tracking-tighter leading-none mb-6">Why Work <span className="text-accent italic">at Netcradus?</span></h2>
@@ -148,7 +148,7 @@ export default function CareersPage() {
 
             {/* Roles Section */}
             <section className="py-24 bg-premium-radial relative">
-                <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+                <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                     <div className="reveal text-center mb-20 max-w-3xl mx-auto">
                         <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// RECRUITMENT FEED</span>
                         <h2 className="text-4xl md:text-6xl font-display font-black text-zinc-900 dark:text-white tracking-tighter leading-none mb-6">Active <span className="text-accent italic">Roles.</span></h2>
@@ -176,7 +176,7 @@ export default function CareersPage() {
 
             {/* CTA Section */}
             <section className="py-24">
-                <div className="container max-w-screen-2xl mx-auto px-8 lg:px-16 xl:px-24">
+                <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                     <div className="premium-card p-12 md:p-20 text-center relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 blur-[100px] rounded-full mix-blend-screen pointer-events-none group-hover:bg-accent/20 transition-all duration-1000" />
                         <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 blur-[100px] rounded-full mix-blend-screen pointer-events-none" />
@@ -198,3 +198,4 @@ export default function CareersPage() {
         </div>
     );
 }
+
