@@ -8,28 +8,28 @@ const Blog = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
 
   useEffect(() => {
-    if (selectedBlog) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [selectedBlog]);
+  if (selectedBlog) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
 
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [selectedBlog]);
   return (
-    <section id="blog" className="blog-section">
-      <div className="container">
-        <div className="section-header reveal">
-          <span className="section-label">// INTELLIGENCE FEED</span>
-          <h2 className="section-title">Latest from the <span className="gradient-text">Lab.</span></h2>
-          <p className="section-subtitle">
+    <section id="blog" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+        <div className="reveal mb-16 text-center">
+          <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// INTELLIGENCE FEED</span>
+          <h2 className="text-4xl md:text-6xl font-display font-black text-zinc-900 dark:text-white mb-6">Latest from the <span className="text-accent italic">Lab.</span></h2>
+          <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-sans leading-relaxed max-w-2xl mx-auto">
             Expert perspectives, threat intelligence briefings, and architectural thought leadership from our engineers.
           </p>
         </div>
 
-        <div className="blog-grid max-w-4xl mx-auto space-y-4">
+        <div className="blog-grid max-w-6xl mx-auto space-y-4">
           {BLOGS.map((blog, idx) => (
             <div
               key={blog.id}
@@ -57,57 +57,59 @@ const Blog = () => {
       </div>
 
       {/* Smart Window (Modal) */}
-      <AnimatePresence>
-        {selectedBlog && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="blog-modal-overlay"
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="blog-modal-backdrop"
-              onClick={() => setSelectedBlog(null)}
-            />
-            <motion.div
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="blog-modal-content"
-            >
-              <div className="blog-modal-header">
-                <span className="blog-modal-badge mono">{selectedBlog.category}</span>
-                <button
-                  onClick={() => setSelectedBlog(null)}
-                  className="blog-modal-close"
-                >
-                  <X size={20} />
-                </button>
-              </div>
+     <AnimatePresence>
+  {selectedBlog && (
+    <motion.div
+      className="blog-modal-overlay"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {/* BACKDROP */}
+      <div
+        className="blog-modal-backdrop"
+        onClick={() => setSelectedBlog(null)}
+      />
 
-              <div className="blog-modal-body custom-scrollbar">
-                <div className="max-w-3xl mx-auto">
-                  <h2 className="blog-modal-title">{selectedBlog.title}</h2>
-                  <div className="blog-modal-meta mono">
-                    <span>{selectedBlog.date}</span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1"><Clock size={14} /> {selectedBlog.readTime || "5 min read"}</span>
-                  </div>
-                  <div className="blog-prose max-w-none">
-                    {selectedBlog.content}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* MODAL */}
+      <motion.div
+        className="blog-modal-content"
+        initial={{ y: 80, opacity: 0, scale: 0.95 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        exit={{ y: 50, opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* CLOSE BUTTON */}
+        <button
+          onClick={() => setSelectedBlog(null)}
+          className="blog-modal-close"
+        >
+          <X size={18} />
+        </button>
+
+        {/* CONTENT */}
+        <div className="blog-modal-body">
+          <h2 className="text-3xl md:text-5xl font-black mt-4 mb-6">
+            {selectedBlog.title}
+          </h2>
+
+          <div className="text-sm mb-6 text-zinc-500 flex gap-4">
+            <span>{selectedBlog.date}</span>
+            <span>•</span>
+            <span>{selectedBlog.readTime || "5 min read"}</span>
+          </div>
+
+          <div className="prose max-w-none">
+            {selectedBlog.content}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </section>
   );
 };
 
 export default Blog;
+

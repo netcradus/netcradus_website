@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ['selector', '[data-theme="dark"]'],
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,19 +8,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--bg-color)",
-        surface: "var(--surface-color)",
-
-        /* Brand colors from logo */
-        primary: "var(--primary-accent)",
-        secondary: "var(--secondary-accent)",
-        accent: "var(--secondary-accent)", // Map accent to secondary for consistency with index.css
-
-        /* Optional named shades */
-        "brand-orange": "#FF8A1F",
-        "brand-orange-dark": "#E86A00",
-        "brand-pink": "#FF2D8F",
-        "brand-pink-deep": "#D61A6F",
+        background: "var(--color-bg)",
+        surface: "var(--color-surface)",
+        "surface-raised": "var(--color-surface-raised)",
+        accent: "var(--color-accent)",
+        "accent-bright": "var(--color-accent-bright)",
+        "accent-deep": "var(--color-accent-deep)",
+        "text-primary": "var(--color-text-primary)",
+        "text-secondary": "var(--color-text-secondary)",
+        border: "var(--color-border)",
 
         white: "#ffffff",
         gray: {
@@ -34,7 +31,7 @@ export default {
 
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        display: ['"Playfair Display"', "serif"],
+        display: ["Inter", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
 
@@ -56,22 +53,17 @@ export default {
 
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-
-        /* Main brand gradient */
-        "brand-gradient": "var(--accent-gradient)",
-
-        /* Softer version for backgrounds */
-        "brand-gradient-soft":
-          "linear-gradient(135deg, rgba(255,138,31,0.12) 0%, rgba(255,90,61,0.1) 45%, rgba(255,45,143,0.12) 100%)",
-
-        /* Hero text gradient */
-        "heading-gradient": "var(--accent-gradient)",
+        "red-radial": "radial-gradient(ellipse at 65% 50%, rgba(232, 64, 10, 0.13) 0%, transparent 65%)",
+        "brand-gradient": "linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-bright) 100%)",
+        "heading-gradient": "linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-bright) 100%)",
       },
 
       boxShadow: {
-        brand: "0 10px 30px rgba(255, 45, 143, 0.18)",
-        "brand-lg": "0 20px 60px rgba(255, 45, 143, 0.22)",
-        glow: "0 0 40px rgba(255, 138, 31, 0.18)",
+        brand: "0 10px 30px rgba(232, 64, 10, 0.18)",
+        "brand-lg": "0 20px 60px rgba(232, 64, 10, 0.22)",
+        glow: "0 0 40px rgba(232, 64, 10, 0.18)",
+        "red-glow": "0 0 30px rgba(232, 64, 10, 0.45), 0 0 70px rgba(232, 64, 10, 0.15)",
+        "red-glow-lg": "0 0 50px rgba(232, 64, 10, 0.5), 0 0 100px rgba(232, 64, 10, 0.2)",
       },
     },
   },

@@ -9,12 +9,12 @@ import { Rocket, Globe, BookOpen, Users, DollarSign, ArrowUpCircle } from "lucid
 const BENEFITS = [
     {
         title: "Work at the Frontier",
-        description: "Contribute to ACIS — our AI cybersecurity platform — and other proprietary technology initiatives that are shaping the future of digital security.",
+        description: "Contribute to ACIS â€” our AI cybersecurity platform â€” and other proprietary technology initiatives that are shaping the future of digital security.",
         icon: <Rocket className="w-6 h-6 text-primary" />
     },
     {
         title: "Global Exposure",
-        description: "Work with clients across the UK, India, Europe, and beyond — gaining international experience and cross-cultural capability that accelerates careers.",
+        description: "Work with clients across the UK, India, Europe, and beyond â€” gaining international experience and cross-cultural capability that accelerates careers.",
         icon: <Globe className="w-6 h-6 text-secondary" />
     },
     {
@@ -29,7 +29,7 @@ const BENEFITS = [
     },
     {
         title: "Competitive Compensation",
-        description: "Market-competitive salaries, performance bonuses, and equity participation for senior roles — structured to reward the people who build our success.",
+        description: "Market-competitive salaries, performance bonuses, and equity participation for senior roles â€” structured to reward the people who build our success.",
         icon: <DollarSign className="w-6 h-6 text-secondary" />
     },
     {
@@ -43,165 +43,159 @@ const ROLES = [
     {
         title: "SOC Analyst (L1/L2/L3)",
         department: "Cybersecurity",
-        icon: "🔐",
+        icon: "ðŸ”",
         description: "SIEM monitoring, threat investigation, and incident response across our 24/7 Security Operations Centre."
     },
     {
         title: "Penetration Tester",
         department: "Offensive Security",
-        icon: "🧪",
+        icon: "ðŸ§ª",
         description: "Web app, network, and mobile penetration testing. OSCP or CEH preferred. Remote with occasional client-site work."
     },
     {
         title: "Cloud Architect (AWS/Azure/GCP)",
         department: "Cloud & Infrastructure",
-        icon: "☁️",
+        icon: "â˜ï¸",
         description: "Multi-cloud architecture design, migration delivery, and ongoing CloudOps management for enterprise clients."
     },
     {
         title: "ML / AI Engineer",
         department: "AI & Data",
-        icon: "🤖",
-        description: "Model development, MLOps, and AI integration projects — including ACIS platform development."
+        icon: "ðŸ¤–",
+        description: "Model development, MLOps, and AI integration projects â€” including ACIS platform development."
     },
     {
         title: "Full-Stack Developer",
         department: "Software Engineering",
-        icon: "💻",
+        icon: "ðŸ’»",
         description: "CRM, ERP, and custom application development across our software practice. React, Node.js, Python, and C#."
     },
     {
         title: "GRC / Compliance Consultant",
         department: "Governance & Risk",
-        icon: "📋",
+        icon: "ðŸ“‹",
         description: "ISO 27001, Cyber Essentials, GDPR, and PCI DSS advisory for clients across multiple sectors."
     },
     {
         title: "Account Manager",
         department: "Client Engagement",
-        icon: "🎯",
+        icon: "ðŸŽ¯",
         description: "Strategic client relationship management for our UK enterprise client base. Technology background preferred."
     },
     {
         title: "Business Development Manager",
         department: "Sales",
-        icon: "📊",
+        icon: "ðŸ“Š",
         description: "New business development across our core service lines. Both UK and India-based positions available."
     },
     {
         title: "DevSecOps Engineer",
         department: "DevSecOps",
-        icon: "🏗️",
+        icon: "ðŸ—ï¸",
         description: "CI/CD security integration, IaC security, and container security across our cloud-native development practice."
     }
 ];
 
 export default function CareersPage() {
     return (
-        <div className="pt-16 md:pt-32 pb-20">
+        <div className="bg-white dark:bg-zinc-950 transition-colors duration-500 overflow-hidden">
             {/* Hero Section */}
-            <SectionWrapper>
-                <div className="max-w-4xl mx-auto text-center">
-                    <AnimatedReveal>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-                            Careers at <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Netcradus</span>
+            <section className="py-24 bg-premium-radial relative min-h-[50vh] flex items-center">
+                <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+                    <div className="max-w-4xl reveal">
+                        <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// JOIN THE MISSION</span>
+                        <h1 className="text-4xl md:text-7xl font-display font-black text-zinc-900 dark:text-white mb-8 tracking-tighter leading-none">
+                            Careers at <span className="text-accent italic">Netcradus</span>
                         </h1>
-                    </AnimatedReveal>
-                    <AnimatedReveal delay={0.1}>
-                        <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-8 font-light">
+                        <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-2xl font-sans leading-relaxed mb-10 max-w-2xl">
                             Join the Team That Is Redefining Cybersecurity and Enterprise Technology.
                         </p>
-                    </AnimatedReveal>
-                    <AnimatedReveal delay={0.2}>
-                        <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-8 max-w-3xl mx-auto">
-                            Netcradus is a rapidly growing technology company at an extraordinary point in its journey. With the development of ACIS, our expansion across international markets, and a growing client base, we are actively building a team of exceptional people who want to make a genuine difference — to their clients, to their profession, and to the security of the digital world.
-                            <br /><br />
-                            We do not offer generic IT jobs. We offer the opportunity to work on genuinely challenging problems, with access to cutting-edge technology, under the mentorship of experienced practitioners — in an environment that takes your development as seriously as you do.
+                        <p className="text-zinc-500 dark:text-zinc-500 text-base md:text-lg leading-relaxed max-w-3xl font-sans opacity-80">
+                            Netcradus is a rapidly growing technology company at an extraordinary point in its journey. We are actively building a team of exceptional people who want to make a genuine difference.
                         </p>
-                    </AnimatedReveal>
+                    </div>
                 </div>
-            </SectionWrapper>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(232,64,10,0.05)_0%,transparent_50%)]"></div>
+            </section>
 
             {/* Why Work at Netcradus */}
-            <SectionWrapper className="bg-surface-color/50 border-y border-[var(--border-color)]">
-                <AnimatedReveal>
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Why Work at Netcradus?</h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
+            <section className="py-24 border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/30 transition-colors duration-500">
+                <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+                    <div className="reveal text-center mb-20 max-w-3xl mx-auto">
+                        <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// THE ADVANTAGE</span>
+                        <h2 className="text-4xl md:text-6xl font-display font-black text-zinc-900 dark:text-white tracking-tighter leading-none mb-6">Why Work <span className="text-accent italic">at Netcradus?</span></h2>
+                        <p className="text-zinc-600 dark:text-zinc-400 text-lg font-sans leading-relaxed">We offer the opportunity to work on genuinely challenging problems in an environment that takes your development seriously.</p>
                     </div>
-                </AnimatedReveal>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {BENEFITS.map((benefit, index) => (
-                        <AnimatedReveal key={index} delay={index * 0.1} className="h-full">
-                            <GlassCard className="h-full p-8 hover:-translate-y-2 transition-transform duration-300 flex flex-col">
-                                <div className="w-12 h-12 rounded-xl bg-surface-color border border-[var(--border-color)] flex items-center justify-center mb-6">
-                                    {benefit.icon}
-                                </div>
-                                <h3 className="text-xl font-display font-bold mb-3">
-                                    <span className="text-[var(--text-primary)]">{benefit.title}</span>
-                                </h3>
-                                <p className="text-[var(--text-secondary)] leading-relaxed text-sm flex-grow">
-                                    {benefit.description}
-                                </p>
-                            </GlassCard>
-                        </AnimatedReveal>
+                        <div key={index} className="premium-card p-10 group hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                            <div className="w-14 h-14 rounded-2xl bg-accent/5 flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-all shadow-sm">
+                                {benefit.icon}
+                            </div>
+                            <h3 className="text-xl font-display font-black text-zinc-900 dark:text-white mb-4 uppercase tracking-wider">
+                                {benefit.title}
+                            </h3>
+                            <p className="text-zinc-500 dark:text-zinc-500 text-sm leading-relaxed flex-grow">
+                                {benefit.description}
+                            </p>
+                            <div className="w-12 h-[2px] bg-accent/30 mt-8 group-hover:w-full transition-all duration-700"></div>
+                        </div>
                     ))}
                 </div>
-            </SectionWrapper>
+            </section>
 
             {/* Roles Section */}
-            <SectionWrapper>
-                <div className="max-w-7xl mx-auto">
-                    <AnimatedReveal>
-                        <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Roles We Typically Recruit For</h2>
-                            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-                                We are always looking for exceptional talent across multiple disciplines.
-                            </p>
-                        </div>
-                    </AnimatedReveal>
+            <section className="py-24 bg-premium-radial relative">
+                <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+                    <div className="reveal text-center mb-20 max-w-3xl mx-auto">
+                        <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// RECRUITMENT FEED</span>
+                        <h2 className="text-4xl md:text-6xl font-display font-black text-zinc-900 dark:text-white tracking-tighter leading-none mb-6">Active <span className="text-accent italic">Roles.</span></h2>
+                        <p className="text-zinc-600 dark:text-zinc-400 text-lg font-sans leading-relaxed">We are always looking for exceptional talent across multiple disciplines.</p>
+                    </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {ROLES.map((role, idx) => (
-                            <AnimatedReveal key={idx} delay={idx * 0.05}>
-                                <div className="group p-6 bg-surface-color/50 border border-[var(--border-color)] rounded-xl hover:border-primary/50 transition-all duration-300 h-full flex flex-col backdrop-blur-sm">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <div className="text-3xl">{role.icon}</div>
-                                        <div>
-                                            <h3 className="font-display font-bold text-lg text-[var(--text-primary)] group-hover:text-primary transition-colors">{role.title}</h3>
-                                            <span className="text-xs font-semibold text-secondary uppercase tracking-wider">{role.department}</span>
-                                        </div>
+                            <div key={idx} className="group p-8 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl hover:border-accent hover:shadow-premium transition-all duration-500 h-full flex flex-col backdrop-blur-sm">
+                                <div className="flex items-center gap-5 mb-6">
+                                    <div className="text-4xl group-hover:scale-110 transition-transform duration-500">{role.icon}</div>
+                                    <div>
+                                        <h3 className="font-display font-black text-lg text-zinc-900 dark:text-white uppercase tracking-wider group-hover:text-accent transition-colors leading-tight">{role.title}</h3>
+                                        <span className="text-[10px] font-bold text-accent uppercase tracking-widest">{role.department}</span>
                                     </div>
-                                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed flex-grow">
-                                        {role.description}
-                                    </p>
                                 </div>
-                            </AnimatedReveal>
+                                <p className="text-zinc-500 dark:text-zinc-500 text-sm leading-relaxed flex-grow">
+                                    {role.description}
+                                </p>
+                            </div>
                         ))}
                     </div>
                 </div>
-            </SectionWrapper>
+            </section>
 
             {/* CTA Section */}
-            <SectionWrapper className="pb-0">
-                <GlassCard className="max-w-4xl mx-auto p-12 text-center bg-gradient-to-br from-surface-color/5 to-primary/10 border-primary/20 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] rounded-full mix-blend-screen pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 blur-[100px] rounded-full mix-blend-screen pointer-events-none" />
+            <section className="py-24">
+                <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+                    <div className="premium-card p-12 md:p-20 text-center relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 blur-[100px] rounded-full mix-blend-screen pointer-events-none group-hover:bg-accent/20 transition-all duration-1000" />
+                        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 blur-[100px] rounded-full mix-blend-screen pointer-events-none" />
 
-                    <AnimatedReveal>
-                        <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Ready to Join the Mission?</h2>
-                        <p className="text-lg text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
-                            To apply or explore opportunities, send your CV to our talent team with the role title in the subject line. We review all applications within 5 business days and respond to every candidate.
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a href="mailto:hr@netcradus.com">
-                                <GradientButton className="text-lg px-10 py-4">Email hr@netcradus.com</GradientButton>
-                            </a>
+                        <div className="relative z-10 space-y-8">
+                            <h2 className="text-3xl md:text-5xl font-display font-black text-zinc-900 dark:text-white tracking-tight leading-tight uppercase">Ready to Join <span className="text-accent italic">the Mission?</span></h2>
+                            <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                                To apply or explore opportunities, send your CV to our talent team with the role title in the subject line. We review all applications within 5 business days.
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                                <a href="mailto:hr@netcradus.com" className="btn-primary px-12 py-5 rounded-2xl no-underline shadow-premium transform hover:-translate-y-1 transition-all">
+                                    Email hr@netcradus.com
+                                </a>
+                            </div>
                         </div>
-                    </AnimatedReveal>
-                </GlassCard>
-            </SectionWrapper>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }
+
