@@ -15,6 +15,7 @@ import { useReveal } from "./hooks/useReveal";
 import Platform from "./components/Platform";
 import FloatingContact from "./components/FloatingContact";
 import PolicyPage from "./pages/PolicyPage";
+import PhasePage from "./pages/phasePage";
 
 function AppLayout() {
   useReveal();
@@ -51,6 +52,7 @@ function App() {
           <Route path="contact" element={<ContactPage />} />
           <Route path="careers" element={<CareersPage />} />
           <Route path="policy" element={<PolicyPage />} />
+           <Route path="phase" element={<PhasePage />} />
         </Route>
       </Routes>
     </>

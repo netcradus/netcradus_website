@@ -4,6 +4,8 @@ import iso27701Logo from "../assets/iso-27701-removebg.png";
 import msmeLogo from "../assets/msme-removebg.png";
 import kasperskyLogo from "../assets/kaspersky.png";
 import udyamLogo from "../assets/udyam.png";
+import B2BLogo from "../assets/kas.png";
+
 
 import kasp from "../assets/kas.png";
 import { Link } from "react-router-dom";
@@ -28,13 +30,16 @@ export default function Footer() {
                     </p>
 
    {/* Trust & Certification Logos */}
-<div className="pt-8 flex flex-wrap items-center gap-x-10 gap-y-8">
+<div className="pt-8 flex flex-wrap items-center gap-x-6 gap-y-6">
   {[
-    { src: isoLogo, alt: "ISO 27001", h: "h-12" },
+    { src: isoLogo, alt: "ISO 27001", h: "h-16" },
     { src: iso27701Logo, alt: "ISO 27701", h: "h-12" },
     { src: msmeLogo, alt: "MSME", h: "h-10" },
     { src: kasperskyLogo, alt: "Kaspersky", h: "h-9" },
-    { src: udyamLogo, alt: "Udyam", h: "h-11" },
+     { src: B2BLogo, alt: "B2B", h: "h-9" },
+    { src: udyamLogo, alt: "Udyam", h: "h-9" },
+
+
   ].map((logo, index) => (
     <div key={index} className="group relative">
       <img
@@ -70,7 +75,7 @@ export default function Footer() {
 
                 {/* Navigation Columns */}
                 <div>
-                    <h4 className="text-[10px] font-display font-bold text-[var(--text-secondary)] uppercase tracking-[0.3em] mb-6">Solutions</h4>
+                    <h4 className="text-sm md:text-base font-semibold text-accent tracking-wider mb-6">Solutions</h4>
                     <ul className="space-y-3 text-sm font-sans">
   {[
     { name: "AI & Data Analytics", tab: "ai-data" },
@@ -99,7 +104,7 @@ export default function Footer() {
                 </div>
 
                 <div>
-                    <h4 className="text-[10px] font-display font-bold text-[var(--text-secondary)] uppercase tracking-[0.3em] mb-6">Policies</h4>
+                    <h4 className="text-sm md:text-base font-semibold text-accent tracking-wider mb-6">Policies</h4>
                     <ul className="space-y-3 text-sm font-sans">
                         {["Policy"].map((item) => (
                             <li key={item}>
@@ -113,7 +118,7 @@ export default function Footer() {
                 </div>
 
                 <div>
-                    <h4 className="text-[10px] font-display font-bold text-[var(--text-secondary)] uppercase tracking-[0.3em] mb-6">Corporate</h4>
+                    <h4 className="text-sm md:text-base font-semibold text-accent tracking-wider mb-6">Corporate</h4>
                     <ul className="space-y-3 text-sm font-sans">
                         {["About Netcradus", "Intelligence Blog", "Career Openings", "Contact Dispatch"].map((item) => (
                             <li key={item}>

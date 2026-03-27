@@ -66,14 +66,14 @@ const ACISSection = () => {
             <div className="feature-grid grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <div className="premium-card p-8 border-l-4 border-l-accent">
                 <h4 className="font-bold text-text-primary mb-3 flex items-center gap-2">
-                  <ShieldCheck className="text-accent" size={20} /> 
+                  <ShieldCheck className="text-accent" size={20} />
                   Sub-second Containment
                 </h4>
                 <p className="text-sm text-text-secondary leading-relaxed">Detects and neutralizes threats in real-time, preventing lateral movement before it starts.</p>
               </div>
               <div className="premium-card p-8 border-l-4 border-l-accent">
                 <h4 className="font-bold text-text-primary mb-3 flex items-center gap-2">
-                  <Zap className="text-accent" size={20} /> 
+                  <Zap className="text-accent" size={20} />
                   AI-Powered UEBA
                 </h4>
                 <p className="text-sm text-text-secondary leading-relaxed">Sophisticated User and Entity Behavior Analytics to spot anomalies that traditional tools miss.</p>
@@ -102,89 +102,102 @@ const ACISSection = () => {
               </div>
             </div>
 
-<a
-  href="https://acis.netcradus.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="btn-primary acis-btn inline-flex items-center gap-2 no-underline px-4 py-2"
->
-  Explore ACIS
-  <ArrowRight size={18} className="arrow-icon" />
-</a>         </div>
+            <a
+              href="https://acis.netcradus.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary acis-btn inline-flex items-center gap-2 no-underline px-4 py-2"
+            >
+              Explore ACIS
+              <ArrowRight size={18} className="arrow-icon" />
+            </a>         </div>
 
           <div className="acis-mockup reveal flex justify-center items-center overflow-visible" style={{ transitionDelay: '0.2s' }}>
             <DottedGlobe />
           </div>
         </div>
 
-        {/* Architecture Section from previous designs */}
-        <div className="architecture-interactive reveal mt-24">
-          <div className="section-label text-center">// SYSTEM ARCHITECTURE</div>
-          <h3 className="section-title text-center">Multi-Layered Intelligence.</h3>
+        {/* 🔥 NEW ARCHITECTURE SECTION */}
+<div className="architecture-section mt-28">
+<div className="section-label text-center text-accent">// SYSTEM ARCHITECTURE</div>
+          <h3 className="timeline-section-title text-center">Multi-Layered Intelligence.</h3>
+  {/* ===== IMAGE TOP ===== */}
+  <div className="arch-image-wrapper mb-16">
+    <img
+      src="/img/acis.png"
+      alt="ACIS Architecture"
+      className="arch-image"
+    />
+  </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12 items-center">
-            <div className="arch-layout m-0 w-full relative z-10">
-              <div className="arch-nav flex flex-col gap-3">
-                {ARCHITECTURE_LAYERS.map((layer, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveLayer(idx)}
-                    className={`arch-tab group flex items-center gap-4 p-5 rounded-xl border transition-all duration-300 backdrop-blur-md
-${
-  activeLayer === idx
-    ? "bg-gradient-to-r from-accent/20 to-transparent border-accent shadow-[0_0_25px_rgba(232,64,10,0.2)] scale-[1.03]"
-    : "bg-surface border-border hover:border-accent/40 hover:scale-[1.02]"
-}`}
-                  >
-         <div className={`p-3 rounded-xl transition-all duration-500 
-${activeLayer === idx 
-  ? 'bg-accent text-white shadow-[0_0_15px_rgba(232,64,10,0.6)]' 
-  : 'bg-surface-raised group-hover:bg-accent/10'}`}>
-  <layer.icon size={20} />
-</div>
-
-<div className="flex flex-col items-start">
-  <span className="text-[10px] text-accent font-bold tracking-widest">
-    3.{idx + 1}
-  </span>
-  <span className={`text-xs font-bold tracking-[0.15em] uppercase 
-  ${activeLayer === idx ? 'text-text-primary' : 'text-text-secondary'}`}>
-    {layer.title}
-  </span>
-</div>
-                  </button>
-                ))}
-              </div>
-              <div className="premium-card p-10 mt-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 blur-3xl rounded-full" />
-                <h4 className="font-display font-black text-2xl text-text-primary mb-6 uppercase tracking-wider">{ARCHITECTURE_LAYERS[activeLayer].title}</h4>
-                <p className="text-text-secondary text-lg leading-relaxed mb-8">{ARCHITECTURE_LAYERS[activeLayer].content}</p>
-                <Link to="/services" className="btn-primary px-8 py-3 text-xs inline-flex items-center gap-3 no-underline">
-                  View Specifications 
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
-            </div>
-<div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative">       
- <img
-  src="/img/acis.jpg"
-  alt="ACIS Architecture"
-  className="w-full h-full object-cover object-center"
-/>
-            </div>
+  {/* ===== CONTENT BELOW ===== */}
+<div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+    {/* ===== LEFT: LAYERS ===== */}
+    <div className="arch-nav flex flex-col gap-4">
+      {ARCHITECTURE_LAYERS.map((layer, idx) => (
+        <button
+          key={idx}
+          onClick={() => setActiveLayer(idx)}
+          className={`arch-tab ${activeLayer === idx ? "active" : ""}`}
+        >
+          <div className="icon-box">
+            <layer.icon size={20} />
           </div>
-        </div>
 
+         <div className="layer-text">
+  <div className="layer-label">
+    Layer {idx + 1}
+  </div>
+  <p className="layer-title">{layer.title}</p>
+</div>
+        </button>
+      ))}
+    </div>
+
+    {/* ===== RIGHT: CONTENT ===== */}
+    <div className="arch-content-card">
+      <h4>{ARCHITECTURE_LAYERS[activeLayer].title}</h4>
+      <p>{ARCHITECTURE_LAYERS[activeLayer].content}</p>
+
+      <Link
+        to="/services"
+        className="btn-primary mt-6 inline-flex items-center gap-2 px-6 py-3 text-xs no-underline"
+      >
+        View Specifications
+        <ArrowRight size={14} />
+      </Link>
+    </div>
+
+  </div>
+</div>
         <div className="acis-timeline reveal">
           <div className="section-label text-center">// DEVELOPMENT PHASES</div>
           <h3 className="timeline-section-title text-center">Implementation Journey</h3>
           <div className="timeline-grid">
             {phases.map((phase, idx) => (
-              <div key={idx} className="timeline-item">
-                <span className="phase-label mono">{phase.step}</span>
-                <h4 className="phase-title">{phase.title}</h4>
-                <p className="phase-desc">{phase.desc}</p>
-              </div>
+              <Link
+                to="/phase"
+                key={idx}
+                className="timeline-item group cursor-pointer block transition-all duration-300 hover:scale-[1.04] hover:-translate-y-1"
+              >
+                <span className="phase-label mono group-hover:text-accent transition">
+                  {phase.step}
+                </span>
+
+                <h4 className="phase-title group-hover:text-accent transition">
+                  {phase.title}
+                </h4>
+
+                <p className="phase-desc">
+                  {phase.desc}
+                </p>
+
+                {/* Arrow on hover */}
+                <div className="flex items-center mt-3 text-accent opacity-0 group-hover:opacity-100 transition">
+                  <span className="text-xs tracking-wider uppercase">Explore</span>
+                  <ArrowRight size={14} className="ml-1" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
