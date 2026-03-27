@@ -12,7 +12,7 @@ import "./About.css";
 
 import cehLogo from "../assets/certs/CEHPRACTICAL.png";
 import comptiaLogo from "../assets/certs/Comptia.png";
-import oscpLogo from "../assets/certs/OSCP.png";
+import oscpLogo from "../assets/certs/oscp.png";
 import cisaLogo from "../assets/certs/cisa.png";
 import cismLogo from "../assets/certs/cism.png";
 import crestLogo from "../assets/certs/crest.png";
