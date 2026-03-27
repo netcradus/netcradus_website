@@ -73,7 +73,7 @@ const Blog = () => {
 
       {/* MODAL */}
       <motion.div
-        className="blog-modal-content"
+        className="blog-modal-content "
         initial={{ y: 80, opacity: 0, scale: 0.95 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         exit={{ y: 50, opacity: 0 }}
@@ -99,8 +99,7 @@ const Blog = () => {
             <span>{selectedBlog.readTime || "5 min read"}</span>
           </div>
 
-          <div className="prose max-w-none">
-            {selectedBlog.content}
+<div className="prose prose-neutral dark:prose-invert max-w-none blog-prose">              {selectedBlog.content}
           </div>
         </div>
       </motion.div>

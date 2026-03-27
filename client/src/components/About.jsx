@@ -12,7 +12,16 @@ import "./About.css";
 
 import cehLogo from "../assets/certs/CEHPRACTICAL.png";
 import comptiaLogo from "../assets/certs/Comptia.png";
-import oscpLogo from "../assets/certs/OSCP-removebg.png";
+import oscpLogo from "../assets/certs/OSCP.png";
+import cisaLogo from "../assets/certs/cisa.png";
+import cismLogo from "../assets/certs/cism.png";
+import crestLogo from "../assets/certs/crest.png";
+import crtapLogo from "../assets/certs/crta.png";
+import iscpLogo from "../assets/certs/iscp.png";
+import ewptxLogo from "../assets/certs/ewptx.png";
+import leadauditorLogo from "../assets/certs/leadauditor.png";
+import shieldLogo from "../assets/certs/shield.png";
+
 
 const VALUES = [
   {
@@ -60,41 +69,81 @@ const About = () => {
               </p>
             </div>
 
-            <div className="glass-main p-10 flex flex-col md:flex-row items-center justify-between gap-8 group rounded-3xl">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent"><ShieldCheck size={24} /></div>
-                <h4 className="text-xl font-display font-black text-zinc-900 dark:text-white uppercase tracking-widest">
-                  Elite Engineering.
-                </h4>
-              </div>
+            <div className="glass-main p-12 rounded-3xl text-center group">
 
-              <div className="flex items-center gap-8 grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 dark:invert">
-                <img src={cehLogo} alt="CEH" className="h-10 w-auto object-contain" />
-                <img src={comptiaLogo} alt="CompTIA" className="h-10 w-auto object-contain" />
-                <img src={oscpLogo} alt="OSCP" className="h-10 w-auto object-contain" />
+              {/* Heading */}
+              <div className="glass-main p-12 rounded-3xl text-center">
+
+                <h4 className="text-xl md:text-2xl font-display font-black text-zinc-900 dark:text-white uppercase tracking-widest">
+                  Elite Engineering
+                </h4>
+
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2 mb-10">
+                  Our Security <span className="text-accent font-semibold">Professionals</span> with Top Certifications
+                </p>
+
+                <div className="flex justify-center">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 px-18 py-6 gap-x-10 gap-y-8 place-items-center max-w-3xl mx-auto">
+
+                    <img src={cehLogo} className="h-10 object-contain" />
+                    <img src={comptiaLogo} className="h-10 object-contain" />
+                    <img src={oscpLogo} className="h-10 object-contain" />
+
+                    <img src={shieldLogo} className="h-10 object-contain" />
+      <img src={cisaLogo} className="h-10 object-contain" />
+      <img src={cismLogo} className="h-10 object-contain" />
+      <img src={crestLogo} className="h-10 object-contain" />
+      <img src={iscpLogo}className="h-10 object-contain" />
+      <img src={crtapLogo} className="h-10 object-contain" />
+            <img src={leadauditorLogo}className="h-10 object-contain" />
+      {/* <img src={ewptxLogo} className="h-10 object-contain" /> */}
+
+                  </div>
+                </div>
               </div>
             </div>
-
             <div className="mission-vision-grid">
-              <div className="vision-card">
-                <Target className="card-icon" />
-                <h3>The Mission</h3>
-                <p>
-                  To empower organisations with intelligent, secure, and
-                  future-proof technology solutions â€” enabling growth without
-                  boundaries.
-                </p>
-              </div>
+             <div className="grid md:grid-cols-2 gap-8">
 
-              <div className="vision-card">
-                <Eye className="card-icon" />
-                <h3>The Vision</h3>
-                <p>
-                  To pioneer the next generation of autonomous defense through
-                  ACIS, making world-class protection the baseline for every
-                  enterprise.
-                </p>
-              </div>
+  {/* Mission */}
+  <div className="p-8 rounded-2xl 
+    bg-zinc-100 dark:bg-white/5 
+    backdrop-blur 
+    border border-zinc-200 dark:border-white/10 
+    hover:border-accent/40 transition-all">
+
+    <Target className="mb-4 text-accent" />
+
+    <h3 className="text-lg font-bold 
+      text-zinc-900 dark:text-white mb-2">
+      Mission
+    </h3>
+
+    <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+      To empower organisations with intelligent, secure, and future-proof technology solutions — enabling growth without boundaries.
+    </p>
+  </div>
+
+  {/* Vision */}
+  <div className="p-8 rounded-2xl 
+    bg-zinc-100 dark:bg-white/5 
+    backdrop-blur 
+    border border-zinc-200 dark:border-white/10 
+    hover:border-accent/40 transition-all">
+
+    <Eye className="mb-4 text-accent" />
+
+    <h3 className="text-lg font-bold 
+      text-zinc-900 dark:text-white mb-2">
+      Vision
+    </h3>
+
+    <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+      To pioneer the next generation of autonomous defense through ACIS, making world-class protection the baseline for every enterprise.
+    </p>
+  </div>
+
+</div>
             </div>
           </div>
 
@@ -102,50 +151,108 @@ const About = () => {
           <div
             className="lg:col-span-5 reveal relative lg:mt-32"
           >
-            <div className="glass-main p-10 space-y-10 rounded-3xl">
+            <div className="p-10 space-y-10 rounded-3xl  bg-zinc-100 dark:bg-white/5 backdrop-blur border border-zinc-200 dark:border-white/10">
               <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.4em] mb-4">Core Values</h3>
+           <div className="space-y-6">
+  {VALUES.map((val, idx) => (
+    <div
+      key={idx}
+      className="flex items-start gap-4 p-4 rounded-xl 
+      bg-transparent hover:bg-zinc-100 dark:hover:bg-white/5 
+      transition-all"
+    >
 
-              <div className="space-y-8">
-                {VALUES.map((val, idx) => (
-                  <div key={idx} className="flex gap-6 group">
-                    <div className="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all shadow-sm">{val.icon}</div>
-                    <div className="space-y-1">
-                      <h4 className="font-display font-black text-zinc-900 dark:text-white uppercase tracking-wider text-sm">{val.name}</h4>
-                      <p className="text-zinc-500 dark:text-zinc-500 text-xs leading-relaxed">{val.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+      {/* Icon */}
+      <div className="w-10 h-10 rounded-lg 
+        bg-accent/10 flex items-center justify-center text-accent">
+        {val.icon}
+      </div>
+
+      {/* Content */}
+      <div>
+        <h4 className="text-sm font-semibold 
+          text-zinc-900 dark:text-white">
+          {val.name}
+        </h4>
+
+        <p className="text-xs 
+          text-zinc-500 dark:text-zinc-400 
+          mt-1 leading-relaxed">
+          {val.desc}
+        </p>
+      </div>
+
+    </div>
+  ))}
+</div>
             </div>
+           <div className="mt-10 space-y-6">
 
-            <div className="location-nodes">
-              <div className="location-image-card">
-                <img
-                  src="/generated/corporate_office_cyber_1773394698579.png"
-                  alt="Netcradus Global Operations"
-                  className="location-image"
-                />
-                <div className="location-overlay"></div>
-              </div>
+ 
 
-              <h3 className="sidebar-title">Global Nodes</h3>
+  {/* Image Card */}
+ <div className="mt-10 space-y-6">
 
-              <div className="node-item">
-                <MapPin className="node-icon" size={16} />
-                <div>
-                  <span className="node-name">UK HEADQUARTERS</span>
-                  <span className="node-loc">Leicester, England</span>
-                </div>
-              </div>
+  
+  {/* Image Card */}
+  <div className="relative rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/10">
 
-              <div className="node-item">
-                <Server className="node-icon" size={16} />
-                <div>
-                  <span className="node-name">INDIA TECHNOLOGY NODE</span>
-                  <span className="node-loc">Greater Noida West</span>
-                </div>
-              </div>
-            </div>
+    <img
+      src="/generated/corporate_office_cyber_1773394698579.png"
+      alt="Netcradus Global Operations"
+      className="w-full h-48 object-cover"
+    />
+
+    {/* Overlay (adaptive) */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent dark:from-black/70"></div>
+
+   
+  </div>
+
+  {/* Locations Card */}
+  <div className="p-6 rounded-2xl 
+    bg-zinc-100 dark:bg-white/5 
+    backdrop-blur 
+    border border-zinc-200 dark:border-white/10 
+    space-y-4">
+{/* Title */}
+  <h3 className="text-xs mb-2  mx-4 font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-[0.3em]">
+    Global Presence
+  </h3>
+
+    {/* Node 1 */}
+    <div className="flex items-center gap-4">
+      <div className="w-9 h-9 bg-accent/10 rounded-lg flex items-center justify-center text-accent">
+        <MapPin size={16} />
+      </div>
+      <div>
+        <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+          UK Headquarters
+        </p>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          Leicester, England
+        </p>
+      </div>
+    </div>
+
+    {/* Node 2 */}
+    <div className="flex items-center gap-4">
+      <div className="w-9 h-9 bg-accent/10 rounded-lg flex items-center justify-center text-accent">
+        <Server size={16} />
+      </div>
+      <div>
+        <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+          India Technology Node
+        </p>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          Greater Noida West
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
           </div>
         </div>
       </div>
