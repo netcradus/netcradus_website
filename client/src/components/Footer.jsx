@@ -135,17 +135,45 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 mt-16 pt-10 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center text-[10px] font-display font-bold text-text-secondary tracking-[0.3em] uppercase gap-6">
-                <div className="flex items-center gap-4">
-                    <span>UK & INDIA</span>
-                    <span className="w-1 h-1 rounded-full bg-accent/20" />
-                    <span>GLOBAL MSSP OPERATIVE</span>
-                </div>
-                <div className="flex items-center gap-8">
-                    <p>Â© 2026 Netcradus Limited.</p>
-                    <p className="opacity-80">Designed for resilience.</p>
-                </div>
-            </div>
+      <div className="relative mt-20 pt-12">
+  {/* ✨ Gradient Divider */}
+  <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+
+  <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+    
+    <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-display uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+      
+      {/* LEFT SIDE */}
+      <div className="flex items-center gap-5 text-center md:text-left">
+        <span className="hover:text-accent transition-colors duration-300 cursor-default">
+          UK & INDIA
+        </span>
+
+        {/* ✨ Stylish separator */}
+        <span className="w-6 h-[1px] bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+
+        <span className="hover:text-accent transition-colors duration-300 cursor-default">
+          Global MSSP Operative
+        </span>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="flex flex-col md:flex-row items-center gap-3 md:gap-8 text-center md:text-right">
+        
+        <p className="opacity-80 hover:opacity-100 transition duration-300">
+          © 2026 Netcradus Private Limited. All rights reserved.
+        </p>
+
+        <div className="hidden md:block w-[1px] h-4 bg-zinc-300/30 dark:bg-zinc-700/40" />
+
+        <p className="italic text-zinc-400 dark:text-zinc-500 hover:text-accent transition duration-300">
+          Designed for resilience
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
         </footer>
     );
 }
