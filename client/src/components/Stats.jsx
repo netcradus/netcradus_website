@@ -1,68 +1,124 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Star } from 'lucide-react';
-import './Stats.css';
+import { useEffect, useState } from "react";
+import SectionWrapper from "./ui/SectionWrapper";
 
-const Counter = ({ end, duration, suffix = "" }) => {
-  const [count, setCount] = useState(0);
-  const countRef = useRef(null);
-  const [started, setStarted] = useState(false);
+const stats = [
+  { label: "Threat Detection", value: 99.7, suffix: "%", color: "#ff4d00" },
+  { label: "Response Time", value: 95, suffix: "%", color: "#ff7a18" },
+  { label: "Coverage", value: 100, suffix: "%", color: "#ff2d00" },
+  { label: "System Health", value: 98, suffix: "%", color: "#ff5a00" },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) setStarted(true);
-    }, { threshold: 0.5 });
+function CircularProgress({ value, color }) {
+  const radius = 50;
+  const stroke = 6;
+  const normalizedRadius = radius - stroke * 0.5;
+  const circumference = normalizedRadius * 2 * Math.PI;
 
-    if (countRef.current) observer.observe(countRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    let startTimestamp = null;
-    const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      setCount(Math.floor(progress * end));
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-    window.requestAnimationFrame(step);
-  }, [started, end, duration]);
-
-  return <span ref={countRef}>{count}{suffix}</span>;
-};
-
-const Stats = () => {
-  const stats = [
-    { label: "Threat detection accuracy", value: 99.7, suffix: "%" },
-    { label: "Average response time", value: 2, suffix: " min", prefix: "< " },
-    { label: "Organisations protected", value: 150, suffix: "+" },
-    { label: "Monitoring coverage", value: 24, suffix: "/7" }
-  ];
-
-
+  const strokeDashoffset =
+    circumference - (value / 100) * circumference;
 
   return (
-    <section id="stats" className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
-      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
-          {stats.map((stat, index) => (
-            <div key={index} className="reveal group">
-              <div className="text-4xl md:text-6xl font-display font-black text-text-primary mb-4 tracking-tighter">
-                {stat.prefix}
-                <Counter end={stat.value === 99.7 ? 99 : stat.value} duration={2000} suffix={stat.value === 99.7 ? ".7" + stat.suffix : stat.suffix} />
+    <svg height={radius * 2} width={radius * 2}>
+      {/* Background */}
+      <circle
+        stroke="rgba(120,120,120,0.1)"
+        fill="transparent"
+        strokeWidth={stroke}
+        r={normalizedRadius}
+        cx={radius}
+        cy={radius}
+      />
+
+      {/* Progress */}
+      <circle
+        stroke={color}
+        fill="transparent"
+        strokeWidth={stroke}
+        strokeLinecap="round"
+        strokeDasharray={circumference + " " + circumference}
+        style={{
+          strokeDashoffset,
+          transition: "stroke-dashoffset 1.5s ease",
+          filter: `drop-shadow(0 0 6px ${color})`
+        }}
+        r={normalizedRadius}
+        cx={radius}
+        cy={radius}
+      />
+    </svg>
+  );
+}
+
+function Counter({ end }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const duration = 1500;
+    const stepTime = Math.abs(Math.floor(duration / end));
+
+    const timer = setInterval(() => {
+      start += 1;
+      setCount(start);
+      if (start >= end) clearInterval(timer);
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [end]);
+
+  return count;
+}
+
+export default function Stats() {
+  return (
+    <SectionWrapper className="py-24 bg-gradient-to-b from-white to-zinc-100 dark:from-black dark:to-zinc-950">
+
+      <div className="max-w-screen-2xl mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-6xl font-bold text-zinc-900 dark:text-white">
+            System <span className="text-orange-500">Performance</span>
+          </h2>
+          <p className="text-zinc-500 dark:text-zinc-400 mt-4">
+            Real-time analytics across global infrastructure
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className="relative p-[1px] rounded-3xl bg-gradient-to-br from-orange-500/20 to-transparent"
+            >
+              <div className="rounded-3xl bg-white/70 dark:bg-zinc-900/60 backdrop-blur-xl border border-zinc-200 dark:border-zinc-800 p-6 flex flex-col items-center justify-center gap-4 hover:scale-[1.03] transition-all duration-500">
+
+                {/* Glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,80,20,0.08),transparent)] opacity-0 hover:opacity-100 transition duration-500" />
+
+                {/* Chart */}
+                <div className="relative">
+                  <CircularProgress value={stat.value} color={stat.color} />
+
+                  {/* Center Value */}
+                  <div className="absolute inset-0 flex items-center justify-center text-lg font-bold text-zinc-900 dark:text-white">
+                    <Counter end={Math.floor(stat.value)} />{stat.suffix}
+                  </div>
+                </div>
+
+                {/* Label */}
+                <p className="text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase text-zinc-500 dark:text-zinc-400 text-center">
+                  {stat.label}
+                </p>
+
               </div>
-              <p className="text-[10px] md:text-xs font-bold text-text-secondary uppercase tracking-[0.4em] group-hover:text-accent transition-colors duration-500 font-display">{stat.label}</p>
             </div>
           ))}
+
         </div>
       </div>
-
-
-    </section>
+    </SectionWrapper>
   );
-};
-
-export default Stats;
-
+}

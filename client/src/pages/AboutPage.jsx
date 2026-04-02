@@ -3,6 +3,7 @@ import SubHero from '../components/SubHero';
 import About from "../components/About";
 import Stats from "../components/Stats";
 import CTABanner from "../components/CTABanner";
+import Certifications from '../components/Certifications';
 
 const AboutPage = () => {
     useEffect(() => {
@@ -19,6 +20,7 @@ const AboutPage = () => {
             <About />
             <Stats />
             <CTABanner />
+            <Certifications/>
         </>
     );
 };

@@ -1,13 +1,5 @@
 import companyLogoImage from "../assets/companyLogo.png";
-import isoLogo from "../assets/ISO-Loogo-removebg.png";
-import iso27701Logo from "../assets/iso-27701-removebg.png";
-import msmeLogo from "../assets/msme-removebg.png";
-import kasperskyLogo from "../assets/kaspersky.png";
-import udyamLogo from "../assets/udyam.png";
-import B2BLogo from "../assets/kas.png";
 
-
-import kasp from "../assets/kas.png";
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, Linkedin, ArrowUpRight } from "lucide-react";
 import MagneticWrapper from "./ui/MagneticWrapper";
@@ -30,7 +22,7 @@ export default function Footer() {
                     </p>
 
    {/* Trust & Certification Logos */}
-<div className="pt-8 flex flex-wrap items-center gap-x-6 gap-y-6">
+{/* <div className="pt-8 flex flex-wrap items-center gap-x-6 gap-y-6">
   {[
     { src: isoLogo, alt: "ISO 27001", h: "h-16" },
     { src: iso27701Logo, alt: "ISO 27701", h: "h-12" },
@@ -51,7 +43,7 @@ export default function Footer() {
       />
     </div>
   ))}
-</div>
+</div> */}
                     <div className="flex items-center gap-4">
                         {[
                             { Icon: Linkedin, href: "https://uk.linkedin.com/company/netcradus-limited?trk=public_post_follow-view-profile" },
@@ -174,6 +166,7 @@ export default function Footer() {
     </div>
   </div>
 </div>
+
         </footer>
     );
 }
