@@ -500,3 +500,48 @@
   color: var(--text-primary);
   line-height: 1.4;
 }
+
+@media (max-width: 768px) {
+
+  /* FORCE PROPER GRID ALIGNMENT */
+  .arch-tab {
+    display: grid;
+    grid-template-columns: 42px 1fr; /* 🔥 FIX ICON + TEXT */
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 14px;
+  }
+
+  /* ICON FIXED */
+  .icon-box {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* TEXT BLOCK */
+  .layer-text {
+    width: 100%;
+  }
+
+  /* REMOVE BAD WIDTH */
+  .layer-label {
+    width: auto;   /* 🔥 VERY IMPORTANT */
+    font-size: 10px;
+  }
+
+  /* TITLE FIX */
+  .layer-title {
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+
+    word-break: break-word; /* prevents weird wrapping */
+  }
+
+}
