@@ -4,8 +4,14 @@ import About from "../components/About";
 import Stats from "../components/Stats";
 import CTABanner from "../components/CTABanner";
 import Certifications from '../components/Certifications';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const AboutPage = () => {
+    usePageMeta(
+        'About | Netcradus',
+        'Learn about Netcradus, our cybersecurity mission, global presence, and ACIS-driven approach to enterprise resilience.'
+    );
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -20,7 +26,7 @@ const AboutPage = () => {
             <About />
             <Stats />
             <CTABanner />
-            <Certifications/>
+            <Certifications />
         </>
     );
 };

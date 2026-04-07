@@ -16,6 +16,13 @@ import Platform from "./components/Platform";
 import FloatingContact from "./components/FloatingContact";
 import PolicyPage from "./pages/PolicyPage";
 import PhasePage from "./pages/phasePage";
+import ResourcesPage from "./pages/ResourcesPage";
+import NewsletterPage from "./pages/NewsletterPage";
+import TermsPage from "./pages/TermsPage";
+import DataProtectionPage from "./pages/DataProtectionPage";
+import CookiesPage from "./pages/CookiesPage";
+import ResponsibleDisclosurePage from "./pages/ResponsibleDisclosurePage";
+import BlogPostPage from "./pages/BlogPostPage";
 
 function AppLayout() {
   useReveal();
@@ -49,10 +56,17 @@ function App() {
           <Route path="acis" element={<ACISPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="blog" element={<BlogPage />} />
+          <Route path="blog/:slug" element={<BlogPostPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="careers" element={<CareersPage />} />
+          <Route path="resources" element={<ResourcesPage />} />
+          <Route path="newsletter" element={<NewsletterPage />} />
           <Route path="policy" element={<PolicyPage />} />
-           <Route path="phase" element={<PhasePage />} />
+          <Route path="terms" element={<TermsPage />} />
+          <Route path="data-protection" element={<DataProtectionPage />} />
+          <Route path="cookies" element={<CookiesPage />} />
+          <Route path="responsible-disclosure" element={<ResponsibleDisclosurePage />} />
+          <Route path="phase" element={<PhasePage />} />
         </Route>
       </Routes>
     </>

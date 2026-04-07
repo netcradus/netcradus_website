@@ -6,31 +6,31 @@ import './ACISSection.css';
 
 const ARCHITECTURE_LAYERS = [
   {
-    title: "Layer 1 — AI-Powered SIEM",
+    title: "AI-Powered SIEM",
     content:
       "A real-time intelligent log and event analysis engine that continuously ingests telemetry across endpoints, networks, and cloud systems. Using advanced behavioral analytics, anomaly detection, and correlation models, it establishes dynamic baselines and detects threats with high precision and minimal false positives.",
     icon: Activity,
   },
   {
-    title: "Layer 2 — Autonomous SOAR & Response Engine",
+    title: "Autonomous SOAR & Response Engine",
     content:
       "An autonomous orchestration layer that executes real-time threat response without human intervention. It prioritizes incidents, triggers playbooks, isolates compromised systems, and ensures sub-second containment across distributed infrastructure environments.",
     icon: Cpu,
   },
   {
-    title: "Layer 3 — AI Red Team Simulator",
+    title: "AI Red Team Simulator",
     content:
       "A continuous adversarial simulation engine powered by reinforcement learning that mimics real-world attack vectors. It proactively identifies vulnerabilities, stress-tests defenses, and strengthens system resilience through intelligent attack path modeling.",
     icon: ShieldAlert,
   },
   {
-    title: "Layer 4 — Self-Healing & Deception Engine",
+    title: "Self-Healing & Deception Engine",
     content:
       "A dynamic defense layer that automatically isolates compromised nodes, deploys deception traps, and rebuilds secure states. It misleads attackers while ensuring system continuity through automated remediation and adaptive recovery mechanisms.",
     icon: ShieldCheck,
   },
   {
-    title: "Layer 5 — Threat Intelligence Swarm",
+    title: "Threat Intelligence Swarm",
     content:
       "A distributed network of AI agents that continuously share and learn from global threat intelligence. This layer enables predictive defense by correlating emerging attack patterns and adapting security posture across the entire ecosystem.",
     icon: Target,
@@ -122,13 +122,13 @@ const ACISSection = () => {
 <div className="section-label text-center text-accent">// SYSTEM ARCHITECTURE</div>
           <h3 className="timeline-section-title text-center">Multi-Layered Intelligence.</h3>
   {/* ===== IMAGE TOP ===== */}
-  <div className="arch-image-wrapper mb-16">
+  {/* <div className="arch-image-wrapper mb-16">
     <img
-      src="/img/acis.png"
+      src="/generated/ai_data_network_1773394527444.png"
       alt="ACIS Architecture"
       className="arch-image"
     />
-  </div>
+  </div> */}
 
   {/* ===== CONTENT BELOW ===== */}
 <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">

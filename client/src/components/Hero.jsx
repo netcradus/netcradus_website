@@ -1,102 +1,83 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import CyberCore3D from './CyberCore3D';
-import AnimatedReveal from './ui/AnimatedReveal';
-import MagneticWrapper from './ui/MagneticWrapper';
-import './Hero.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import AmbientMesh from "./AmbientMesh";
+import AnimatedReveal from "./ui/AnimatedReveal";
+import MagneticWrapper from "./ui/MagneticWrapper";
+import "./Hero.css";
 
 const Hero = () => {
   return (
-  <section className="hero relative overflow-hidden bg-premium-radial min-h-screen flex items-center pt-32 pb-20">
+    <section className="hero relative flex min-h-screen items-center overflow-hidden bg-premium-radial pb-20 pt-32">
+      <AmbientMesh className="opacity-90" />
+      <div className="absolute left-1/2 top-32 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-accent/10 blur-[140px] dark:bg-accent/12" />
+      <div className="absolute left-[8%] top-[22%] h-40 w-40 rounded-full border border-accent/10 bg-white/20 blur-3xl dark:bg-white/5" />
+      <div className="absolute bottom-[14%] right-[10%] h-52 w-52 rounded-full border border-accent/10 bg-accent/8 blur-3xl" />
 
-  {/* Glow Background */}
-  <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-accent/10 blur-[140px] rounded-full"></div>
-  <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-accent/5 blur-[120px] rounded-full"></div>
+      <div className="container relative z-10 mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <AnimatedReveal>
+            <span className="mb-6 block text-[11px] font-bold uppercase tracking-[0.35em] text-accent">
+              Autonomous Cyber Immune System
+            </span>
 
-  <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10">
-    
-    <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative inline-block">
+              <div className="absolute inset-x-6 bottom-1 h-16 rounded-full bg-[radial-gradient(circle,rgba(232,64,10,0.18),transparent_68%)] blur-2xl dark:bg-[radial-gradient(circle,rgba(232,64,10,0.24),transparent_68%)]" />
+              <h1 className="relative mb-6 text-[clamp(2.75rem,6vw,5rem)] font-black leading-[1.03] tracking-tight text-[var(--color-text-primary)] [text-shadow:0_0_26px_rgba(232,64,10,0.08)] dark:[text-shadow:0_0_36px_rgba(232,64,10,0.16)]">
+                Engineering Digital Resilience for the{" "}
+                <span className="text-accent italic">Global Enterprise</span>
+              </h1>
+            </div>
 
-      {/* LEFT */}
-      <div>
-        <AnimatedReveal>
-          <span className="text-[11px] font-bold tracking-[0.35em] text-accent uppercase mb-6 block">
-            Autonomous Cyber Immune System
-          </span>
+            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-[var(--color-text-secondary)]">
+              Beyond detection. Netcradus builds autonomous cyber immune systems that predict,
+              neutralize, and evolve against modern threats.
+            </p>
 
-          <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black leading-[1.05] tracking-tight text-[var(--color-text-primary)] mb-6">
-            Engineering Digital Resilience for the{" "}
-            <span className="text-accent italic">Global Enterprise</span>
-          </h1>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link to="/contact">
+                <MagneticWrapper>
+                  <button className="btn-hero-primary">Request Audit</button>
+                </MagneticWrapper>
+              </Link>
 
-          <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed max-w-xl mb-10">
-            Beyond detection. Netcradus builds autonomous cyber immune systems that predict,
-            neutralize, and evolve against modern threats.
+              <MagneticWrapper>
+                <a
+                  href="https://acis.netcradus.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-hero-secondary"
+                >
+                  Explore ACIS
+                  <ArrowRight size={16} />
+                </a>
+              </MagneticWrapper>
+            </div>
+          </AnimatedReveal>
+        </div>
+
+        <div className="mt-20 border-t border-[var(--color-border)] pt-10">
+          <p className="mb-6 text-center text-xs uppercase tracking-[0.3em] text-[var(--color-text-secondary)]">
+            Trusted across critical sectors
           </p>
 
-          {/* CTA */}
-          <div className="flex flex-wrap gap-4">
-
-            <Link to="/contact">
-              <MagneticWrapper>
-                <button className="btn-hero-primary">
-                  Request Audit
-                </button>
-              </MagneticWrapper>
-            </Link>
-
-            <MagneticWrapper>
-              <a
-                href="https://acis.netcradus.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-hero-secondary"
-              >
-                Explore ACIS
-                <ArrowRight size={16} />
-              </a>
-            </MagneticWrapper>
-
+          <div className="flex flex-wrap justify-center gap-8">
+            {["Healthcare", "Finance", "Infrastructure", "Government"].map((sector) => (
+              <div key={sector} className="group flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-accent shadow-[0_0_14px_rgba(232,64,10,0.2)] transition group-hover:scale-125" />
+                <span className="text-sm text-[var(--color-text-secondary)] transition group-hover:text-accent">
+                  {sector}
+                </span>
+              </div>
+            ))}
           </div>
-        </AnimatedReveal>
+        </div>
       </div>
 
-      {/* RIGHT */}
-      <div className="relative h-[550px] hidden lg:block">
-        <CyberCore3D />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+        <ChevronDown size={22} />
       </div>
-
-    </div>
-
-    {/* TRUST */}
-    <div className="mt-20 pt-10 border-t border-[var(--color-border)]">
-
-      <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-text-secondary)] mb-6">
-        Trusted across critical sectors
-      </p>
-
-      <div className="flex flex-wrap gap-8">
-        {['Healthcare', 'Finance', 'Infrastructure', 'Government'].map((sector) => (
-          <div key={sector} className="flex items-center gap-2 group">
-            <div className="w-2 h-2 bg-accent rounded-full group-hover:scale-125 transition" />
-            <span className="text-sm text-[var(--color-text-secondary)] group-hover:text-accent transition">
-              {sector}
-            </span>
-          </div>
-        ))}
-      </div>
-
-    </div>
-
-  </div>
-
-  {/* Scroll */}
-  <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-    <ChevronDown size={22} />
-  </div>
-
-</section>
+    </section>
   );
 };
 

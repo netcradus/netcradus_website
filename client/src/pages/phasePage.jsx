@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
+import PageHero from "../components/PageHero";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const phases = [
   {
     title: "Phase 1",
     subtitle: "Deep Environmental Learning",
-    desc: `In this foundational phase, the system performs deep analysis of your entire digital ecosystem to understand what “normal” looks like. It continuously observes network traffic, user behavior, device communication, and application interactions.
+    desc: `In this foundational phase, the system performs deep analysis of your entire digital ecosystem to understand what normal looks like. It continuously observes network traffic, user behavior, device communication, and application interactions.
 
 Using advanced behavioral analytics and unsupervised machine learning, it builds a dynamic baseline model that evolves with your organization. This includes identifying usage trends, peak activity windows, and typical access patterns.
 
@@ -15,7 +17,7 @@ This phase ensures that the system develops a precise understanding of normal op
       "Dynamic baseline modeling",
       "Adaptive learning as infrastructure grows",
     ],
-    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b",
+    img: "/generated/ai_data_network_1773394527444.png",
   },
   {
     title: "Phase 2",
@@ -31,7 +33,7 @@ The system continuously learns and refines its monitoring thresholds to minimize
       "Context-aware anomaly detection",
       "Adaptive thresholds to reduce false alerts",
     ],
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    img: "/generated/hacker_code_screen_1773394510636.png",
   },
   {
     title: "Phase 3",
@@ -47,7 +49,7 @@ By filtering out noise and focusing only on genuine threats, this phase helps or
       "Risk scoring based on impact and likelihood",
       "Reduction of false positives and alert fatigue",
     ],
-    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+    img: "/generated/jlk.png",
   },
   {
     title: "Phase 4",
@@ -63,92 +65,79 @@ Operating at the network edge, the system ensures threats are contained before t
       "Blocking malicious traffic in real-time",
       "Edge-level response for faster protection",
     ],
-    img: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72",
+    img: "/generated/AI.png",
   },
   {
     title: "Phase 5",
     subtitle: "Immunity & Learning",
-    desc: `The final phase transforms the system into a continuously evolving defense mechanism. Every detected threat contributes to improving the system’s intelligence.
+    desc: `The final phase transforms the system into a continuously evolving defense mechanism. Every detected threat contributes to improving the system's intelligence.
 
 The AI retrains itself using new data, updates threat models, and strengthens defenses against similar future attacks.
 
-This creates a self-learning cybersecurity ecosystem that adapts to emerging threats, evolving user behavior, and global attack patterns — effectively functioning like an immune system for your infrastructure.`,
+This creates a self-learning cybersecurity ecosystem that adapts to emerging threats, evolving user behavior, and global attack patterns, effectively functioning like an immune system for your infrastructure.`,
     points: [
       "Continuous learning from past incidents",
       "Real-time threat intelligence updates",
       "Adaptive defense against evolving threats",
       "Self-healing and strengthening architecture",
     ],
-    img: "https://images.unsplash.com/photo-1535223289827-42f1e9919769",
+    img: "/generated/secure_shield_concept_1773394778055.png",
   },
 ];
 
 export default function PhasePage() {
+  usePageMeta(
+    "Phases | Netcradus",
+    "Review the ACIS implementation journey across learning, surveillance, classification, response, and adaptive security phases."
+  );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <section className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black text-white py-20 px-4 sm:px-6 lg:px-16">
-      
-      {/* Heading */}
-      <div className="text-center max-w-4xl mx-auto mb-20">
-        <h1 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-          AI Defense Lifecycle
-        </h1>
-        <p className="text-gray-400 text-lg leading-relaxed">
-          A fully autonomous cybersecurity architecture designed to learn, detect, respond, and evolve — ensuring complete protection across every layer of your infrastructure.
-        </p>
-      </div>
-
-      {/* Phases */}
-      <div className="space-y-24 max-w-6xl mx-auto">
-        {phases.map((phase, index) => (
-          <div
-            key={index}
-            className={`flex flex-col md:flex-row items-start gap-10 ${
-              index % 2 !== 0 ? "md:flex-row-reverse" : ""
-            }`}
-          >
-            {/* Image */}
-            <div className="w-full md:w-1/2 group">
-              <div className="overflow-hidden rounded-2xl shadow-xl">
-                <img
-                  src={`${phase.img}?auto=format&fit=crop&w=900&q=80`}
-                  alt={phase.subtitle}
-                  className="w-full h-[260px] md:h-[360px] object-cover transform group-hover:scale-105 transition duration-500"
-                />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="w-full md:w-1/2">
-              <span className="text-sm uppercase tracking-widest text-orange-500">
-                {phase.title}
-              </span>
-
-              <h2 className="text-2xl md:text-3xl font-semibold mt-2 mb-4">
-                {phase.subtitle}
-              </h2>
-
-              <p className="text-gray-400 leading-relaxed whitespace-pre-line">
-                {phase.desc}
-              </p>
-
-              {/* Bullet Points */}
-              <ul className="mt-6 space-y-2">
-                {phase.points.map((point, i) => (
-                  <li key={i} className="flex items-start gap-2 text-gray-300">
-                    <span className="w-2 h-2 mt-2 rounded-full bg-orange-500"></span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Decorative line */}
-              <div className="mt-6 h-[2px] w-24 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
-            </div>
+    <div className="bg-background transition-colors duration-500">
+      <PageHero
+        label="// DEVELOPMENT PHASES"
+        title="AI Defense Lifecycle"
+        subtitle="A fully autonomous cybersecurity architecture designed to learn, detect, respond, and evolve while preserving clarity, speed, and operational resilience."
+        media={
+          <div className="overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4 shadow-[0_18px_60px_rgba(232,64,10,0.08)]">
+            <img src="/generated/ChatGPT Image 1.png" alt="AI defense lifecycle" className="h-[320px] w-full rounded-[24px] object-cover" />
           </div>
-        ))}
-      </div>
+        }
+      />
 
-      
-    </section>
+      <section className="py-0">
+        <div className="mx-auto max-w-6xl space-y-8 px-4 pb-24 sm:px-6 lg:px-16">
+          {phases.map((phase, index) => (
+            <article
+              key={phase.title}
+              className={`grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center ${
+                index % 2 ? "" : ""
+              }`}
+            >
+              <div className={index % 2 ? "lg:order-2" : ""}>
+                <div className="overflow-hidden rounded-[26px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-3">
+                  <img src={phase.img} alt={phase.subtitle} className="h-[320px] w-full rounded-[22px] object-cover" />
+                </div>
+              </div>
+              <div className={index % 2 ? "lg:order-1" : ""}>
+                <span className="text-sm font-bold uppercase tracking-[0.35em] text-accent">{phase.title}</span>
+                <h2 className="mt-3 text-3xl font-black tracking-tight text-text-primary md:text-4xl">{phase.subtitle}</h2>
+                <p className="mt-5 whitespace-pre-line text-base leading-relaxed text-text-secondary">{phase.desc}</p>
+                <ul className="mt-6 grid gap-3 md:grid-cols-2">
+                  {phase.points.map((point) => (
+                    <li key={point} className="rounded-[20px] border border-border bg-[var(--color-surface-raised)]/65 px-4 py-3 text-sm text-text-secondary">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

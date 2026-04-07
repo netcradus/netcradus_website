@@ -3,6 +3,21 @@ import { Mail, Phone, MapPin, CheckCircle2, Loader2, ArrowRight } from 'lucide-r
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
+const contactItems = [
+  { icon: <Mail size={20} />, label: "Technical Liaison", val: "info@netcradus.com", link: "mailto:info@netcradus.com" },
+  { icon: <Phone size={20} />, label: "Direct Operative", val: "1800 121 008800" },
+  {
+    icon: <MapPin size={20} />,
+    label: "Global HQ",
+    val: "London Road, Leicester, LE2 0QS, England, United Kingdom",
+  },
+  {
+    icon: <MapPin size={20} />,
+    label: "Technology Centre",
+    val: "Block C, Golden I, Techzone 4, Greater Noida, UP 201318, India",
+  },
+];
+
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,83 +67,69 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-24 bg-premium-radial relative overflow-hidden transition-colors duration-500">
-      
-      {/* Glow background */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full"></div>
+    <section className="relative overflow-hidden bg-premium-radial py-24 transition-colors duration-500">
+      <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-accent/10 blur-[120px]"></div>
+      <div className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-accent/8 blur-[120px]"></div>
 
-      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
-
-        {/* HEADER */}
-        <div className="text-center mb-20 max-w-3xl mx-auto">
-          <span className="text-[11px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">
+      <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
+        <div className="mx-auto mb-20 max-w-3xl text-center">
+          <span className="mb-6 block text-[11px] font-bold uppercase tracking-[0.4em] text-accent">
             Establish Connection
           </span>
 
-          <h2 className="text-4xl md:text-7xl font-black tracking-tight leading-[1.05] text-[var(--color-text-primary)] mb-8">
+          <h2 className="mb-8 text-4xl font-black leading-[1.05] tracking-tight text-[var(--color-text-primary)] md:text-7xl">
             Ready to <br />
             <span className="text-accent italic">fortify?</span>
           </h2>
 
-          <p className="text-[var(--color-text-secondary)] text-lg md:text-xl">
+          <p className="text-lg text-[var(--color-text-secondary)] md:text-xl">
             Our strategists are ready to engineer your digital shield.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-
-          {/* LEFT SIDE */}
-          <div className="lg:col-span-4 space-y-10">
-            {[
-              { icon: <Mail size={20} />, label: "Technical Liaison", val: "info@netcradus.com", link: "mailto:info@netcradus.com" },
-              { icon: <Phone size={20} />, label: "Direct Operative", val: "1800 121 008800" },
-              { icon: <MapPin size={20} />, label: "Operational Hubs", val: "Leicester / Noida" }
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-6 group hover:translate-x-2 transition-all duration-300">
-
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/10 to-transparent border border-[var(--color-border)] flex items-center justify-center text-accent shadow-sm group-hover:shadow-[0_0_20px_rgba(232,64,10,0.2)] transition-all">
+        <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-12">
+          <div className="space-y-6 lg:col-span-4">
+            {contactItems.map((item, idx) => (
+              <div key={idx} className="group flex gap-5 rounded-[24px] border border-[var(--color-border)] bg-[var(--color-surface)]/75 p-5 shadow-[0_12px_34px_rgba(232,64,10,0.05)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[var(--color-border)] bg-gradient-to-br from-accent/10 to-transparent text-accent shadow-sm transition-all group-hover:shadow-[0_0_20px_rgba(232,64,10,0.2)]">
                   {item.icon}
                 </div>
 
-                <div>
-                  <span className="text-[10px] uppercase tracking-widest text-[var(--color-text-secondary)] block mb-1">
+                <div className="min-w-0">
+                  <span className="mb-1 block text-[10px] uppercase tracking-widest text-[var(--color-text-secondary)]">
                     {item.label}
                   </span>
 
                   {item.link ? (
-                    <a href={item.link} className="text-lg font-bold text-[var(--color-text-primary)] hover:text-accent transition">
+                    <a href={item.link} className="break-all text-lg font-bold text-[var(--color-text-primary)] transition hover:text-accent">
                       {item.val}
                     </a>
                   ) : (
-                    <span className="text-lg font-bold text-[var(--color-text-primary)]">
+                    <span className="block text-sm font-semibold leading-relaxed text-[var(--color-text-primary)] md:text-base">
                       {item.val}
                     </span>
                   )}
                 </div>
-
               </div>
             ))}
           </div>
 
-          {/* RIGHT SIDE FORM */}
-          <div className="lg:col-span-8 relative">
+          <div className="relative lg:col-span-8">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-40 blur-2xl"></div>
 
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent blur-2xl opacity-40"></div>
+            <div className="premium-card relative overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)]/80 p-10 shadow-[0_20px_80px_rgba(0,0,0,0.1)] backdrop-blur-xl lg:p-16">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
-            <div className="premium-card backdrop-blur-xl bg-[var(--color-surface)]/80 p-10 lg:p-16 rounded-3xl border border-[var(--color-border)] shadow-[0_20px_80px_rgba(0,0,0,0.1)] relative">
-
-              {/* SUCCESS */}
               {status === "success" && (
-                <div className="absolute inset-0 bg-[var(--color-bg)]/95 flex flex-col items-center justify-center text-center rounded-3xl">
-                  <CheckCircle2 size={40} className="text-accent mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Message Sent</h3>
+                <div className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl bg-[var(--color-bg)]/95 text-center">
+                  <CheckCircle2 size={40} className="mb-4 text-accent" />
+                  <h3 className="mb-2 text-xl font-bold">Message Sent</h3>
                   <p className="text-[var(--color-text-secondary)]">We’ll get back to you shortly.</p>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-8">
-
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-6 md:grid-cols-2">
                   <input
                     name="user_name"
                     value={formData.user_name}
@@ -147,7 +148,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-6 md:grid-cols-2">
                   <input
                     type="email"
                     name="user_email"
@@ -178,12 +179,7 @@ const Contact = () => {
                   className="input-premium resize-none"
                 />
 
-                {/* BUTTON */}
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="btn-premium"
-                >
+                <button type="submit" disabled={status === "loading"} className="btn-premium">
                   {status === "loading" ? (
                     <>
                       <Loader2 className="animate-spin" size={16} />
@@ -196,7 +192,6 @@ const Contact = () => {
                     </>
                   )}
                 </button>
-
               </form>
             </div>
           </div>
