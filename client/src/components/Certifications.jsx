@@ -12,96 +12,62 @@ import gdpr from "../assets/gdpr.jpeg";
 import soc2 from "../assets/soc2.png";
 
 const certifications = [
-  { src: isoLogo, alt: "ISO" },
-  { src: iso27701Logo, alt: "ISO 27701" },
-  { src: msmeLogo, alt: "MSME" },
-  { src: udyamLogo, alt: "Udyam" },
-  { src: gdpr, alt: "GDPR" },
-  { src: soc2, alt: "SOC 2" },
-  { src: dpiit, alt: "DPIIT" },
-  { src: certin, alt: "CERT-IN" },
-  { src: B2BLogo, alt: "B2B" },
-  { src: B2CLogo, alt: "B2C" },
+  { src: isoLogo, alt: "ISO", note: "Governance Standard" },
+  { src: iso27701Logo, alt: "ISO 27701", note: "Privacy Controls" },
+  { src: msmeLogo, alt: "MSME", note: "Registered Entity" },
+  { src: udyamLogo, alt: "Udyam", note: "Recognized Business" },
+  { src: gdpr, alt: "GDPR", note: "Privacy Alignment" },
+  { src: soc2, alt: "SOC 2", note: "Control Assurance" },
+  { src: dpiit, alt: "DPIIT", note: "Startup Recognition" },
+  { src: certin, alt: "CERT-IN", note: "Regulatory Awareness" },
+  { src: B2BLogo, alt: "B2B", note: "Business Verified" },
+  { src: B2CLogo, alt: "B2C", note: "Customer Reach" },
 ];
 
-const LogoItem = ({ logo, index }) => {
-  let sizeClass = "h-28 md:h-32";
-
-  if (index === 0) {
-    sizeClass = "h-36 md:h-40"; // first logo bigger
-  }
-
-  if (index === 5) {
-    sizeClass = "h-32 md:h-36"; // 🔥 2nd row 2nd logo slightly bigger
-  }
+function LogoCard({ logo, index }) {
+  const bigger = index === 0 || index === 5;
 
   return (
-    <div className="flex justify-center items-center group">
-      <div className="min-h-[120px] md:min-h-[140px] flex items-center justify-center">
+    <div className="group relative rounded-[26px] border border-border bg-[linear-gradient(180deg,rgba(232,64,10,0.06),transparent_65%),var(--color-surface)] p-5 shadow-[0_16px_42px_rgba(232,64,10,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/30 hover:shadow-[0_0_36px_rgba(232,64,10,0.12)]">
+      <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="flex min-h-[120px] items-center justify-center rounded-[22px] border border-white/30 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
         <img
           src={logo.src}
           alt={logo.alt}
-          className={`
-            ${sizeClass}
-            w-auto object-contain
-            transition-all duration-500
-            group-hover:scale-110
-            group-hover:-translate-y-1
-          `}
+          className={`${bigger ? "h-20 md:h-24" : "h-16 md:h-20"} w-auto object-contain transition-transform duration-500 group-hover:scale-105`}
         />
+      </div>
+      <div className="mt-4 text-center">
+        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-text-primary">{logo.alt}</h3>
+        <p className="mt-2 text-xs text-text-secondary">{logo.note}</p>
       </div>
     </div>
   );
-};
-
+}
 
 const Certifications = () => {
   return (
-    <section className="py-28 bg-black relative overflow-hidden">
+    <section className="relative overflow-hidden bg-premium-radial py-28 transition-colors duration-500">
+      <div className="absolute left-[-6rem] top-8 h-72 w-72 rounded-full bg-accent/8 blur-[120px]" />
+      <div className="absolute right-[-4rem] top-1/3 h-64 w-64 rounded-full bg-accent/8 blur-[110px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(232,64,10,0.08),transparent_24%),radial-gradient(circle_at_80%_60%,rgba(232,64,10,0.06),transparent_24%)] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(232,64,10,0.12),transparent_24%),radial-gradient(circle_at_80%_60%,rgba(232,64,10,0.08),transparent_24%)]" />
 
-      {/* Glow */}
-      <div className="absolute -top-40 -left-40 w-[300px] h-[300px] bg-orange-500/10 blur-3xl rounded-full" />
-      <div className="absolute -bottom-40 -right-40 w-[300px] h-[300px] bg-orange-500/10 blur-3xl rounded-full" />
-
-      <div className="max-w-5xl mx-auto px-6">
-
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-white">
-            Our <span className="text-orange-500">Compliance</span>
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="mb-16 text-center">
+          <span className="mb-5 block text-[11px] font-bold uppercase tracking-[0.35em] text-accent">Compliance</span>
+          <h2 className="text-4xl font-black tracking-tight text-text-primary md:text-6xl">
+            Standards that reinforce <span className="text-accent italic">trust.</span>
           </h2>
-
-          <p className="text-zinc-400 mt-4 max-w-md mx-auto text-sm">
-            Certified and trusted by global standards ensuring enterprise-grade security.
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary md:text-base">
+            Our compliance and recognition portfolio reflects the governance discipline, privacy posture, and enterprise readiness expected from a modern cybersecurity partner.
           </p>
         </div>
 
-        {/* 🔥 CUSTOM LAYOUT */}
-        <div className="flex flex-col gap-y-14">
-
-          {/* Row 1 → 4 logos */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 items-center">
-            {certifications.slice(0, 4).map((logo, index) => (
-  <LogoItem key={index} logo={logo} index={index} />
-))}
-          </div>
-
-          {/* Row 2 → 2 centered */}
-          <div className="flex justify-center gap-16">
-           {certifications.slice(4, 6).map((logo, index) => (
-  <LogoItem key={index} logo={logo} index={index + 4} />
-))}
-          </div>
-
-          {/* Row 3 → 4 logos */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-10 items-center">
-           {certifications.slice(6, 10).map((logo, index) => (
-  <LogoItem key={index} logo={logo} index={index + 6} />
-))}
-          </div>
-
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {certifications.map((logo, index) => (
+            <LogoCard key={logo.alt} logo={logo} index={index} />
+          ))}
         </div>
-
       </div>
     </section>
   );

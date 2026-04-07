@@ -34,13 +34,21 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Platform', path: '/platform' },
-    { name: 'Services', path: '/services' },
+    { name: 'Solutions', path: '/services' },
     { name: 'ACIS', path: '/acis' },
     { name: 'About', path: '/about' },
     // { name: 'Pricing', path: '/pricing' },
     { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  const isActiveLink = (path) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+
+    return location.pathname === path || location.pathname.startsWith(`${path}/`);
+  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
@@ -55,7 +63,7 @@ const Navbar = () => {
             <Link 
               key={link.name} 
               to={link.path} 
-              className={`nav-link text-sm font-semibold tracking-wide transition-colors ${location.pathname === link.path ? 'active text-accent' : 'text-text-secondary hover:text-accent'}`}
+              className={`nav-link text-sm font-semibold tracking-wide transition-colors ${isActiveLink(link.path) ? 'active text-accent' : 'text-text-secondary hover:text-accent'}`}
             >
               {link.name}
             </Link>

@@ -1,144 +1,242 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Download, Check, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { usePageMeta } from "../hooks/usePageMeta";
+import PageHero from "./PageHero";
+
+const platformSections = [
+  {
+    id: "acis-overview",
+    title: "The Autonomous Cyber Immune System",
+    description:
+      "ACIS is Netcradus's flagship AI-powered cybersecurity platform. It continuously monitors, detects, and responds to threats autonomously — reducing human dependency and improving response times from hours to seconds.",
+    features: [
+      "Real-time threat detection",
+      "AI-driven analysis",
+      "Automated response",
+      "Continuous learning",
+      "Compliance-ready",
+    ],
+    image: "/generated/ChatGPT Image 1.png",
+    cardClass: "lg:grid-cols-[1.05fr_0.95fr]",
+    cta: true,
+  },
+  {
+    id: "acis-lite",
+    title: "Affordable Security for Growing Businesses",
+    description:
+      "ACIS Lite delivers core autonomous threat detection and response capabilities for startups and SMEs. Get enterprise-grade protection without enterprise-level cost.",
+    features: [
+      "Core AI-SIEM",
+      "Basic SOAR automation",
+      "Up to 500 endpoints",
+      "Email and Slack alerting",
+      "Monthly compliance reports",
+    ],
+    image: "/generated/j.png",
+    tier: "Lite",
+  },
+  {
+    id: "acis-pro",
+    title: "Advanced Protection for Scale-Up Organizations",
+    description:
+      "ACIS Pro extends Lite with deeper analytics, custom playbooks, and priority SOC support — built for companies scaling their security operations.",
+    features: [
+      "Full AI-SIEM",
+      "Advanced SOAR",
+      "Up to 5,000 endpoints",
+      "Shadow AI detection",
+      "Custom dashboards",
+      "Dedicated analyst support",
+    ],
+    image: "/generated/han.png",
+    tier: "Pro",
+    featured: true,
+  },
+  {
+    id: "acis-enterprise",
+    title: "Autonomous Security at Enterprise Scale",
+    description:
+      "ACIS Enterprise is a fully customizable, white-glove deployment of the ACIS platform for large organizations with complex infrastructure and compliance requirements.",
+    features: [
+      "Unlimited endpoints",
+      "Custom integrations",
+      "On-premise or hybrid deployment",
+      "24/7 dedicated SOC team",
+      "SLA guarantees",
+      "Regulatory compliance packs (ISO 27001, GDPR, CERT-In)",
+    ],
+    image: "/generated/corporate_office_cyber_1773394698579.png",
+    tier: "Enterprise",
+  },
+  {
+    id: "ai-siem-engine",
+    title: "Intelligence at the Core of Your Security Stack",
+    description:
+      "The AI-SIEM Engine is the analytical brain of ACIS — processing millions of log events per second, correlating signals, and surfacing only the alerts that matter.",
+    features: [
+      "Multi-source log ingestion",
+      "ML-based anomaly detection",
+      "UEBA",
+      "Real-time threat correlation",
+      "Sub-minute alert generation",
+    ],
+    image: "/generated/jlk.png",
+  },
+  {
+    id: "soar-automation",
+    title: "Respond Faster. Automatically.",
+    description:
+      "Netcradus SOAR Automation eliminates manual response steps by executing predefined and AI-generated playbooks the moment a threat is confirmed.",
+    features: [
+      "200+ pre-built playbooks",
+      "Custom workflow builder",
+      "Bi-directional integrations (JIRA, ServiceNow, Slack, PagerDuty)",
+      "Audit trail for compliance",
+      "Zero-touch incident containment",
+    ],
+    image: "/generated/cyber.png",
+  },
+];
 
 export default function Platform() {
+  usePageMeta(
+    "Platform | Netcradus",
+    "Explore the Netcradus ACIS platform, product tiers, AI-SIEM engine, and SOAR automation capabilities."
+  );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const tierCards = platformSections.filter((section) => section.tier);
+
   return (
     <div className="bg-background transition-colors duration-500">
+      <PageHero
+        label="// PLATFORM"
+        title="The Netcradus Security Platform"
+        subtitle="Explore ACIS, its deployment tiers, and the intelligence engines that power autonomous cyber defense at enterprise scale."
+        media={
+          <div className="overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4 shadow-[0_20px_70px_rgba(232,64,10,0.1)]">
+            <img src="/generated/AI.png" alt="ACIS platform" className="h-[320px] w-full rounded-[24px] object-cover" />
+          </div>
+        }
+      />
 
-      {/* HERO */}
-      {/* HERO */}
-      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-
-        <div className="reveal">
-          <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">
-            // Our Technology
-          </span>
-
-          <h1 className="text-4xl md:text-7xl font-display font-black text-text-primary leading-[1.1] mb-8 tracking-tighter">
-            The Netcradus <br />
-            <span className="italic text-accent">
-              Security Platform
-            </span>
-          </h1>
-
-          <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl leading-relaxed max-w-lg font-sans">
-            Our platform combines autonomous cybersecurity intelligence with
-            powerful enterprise CRM infrastructure to create a unified digital
-            command center for modern organizations.
-          </p>
-        </div>
-
-        <div className="rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium reveal group">
-          <img
-            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b"
-            alt="Cyber security platform"
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-1000 grayscale group-hover:grayscale-0"
-          />
-        </div>
-      </section>
-
-      {/* ACIS SECTION */}
-
-      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-20 items-center">
-
-        <div className="rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium order-2 lg:order-1">
-          <img
-            src="https://images.unsplash.com/photo-1633265486064-086b219458ec"
-            alt="AI cybersecurity"
-            className="w-full h-full object-cover opacity-80"
-          />
-        </div>
-
-        <div className="order-1 lg:order-2 space-y-8">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight leading-tight">
-            ACIS &mdash; Autonomous Cyber Immune System
-          </h2>
-
-          <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed font-sans">
-            ACIS is our proprietary AI-powered cybersecurity platform designed
-            to detect, analyze, and neutralize cyber threats autonomously.
-            Unlike traditional security systems that depend heavily on manual
-            monitoring, ACIS continuously learns from network behavior and
-            adapts to new threats in real time.
-          </p>
-
-          <ul className="space-y-4">
-            {["AI-driven threat detection", "Autonomous response orchestration", "Continuous penetration simulation", "Cloud-native architecture", "Real-time intelligence"].map(item => (
-              <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-      </section>
-
-      {/* CRM SECTION */}
-
-      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-24 grid lg:grid-cols-2 gap-20 items-center">
-
-        <div className="space-y-8">
-          <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight leading-tight">
-            Enterprise CRM Infrastructure
-          </h2>
-
-          <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed">
-            Our CRM platform empowers organizations with advanced tools to
-            manage customer relationships, sales pipelines, support operations,
-            and analytics from a single unified interface.
-          </p>
-
-          <ul className="space-y-4">
-            {["Sales pipeline management", "Customer support automation", "Real-time analytics", "Marketing automation", "Enterprise data security"].map(item => (
-              <li key={item} className="flex items-center gap-3 text-text-primary font-bold text-sm tracking-wide">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-premium">
-          <img
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
-            alt="CRM dashboard"
-            className="w-full h-full object-cover opacity-80"
-          />
-        </div>
-
-      </section>
-
-      {/* PLATFORM FEATURES */}
-
-      <section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 py-24">
-
-        <div className="text-center mb-16 space-y-6">
-          <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tight leading-tight">
-            Unified Platform Architecture
-          </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto">
-            ACIS and CRM operate together to create a powerful ecosystem that
-            combines cybersecurity intelligence with operational efficiency.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
+      <section className="sticky top-20 z-20 border-y border-border bg-background/80 py-4 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-screen-2xl flex-wrap gap-3 px-4 sm:px-6 lg:px-16 xl:px-24">
           {[
-            { title: "AI Intelligence Layer", desc: "Machine learning algorithms continuously analyze behavioral patterns across systems to identify anomalies." },
-            { title: "Automation Engine", desc: "Automated workflows handle incident response, ticket management, customer engagement, and operational tasks." },
-            { title: "Enterprise Control Center", desc: "A centralized dashboard providing full visibility into security operations, customer interactions, and business intelligence." }
-          ].map((feature, idx) => (
-            <div key={idx} className="premium-card p-10 group hover:-translate-y-2 transition-all duration-500">
-              <h3 className="text-xl font-display font-black text-text-primary mb-6 uppercase tracking-wider group-hover:text-accent transition-colors">{feature.title}</h3>
-              <p className="text-zinc-500 dark:text-zinc-500 text-sm leading-relaxed">
-                {feature.desc}
-              </p>
-            </div>
+            "ACIS Overview",
+            "ACIS Lite",
+            "ACIS Pro",
+            "ACIS Enterprise",
+            "AI-SIEM Engine",
+            "SOAR Automation",
+          ].map((label, index) => (
+            <a
+              key={label}
+              href={`#${platformSections[index].id}`}
+              className="rounded-full border border-border bg-[var(--color-surface)] px-4 py-2 text-sm font-semibold text-text-secondary transition hover:border-accent/30 hover:text-accent hover:shadow-[0_0_20px_rgba(232,64,10,0.1)]"
+            >
+              {label}
+            </a>
           ))}
         </div>
-
       </section>
 
+      <section className="py-12">
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
+          <div className="grid gap-6 lg:grid-cols-3">
+            {tierCards.map((tier) => (
+              <article
+                key={tier.id}
+                id={tier.id}
+                className={`premium-card rounded-[28px] border p-8 backdrop-blur-md ${
+                  tier.featured
+                    ? "border-accent/30 bg-[linear-gradient(180deg,rgba(232,64,10,0.08),transparent_55%),var(--color-surface)] shadow-[0_0_40px_rgba(232,64,10,0.12)]"
+                    : "border-border bg-[var(--color-surface)]/88"
+                }`}
+              >
+                <div className="mb-4 inline-flex rounded-full border border-accent/15 bg-accent/8 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-accent">
+                  {tier.tier}
+                </div>
+                <h2 className="text-3xl font-black tracking-tight text-text-primary">{tier.title}</h2>
+                <p className="mt-4 text-base leading-relaxed text-text-secondary">{tier.description}</p>
+                <ul className="mt-6 space-y-3">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                      <Check size={16} className="mt-0.5 shrink-0 text-accent" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-0">
+        <div className="mx-auto max-w-screen-2xl space-y-8 px-4 pb-24 sm:px-6 lg:px-16 xl:px-24">
+          {platformSections.map((section, index) => (
+            <article
+              key={section.id}
+              id={section.id}
+              className={`grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:items-center ${section.cardClass || ""} ${
+                index % 2 === 1 ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"
+              }`}
+            >
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className="mb-4 inline-flex rounded-full border border-accent/15 bg-accent/8 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-accent">
+                  {section.tier || section.title}
+                </div>
+                <h2 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">{section.title}</h2>
+                <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">{section.description}</p>
+                <ul className="mt-6 grid gap-3 md:grid-cols-2">
+                  {section.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="rounded-[20px] border border-border bg-[var(--color-surface-raised)]/70 px-4 py-3 text-sm text-text-secondary shadow-[0_0_22px_rgba(232,64,10,0.04)]"
+                    >
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                {section.cta ? (
+                  <a
+                    href="/assets/acis-whitepaper.pdf"
+                    download
+                    className="btn-primary mt-8 inline-flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-[0.2em]"
+                  >
+                    Download ACIS White Paper
+                    <Download size={16} />
+                  </a>
+                ) : null}
+                {section.id === "soar-automation" ? (
+                  <div id="integrations-api" className="mt-8 rounded-[24px] border border-accent/15 bg-accent/6 p-6">
+                    <h3 className="text-xl font-black text-text-primary">Integrations / API</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                      Connect ACIS with enterprise tooling across ticketing, collaboration, alerting, and orchestration systems using managed integrations and API-led workflows.
+                    </p>
+                    <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent transition hover:text-accent-bright">
+                      Request integration details
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                <div className="relative overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(232,64,10,0.12),transparent_55%)]" />
+                  <img src={section.image} alt={section.title} className="relative h-[320px] w-full rounded-[22px] object-cover" />
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

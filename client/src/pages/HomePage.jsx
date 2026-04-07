@@ -8,8 +8,14 @@ import CTABanner from '../components/CTABanner';
 import ClientsSection from '../components/ClientsSection';
 import LiveThreatMap from '../components/LiveThreatMap';
 import Certifications from '../components/Certifications';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const HomePage = () => {
+    usePageMeta(
+        'Netcradus | Autonomous Cyber Immune Systems',
+        'Netcradus builds autonomous cyber immune systems, managed security capabilities, and enterprise-grade cyber resilience.'
+    );
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -19,12 +25,12 @@ const HomePage = () => {
             <Hero />
             <Stats />
             <ACISSection />
-            <LiveThreatMap/>
+            <LiveThreatMap />
             <Services />
             <HowItWorks />
             <ClientsSection />
             <CTABanner />
-            <Certifications/>
+            <Certifications />
         </>
     );
 };
