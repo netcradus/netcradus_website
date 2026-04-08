@@ -12,34 +12,36 @@ import gdpr from "../assets/gdpr.jpeg";
 import soc2 from "../assets/soc2.png";
 
 const certifications = [
-  { src: isoLogo, alt: "ISO", note: "Governance Standard" },
-  { src: iso27701Logo, alt: "ISO 27701", note: "Privacy Controls" },
-  { src: msmeLogo, alt: "MSME", note: "Registered Entity" },
-  { src: udyamLogo, alt: "Udyam", note: "Recognized Business" },
-  { src: gdpr, alt: "GDPR", note: "Privacy Alignment" },
-  { src: soc2, alt: "SOC 2", note: "Control Assurance" },
+  { src: isoLogo, alt: "ISO 27001", note: "Information Security Management" },
+  { src: iso27701Logo, alt: "ISO 27701:2019", note: "Privacy Information Management" },
+  { src: msmeLogo, alt: "MSME", note: "Micro, Small and Medium Enterprises" },
+  { src: udyamLogo, alt: "Udyam", note: "Government Business Registration" },
+  { src: gdpr, alt: "GDPR", note: "Data Protection Alignment" },
+  { src: soc2, alt: "SOC 2 Type II", note: "System and Organization Controls" },
   { src: dpiit, alt: "DPIIT", note: "Startup Recognition" },
-  { src: certin, alt: "CERT-IN", note: "Regulatory Awareness" },
-  { src: B2BLogo, alt: "B2B", note: "Business Verified" },
-  { src: B2CLogo, alt: "B2C", note: "Customer Reach" },
+  { src: certin, alt: "CERT-In", note: "Indian Cybersecurity Nodal Agency" },
+  { src: B2BLogo, alt: "Kaspersky Registered B2B Partner", note: "Business Security Partner Program" },
+  { src: B2CLogo, alt: "Kaspersky Registered B2C Partner", note: "Consumer Security Partner Program" },
 ];
 
 function LogoCard({ logo, index }) {
-  const bigger = index === 0 || index === 5;
+  const isWideLogo = index >= 7;
 
   return (
-    <div className="group relative rounded-[26px] border border-border bg-[linear-gradient(180deg,rgba(232,64,10,0.06),transparent_65%),var(--color-surface)] p-5 shadow-[0_16px_42px_rgba(232,64,10,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/30 hover:shadow-[0_0_36px_rgba(232,64,10,0.12)]">
+    <div className="group relative flex h-full flex-col rounded-[26px] border border-border bg-[linear-gradient(180deg,rgba(232,64,10,0.06),transparent_65%),var(--color-surface)] p-5 shadow-[0_16px_42px_rgba(232,64,10,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/30 hover:shadow-[0_0_36px_rgba(232,64,10,0.12)]">
       <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      <div className="flex min-h-[120px] items-center justify-center rounded-[22px] border border-white/30 bg-white/70 p-4 dark:border-white/10 dark:bg-white/5">
+      <div className="flex min-h-[140px] items-center justify-center rounded-[22px] border border-white/30 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5">
         <img
           src={logo.src}
           alt={logo.alt}
-          className={`${bigger ? "h-20 md:h-24" : "h-16 md:h-20"} w-auto object-contain transition-transform duration-500 group-hover:scale-105`}
+          className={`${isWideLogo ? "max-h-14 max-w-[220px]" : "max-h-20 max-w-[150px]"} h-auto w-auto object-contain transition-transform duration-500 group-hover:scale-105`}
         />
       </div>
-      <div className="mt-4 text-center">
-        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-text-primary">{logo.alt}</h3>
-        <p className="mt-2 text-xs text-text-secondary">{logo.note}</p>
+      <div className="mt-4 flex flex-1 flex-col text-center">
+        <h3 className="min-h-[3.5rem] text-sm font-semibold uppercase tracking-[0.14em] text-text-primary">
+          {logo.alt}
+        </h3>
+        <p className="mt-2 text-xs leading-relaxed text-text-secondary">{logo.note}</p>
       </div>
     </div>
   );
