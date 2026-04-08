@@ -38,8 +38,8 @@ const ACISPage = () => {
         <>
             <SubHero
                 label="// FLAGSHIP PRODUCT"
-                title="Adaptive intelligence. Autonomous defense."
-                subtitle="The ACIS platform represents a paradigm shift in digital securityâ€”moving from reactive protection to an autonomous, self-learning immune system."
+                title="Autonomous cyber immune system."
+                subtitle="The ACIS platform represents a paradigm shift in digital security by moving from reactive protection to an autonomous, self-learning immune system."
                 actions={
                     <a
                         href="/assets/acis-whitepaper.pdf"
