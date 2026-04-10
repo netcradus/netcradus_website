@@ -112,8 +112,19 @@ const ACISSection = () => {
               <ArrowRight size={18} className="arrow-icon" />
             </a>         </div>
 
-          <div className="acis-mockup reveal flex justify-center items-center overflow-visible" style={{ transitionDelay: '0.2s' }}>
-            <DottedGlobe />
+          <div className="acis-mockup reveal flex justify-center items-center overflow-visible relative min-h-[350px] md:min-h-[450px]" style={{ transitionDelay: '0.2s' }}>
+            <div className="absolute inset-0 flex justify-center items-center z-0 opacity-40 md:scale-[1.2]">
+               <DottedGlobe />
+            </div>
+            
+            <div className="relative z-10 w-full max-w-[900px] mx-auto mt-8 bg-surface-raised border border-border rounded-xl shadow-brand-lg overflow-hidden transform hover:scale-[1.02] transition-transform duration-700">
+              <div className="h-8 bg-surface border-b border-border flex items-center px-4 gap-2">
+                 <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                 <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+              </div>
+              <img src="/assets/acis-dashboard.png" alt="ACIS Dashboard" className="w-full h-auto opacity-90 object-cover" />
+            </div>
           </div>
         </div>
 
