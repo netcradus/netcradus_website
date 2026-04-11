@@ -13,7 +13,7 @@ import soc2 from "../assets/soc2.png";
 
 const certifications = [
   { src: isoLogo, alt: "ISO/IEC 27001:2022", note: "Information Security Management" },
-  { src: iso27701Logo, alt: "ISO/IEC 27701:2019:2019", note: "Privacy Information Management" },
+  { src: iso27701Logo, alt: "ISO/IEC 27701:2019", note: "Privacy Information Management" },
   { src: msmeLogo, alt: "MSME", note: "Micro, Small and Medium Enterprises" },
   { src: udyamLogo, alt: "Udyam", note: "Government Business Registration" },
   { src: gdpr, alt: "GDPR", note: "Data Protection Alignment" },
