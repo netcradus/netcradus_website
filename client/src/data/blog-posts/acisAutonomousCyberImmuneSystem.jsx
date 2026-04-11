@@ -46,7 +46,7 @@ export const acisAutonomousCyberImmuneSystem = {
         <li>SOAR Automation — Automated incident response and workflows.</li>
         <li>Real-Time Alerts — Instant visibility into threats.</li>
         <li>Shadow AI Detection — Identifies unauthorized AI usage.</li>
-        <li>Compliance Ready — Supports CERT-In, ISO 27001, and GDPR.</li>
+        <li>Compliance Ready — Supports CERT-In, ISO/IEC 27001:2022, and GDPR.</li>
         <li>Flexible Deployment — Cloud and on-premise support.</li>
       </ul>
 

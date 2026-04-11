@@ -20,8 +20,8 @@ const BLOG_POSTS = [
     },
     {
         id: 2,
-        title: "Navigating ISO 27001:2022 Transitions for Financial Institutions",
-        excerpt: "The updated ISO 27001:2022 standard introduces significant changes to organizational controls. Here is our comprehensive guide on achieving and maintaining compliance in highly regulated sectors.",
+        title: "Navigating ISO/IEC 27001:2022:2022 Transitions for Financial Institutions",
+        excerpt: "The updated ISO/IEC 27001:2022:2022 standard introduces significant changes to organizational controls. Here is our comprehensive guide on achieving and maintaining compliance in highly regulated sectors.",
         category: "Compliance & GRC",
         author: "Lead Security Auditor",
         date: "September 28, 2026",

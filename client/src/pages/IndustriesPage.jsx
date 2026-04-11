@@ -76,7 +76,7 @@ export default function IndustriesPage() {
                     <ShieldCheck className="mx-auto text-primary w-12 h-12 mb-8 animate-pulse" />
                     <h2 className="text-3xl font-display font-extrabold text-[var(--text-primary)] mb-6 tracking-tighter italic">Compliance mandated. Resilience delivered.</h2>
                     <p className="text-[var(--text-secondary)] font-sans text-lg max-w-2xl mx-auto mb-12">
-                        Operating under the baseline of ISO 27001, GDPR, and NIS2. De-risking your organization from day zero.
+                        Operating under the baseline of ISO/IEC 27001:2022, GDPR. De-risking your organization from day zero.
                     </p>
                     <MagneticWrapper strength={0.2}>
                         <button className="text-[10px] font-bold text-[var(--text-primary)] uppercase tracking-[0.4em] border-b border-primary/20 pb-2 hover:text-primary transition-colors">Tactical Consultation</button>

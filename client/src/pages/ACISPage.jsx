@@ -14,7 +14,11 @@ const HeroSection = () => {
 
   const scrollToRegister = (e) => {
     e.preventDefault();
-    document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+    window.open('https://acis.netcradus.com/', '_blank', 'noopener,noreferrer');
+    const registerSection = document.getElementById('register');
+    if (registerSection) {
+      registerSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -47,7 +51,7 @@ const HeroSection = () => {
 
           <h1 className="text-5xl md:text-[64px] font-bold leading-tight mb-6">
             <span className="block text-text-primary">Autonomous Cyber</span>
-            <span className="block bg-gradient-to-br bg-brand-gradient bg-clip-text text-transparent pb-2">
+            <span className="block bg-gradient-to-br bg-brand-gradient bg-clip-text pb-2">
               Immune System
             </span>
           </h1>
@@ -87,9 +91,9 @@ const HeroSection = () => {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <span className="border border-border text-text-primary font-medium text-[11px] px-3 py-1 rounded-full uppercase tracking-wide">NIS2 Compliant</span>
+            
             <span className="border border-accent/50 text-accent font-medium text-[11px] px-3 py-1 rounded-full uppercase tracking-wide">GDPR Ready</span>
-            <span className="border border-border text-text-primary font-medium text-[11px] px-3 py-1 rounded-full uppercase tracking-wide">ISO 27001 Aligned</span>
+            <span className="border border-border text-text-primary font-medium text-[11px] px-3 py-1 rounded-full uppercase tracking-wide">ISO/IEC 27001:2022 Aligned</span>
           </div>
         </div>
 
@@ -183,7 +187,7 @@ const PlatformSection = () => {
     { label: "Alerts", url: "app.netcradus.com/alerts", img: "/assets/acis-alerts.png", caption: "Deduplicated alert triage with severity badges, ownership, and one-click playbook execution" },
     { label: "SOAR Playbooks", url: "app.netcradus.com/soar", img: "/assets/acis-soar.png", caption: "Automated response playbooks — isolate endpoints, block IPs, reset accounts in under 45 seconds" },
     { label: "Threat Intel", url: "app.netcradus.com/threat-intel", img: "/assets/acis-threat-intel.png", caption: "IOC enrichment powered by global ACIS swarm nodes — IP, domain, and hash lookups" },
-    { label: "Compliance", url: "app.netcradus.com/compliance", img: "/assets/acis-compliance.png", caption: "Real-time NIS2, GDPR, and ISO 27001 posture with immutable audit trail" }
+   
   ];
 
   return (
@@ -434,7 +438,7 @@ export const FeaturesSection = () => {
     { icon: <Target size={20} />, title: "AI Red Team Always-On", desc: "Continuous adversary simulation using 200+ MITRE ATT&CK techniques. Finds your gaps before attackers do — proven to reduce breach probability by 30%.", color: "text-amber-500", bg: "bg-amber-500/10" },
     { icon: <GitMerge size={20} />, title: "Swarm Intelligence Network", desc: "Federated learning across 10,000+ deployments means every new threat discovered by any ACIS customer automatically improves your defenses within minutes.", color: "text-[#3B82F6]", bg: "bg-[#3B82F6]/10" },
     { icon: <Search size={20} />, title: "SPL-Like Log Explorer", desc: "Search millions of events with a familiar Splunk-like query syntax. Syntax highlighting, saved searches, CSV export, and sub-second results powered by Elasticsearch.", color: "text-accent", bg: "bg-accent/10" },
-    { icon: <CheckCircle size={20} />, title: "Compliance Auto-Monitoring", desc: "Continuous NIS2, GDPR, and ISO 27001 posture tracking. Automated evidence collection and one-click report generation for your compliance team.", color: "text-[#14B8A6]", bg: "bg-[#14B8A6]/10" },
+    { icon: <CheckCircle size={20} />, title: "Compliance Auto-Monitoring", desc: "Continuous GDPR, and ISO/IEC 27001:2022 posture tracking. Automated evidence collection and one-click report generation for your compliance team.", color: "text-[#14B8A6]", bg: "bg-[#14B8A6]/10" },
     { icon: <GitMerge size={20} />, title: "SOAR Playbook Engine", desc: "Build and automate response workflows with pre-built connectors for Palo Alto, Microsoft 365, Okta, AWS Security Hub, and 20+ more integrations.", color: "text-amber-500", bg: "bg-amber-500/10" },
     { icon: <Server size={20} />, title: "Multi-Tenant SaaS or On-Prem", desc: "Deploy as cloud SaaS, private cloud, or fully on-premises. Helm charts for Kubernetes. Row-level tenant isolation. Air-gap compatible for regulated sectors.", color: "text-[#EC4899]", bg: "bg-[#EC4899]/10" }
   ];
@@ -506,16 +510,16 @@ export const UseCasesSection = () => {
             <span className="inline-block px-3 py-1 rounded-full border border-[#14B8A6]/30 bg-[#14B8A6]/10 text-[#14B8A6] text-[11px] font-semibold uppercase tracking-wider mb-4">
               Compliance-Driven
             </span>
-            <h3 className="text-xl font-bold text-text-primary mb-3">NIS2, GDPR, ISO 27001 — Done.</h3>
+            <h3 className="text-xl font-bold text-text-primary mb-3">GDPR, ISO/IEC 27001:2022 — Done.</h3>
             <p className="text-[14px] text-text-secondary leading-relaxed mb-5">
-              Regulators are increasing pressure on UK and EU SMEs. ACIS continuously monitors your posture against NIS2 Article 21 controls, GDPR requirements, and ISO 27001 Annex A controls — and generates audit reports on demand.
+              Regulators are increasing pressure on UK and EU SMEs. ACIS continuously monitors your posture against GDPR requirements, and ISO/IEC 27001:2022 Annex A controls — and generates audit reports on demand.
             </p>
             <div>
               <h4 className="text-[12px] font-semibold text-text-primary mb-2 uppercase tracking-wide">Frameworks covered:</h4>
               <ul className="text-[13px] text-text-secondary space-y-1">
-                <li>• NIS2 Directive (EU) — 92% coverage</li>
+
                 <li>• GDPR — 88% control coverage</li>
-                <li>• ISO 27001:2022 — 74% coverage</li>
+                <li>• ISO/IEC 27001:2022:2022 — 74% coverage</li>
                 <li>• UK Cyber Essentials — Full alignment</li>
               </ul>
             </div>
@@ -599,7 +603,7 @@ export const MetricsSection = () => {
     { val: "99.8%", lbl: "Threat Neutralization", desc: "Threats contained automatically" },
     { val: "3.4M+", lbl: "Events Per Day", desc: "Processed per deployment" },
     { val: "200+", lbl: "MITRE Techniques", desc: "Covered by red team simulator" },
-    { val: "92%", lbl: "NIS2 Coverage", desc: "Controls satisfied out of box" },
+
     { val: "30%", lbl: "Breach Reduction", desc: "Vs. rule-based SIEM alone" }
   ];
 
@@ -637,7 +641,7 @@ export const FAQSection = () => {
     { q: "How long does it take to deploy ACIS?", a: "For cloud SaaS deployment, most customers are fully operational within 3–5 business days. This includes connecting your log sources, configuring correlation rules, and onboarding your team. On-premises Kubernetes deployment typically takes 1–2 weeks with support from our team." },
     { q: "Does ACIS work with our existing security tools?", a: "Yes. ACIS integrates via REST APIs with Palo Alto firewalls, Microsoft 365, Okta, AWS Security Hub, CrowdStrike, SentinelOne, and 20+ other platforms. Kafka Connect has pre-built connectors for most enterprise log sources." },
     { q: "How does the Swarm Intelligence work without sharing our data?", a: "ACIS uses federated learning — only mathematical model parameters (not raw logs or events) are shared with the swarm network. Your log data never leaves your environment. The parameters are additionally encrypted using post-quantum cryptography (CRYSTALS-Dilithium), making them future-proof against quantum computing attacks." },
-    { q: "Is ACIS compliant with NIS2 and GDPR?", a: "ACIS is built with NIS2 and GDPR compliance as core design requirements. Out of the box it satisfies 92% of NIS2 Article 21 controls and 88% of GDPR technical measures. The platform generates audit reports, maintains an immutable audit trail, and supports data residency requirements." },
+    { q: "Is ACIS compliant with GDPR?", a: "ACIS is built with GDPR compliance as core design requirements. Out of the box it satisfies 88% of GDPR technical measures. The platform generates audit reports, maintains an immutable audit trail, and supports data residency requirements." },
     { q: "Can MSSPs resell ACIS?", a: "Yes. ACIS has a dedicated MSSP tier with full multi-tenancy, white-label portal, custom domain support, and aggregated cross-tenant threat intelligence. Contact us for reseller pricing and partnership details." },
     { q: "What happens if ACIS incorrectly isolates a legitimate endpoint?", a: "ACIS risk scoring uses a 0–100 confidence scale and only triggers automatic isolation above threshold 95. All automated actions are logged in the audit trail and can be reversed with one click from the Endpoints module. Recovery from a false-positive isolation takes under 60 seconds." }
   ];
@@ -778,7 +782,7 @@ export const RegisterSection = () => {
                   <option value="No SOC">No 24/7 SOC coverage</option>
                   <option value="False Positives">Too many false positive alerts</option>
                   <option value="Slow IR">Slow incident response times</option>
-                  <option value="Compliance">Compliance requirements (NIS2/GDPR)</option>
+                  <option value="Compliance">Compliance requirements (GDPR)</option>
                   <option value="Cost">High cost of existing SIEM tools</option>
                   <option value="Expertise">Lack of internal security expertise</option>
                   <option value="Other">Other</option>
@@ -822,8 +826,8 @@ export const RegisterSection = () => {
 
         <div className="flex flex-wrap justify-center gap-6 mt-6">
           <span className="text-[11px] font-medium text-text-secondary tracking-wider uppercase flex items-center gap-1.5"><Lock size={14} className="mr-1" /> GDPR Compliant</span>
-          <span className="text-[11px] font-medium text-text-secondary tracking-wider uppercase flex items-center gap-1.5"><Shield size={14} className="mr-1" /> ISO 27001</span>
-          <span className="text-[11px] font-medium text-text-secondary tracking-wider uppercase flex items-center gap-1.5"><span className="text-[14px] text-teal-500">✓</span> NIS2 Ready</span>
+          <span className="text-[11px] font-medium text-text-secondary tracking-wider uppercase flex items-center gap-1.5"><Shield size={14} className="mr-1" /> ISO/IEC 27001:2022</span>
+
         </div>
       </div>
     </section>

@@ -84,7 +84,7 @@ const ACISSection = () => {
               <span className="pill">Adaptive Learning</span>
               <span className="pill">Real-time Isolation</span>
               <span className="pill">Zero-Trust Ready</span>
-              <span className="pill">UK Data Sovereignty</span>
+             
             </div>
 
             <div className="acis-features space-y-5 mb-12">

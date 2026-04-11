@@ -5,8 +5,10 @@ import { cybersecurityArchitecture } from './blog-posts/cybersecurityArchitectur
 import { advancedPenetrationTesting } from './blog-posts/advancedPenetrationTesting';
 import { advancedActiveDirectoryAttacks } from './blog-posts/advancedActiveDirectoryAttacks';
 import { acisAutonomousCyberImmuneSystem } from './blog-posts/acisAutonomousCyberImmuneSystem';
+import { quantumComputingCyberIntelligence } from './blog-posts/quantumComputingCyberIntelligence';
 
 export const BLOGS = [
+    quantumComputingCyberIntelligence,
     acisAutonomousCyberImmuneSystem,
     zeroDayAttack,
     ransomwareAttacks,

@@ -4,13 +4,13 @@ export const advancedPenetrationTesting = {
     id: "advanced-penetration-testing",
     title: "Advanced Penetration Testing: Methodologies, Tooling & Enterprise Tradecraft",
     category: "Cybersecurity",
-    date: "March 1, 2025",
+    date: "February 19, 2025",
     readTime: "10 min read",
     content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
             <h3 className="text-xl font-display font-bold text-white mt-8 mb-4">Executive Overview</h3>
             <p>Penetration Testing (Pentesting) is a controlled, authorized simulation of real-world cyberattacks conducted to evaluate the security posture of systems, networks, applications, cloud environments, and human layers. Unlike automated vulnerability scanning, advanced penetration testing leverages offensive security methodologies, adversarial tradecraft, exploit development, and post-exploitation techniques to emulate sophisticated threat actors (including APT-level tactics).</p>
-            <p>In modern enterprises, penetration testing is not just a compliance checkbox for standards such as ISO 27001 or PCI-DSS—it is a strategic security validation mechanism aligned with threat intelligence and risk management frameworks.</p>
+            <p>In modern enterprises, penetration testing is not just a compliance checkbox for standards such as ISO/IEC 27001:2022 or PCI-DSS—it is a strategic security validation mechanism aligned with threat intelligence and risk management frameworks.</p>
 
             <h3 className="text-xl font-display font-bold text-white mt-8 mb-4">1. Penetration Testing vs. Vulnerability Assessment</h3>
             <div className="overflow-x-auto my-6">
