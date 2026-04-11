@@ -4,7 +4,7 @@ export const zeroDayAttack = {
     id: "zero-day-attack",
     title: "Zero-Day Attacks: The Invisible Cyber Threat Every Organization Must Prepare For",
     category: "Threat Intelligence",
-    date: "February 27, 2025",
+    date: "April 2, 2025",
     readTime: "5 min read",
     content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
@@ -55,7 +55,7 @@ export const zeroDayAttack = {
                 <li><span className="text-gray-300">Brand reputation damage</span></li>
                 <li><span className="text-gray-300">Extended operational downtime</span></li>
             </ul>
-            <p>For regulated industries, failure to respond effectively may also trigger GDPR, ISO 27001, or PCI-DSS compliance consequences.</p>
+            <p>For regulated industries, failure to respond effectively may also trigger GDPR, ISO/IEC 27001:2022, or PCI-DSS compliance consequences.</p>
             <p>Zero-day incidents often become board-level crises due to their severity and unpredictability.</p>
 
             <h3 className="text-xl font-display font-bold text-white mt-8 mb-4">Why Traditional Security Is Not Enough</h3>

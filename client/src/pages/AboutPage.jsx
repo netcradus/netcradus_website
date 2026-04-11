@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import SubHero from '../components/SubHero';
 import About from "../components/About";
-import Stats from "../components/Stats";
 import CTABanner from "../components/CTABanner";
 import Certifications from '../components/Certifications';
 import { usePageMeta } from '../hooks/usePageMeta';
@@ -24,7 +23,6 @@ const AboutPage = () => {
                 subtitle="Netcradus was founded on the principle that security is not a feature, but a fundamental right for every organization navigating the modern web."
             />
             <About />
-            <Stats />
             <CTABanner />
             <Certifications />
         </>

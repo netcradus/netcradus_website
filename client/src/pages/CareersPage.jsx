@@ -84,7 +84,7 @@ const ROLES = [
         title: "GRC / Compliance Consultant",
         department: "Governance & Risk",
         icon: ClipboardCheck,
-        description: "ISO 27001, Cyber Essentials, GDPR, and PCI DSS advisory for clients across multiple sectors."
+        description: "ISO/IEC 27001:2022, Cyber Essentials, GDPR, and PCI DSS advisory for clients across multiple sectors."
     },
     {
         title: "Account Manager",

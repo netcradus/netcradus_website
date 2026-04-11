@@ -4,7 +4,7 @@ export const advancedActiveDirectoryAttacks = {
     id: "advanced-active-directory-attacks",
     title: "Advanced Active Directory Attacks: Enterprise Exploitation & Defense Strategy",
     category: "Cybersecurity",
-    date: "March 1, 2025",
+    date: "February 3, 2025",
     readTime: "12 min read",
     content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">

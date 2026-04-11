@@ -18,7 +18,7 @@ const SERVICE_TABS = [
       "Zero Trust architecture design and implementation",
       "Security policy development and governance frameworks",
       "Incident response planning and forensic readiness",
-      "Compliance alignment with ISO 27001, GDPR, CERT-In, and NIST",
+      "Compliance alignment with ISO/IEC 27001:2022, GDPR, CERT-In, and NIST",
     ],
     highlights: ["Threat Modeling", "Governance", "Incident Readiness"],
   },

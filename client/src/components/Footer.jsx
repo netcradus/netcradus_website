@@ -153,15 +153,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        <div className="lg:col-span-3">
-          <h4 className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-accent">Global Presence</h4>
-          <ul className="space-y-3 text-sm text-text-secondary">
-            <li>United Kingdom (Headquarters)</li>
-            <li>India (Technology Office)</li>
-            <li>Global MSSP Operations</li>
-            <li>24/7 SOC Support</li>
-          </ul>
-        </div>
+    
 
         <div className="lg:col-span-5">
           <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent">Stay Ahead of Cyber Threats</h4>

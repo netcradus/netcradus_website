@@ -4,7 +4,7 @@ export const blockchainTechnology = {
     id: "blockchain-technology",
     title: "Blockchain Technology: Architecture, Security Mechanisms & Enterprise Applications",
     category: "Technology",
-    date: "March 1, 2025",
+    date: "February 25, 2025",
     readTime: "8 min read",
     content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">

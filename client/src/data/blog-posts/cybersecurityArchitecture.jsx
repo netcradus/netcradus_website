@@ -4,7 +4,7 @@ export const cybersecurityArchitecture = {
     id: "cybersecurity-architecture",
     title: "Cybersecurity: Architecture, Threat Landscape & Enterprise Defense Engineering",
     category: "Cybersecurity",
-    date: "March 1, 2025",
+    date: "February 24, 2025",
     readTime: "9 min read",
     content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">

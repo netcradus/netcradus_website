@@ -64,7 +64,7 @@ const platformSections = [
       "On-premise or hybrid deployment",
       "24/7 dedicated SOC team",
       "SLA guarantees",
-      "Regulatory compliance packs (ISO 27001, GDPR, CERT-In)",
+      "Regulatory compliance packs (ISO/IEC 27001:2022, GDPR, CERT-In)",
     ],
     image: "/generated/corporate_office_cyber_1773394698579.png",
     tier: "Enterprise",
