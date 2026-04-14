@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import PageHero from "../components/PageHero";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { getNewsletterConfigError, sendNewsletterSubscription } from "../lib/newsletter";
 
 export default function NewsletterPage() {
   const [email, setEmail] = useState("");
   const [preferences, setPreferences] = useState(["Threat Reports"]);
+  const [status, setStatus] = useState("idle");
+  const [feedback, setFeedback] = useState("");
+  const configError = useMemo(() => getNewsletterConfigError(), []);
 
   usePageMeta(
     "Newsletter | Netcradus",
@@ -19,6 +23,42 @@ export default function NewsletterPage() {
     setPreferences((current) =>
       current.includes(value) ? current.filter((item) => item !== value) : [...current, value]
     );
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!email.trim()) {
+      setStatus("error");
+      setFeedback("Please enter your work email.");
+      return;
+    }
+
+    if (preferences.length === 0) {
+      setStatus("error");
+      setFeedback("Select at least one content preference.");
+      return;
+    }
+
+    setStatus("loading");
+    setFeedback("");
+
+    try {
+      await sendNewsletterSubscription({
+        email: email.trim(),
+        preferences,
+        source: "newsletter-page",
+      });
+
+      setStatus("success");
+      setFeedback("Subscription received. We will send the next briefing to your inbox.");
+      setEmail("");
+      setPreferences(["Threat Reports"]);
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+      setStatus("error");
+      setFeedback(error.message || "Subscription failed. Please try again.");
+    }
   };
 
   return (
@@ -41,7 +81,7 @@ export default function NewsletterPage() {
       <section className="py-0">
         <div className="container mx-auto max-w-4xl px-4 pb-24 sm:px-6 lg:px-16">
           <div className="premium-card rounded-[32px] border border-border bg-[var(--color-surface)]/85 p-8 shadow-[0_24px_80px_rgba(232,64,10,0.08)] backdrop-blur-xl md:p-12">
-            <form className="space-y-8">
+            <form className="space-y-8" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="newsletter-email" className="mb-3 block text-sm font-bold uppercase tracking-[0.2em] text-accent">
                   Work Email
@@ -49,6 +89,9 @@ export default function NewsletterPage() {
                 <input
                   id="newsletter-email"
                   type="email"
+                  name="email"
+                  autoComplete="email"
+                  required
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   placeholder="name@company.com"
@@ -83,8 +126,30 @@ export default function NewsletterPage() {
                 </div>
               </div>
 
-              <button type="button" className="btn-primary px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] shadow-[0_0_36px_rgba(232,64,10,0.18)]">
-                Subscribe
+              {configError && (
+                <p className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+                  {configError}
+                </p>
+              )}
+
+              {feedback && (
+                <p
+                  className={`rounded-2xl border px-4 py-3 text-sm ${
+                    status === "success"
+                      ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-200"
+                      : "border-red-500/30 bg-red-500/10 text-red-200"
+                  }`}
+                >
+                  {feedback}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === "loading" || Boolean(configError)}
+                className="btn-primary px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] shadow-[0_0_36px_rgba(232,64,10,0.18)] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {status === "loading" ? "Subscribing..." : "Subscribe"}
               </button>
             </form>
           </div>

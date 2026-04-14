@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Linkedin, Instagram, Facebook, Youtube } from "lucide-react";
 import companyLogoImage from "../assets/companyLogo.png";
+import { getNewsletterConfigError, sendNewsletterSubscription } from "../lib/newsletter";
 
 const footerColumns = [
   {
@@ -61,6 +63,40 @@ const footerColumns = [
 ];
 
 export default function Footer() {
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState("idle");
+  const [newsletterFeedback, setNewsletterFeedback] = useState("");
+  const configError = getNewsletterConfigError();
+
+  const handleNewsletterSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!newsletterEmail.trim()) {
+      setNewsletterStatus("error");
+      setNewsletterFeedback("Enter your email to subscribe.");
+      return;
+    }
+
+    setNewsletterStatus("loading");
+    setNewsletterFeedback("");
+
+    try {
+      await sendNewsletterSubscription({
+        email: newsletterEmail.trim(),
+        preferences: ["Threat Reports", "Product Updates"],
+        source: "footer",
+      });
+
+      setNewsletterStatus("success");
+      setNewsletterFeedback("You are subscribed for upcoming briefings.");
+      setNewsletterEmail("");
+    } catch (error) {
+      console.error("Footer newsletter error:", error);
+      setNewsletterStatus("error");
+      setNewsletterFeedback(error.message || "Subscription failed. Please try again.");
+    }
+  };
+
   return (
     <footer className="relative z-10 mt-24 overflow-hidden border-t border-border bg-background pt-16 transition-colors duration-500">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
@@ -160,14 +196,38 @@ export default function Footer() {
           <p className="max-w-xl text-sm leading-relaxed text-text-secondary">
             Receive Netcradus research, product updates, and intelligence briefings from our security team.
           </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="min-w-0 flex-1 rounded-full border border-border bg-[var(--color-surface)] px-5 py-3 text-sm text-text-primary outline-none transition focus:border-accent/40 focus:shadow-[0_0_22px_rgba(232,64,10,0.12)]"
-            />
-            <button className="btn-primary px-6 py-3 text-sm font-bold uppercase tracking-[0.2em]">Subscribe</button>
-          </div>
+          <form onSubmit={handleNewsletterSubmit} className="mt-6">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <input
+                type="email"
+                value={newsletterEmail}
+                onChange={(event) => setNewsletterEmail(event.target.value)}
+                placeholder="Enter your email"
+                autoComplete="email"
+                required
+                className="min-w-0 flex-1 rounded-full border border-border bg-[var(--color-surface)] px-5 py-3 text-sm text-text-primary outline-none transition focus:border-accent/40 focus:shadow-[0_0_22px_rgba(232,64,10,0.12)]"
+              />
+              <button
+                type="submit"
+                disabled={newsletterStatus === "loading" || Boolean(configError)}
+                className="btn-primary px-6 py-3 text-sm font-bold uppercase tracking-[0.2em] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {newsletterStatus === "loading" ? "Sending..." : "Subscribe"}
+              </button>
+            </div>
+          </form>
+          {configError && (
+            <p className="mt-3 text-sm text-amber-300">{configError}</p>
+          )}
+          {newsletterFeedback && (
+            <p
+              className={`mt-3 text-sm ${
+                newsletterStatus === "success" ? "text-emerald-300" : "text-red-300"
+              }`}
+            >
+              {newsletterFeedback}
+            </p>
+          )}
           <Link to="/newsletter" className="mt-4 inline-flex text-sm font-semibold text-accent transition hover:text-accent-bright">
             Go to newsletter page
           </Link>
