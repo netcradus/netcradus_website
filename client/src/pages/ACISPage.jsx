@@ -95,6 +95,11 @@ const HeroSection = () => {
             <span className="border border-accent/50 text-accent font-medium text-[11px] px-3 py-1 rounded-full uppercase tracking-wide">GDPR Ready</span>
             <span className="border border-border text-text-primary font-medium text-[11px] px-3 py-1 rounded-full uppercase tracking-wide">ISO/IEC 27001:2022 Aligned</span>
           </div>
+        <div className='mt-3 text-sm text-text-secondary ml-2'>
+          <p>
+           © All right reserved by Netcradus.
+          </p>
+          </div>
         </div>
 
         {/* Right Column */}
@@ -102,7 +107,7 @@ const HeroSection = () => {
           <div className="relative transform rotate-y-[-3deg] hover:rotate-y-0 transition-transform duration-500 ease-out group">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
             <img
-              src="/assets/acis-architecture.jpeg"
+              src="/assets/ACIS.jpeg"
               alt="ACIS 5-Layer Architecture"
               className="relative w-full max-w-full rounded-xl shadow-2xl shadow-brand border border-border"
             />

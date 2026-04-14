@@ -123,7 +123,7 @@ const ACISSection = () => {
                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
               </div>
-              <img src="/assets/acis-dashboard.png" alt="ACIS Dashboard" className="w-full h-auto opacity-90 object-cover" />
+              <img src="/assets/acisDashboard.png" alt="ACIS Dashboard" className="w-full h-auto opacity-90 object-cover" />
             </div>
           </div>
         </div>
