@@ -107,7 +107,7 @@ const HeroSection = () => {
           <div className="relative transform rotate-y-[-3deg] hover:rotate-y-0 transition-transform duration-500 ease-out group">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
             <img
-              src="/assets/ACIS.jpeg"
+              src="/assets/Acis-arch.jpeg"
               alt="ACIS 5-Layer Architecture"
               className="relative w-full max-w-full rounded-xl shadow-2xl shadow-brand border border-border"
             />
