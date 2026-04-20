@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PageHero from "../components/PageHero";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 
 const phases = [
   {
@@ -86,10 +87,7 @@ This creates a self-learning cybersecurity ecosystem that adapts to emerging thr
 ];
 
 export default function PhasePage() {
-  usePageMeta(
-    "Phases | Netcradus",
-    "Review the ACIS implementation journey across learning, surveillance, classification, response, and adaptive security phases."
-  );
+  usePageMeta(SEO_META.phase.title, SEO_META.phase.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);

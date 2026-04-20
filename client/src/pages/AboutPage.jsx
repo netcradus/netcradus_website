@@ -4,12 +4,10 @@ import About from "../components/About";
 import CTABanner from "../components/CTABanner";
 import Certifications from '../components/Certifications';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { SEO_META } from '../data/seoMeta';
 
 const AboutPage = () => {
-    usePageMeta(
-        'About | Netcradus',
-        'Learn about Netcradus, our cybersecurity mission, global presence, and ACIS-driven approach to enterprise resilience.'
-    );
+    usePageMeta(SEO_META.about.title, SEO_META.about.description);
 
     useEffect(() => {
         window.scrollTo(0, 0);

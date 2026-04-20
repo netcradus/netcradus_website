@@ -8,12 +8,10 @@ import ClientsSection from '../components/ClientsSection';
 import LiveThreatMap from '../components/LiveThreatMap';
 import Certifications from '../components/Certifications';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { SEO_META } from '../data/seoMeta';
 
 const HomePage = () => {
-    usePageMeta(
-        'Netcradus | Autonomous Cyber Immune Systems',
-        'Netcradus builds autonomous cyber immune systems, managed security capabilities, and enterprise-grade cyber resilience.'
-    );
+    usePageMeta(SEO_META.home.title, SEO_META.home.description);
 
     useEffect(() => {
         window.scrollTo(0, 0);

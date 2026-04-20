@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import SubHero from '../components/SubHero';
 import Blog from "../components/Blog";
 import { usePageMeta } from '../hooks/usePageMeta';
+import { SEO_META } from '../data/seoMeta';
 
 const BlogPage = () => {
-    usePageMeta(
-        'Blog | Netcradus',
-        'Read Netcradus threat intelligence, security architecture insight, and platform-focused cyber defense analysis.'
-    );
+    usePageMeta(SEO_META.blog.title, SEO_META.blog.description);
 
     useEffect(() => {
         window.scrollTo(0, 0);

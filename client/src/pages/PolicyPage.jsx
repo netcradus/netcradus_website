@@ -1,12 +1,10 @@
 import React from "react";
 import Policies from "../components/Policy";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 
 function PolicyPage() {
-  usePageMeta(
-    "Privacy Policy | Netcradus",
-    "Review Netcradus policy, privacy, governance, and compliance information."
-  );
+  usePageMeta(SEO_META.policy.title, SEO_META.policy.description);
 
   return (
     <div>

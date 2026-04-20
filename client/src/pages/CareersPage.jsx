@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import {
     Rocket,
     Globe,
@@ -15,6 +16,8 @@ import {
     BarChart3,
     Blocks,
 } from "lucide-react";
+import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 
 const BENEFITS = [
     {
@@ -107,6 +110,12 @@ const ROLES = [
 ];
 
 export default function CareersPage() {
+    usePageMeta(SEO_META.careers.title, SEO_META.careers.description);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="overflow-hidden bg-white transition-colors duration-500 dark:bg-zinc-950">
             <section className="relative flex min-h-[50vh] items-center bg-premium-radial py-24">

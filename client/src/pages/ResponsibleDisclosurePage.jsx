@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import LegalPageTemplate from "../components/LegalPageTemplate";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 
 const sections = [
   {
@@ -27,10 +28,7 @@ const sections = [
 ];
 
 export default function ResponsibleDisclosurePage() {
-  usePageMeta(
-    "Responsible Disclosure Policy | Netcradus",
-    "Review the Netcradus Responsible Disclosure Policy for reporting vulnerabilities safely and professionally."
-  );
+  usePageMeta(SEO_META.responsibleDisclosure.title, SEO_META.responsibleDisclosure.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);

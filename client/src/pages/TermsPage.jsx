@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import LegalPageTemplate from "../components/LegalPageTemplate";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 
 const sections = [
   {
@@ -34,7 +35,7 @@ const sections = [
 ];
 
 export default function TermsPage() {
-  usePageMeta("Terms of Service | Netcradus", "Review the Netcradus Terms of Service for our cybersecurity platform and professional services.");
+  usePageMeta(SEO_META.terms.title, SEO_META.terms.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);

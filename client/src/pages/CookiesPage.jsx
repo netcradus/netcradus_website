@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import LegalPageTemplate from "../components/LegalPageTemplate";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 
 const sections = [
   {
@@ -27,7 +28,7 @@ const sections = [
 ];
 
 export default function CookiesPage() {
-  usePageMeta("Cookie Policy | Netcradus", "Read the Netcradus Cookie Policy for information about cookies, preferences, and security-related site storage.");
+  usePageMeta(SEO_META.cookies.title, SEO_META.cookies.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);

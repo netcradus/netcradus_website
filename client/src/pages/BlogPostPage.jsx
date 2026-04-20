@@ -4,15 +4,14 @@ import { Clock, Download, ArrowLeft } from "lucide-react";
 import { BLOGS } from "../data/blogs";
 import PageHero from "../components/PageHero";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { getBlogPostMeta } from "../data/seoMeta";
 
 export default function BlogPostPage() {
   const { slug } = useParams();
   const blog = BLOGS.find((entry) => entry.id === slug);
+  const meta = getBlogPostMeta(blog);
 
-  usePageMeta(
-    blog ? `${blog.title} | Netcradus` : "Article | Netcradus",
-    blog?.seoDescription || "Read Netcradus intelligence and cybersecurity insights."
-  );
+  usePageMeta(meta.title, meta.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);
