@@ -17,8 +17,8 @@ const ServicesPage = () => {
         <div className="bg-background transition-colors duration-500">
             <SubHero
                 label="// OUR CAPABILITIES"
-                title="Intelligent Security. Delivered at Scale."
-                subtitle="From proactive defense and managed detection to cloud, network, and enterprise security, we provide the technical foundation for organizations to scale securely."
+                title="Managed Security Services for Modern Enterprises"
+                subtitle="From proactive defense and managed detection to cloud, network, and enterprise security, Netcradus delivers managed security services built for resilient growth."
             />
             <Services />
             <Industries />

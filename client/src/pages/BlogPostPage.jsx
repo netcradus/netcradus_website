@@ -11,7 +11,16 @@ export default function BlogPostPage() {
   const blog = BLOGS.find((entry) => entry.id === slug);
   const meta = getBlogPostMeta(blog);
 
-  usePageMeta(meta.title, meta.description);
+  usePageMeta(meta.title, meta.description, {
+    type: meta.type,
+    path: blog ? `/blog/${blog.id}` : "/blog",
+    image: blog?.heroImage,
+    keywords: meta.keywords,
+    article: {
+      publishedTime: blog?.date,
+      section: blog?.category,
+    },
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

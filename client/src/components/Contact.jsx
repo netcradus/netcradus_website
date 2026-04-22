@@ -77,10 +77,10 @@ const Contact = () => {
             Establish Connection
           </span>
 
-          <h2 className="mb-8 text-4xl font-black leading-[1.05] tracking-tight text-[var(--color-text-primary)] md:text-7xl">
-            Ready to <br />
-            <span className="text-accent italic">fortify?</span>
-          </h2>
+          <h1 className="mb-8 text-4xl font-black leading-[1.05] tracking-tight text-[var(--color-text-primary)] md:text-7xl">
+            Cybersecurity Consultation <br />
+            <span className="text-accent italic">for your business</span>
+          </h1>
 
           <p className="text-lg text-[var(--color-text-secondary)] md:text-xl">
             Our strategists are ready to engineer your digital shield.
