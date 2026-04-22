@@ -145,6 +145,12 @@
   color:#e8400a;
 }
 
+.acis-dashboard-frame {
+  max-width: 960px;
+  margin-top: 0.75rem;
+  transform: translateY(-18px);
+}
+
 /* Architecture */
 .arch-tab .icon-box {
   padding: 0.8rem;
@@ -302,6 +308,10 @@
   }
   .acis-section .premium-card {
     padding: 1.25rem;
+  }
+  .acis-dashboard-frame {
+    margin-top: 0.5rem;
+    transform: translateY(-10px);
   }
   .timeline-item {
     padding: 1.25rem;

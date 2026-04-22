@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Download, Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 import PageHero from "./PageHero";
 
 const platformSections = [
@@ -100,10 +101,7 @@ const platformSections = [
 ];
 
 export default function Platform() {
-  usePageMeta(
-    "Platform | Netcradus",
-    "Explore the Netcradus ACIS platform, product tiers, AI-SIEM engine, and SOAR automation capabilities."
-  );
+  usePageMeta(SEO_META.platform.title, SEO_META.platform.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -115,7 +113,7 @@ export default function Platform() {
     <div className="bg-background transition-colors duration-500">
       <PageHero
         label="// PLATFORM"
-        title="The Netcradus Security Platform"
+        title="The Netcradus Cybersecurity Platform"
         subtitle="Explore ACIS, its deployment tiers, and the intelligence engines that power autonomous cyber defense at enterprise scale."
         media={
           <div className="overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4 shadow-[0_20px_70px_rgba(232,64,10,0.1)]">

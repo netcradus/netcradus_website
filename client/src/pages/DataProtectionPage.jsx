@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import LegalPageTemplate from "../components/LegalPageTemplate";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 
 const sections = [
   {
@@ -34,10 +35,7 @@ const sections = [
 ];
 
 export default function DataProtectionPage() {
-  usePageMeta(
-    "Data Protection Policy | Netcradus",
-    "Review the Netcradus Data Protection Policy for our approach to UK GDPR-aligned information handling."
-  );
+  usePageMeta(SEO_META.dataProtection.title, SEO_META.dataProtection.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);

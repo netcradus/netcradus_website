@@ -3,6 +3,7 @@ import { FileText, BookOpen, ShieldCheck, ScrollText, Newspaper, ArrowUpRight, D
 import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { SEO_META } from "../data/seoMeta";
 
 const resourceSections = [
   {
@@ -68,10 +69,7 @@ const resourceSections = [
 ];
 
 export default function ResourcesPage() {
-  usePageMeta(
-    "Resources | Netcradus",
-    "Access Netcradus security research, white papers, case studies, documentation, and threat reports."
-  );
+  usePageMeta(SEO_META.resources.title, SEO_META.resources.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -6,8 +6,10 @@ import { advancedPenetrationTesting } from './blog-posts/advancedPenetrationTest
 import { advancedActiveDirectoryAttacks } from './blog-posts/advancedActiveDirectoryAttacks';
 import { acisAutonomousCyberImmuneSystem } from './blog-posts/acisAutonomousCyberImmuneSystem';
 import { quantumComputingCyberIntelligence } from './blog-posts/quantumComputingCyberIntelligence';
+import { cyberResilienceStandard2026 } from './blog-posts/cyberResilienceStandard2026';
 
 export const BLOGS = [
+    cyberResilienceStandard2026,
     quantumComputingCyberIntelligence,
     acisAutonomousCyberImmuneSystem,
     zeroDayAttack,
@@ -20,6 +22,14 @@ export const BLOGS = [
     excerpt: "Read the latest Netcradus intelligence and technical analysis on evolving cyber threats and resilient security architecture.",
     heroImage: "/generated/secure_shield_concept_1773394778055.png",
     seoDescription: `Read ${blog.title} from the Netcradus intelligence team.`,
+    seoKeywords: [
+        blog.title.toLowerCase(),
+        `${blog.category.toLowerCase()} cybersecurity`,
+        "cybersecurity blog",
+        "threat intelligence",
+        "enterprise cyber defense",
+        "Netcradus insights",
+    ],
     hasWhitePaperCta: false,
     ...blog,
 }));

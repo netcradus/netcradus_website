@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Shield, Zap, RefreshCcw, Activity, Target, Search, CheckCircle, GitMerge, Server, Building2, ShieldCheck, Globe, Lock } from 'lucide-react';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { SEO_META } from '../data/seoMeta';
 
 // Custom hook for fade-in effect on scroll
 
@@ -864,10 +865,7 @@ export const FooterCTA = () => {
 };
 
 export default function ACISPage() {
-  usePageMeta(
-    'ACIS | Netcradus',
-    'Explore the Netcradus ACIS platform, its autonomous defense architecture, deployment tiers, and white paper.'
-  );
+  usePageMeta(SEO_META.acis.title, SEO_META.acis.description);
 
   const [showScrollTop, setShowScrollTop] = useState(false);
 

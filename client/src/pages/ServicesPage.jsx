@@ -4,12 +4,10 @@ import Services from "../components/Services";
 import Industries from "../components/Industries";
 import CTABanner from "../components/CTABanner";
 import { usePageMeta } from '../hooks/usePageMeta';
+import { SEO_META } from '../data/seoMeta';
 
 const ServicesPage = () => {
-    usePageMeta(
-        'Solutions | Netcradus',
-        'Explore Netcradus cybersecurity, managed SOC, cloud security, AI analytics, network security, and enterprise security solutions.'
-    );
+    usePageMeta(SEO_META.services.title, SEO_META.services.description);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -19,8 +17,8 @@ const ServicesPage = () => {
         <div className="bg-background transition-colors duration-500">
             <SubHero
                 label="// OUR CAPABILITIES"
-                title="Intelligent Security. Delivered at Scale."
-                subtitle="From proactive defense and managed detection to cloud, network, and enterprise security, we provide the technical foundation for organizations to scale securely."
+                title="Managed Security Services for Modern Enterprises"
+                subtitle="From proactive defense and managed detection to cloud, network, and enterprise security, Netcradus delivers managed security services built for resilient growth."
             />
             <Services />
             <Industries />

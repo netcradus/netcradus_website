@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import PageHero from "../components/PageHero";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { getNewsletterConfigError, sendNewsletterSubscription } from "../lib/newsletter";
+import { SEO_META } from "../data/seoMeta";
 
 export default function NewsletterPage() {
   const [email, setEmail] = useState("");
@@ -10,10 +11,7 @@ export default function NewsletterPage() {
   const [feedback, setFeedback] = useState("");
   const configError = useMemo(() => getNewsletterConfigError(), []);
 
-  usePageMeta(
-    "Newsletter | Netcradus",
-    "Subscribe to the Netcradus newsletter for threat intelligence, product updates, and security insights."
-  );
+  usePageMeta(SEO_META.newsletter.title, SEO_META.newsletter.description);
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import Contact from "../components/Contact";
 import { usePageMeta } from '../hooks/usePageMeta';
+import { SEO_META } from '../data/seoMeta';
 
 const ContactPage = () => {
-    usePageMeta(
-        'Contact | Netcradus',
-        'Contact Netcradus for cybersecurity consulting, ACIS platform discussions, and enterprise resilience planning.'
-    );
+    usePageMeta(SEO_META.contact.title, SEO_META.contact.description);
 
     useEffect(() => {
         window.scrollTo(0, 0);
