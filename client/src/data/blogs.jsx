@@ -1,4 +1,4 @@
-import { zeroDayAttack } from './blog-posts/zeroDayAttack';
+import { crmSoftware2026 } from './blog-posts/crmSoftware2026';
 import { ransomwareAttacks } from './blog-posts/ransomwareAttacks';
 import { blockchainTechnology } from './blog-posts/blockchainTechnology';
 import { cybersecurityArchitecture } from './blog-posts/cybersecurityArchitecture';
@@ -16,7 +16,7 @@ export const BLOGS = [
     cyberResilienceStandard2026,
     quantumComputingCyberIntelligence,
     acisAutonomousCyberImmuneSystem,
-    zeroDayAttack,
+    crmSoftware2026,
     ransomwareAttacks,
     blockchainTechnology,
     cybersecurityArchitecture,
