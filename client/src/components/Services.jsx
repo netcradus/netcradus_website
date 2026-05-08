@@ -63,7 +63,7 @@ const SERVICE_TABS = [
     title: "AI & Data Analytics",
     heading: "AI & Data Analytics",
     icon: BrainCircuit,
-    image: "/generated/ai_data_network_1773394527444.png",
+    image: "/generated/img2.png",
     description:
       "Harness the power of AI to gain actionable security intelligence, detect anomalies, and predict threats before they materialize.",
     points: [
@@ -111,6 +111,24 @@ const SERVICE_TABS = [
       "CISO-as-a-Service for organizations without dedicated security leadership",
     ],
     highlights: ["Security Architecture", "Board Reporting", "Vendor Risk"],
+  },
+  {
+    id: "vms-hms",
+    title: "Products",
+    heading: "Visitor & Hospital Management Systems",
+    icon: Code2,
+    image: "/generated/AI.png",
+    description:
+      "Netcradus builds intelligent visitor and hospital management systems that digitize access, approvals, patient workflows, and administrative operations for secure, high-performance environments.",
+    points: [
+      "Secure digital visitor onboarding with biometric verification, ID validation, and officer approval workflows",
+      "Risk-aware visitor screening, blacklist checks, and real-time gate pass issuance",
+      "Centralized patient registration, appointment scheduling, admissions, and discharge management",
+      "Integrated billing, prescription management, lab workflow tracking, and staff coordination",
+      "Role-based dashboards for security officers, reception teams, clinicians, and administrators",
+      "Audit-ready logs, data protection controls, and seamless integration with existing access systems",
+    ],
+    highlights: ["Secure Access", "Smart Healthcare Workflows", "Operational Control"],
   },
 ];
 
@@ -223,6 +241,55 @@ const Services = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="reveal mt-12 rounded-[30px] border border-accent/15 bg-[linear-gradient(180deg,rgba(232,64,10,0.08),transparent_45%),var(--color-surface-raised)] p-10 shadow-[0_0_48px_rgba(232,64,10,0.08)]" style={{ transitionDelay: "0.45s" }}>
+          <div className="max-w-4xl">
+            <span className="mb-4 inline-block text-[10px] font-bold uppercase tracking-[0.4em] text-accent font-display md:text-[12px]">
+              // AI Solutions & Innovation
+            </span>
+            <h3 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">Next-Generation AI Solutions for Modern Enterprises</h3>
+            <p className="mt-6 text-lg leading-relaxed text-text-secondary">
+              We are expanding our team with talented AI Engineers to build next-generation intelligent solutions for modern businesses. Our AI-powered services help companies automate operations, improve customer experience, increase productivity, and make smarter business decisions using advanced technologies like Machine Learning, Generative AI, NLP, and Automation.
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-1">
+              <div className="rounded-[22px] border border-border bg-[var(--color-surface)]/85 p-5">
+                <h4 className="text-xl font-bold text-text-primary">What We Offer with AI</h4>
+                <ul className="mt-4 list-disc pl-6 space-y-3 text-text-secondary">
+                  <li>🤖 AI-powered chatbots and virtual assistants for instant customer support</li>
+                  <li>📊 Smart business analytics and predictive insights for better decision-making</li>
+                  <li>🧠 Machine Learning solutions for automation and intelligent workflows</li>
+                  <li>💬 Natural Language Processing (NLP) for text analysis and communication systems</li>
+                  <li>🏥 AI integration in CRM, Hospital Management, and Enterprise platforms</li>
+                  <li>🔐 AI-based security monitoring and threat detection systems</li>
+                   <li>📈 Personalized recommendation systems for better user engagement</li>
+                    <li>⚡ Process automation to reduce manual work and improve efficiency</li>
+                     <li>🌐 Generative AI applications for content generation, reports, and productivity tools</li>
+                      <li>📱 Custom AI solutions tailored to specific business needs and industries</li>
+                  
+                </ul>
+              </div>
+              <div className="rounded-[22px] border border-border bg-[var(--color-surface)]/85 p-5">
+                <h4 className="text-xl font-bold text-text-primary">Why it matters</h4>
+                <p className="mt-4 text-text-secondary leading-relaxed">
+                 Artificial Intelligence is transforming the way businesses operate by making systems 
+                 smarter, faster, and more efficient. In today’s competitive digital world, companies 
+                 need intelligent solutions to automate repetitive tasks, analyze large amounts of data, 
+                 improve customer experiences, and make faster business decisions. AI helps reduce 
+                 operational costs, increase productivity, enhance security, and deliver 
+                 personalized services to users. From automation and predictive analytics to smart 
+                 customer support and data-driven insights, AI is becoming an essential part of modern
+                  business growth and innovation.
+                </p>
+                 <div>
+            <img src="/generated/img2.png" alt="" />
+          </div>
+              </div>
+              
+            </div>
+          </div>
+
+         
         </div>
 
         <div className="reveal mt-16 grid gap-6 md:grid-cols-3" style={{ transitionDelay: "0.5s" }}>
