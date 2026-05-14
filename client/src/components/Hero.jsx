@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import AmbientMesh from "./AmbientMesh";
 import AnimatedReveal from "./ui/AnimatedReveal";
 import MagneticWrapper from "./ui/MagneticWrapper";
@@ -24,34 +24,43 @@ const Hero = () => {
             <div className="relative inline-block">
               <div className="absolute inset-x-6 bottom-1 h-16 rounded-full bg-[radial-gradient(circle,rgba(232,64,10,0.18),transparent_68%)] blur-2xl dark:bg-[radial-gradient(circle,rgba(232,64,10,0.24),transparent_68%)]" />
               <h1 className="relative mb-6 text-[clamp(2.75rem,6vw,5rem)] font-black leading-[1.03] tracking-tight text-[var(--color-text-primary)] [text-shadow:0_0_26px_rgba(232,64,10,0.08)] dark:[text-shadow:0_0_36px_rgba(232,64,10,0.16)]">
-                Engineering Digital Resilience for the{" "}
-                <span className="text-accent italic">Global Enterprise</span>
+                Protect Your Business from Modern Cyber Threats with 24/7 SOC &amp; SIEM
+                Security Solutions
               </h1>
             </div>
 
-            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-[var(--color-text-secondary)]">
-              Beyond detection. Netcradus builds autonomous cyber immune systems that predict,
-              neutralize, and evolve against modern threats.
+            <h2 className="mx-auto mb-10 max-w-3xl text-lg font-medium leading-relaxed text-[var(--color-text-secondary)] md:text-2xl">
+              Detect. Prevent. Respond. Enterprise-Grade SOC &amp; SIEM Monitoring for
+              Global Businesses
+            </h2>
+
+            <p className="mx-auto mb-10 inline-flex max-w-fit rounded-full border border-accent/20 bg-accent/8 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-accent shadow-[0_0_30px_rgba(232,64,10,0.08)]">
+              Affordable Enterprise Cybersecurity for Growing Indian Businesses
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="cta-group flex flex-wrap justify-center gap-4">
               <Link to="/contact">
                 <MagneticWrapper>
-                  <button className="btn-hero-primary">Request Audit</button>
+                  <button className="btn-hero-primary">Get Free Security Assessment</button>
                 </MagneticWrapper>
               </Link>
 
-              <MagneticWrapper>
-                <a
-                  href="https://acis.netcradus.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-hero-secondary"
-                >
-                  Explore ACIS
-                  <ArrowRight size={16} />
-                </a>
-              </MagneticWrapper>
+              <a href="tel:1800121008800">
+                <MagneticWrapper>
+                  <button className="btn-hero-secondary">Contact Now</button>
+                </MagneticWrapper>
+              </a>
+
+              <Link
+                to="/contact"
+                className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+              >
+                <MagneticWrapper>
+                  <span className="btn-hero-secondary border border-accent/25 bg-transparent text-text-primary">
+                    Book SOC Demo
+                  </span>
+                </MagneticWrapper>
+              </Link>
             </div>
           </AnimatedReveal>
         </div>
