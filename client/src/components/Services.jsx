@@ -256,16 +256,16 @@ const Services = () => {
               <div className="rounded-[22px] border border-border bg-[var(--color-surface)]/85 p-5">
                 <h4 className="text-xl font-bold text-text-primary">What We Offer with AI</h4>
                 <ul className="mt-4 list-disc pl-6 space-y-3 text-text-secondary">
-                  <li>🤖 AI-powered chatbots and virtual assistants for instant customer support</li>
-                  <li>📊 Smart business analytics and predictive insights for better decision-making</li>
-                  <li>🧠 Machine Learning solutions for automation and intelligent workflows</li>
-                  <li>💬 Natural Language Processing (NLP) for text analysis and communication systems</li>
-                  <li>🏥 AI integration in CRM, Hospital Management, and Enterprise platforms</li>
-                  <li>🔐 AI-based security monitoring and threat detection systems</li>
-                   <li>📈 Personalized recommendation systems for better user engagement</li>
-                    <li>⚡ Process automation to reduce manual work and improve efficiency</li>
-                     <li>🌐 Generative AI applications for content generation, reports, and productivity tools</li>
-                      <li>📱 Custom AI solutions tailored to specific business needs and industries</li>
+                  <li> AI-powered chatbots and virtual assistants for instant customer support</li>
+                  <li> Smart business analytics and predictive insights for better decision-making</li>
+                  <li> Machine Learning solutions for automation and intelligent workflows</li>
+                  <li> Natural Language Processing (NLP) for text analysis and communication systems</li>
+                  <li> AI integration in CRM, Hospital Management, and Enterprise platforms</li>
+                  <li> AI-based security monitoring and threat detection systems</li>
+                   <li> Personalized recommendation systems for better user engagement</li>
+                    <li> Process automation to reduce manual work and improve efficiency</li>
+                     <li> Generative AI applications for content generation, reports, and productivity tools</li>
+                      <li> Custom AI solutions tailored to specific business needs and industries</li>
                   
                 </ul>
               </div>

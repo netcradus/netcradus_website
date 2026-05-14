@@ -4,16 +4,16 @@ const LEGAL_PAGE_ROBOTS = "noindex, follow, max-image-preview:large";
 export const SEO_META = {
   home: {
     path: "/",
-    title: "Netcradus | Autonomous Cyber Immune Systems & Enterprise Cybersecurity",
+    title: "Netcradus | 24/7 SOC & SIEM Security Solutions for Global Businesses",
     description:
-      "Netcradus delivers autonomous cyber immune systems, managed security services, and enterprise cybersecurity solutions built for resilient organizations.",
+      "Netcradus delivers 24/7 SOC & SIEM monitoring, advanced threat detection, and enterprise-grade cybersecurity solutions to protect businesses from modern cyber threats.",
     keywords: [
-      "autonomous cyber immune systems",
-      "cybersecurity company",
-      "enterprise cybersecurity",
-      "managed security services",
-      "cyber resilience",
-      "AI cybersecurity platform",
+      "24/7 SOC monitoring",
+      "SIEM security solutions",
+      "advanced threat detection",
+      "enterprise cybersecurity solutions",
+      "global business security",
+      "modern cyber threats",
     ],
     robots: PUBLIC_INDEX_ROBOTS,
     type: "website",
