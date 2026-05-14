@@ -50,8 +50,6 @@ function App() {
       {/* <WhatsAppButton /> */}
       <Routes>
         <Route path="/" element={<AppLayout />}>
-  <Route index element={<HomePage />} />
-</Route>
           <Route index element={<HomePage />} />
           <Route path="platform" element={<Platform />} />
           <Route path="services" element={<ServicesPage />} />
@@ -69,6 +67,7 @@ function App() {
           <Route path="cookies" element={<CookiesPage />} />
           <Route path="responsible-disclosure" element={<ResponsibleDisclosurePage />} />
           <Route path="phase" element={<PhasePage />} />
+        </Route>
       </Routes>
     </>
   );

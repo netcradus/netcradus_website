@@ -23,49 +23,36 @@ const Hero = () => {
 
             <div className="relative inline-block">
               <div className="absolute inset-x-6 bottom-1 h-16 rounded-full bg-[radial-gradient(circle,rgba(232,64,10,0.18),transparent_68%)] blur-2xl dark:bg-[radial-gradient(circle,rgba(232,64,10,0.24),transparent_68%)]" />
-             <h1 className="relative mb-6 text-[clamp(2.5rem,5.5vw,4.5rem)] font-extrabold leading-[1.1] tracking-tight text-[var(--color-text-primary)]">
-  Protect Your Business from Modern Cyber Threats with{" "}
-  <span className="text-accent font-semibold not-italic">
-    24/7 SOC & SIEM Security Solutions
-  </span>
-</h1>
+              <h1 className="relative mb-6 text-[clamp(2.75rem,6vw,5rem)] font-black leading-[1.03] tracking-tight text-[var(--color-text-primary)] [text-shadow:0_0_26px_rgba(232,64,10,0.08)] dark:[text-shadow:0_0_36px_rgba(232,64,10,0.16)]">
+                Engineering Digital Resilience for the{" "}
+                <span className="text-accent italic">Global Enterprise</span>
+              </h1>
             </div>
 
             <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-[var(--color-text-secondary)]">
-               Detect. Prevent. Respond. Enterprise-Grade SOC & SIEM Monitoring for Global Businesses
+              Beyond detection. Netcradus builds autonomous cyber immune systems that predict,
+              neutralize, and evolve against modern threats.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-  
-  <Link to="/contact">
-    <MagneticWrapper>
-      <button className="btn-hero-primary">
-        Get Free Security Assessment
-      </button>
-    </MagneticWrapper>
-  </Link>
+              <Link to="/contact">
+                <MagneticWrapper>
+                  <button className="btn-hero-primary">Request Audit</button>
+                </MagneticWrapper>
+              </Link>
 
-  <Link to="/contact">
-    <MagneticWrapper>
-      <button className="btn-hero-secondary">
-        Talk to Security Expert
-      </button>
-    </MagneticWrapper>
-  </Link>
-
-  <MagneticWrapper>
-    <a
-      href="https://acis.netcradus.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="btn-hero-secondary flex items-center gap-2"
-    >
-      Book SOC Demo
-      <ArrowRight size={16} />
-    </a>
-  </MagneticWrapper>
-
-</div>
+              <MagneticWrapper>
+                <a
+                  href="https://acis.netcradus.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-hero-secondary"
+                >
+                  Explore ACIS
+                  <ArrowRight size={16} />
+                </a>
+              </MagneticWrapper>
+            </div>
           </AnimatedReveal>
         </div>
 
