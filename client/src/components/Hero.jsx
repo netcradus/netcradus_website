@@ -24,8 +24,7 @@ const Hero = () => {
             <div className="relative inline-block">
               <div className="absolute inset-x-6 bottom-1 h-16 rounded-full bg-[radial-gradient(circle,rgba(232,64,10,0.18),transparent_68%)] blur-2xl dark:bg-[radial-gradient(circle,rgba(232,64,10,0.24),transparent_68%)]" />
               <h1 className="relative mb-6 text-[clamp(2.75rem,6vw,5rem)] font-black leading-[1.03] tracking-tight text-[var(--color-text-primary)] [text-shadow:0_0_26px_rgba(232,64,10,0.08)] dark:[text-shadow:0_0_36px_rgba(232,64,10,0.16)]">
-                Protect Your Business from Modern Cyber Threats with 24/7 SOC &amp; SIEM
-                Security Solutions
+                Securing Businesses With AI-Driven Cyber Intelligence
               </h1>
             </div>
 
