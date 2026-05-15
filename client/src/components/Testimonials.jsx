@@ -3,7 +3,7 @@ import SectionWrapper from "./ui/SectionWrapper";
 import GlassCard from "./ui/GlassCard";
 import AnimatedReveal from "./ui/AnimatedReveal";
 import { Quote, ArrowUpRight } from "lucide-react";
-
+import testimonials from "../data/testimonials";
 import client1 from "../assets/clientsList/client_1-removebg.png";
 import client2 from "../assets/clientsList/client_2-removebg.png";
 import client3 from "../assets/clientsList/client_3-removebg.png";
@@ -12,20 +12,6 @@ import client5 from "../assets/clientsList/client5.png";
 import client6 from "../assets/clientsList/client_6-removebg.png";
 
 const clientLogos = [client1, client2, client3, client4, client5, client6];
-
-const testimonials = [
-    {
-        quote: "Netcradus transformed our security posture completely. Their SOC team is exceptional—exceptional latency and surgical precision in threat response.",
-        author: "HEAD OF INFRASTRUCTURE",
-        company: "Global Financial Firm"
-    },
-    {
-        quote: "The cloud migration they delivered was flawless. Zero downtime, 40% cost reduction, and a security framework that actually works.",
-        author: "CHIEF TECHNOLOGY OFFICER",
-        company: "Enterprise Healthcare"
-    }
-];
-
 export default function Testimonials() {
     return (
         <SectionWrapper className="bg-background border-y border-[var(--border-color)] transition-colors duration-300">

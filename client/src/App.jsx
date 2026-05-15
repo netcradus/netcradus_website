@@ -10,7 +10,6 @@ import ContactPage from "./pages/ContactPage";
 import CareersPage from "./pages/CareersPage";
 import ScrollToTop from "./components/ScrollToTop";
 // import WhatsAppButton from "./components/WhatsAppButton";
-
 import { useReveal } from "./hooks/useReveal";
 import Platform from "./components/Platform";
 import FloatingContact from "./components/FloatingContact";
