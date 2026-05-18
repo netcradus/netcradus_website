@@ -1,89 +1,157 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
+import {
+  BadgeCheck,
+  BrainCircuit,
+  Globe2,
+  Headphones,
+  Play,
+  Radar,
+  SearchCheck,
+  ShieldCheck,
+  Zap,
+  FileText,
+} from "lucide-react";
 import AmbientMesh from "./AmbientMesh";
 import AnimatedReveal from "./ui/AnimatedReveal";
 import MagneticWrapper from "./ui/MagneticWrapper";
 import "./Hero.css";
 
+const stats = [
+  { icon: ShieldCheck, value: "99.9%", label: "Threat Detection Accuracy" },
+  { icon: Radar, value: "24/7", label: "Continuous Monitoring" },
+  { icon: Globe2, value: "Global", label: "Enterprise Coverage" },
+  { icon: BadgeCheck, value: "100%", label: "Compliance Focused" },
+];
+
+const featureCards = [
+  {
+    icon: BrainCircuit,
+    title: "AI-Powered Threat Detection",
+    description: "Advanced ML models identify and neutralize threats in real time.",
+  },
+  {
+    icon: SearchCheck,
+    title: "Proactive Threat Hunting",
+    description: "Continuous threat hunting to detect hidden risks before they escalate.",
+  },
+  {
+    icon: Zap,
+    title: "Rapid Incident Response",
+    description: "Automated response workflows to minimize downtime.",
+  },
+  {
+    icon: FileText,
+    title: "Compliance & Reporting",
+    description: "Built-in compliance with global standards and detailed reporting.",
+  },
+  {
+    icon: Headphones,
+    title: "24/7 Expert Support",
+    description: "Round-the-clock support from cybersecurity experts.",
+  },
+];
+
 const Hero = () => {
   return (
-    <section className="hero relative flex min-h-screen items-center overflow-hidden bg-premium-radial pb-20 pt-32">
-      <AmbientMesh className="opacity-90" />
-      <div className="absolute left-1/2 top-32 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-accent/10 blur-[140px] dark:bg-accent/12" />
-      <div className="absolute left-[8%] top-[22%] h-40 w-40 rounded-full border border-accent/10 bg-white/20 blur-3xl dark:bg-white/5" />
-      <div className="absolute bottom-[14%] right-[10%] h-52 w-52 rounded-full border border-accent/10 bg-accent/8 blur-3xl" />
+    <section className="hero hero-shell relative overflow-hidden bg-premium-radial pb-12 pt-28 lg:pb-16 lg:pt-32">
+      <AmbientMesh className="opacity-45" />
+      <div className="hero-grid-glow" />
+      <div className="hero-map-cloud" />
+      <div className="hero-map-dots" />
+      <div className="hero-floor-glow" />
 
-      <div className="container relative z-10 mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
-        <div className="mx-auto max-w-4xl text-center">
+      <div className="container relative z-10 mx-auto max-w-[1720px] px-4 sm:px-6 lg:px-14 xl:px-20 2xl:px-24">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(520px,0.98fr)] xl:gap-20 2xl:gap-24">
           <AnimatedReveal>
-            <span className="mb-6 block text-[11px] font-bold uppercase tracking-[0.35em] text-accent">
-              Autonomous Cyber Immune System
-            </span>
+            <div className="max-w-[46rem] text-center lg:text-left">
+              <span className="mb-8 block text-[11px] font-bold uppercase tracking-[0.4em] text-accent">
+                Autonomous Cyber Immune System
+              </span>
 
-            <div className="relative inline-block">
-              <div className="absolute inset-x-6 bottom-1 h-16 rounded-full bg-[radial-gradient(circle,rgba(232,64,10,0.18),transparent_68%)] blur-2xl dark:bg-[radial-gradient(circle,rgba(232,64,10,0.24),transparent_68%)]" />
-              <h1 className="relative mb-6 text-[clamp(2.75rem,6vw,5rem)] font-black leading-[1.03] tracking-tight text-[var(--color-text-primary)] [text-shadow:0_0_26px_rgba(232,64,10,0.08)] dark:[text-shadow:0_0_36px_rgba(232,64,10,0.16)]">
-                Securing Businesses With AI-Driven Cyber Intelligence
+              <h1 className="hero-heading text-[clamp(3.1rem,5.35vw,5.5rem)] font-black leading-[0.94] tracking-[-0.05em] text-text-primary">
+                <span className="block lg:whitespace-nowrap">Securing Businesses</span>
+                <span className="block lg:whitespace-nowrap">With AI-Driven Cyber</span>
+                <span className="block lg:whitespace-nowrap">Intelligence</span>
               </h1>
+
+              <h2 className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-text-secondary md:text-[1.9rem] lg:text-[1.08rem] lg:leading-relaxed">
+                Detect. Prevent. Respond. Enterprise-Grade SOC &amp; SIEM Monitoring for
+                Global Businesses
+              </h2>
+
+              <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
+                <Link to="/contact">
+                  <MagneticWrapper>
+                    <button className="btn-hero-primary flex items-center gap-3">
+                      <ShieldCheck size={18} />
+                      Initial Briefing
+                    </button>
+                  </MagneticWrapper>
+                </Link>
+
+                <Link to="/acis">
+                  <MagneticWrapper>
+                    <button className="btn-hero-secondary flex items-center gap-3">
+                      <Play size={18} />
+                      Watch Overview
+                    </button>
+                  </MagneticWrapper>
+                </Link>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 text-left md:grid-cols-4">
+                {stats.map(({ icon: Icon, value, label }) => (
+                  <div key={label} className="hero-stat">
+                    <div className="hero-stat-icon">
+                      <Icon size={22} />
+                    </div>
+                    <div>
+                      <p className="text-[1.85rem] font-black leading-none text-text-primary">
+                        {value}
+                      </p>
+                      <p className="mt-2 max-w-[140px] text-sm leading-snug text-text-secondary">
+                        {label}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
+          </AnimatedReveal>
 
-            <h2 className="mx-auto mb-10 max-w-3xl text-lg font-medium leading-relaxed text-[var(--color-text-secondary)] md:text-2xl">
-              Detect. Prevent. Respond. Enterprise-Grade SOC &amp; SIEM Monitoring for
-              Global Businesses
-            </h2>
-
-            <p className="mx-auto mb-10 inline-flex max-w-fit rounded-full border border-accent/20 bg-accent/8 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-accent shadow-[0_0_30px_rgba(232,64,10,0.08)]">
-              Affordable Enterprise Cybersecurity for Growing Indian Businesses
-            </p>
-
-            <div className="cta-group flex flex-wrap justify-center gap-4">
-              <Link to="/contact">
-                <MagneticWrapper>
-                  <button className="btn-hero-primary">Get Free Security Assessment</button>
-                </MagneticWrapper>
-              </Link>
-
-              <a href="tel:1800121008800">
-                <MagneticWrapper>
-                  <button className="btn-hero-secondary">Contact Now</button>
-                </MagneticWrapper>
-              </a>
-
-              <Link
-                to="/contact"
-                className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-              >
-                <MagneticWrapper>
-                  <span className="btn-hero-secondary border border-accent/25 bg-transparent text-text-primary">
-                    Book SOC Demo
-                  </span>
-                </MagneticWrapper>
-              </Link>
+          <AnimatedReveal>
+            <div className="hero-reference-visual">
+              <img
+                src="/generated/acis-hero-reference.png"
+                alt="ACIS cyber defense platform with global threat intelligence and security analytics"
+                className="hero-reference-image"
+              />
             </div>
           </AnimatedReveal>
         </div>
 
-        <div className="mt-20 border-t border-[var(--color-border)] pt-10">
-          <p className="mb-6 text-center text-xs uppercase tracking-[0.3em] text-[var(--color-text-secondary)]">
-            Trusted across critical sectors
+        <div className="mt-10 flex justify-center lg:mt-9">
+          <p className="hero-affordability-pill">
+            Affordable Enterprise Cybersecurity for Growing Indian Businesses
           </p>
-
-          <div className="flex flex-wrap justify-center gap-8">
-            {["Healthcare", "Finance", "Infrastructure", "Government"].map((sector) => (
-              <div key={sector} className="group flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-accent shadow-[0_0_14px_rgba(232,64,10,0.2)] transition group-hover:scale-125" />
-                <span className="text-sm text-[var(--color-text-secondary)] transition group-hover:text-accent">
-                  {sector}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
-      </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-        <ChevronDown size={22} />
+        <div className="mt-10 grid gap-5 xl:grid-cols-5 xl:gap-6">
+          {featureCards.map(({ icon: Icon, title, description }) => (
+            <article key={title} className="hero-feature-card">
+              <div className="hero-feature-icon">
+                <Icon size={24} />
+              </div>
+              <h3 className="mt-5 text-xl font-bold tracking-tight text-text-primary">
+                {title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                {description}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
