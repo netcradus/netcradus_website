@@ -23,7 +23,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center bg-surface overflow-hidden">
+    <section className="relative bg-surface overflow-hidden">
       {/* Background gradients */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -40,9 +40,10 @@ const HeroSection = () => {
       <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-[80px] animate-[pulse_6s_ease-in-out_infinite_1s]" />
       <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-accent/10 rounded-full blur-[90px] animate-[pulse_4s_ease-in-out_infinite_2s]" />
 
-      <div className="container mx-auto max-w-[1200px] px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column */}
-        <div className="lg:col-span-7">
+      <div className="container mx-auto max-w-[1200px] px-6 pt-4 pb-0 relative z-10 flex flex-col items-center">
+
+        {/* Title Elements */}
+        <div className="w-full max-w-3xl flex flex-col items-center text-center mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-accent bg-accent/10 mb-6">
             <div className="w-2 h-2 rounded-sm bg-accent" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}></div>
             <span className="text-xs font-semibold text-accent tracking-wider uppercase">
@@ -50,18 +51,35 @@ const HeroSection = () => {
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-[64px] font-bold leading-tight mb-6">
+          <h1 className="text-5xl md:text-[64px] font-bold leading-tight mb-2">
             <span className="block text-text-primary">Autonomous Cyber</span>
             <span className="block bg-gradient-to-br bg-brand-gradient bg-clip-text pb-2">
               Immune System
             </span>
           </h1>
+        </div>
 
-          <p className="text-lg text-text-secondary leading-[1.7] max-w-[520px] mb-9">
+        {/* Image Column */}
+        <div className="w-full max-w-4xl relative perspective-[1000px] mb-8">
+          <div className="relative transform hover:scale-[1.02] transition-transform duration-500 ease-out group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+            <img
+              src="/assets/Acis-arch.jpeg"
+              alt="ACIS 5-Layer Architecture"
+              className="relative w-full rounded-xl shadow-2xl shadow-brand border border-border"
+            />
+          </div>
+        </div>
+
+        {/* Text Column */}
+        <div className="w-full max-w-3xl flex flex-col items-center text-center">
+
+
+          <p className="text-lg text-text-secondary leading-[1.7] max-w-[520px] mb-6">
             Enterprise-grade threat detection, automated response, and self-healing endpoints — unified in a single AI platform built for SMEs that can't afford a 24/7 SOC.
           </p>
 
-          <div className="flex flex-wrap gap-8 mb-8">
+          <div className="flex flex-wrap gap-8 mb-6">
             <div>
               <div className="text-[28px] font-bold bg-gradient-to-r from-accent to-accent-bright bg-clip-text text-transparent">3.4M+</div>
               <div className="text-xs text-text-secondary mt-1 uppercase tracking-wider font-semibold">Events processed daily</div>
@@ -76,7 +94,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3 mb-9">
+          <div className="flex flex-wrap gap-3 mb-6">
             <button
               onClick={scrollToScreenshots}
               className="bg-brand-gradient  text-[15px] font-semibold py-[13px] px-[28px] rounded-lg transition-all duration-200 "
@@ -92,26 +110,12 @@ const HeroSection = () => {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            
+
             <span className="border border-accent/50 text-accent font-medium text-[11px] px-3 py-1 rounded-full uppercase tracking-wide">GDPR Ready</span>
             <span className="border border-border text-text-primary font-medium text-[11px] px-3 py-1 rounded-full uppercase tracking-wide">ISO/IEC 27001:2022 Aligned</span>
           </div>
-        <div className='mt-3 text-sm text-text-secondary ml-2'>
-          <p>
-           © All right reserved by Netcradus.
-          </p>
-          </div>
-        </div>
-
-        {/* Right Column */}
-        <div className="lg:col-span-5 relative perspective-[1000px]">
-          <div className="relative transform rotate-y-[-3deg] hover:rotate-y-0 transition-transform duration-500 ease-out group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
-            <img
-              src="/assets/Acis-arch.jpeg"
-              alt="ACIS 5-Layer Architecture"
-              className="relative w-full max-w-full rounded-xl shadow-2xl shadow-brand border border-border"
-            />
+          <div className='mt-2 text-sm text-text-secondary pb-4'>
+            <p>© All right reserved by Netcradus.</p>
           </div>
         </div>
       </div>
@@ -141,7 +145,7 @@ const ClosedLoopSection = () => {
   };
 
   return (
-    <section className="bg-surface py-20 px-6">
+    <section className="bg-surface pt-0 pb-20 px-6">
       <div className="max-w-[1100px] mx-auto">
         <div className="text-center mb-12">
           <span className="text-[11px] font-semibold text-accent uppercase tracking-[0.1em]">HOW ACIS WORKS</span>
@@ -193,7 +197,7 @@ const PlatformSection = () => {
     { label: "Alerts", url: "app.netcradus.com/alerts", img: "/assets/acis-alerts.png", caption: "Deduplicated alert triage with severity badges, ownership, and one-click playbook execution" },
     { label: "SOAR Playbooks", url: "app.netcradus.com/soar", img: "/assets/acis-soar.png", caption: "Automated response playbooks — isolate endpoints, block IPs, reset accounts in under 45 seconds" },
     { label: "Threat Intel", url: "app.netcradus.com/threat-intel", img: "/assets/acis-threat-intel.png", caption: "IOC enrichment powered by global ACIS swarm nodes — IP, domain, and hash lookups" },
-   
+
   ];
 
   return (
