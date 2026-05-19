@@ -7,16 +7,14 @@
           "type": "header",
           "key": "x-vercel-ip-country",
           "value": "IN"
+        },
+        {
+          "type": "host",
+          "value": "netcradus.com"
         }
       ],
       "destination": "https://netcradus.in/$1",
       "permanent": false
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
     }
   ],
   "headers": [
