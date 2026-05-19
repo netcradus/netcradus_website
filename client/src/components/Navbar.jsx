@@ -71,13 +71,13 @@ const Navbar = () => {
         </div>
 
         <div className="nav-actions flex items-center gap-4">
-          <button 
+          {/* <button 
             className="theme-toggle p-2.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center justify-center border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400" 
             onClick={toggleTheme} 
             aria-label="Toggle Theme"
           >
             {theme === 'dark' ? <Sun size={18} className="text-accent-bright" /> : <Moon size={18} className="text-accent" />}
-          </button>
+          </button> */}
           <Link to="/contact" className="btn-primary desktop-only px-8 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
             Initial Briefing
           </Link>
