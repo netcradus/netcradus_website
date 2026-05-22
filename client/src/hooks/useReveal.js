@@ -5,32 +5,62 @@ export const useReveal = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    const root = document.querySelector('main');
+
+    if (!root) {
+      return undefined;
+    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          entry.target.classList.add('data-visible');
+          observer.unobserve(entry.target);
         }
       });
-    }, observerOptions);
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px',
+    });
 
-    // Initial check for elements already in view or newly added
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach((el) => {
-      // If already below scroll or near, observe
+    const autoTargets = root.querySelectorAll(
+      [
+        'section h1',
+        'section h2',
+        'section h3',
+        'section h4',
+        'section p',
+        'section span',
+        'section li',
+        'section article',
+        'section blockquote',
+        'section [data-animate]',
+        'section .reveal',
+      ].join(', ')
+    );
+
+    autoTargets.forEach((el) => {
+      if (el.closest('[data-animate-ignore="true"]')) {
+        return;
+      }
+
+      if (!el.dataset.animate && !el.classList.contains('reveal')) {
+        const tag = el.tagName.toLowerCase();
+        const direction = ['h1', 'h2', 'h3', 'h4', 'p', 'span'].includes(tag) ? 'up' : 'right';
+        el.dataset.animate = direction;
+      }
+
       observer.observe(el);
-      
-      // Immediate check if element is already in view (common on page load)
+
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
+      if (rect.top < window.innerHeight * 0.92) {
         el.classList.add('active');
+        el.classList.add('data-visible');
+        observer.unobserve(el);
       }
     });
 
     return () => observer.disconnect();
-  }, [pathname]); // Re-run on route change
+  }, [pathname]);
 };

@@ -19,6 +19,13 @@ const ServicesPage = () => {
                 label="// OUR CAPABILITIES"
                 title="Managed Security Services for Modern Enterprises"
                 subtitle="From proactive defense and managed detection to cloud, network, and enterprise security, Netcradus delivers managed security services built for resilient growth."
+                sectionClassName="solutions-hero"
+                visual={
+                    <div className="relative w-full h-[400px] rounded-xl overflow-hidden shadow-[0_20px_80px_rgba(232,64,10,0.15)] border border-border">
+                        <div className="absolute inset-0 bg-[#e8400a] mix-blend-overlay opacity-10 z-10" />
+                     
+                    </div>
+                }
             />
             <Services />
             <Industries />

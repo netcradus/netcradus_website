@@ -161,7 +161,7 @@ const About = () => {
                   <div>
                     <p className="text-sm font-semibold text-zinc-900 dark:text-white">India Technology Node</p>
                     <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-                      Block C, Golden I, Techzone 4, Greater Noida, UP 201318, India
+                      AVS City Square, Raj Nagar Ext, Ghaziabad, 201003
                     </p>
                   </div>
                 </div>

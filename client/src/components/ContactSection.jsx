@@ -104,7 +104,7 @@ export default function ContactSection() {
                             </div>
                             <div>
                                 <span className="text-[10px] font-bold text-zinc-500 dark:text-zinc-500 uppercase tracking-widest block mb-2">Operational Hubs</span>
-                                <h4 className="text-xl font-sans font-bold text-zinc-900 dark:text-white group-hover:text-accent transition-colors">Leicester (HQ) / Noida (Node)</h4>
+                                <h4 className="text-xl font-sans font-bold text-zinc-900 dark:text-white group-hover:text-accent transition-colors">Leicester (HQ) / Ghaziabad (Node)</h4>
                             </div>
                         </div>
                     </div>

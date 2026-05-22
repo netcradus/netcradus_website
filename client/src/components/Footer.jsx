@@ -24,7 +24,7 @@ const footerColumns = [
       { label: "Managed SOC", to: "/services?tab=managed-soc" },
       { label: "Cloud Security", to: "/services?tab=cloud-security" },
       { label: "Network Security", to: "/services?tab=network-security" },
-      { label: "AI & Data Analytics", to: "/services?tab=ai-data-analytics" },
+      { label: "AI Security", to: "/services?tab=ai-data-analytics" },
       { label: "Enterprise Security", to: "/services?tab=enterprise-security" },
       { label: "Software Engineering", to: "/services#software-engineering" },
     ],
@@ -45,7 +45,7 @@ const footerColumns = [
     links: [
       { label: "About Netcradus", to: "/about" },
       { label: "Careers", to: "/careers" },
-      { label: "Partners", to: "/about" },
+      { label: "Partners", to: "/partners" },
       { label: "Contact", to: "/contact" },
       { label: "Press / Media", to: "/about" },
     ],
@@ -116,24 +116,7 @@ export default function Footer() {
             <p>Netcradus is a global cybersecurity company building autonomous cyber immune systems.</p>
             <p>Our ACIS platform delivers real-time threat detection, response, and resilience for modern enterprises.</p>
           </div>
-          <div className="flex items-center gap-4">
-            {[
-              { Icon: Linkedin, href: "https://uk.linkedin.com/company/netcradus-limited?trk=public_post_follow-view-profile" },
-              { Icon: Instagram, href: "https://instagram.com/netcradus" },
-              { Icon: Facebook, href: "https://facebook.com/netcradus" },
-              { Icon: Youtube, href: "https://youtube.com/@netcradus" },
-            ].map(({ Icon, href }) => (
-              <a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-[var(--color-surface)] text-text-secondary transition hover:border-accent/30 hover:text-accent hover:shadow-[0_0_24px_rgba(232,64,10,0.12)]"
-              >
-                <Icon size={16} />
-              </a>
-            ))}
-          </div>
+
           <div className="text-[11px] leading-tight text-zinc-500 dark:text-zinc-400">
             <div><strong>CIN:</strong> U62090UP2025PTC229722</div>
             <div><strong>GSTIN:</strong> 09AAKCN7195G1ZV</div>
@@ -175,64 +158,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative mx-auto grid max-w-screen-2xl gap-10 border-t border-border px-4 py-12 sm:px-6 lg:grid-cols-12 lg:px-16 xl:px-24">
-        <div className="lg:col-span-4">
-          <h4 className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-accent">Contact</h4>
-          <div className="space-y-3 text-sm leading-relaxed text-text-secondary">
-            <p>Email: info@netcradus.com</p>
-            <p>Toll Free: 1800 121 008800</p>
-            <p>Global HQ: London Road, Leicester, LE2 0QS, England, United Kingdom</p>
-            <p>Tech Centre: Block C, Golden I, Techzone 4, Greater Noida, UP 201318</p>
-          </div>
-          <Link to="/contact" className="btn-primary mt-6 inline-flex px-6 py-3 text-sm font-bold uppercase tracking-[0.2em]">
-            Request Demo
-          </Link>
-        </div>
 
-    
-
-        <div className="lg:col-span-5">
-          <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent">Stay Ahead of Cyber Threats</h4>
-          <p className="max-w-xl text-sm leading-relaxed text-text-secondary">
-            Receive Netcradus research, product updates, and intelligence briefings from our security team.
-          </p>
-          <form onSubmit={handleNewsletterSubmit} className="mt-6">
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                value={newsletterEmail}
-                onChange={(event) => setNewsletterEmail(event.target.value)}
-                placeholder="Enter your email"
-                autoComplete="email"
-                required
-                className="min-w-0 flex-1 rounded-full border border-border bg-[var(--color-surface)] px-5 py-3 text-sm text-text-primary outline-none transition focus:border-accent/40 focus:shadow-[0_0_22px_rgba(232,64,10,0.12)]"
-              />
-              <button
-                type="submit"
-                disabled={newsletterStatus === "loading" || Boolean(configError)}
-                className="btn-primary px-6 py-3 text-sm font-bold uppercase tracking-[0.2em] disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {newsletterStatus === "loading" ? "Sending..." : "Subscribe"}
-              </button>
-            </div>
-          </form>
-          {configError && (
-            <p className="mt-3 text-sm text-amber-300">{configError}</p>
-          )}
-          {newsletterFeedback && (
-            <p
-              className={`mt-3 text-sm ${
-                newsletterStatus === "success" ? "text-emerald-300" : "text-red-300"
-              }`}
-            >
-              {newsletterFeedback}
-            </p>
-          )}
-          <Link to="/newsletter" className="mt-4 inline-flex text-sm font-semibold text-accent transition hover:text-accent-bright">
-            Go to newsletter page
-          </Link>
-        </div>
-      </div>
 
       <div className="border-t border-border py-5">
         <div className="mx-auto flex max-w-screen-2xl flex-col gap-3 px-4 text-sm text-text-secondary sm:px-6 md:flex-row md:items-center md:justify-between lg:px-16 xl:px-24">
