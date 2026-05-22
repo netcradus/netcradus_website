@@ -9,7 +9,7 @@ const SERVICE_TABS = [
     title: "Cybersecurity",
     heading: "Cybersecurity",
     icon: Shield,
-    image: "/generated/secure_shield_concept_1773394778055.png",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600",
     description:
       "Netcradus delivers end-to-end cybersecurity solutions that protect your infrastructure, data, and people from evolving threats.",
     points: [
@@ -27,7 +27,7 @@ const SERVICE_TABS = [
     title: "Managed SOC",
     heading: "Managed SOC",
     icon: Radar,
-    image: "/generated/jlk.png",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600",
     description:
       "Our 24/7 Security Operations Centre monitors your environment around the clock, detecting and responding to threats before they cause damage.",
     points: [
@@ -45,7 +45,7 @@ const SERVICE_TABS = [
     title: "Cloud Security",
     heading: "Cloud Security",
     icon: Cloud,
-    image: "/generated/cloud_architecture_1773394719675.png",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600",
     description:
       "Secure your cloud workloads, SaaS applications, and hybrid environments with Netcradus cloud-native security controls.",
     points: [
@@ -60,28 +60,32 @@ const SERVICE_TABS = [
   },
   {
     id: "ai-data-analytics",
-    title: "AI & Data Analytics",
-    heading: "AI & Data Analytics",
+    title: "AI Security",
+    heading: "AI Security",
     icon: BrainCircuit,
-    image: "/generated/img2.png",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
     description:
-      "Harness the power of AI to gain actionable security intelligence, detect anomalies, and predict threats before they materialize.",
+      "Protect your machine learning pipelines, LLM deployments, and enterprise AI agents from specialized threat vectors.",
     points: [
-      "Behavioral analytics using machine learning models",
-      "Shadow AI detection — identify unauthorized AI tools in your environment",
-      "Anomaly detection across user, entity, and network behavior (UEBA)",
-      "Predictive threat modeling based on global threat intelligence feeds",
-      "AI-powered log analysis reducing analyst workload by up to 80%",
-      "Custom dashboards and security KPI reporting for leadership teams",
+      "AI Security Assessment",
+      "AI Risk Audits",
+      "Prompt Injection Testing",
+      "AI Model Penetration Testing",
+      "LLM Security Reviews",
+      "AI Data Leakage Testing",
+      "Secure AI Deployment Consulting",
+      "AI Governance & Compliance",
+      "Employee AI Usage Monitoring",
+      "Shadow AI Detection in Companies",
     ],
-    highlights: ["UEBA", "Predictive Modeling", "Leadership Dashboards"],
+    highlights: ["AI Risk Audits", "LLM Security", "Shadow AI Detection"],
   },
   {
     id: "network-security",
     title: "Network Security",
     heading: "Network Security",
     icon: Network,
-    image: "/generated/hacker_code_screen_1773394510636.png",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600",
     description:
       "Protect your network perimeter and internal segments against intrusion, lateral movement, and data exfiltration.",
     points: [
@@ -99,7 +103,7 @@ const SERVICE_TABS = [
     title: "Enterprise Security",
     heading: "Enterprise Security",
     icon: Building2,
-    image: "/generated/AI.png",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600",
     description:
       "Tailored, enterprise-grade security programs that align with your business goals, regulatory requirements, and risk appetite.",
     points: [
@@ -117,7 +121,7 @@ const SERVICE_TABS = [
     title: "Products",
     heading: "Visitor & Hospital Management Systems",
     icon: Code2,
-    image: "/generated/AI.png",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600",
     description:
       "Netcradus builds intelligent visitor and hospital management systems that digitize access, approvals, patient workflows, and administrative operations for secure, high-performance environments.",
     points: [

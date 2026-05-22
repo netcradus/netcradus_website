@@ -20,30 +20,61 @@ const Blog = () => {
           </p>
         </div>
 
-        <div className="blog-grid mx-auto max-w-6xl space-y-4">
-          {BLOGS.map((blog, idx) => (
-            <Link
-              key={blog.id}
-              to={`/blog/${blog.id}`}
-              className="blog-list-item reveal"
-              style={{ transitionDelay: `${idx * 0.1}s` }}
-            >
-              <div className="flex-grow">
-                <div className="blog-item-meta mono">
-                  <span className="blog-item-cat">{blog.category}</span>
-                  <div className="blog-item-time">
-                    <Clock size={12} />
-                    {blog.readTime || "5 min read"}
+        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="blog-grid space-y-4 lg:col-span-8">
+            {BLOGS.map((blog, idx) => (
+              <Link
+                key={blog.id}
+                to={`/blog/${blog.id}`}
+                className="blog-list-item reveal"
+                style={{ transitionDelay: `${idx * 0.1}s` }}
+              >
+                <div className="flex-grow">
+                  <div className="blog-item-meta mono">
+                    <span className="blog-item-cat">{blog.category}</span>
+                    <div className="blog-item-time">
+                      <Clock size={12} />
+                      {blog.readTime || "5 min read"}
+                    </div>
                   </div>
+                  <h3 className="blog-item-title">{blog.title}</h3>
+                  <p className="blog-item-date mono">{blog.date}</p>
                 </div>
-                <h3 className="blog-item-title">{blog.title}</h3>
-                <p className="blog-item-date mono">{blog.date}</p>
+                <div className="blog-item-arrow">
+                  <ChevronRight size={24} />
+                </div>
+              </Link>
+            ))}
+          </div>
+          
+          <div className="lg:col-span-4">
+            <div className="sticky top-24 rounded-2xl border border-border bg-[var(--color-surface)]/80 p-6 shadow-sm backdrop-blur-md">
+              <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-text-primary">
+                Popular Topics
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Cybersecurity",
+                  "Threat Intelligence",
+                  "SOC",
+                  "SIEM",
+                  "Cloud Security",
+                  "AI Security",
+                  "Compliance",
+                  "Penetration Testing",
+                  "Incident Response",
+                  "Zero Trust"
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="cursor-pointer rounded-full border border-accent/20 bg-accent/5 px-3 py-1.5 text-xs font-semibold text-text-secondary transition hover:border-accent/40 hover:text-accent"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-              <div className="blog-item-arrow">
-                <ChevronRight size={24} />
-              </div>
-            </Link>
-          ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
