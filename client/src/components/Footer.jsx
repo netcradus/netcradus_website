@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Linkedin, Instagram, Facebook, Youtube } from "lucide-react";
 import companyLogoImage from "../assets/companyLogo.png";
 import { getNewsletterConfigError, sendNewsletterSubscription } from "../lib/newsletter";
 

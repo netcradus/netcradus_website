@@ -161,12 +161,14 @@ export default function WhyChooseUs() {
       id="why-netcradus"
       ref={sectionRef}
       className="relative overflow-hidden bg-premium-radial py-24 transition-colors duration-500"
+      style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.68)), url('/img/key features bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
+      <div className="absolute inset-0 bg-black/20" />
       <div ref={glowRef} className="why-choose-cursor-glow" aria-hidden="true" />
       <div className="absolute left-[-5rem] top-24 h-64 w-64 rounded-full bg-accent/8 blur-[120px]" />
       <div className="absolute right-[-4rem] bottom-8 h-72 w-72 rounded-full bg-accent/8 blur-[140px]" />
 
-      <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
+      <div className="relative container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <span className="mb-5 block text-[11px] font-bold uppercase tracking-[0.35em] text-accent">
             Why Netcradus

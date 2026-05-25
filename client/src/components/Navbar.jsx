@@ -81,7 +81,7 @@ const Navbar = () => {
           </button> */}
           <a href="tel:1800121008800" className="btn-primary btn-glow-pulse desktop-only px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg flex items-center gap-2">
             <Phone size={13} className="animate-wiggle" />
-            Call Toll-Free
+            Call Toll-Free <br/> 1800 12100 8800
           </a>
           <button className="mobile-menu-toggle p-2 lg:hidden text-zinc-900 dark:text-white" onClick={() => setIsMenuOpen(prev => !prev)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

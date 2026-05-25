@@ -2,11 +2,14 @@ import React from "react";
 import AmbientMesh from "./AmbientMesh";
 import "./SubHero.css";
 
-const SubHero = ({ title, subtitle, label, actions, visual, align = "left", sectionClassName = "" }) => {
+const SubHero = ({ title, subtitle, label, actions, visual, align = "left", sectionClassName = "", backgroundImage }) => {
   const textAlign = align === "center" ? "mx-auto text-center" : "";
 
   return (
-    <section className={`relative flex min-h-[40vh] items-center overflow-hidden bg-premium-radial py-24 transition-colors duration-500 ${sectionClassName}`}>
+    <section
+      className={`relative flex min-h-[40vh] items-center overflow-hidden bg-premium-radial py-24 transition-colors duration-500 ${sectionClassName}`}
+      style={backgroundImage ? { backgroundImage: `linear-gradient(rgba(0,0,0,0.64), rgba(0,0,0,0.64)), url('${backgroundImage}')`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
+    >
       <AmbientMesh />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_28%,rgba(232,64,10,0.1),transparent_24%),radial-gradient(circle_at_76%_36%,rgba(232,64,10,0.06),transparent_24%)] dark:bg-[radial-gradient(circle_at_30%_28%,rgba(232,64,10,0.14),transparent_24%),radial-gradient(circle_at_76%_36%,rgba(232,64,10,0.1),transparent_24%)]" />
       <div className="container relative z-10 mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
