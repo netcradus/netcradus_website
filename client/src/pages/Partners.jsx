@@ -261,7 +261,9 @@ export default function Partners() {
           text-align: center;
           position: relative;
           overflow: hidden;
-          background: var(--color-bg);
+          background-image: linear-gradient(rgba(0,0,0,0.64), rgba(0,0,0,0.64)), url('/img/partner hero bg.png');
+          background-size: cover;
+          background-position: center;
           padding: 6rem 1.5rem;
         }
         .partners-hero::before {
@@ -315,6 +317,13 @@ export default function Partners() {
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 1.5rem;
           margin-top: 3rem;
+        }
+        .why-partner-shell {
+          position: relative;
+          overflow: hidden;
+          background-image: linear-gradient(rgba(0,0,0,0.64), rgba(0,0,0,0.64)), url('/img/why partner bg.png');
+          background-size: cover;
+          background-position: center;
         }
         .benefit-card {
           background: var(--color-surface);
@@ -708,8 +717,8 @@ export default function Partners() {
       </section>
 
       {/* ── SECTION 2: WHY PARTNER ── */}
-      <section style={{ background: "var(--color-bg)", padding: "96px 1.5rem" }}>
-        <div className="partners-section" style={{ padding: 0 }}>
+      <section className="why-partner-shell" style={{ padding: "96px 1.5rem" }}>
+        <div className="partners-section" style={{ padding: 0, position: "relative", zIndex: 1 }}>
           <div style={{ textAlign: "center", marginBottom: "0.5rem" }}>
             <span className="section-badge">Why Partner With Us</span>
           </div>

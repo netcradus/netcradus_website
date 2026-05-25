@@ -115,9 +115,22 @@ export default function Platform() {
         label="// PLATFORM"
         title="The Netcradus Cybersecurity Platform"
         subtitle="Explore ACIS, its deployment tiers, and the intelligence engines that power autonomous cyber defense at enterprise scale."
+        backgroundImage="/img/platform bg.png"
         media={
-          <div className="overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4 shadow-[0_20px_70px_rgba(232,64,10,0.1)]">
-            <img src="/generated/AI.png" alt="ACIS platform" className="h-[320px] w-full rounded-[24px] object-cover" />
+          <div className="flex items-center justify-center">
+            <div
+              className="w-full"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%), linear-gradient(to right, black 0%, black 94%, transparent 100%)",
+                WebkitMaskComposite: "source-in",
+                maskImage:
+                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%), linear-gradient(to right, black 0%, black 94%, transparent 100%)",
+                maskComposite: "intersect",
+              }}
+            >
+              <img src="/img/platform hero image.png" alt="ACIS platform" className="max-w-full object-contain" />
+            </div>
           </div>
         }
       />
@@ -251,18 +264,22 @@ export default function Platform() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-16">
             <div className="rounded-[20px] border-l-4 border-l-emerald-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
+              <img src="/img/openai.png" alt="OpenAI GPT" className="mb-4 h-16 w-16 object-contain" />
               <h3 className="text-xl font-bold text-text-primary mb-2">OpenAI GPT</h3>
               <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
             </div>
             <div className="rounded-[20px] border-l-4 border-l-[#F37021] border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
+              <img src="/img/claude.png" alt="Anthropic Claude" className="mb-4 h-16 w-16 object-contain" />
               <h3 className="text-xl font-bold text-text-primary mb-2">Anthropic Claude</h3>
               <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
             </div>
             <div className="rounded-[20px] border-l-4 border-l-blue-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
+              <img src="/img/gemini.png" alt="Google Gemini" className="mb-4 h-16 w-16 object-contain" />
               <h3 className="text-xl font-bold text-text-primary mb-2">Google Gemini</h3>
               <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
             </div>
             <div className="rounded-[20px] border-l-4 border-l-zinc-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
+              <img src="/img/opensource llms.png" alt="Open-source LLMs" className="mb-4 h-16 w-16 object-contain" />
               <h3 className="text-xl font-bold text-text-primary mb-2">Open-source LLMs</h3>
               <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
             </div>

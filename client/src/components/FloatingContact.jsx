@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Instagram, Phone, Mail, Linkedin, MessageCircle } from 'lucide-react';
+import { Instagram, Phone, Mail, Linkedin } from 'lucide-react';
 
 const FloatingContact = () => {
     const contacts = [
         { icon: <Instagram size={18} />, href: "https://instagram.com/netcradus", label: "Instagram", color: "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]" },
-        { icon: <Linkedin size={18} />, href: "https://uk.linkedin.com/company/netcradus-limited?trk=public_post_follow-view-profile", label: "LinkedIn", color: "bg-accent" },
+        { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/company/netcradus-pvt-ltd/", label: "LinkedIn", color: "bg-accent" },
         { icon: <Mail size={18} />, href: "mailto:contact@netcradus.com", label: "Email", color: "bg-accent-bright" },
         { icon: <Phone size={18} />, href: "tel:1800121008800", label: "Phone", color: "bg-orange-500" }
     ];

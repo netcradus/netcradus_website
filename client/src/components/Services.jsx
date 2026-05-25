@@ -9,7 +9,7 @@ const SERVICE_TABS = [
     title: "Cybersecurity",
     heading: "Cybersecurity",
     icon: Shield,
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600",
+    image: "/img/cybersecurity.png",
     description:
       "Netcradus delivers end-to-end cybersecurity solutions that protect your infrastructure, data, and people from evolving threats.",
     points: [
@@ -27,7 +27,7 @@ const SERVICE_TABS = [
     title: "Managed SOC",
     heading: "Managed SOC",
     icon: Radar,
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600",
+    image: "/img/managed soc.png",
     description:
       "Our 24/7 Security Operations Centre monitors your environment around the clock, detecting and responding to threats before they cause damage.",
     points: [
@@ -45,7 +45,7 @@ const SERVICE_TABS = [
     title: "Cloud Security",
     heading: "Cloud Security",
     icon: Cloud,
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600",
+    image: "/img/cloud security.png",
     description:
       "Secure your cloud workloads, SaaS applications, and hybrid environments with Netcradus cloud-native security controls.",
     points: [
@@ -63,7 +63,7 @@ const SERVICE_TABS = [
     title: "AI Security",
     heading: "AI Security",
     icon: BrainCircuit,
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+    image: "/img/ai security.png",
     description:
       "Protect your machine learning pipelines, LLM deployments, and enterprise AI agents from specialized threat vectors.",
     points: [
@@ -85,7 +85,7 @@ const SERVICE_TABS = [
     title: "Network Security",
     heading: "Network Security",
     icon: Network,
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600",
+    image: "/img/network security.png",
     description:
       "Protect your network perimeter and internal segments against intrusion, lateral movement, and data exfiltration.",
     points: [
@@ -103,7 +103,7 @@ const SERVICE_TABS = [
     title: "Enterprise Security",
     heading: "Enterprise Security",
     icon: Building2,
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600",
+    image: "/img/enterprise security.png",
     description:
       "Tailored, enterprise-grade security programs that align with your business goals, regulatory requirements, and risk appetite.",
     points: [
@@ -121,7 +121,7 @@ const SERVICE_TABS = [
     title: "Products",
     heading: "Visitor & Hospital Management Systems",
     icon: Code2,
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600",
+    image: "/img/visitor and hms.png",
     description:
       "Netcradus builds intelligent visitor and hospital management systems that digitize access, approvals, patient workflows, and administrative operations for secure, high-performance environments.",
     points: [
@@ -241,7 +241,7 @@ const Services = () => {
             <div className="relative">
               <div className="absolute inset-0 rounded-[30px] bg-[radial-gradient(circle_at_50%_20%,rgba(232,64,10,0.18),transparent_45%)] blur-3xl" />
               <div className="relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_45%),var(--color-surface)] p-4 shadow-[0_22px_70px_rgba(232,64,10,0.08)]">
-                <img src={activeService.image} alt={activeService.heading} className="h-[420px] w-full rounded-[24px] object-cover" />
+                <img src={activeService.image} alt={activeService.heading} className="max-h-[400px] w-full rounded-[12px] object-cover" />
               </div>
             </div>
           </div>
