@@ -49,7 +49,10 @@ function LogoCard({ logo, index }) {
 
 const Certifications = () => {
   return (
-    <section className="relative overflow-hidden bg-premium-radial py-28 transition-colors duration-500">
+    <section
+      className="relative overflow-hidden bg-premium-radial py-28 transition-colors duration-500"
+      style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.66), rgba(0,0,0,0.66)), url('/img/certifications bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+    >
       <div className="absolute left-[-6rem] top-8 h-72 w-72 rounded-full bg-accent/8 blur-[120px]" />
       <div className="absolute right-[-4rem] top-1/3 h-64 w-64 rounded-full bg-accent/8 blur-[110px]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(232,64,10,0.08),transparent_24%),radial-gradient(circle_at_80%_60%,rgba(232,64,10,0.06),transparent_24%)] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(232,64,10,0.12),transparent_24%),radial-gradient(circle_at_80%_60%,rgba(232,64,10,0.08),transparent_24%)]" />

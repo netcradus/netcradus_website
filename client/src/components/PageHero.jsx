@@ -9,9 +9,13 @@ export default function PageHero({
   media,
   className = "",
   titleClassName = "",
+  backgroundImage,
 }) {
   return (
-    <section className={`relative overflow-hidden bg-premium-radial py-24 md:py-32 ${className}`}>
+    <section
+      className={`relative overflow-hidden bg-premium-radial py-24 md:py-32 ${className}`}
+      style={backgroundImage ? { backgroundImage: `linear-gradient(rgba(0,0,0,0.64), rgba(0,0,0,0.64)), url('${backgroundImage}')`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
+    >
       <AmbientMesh />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_32%,rgba(232,64,10,0.08),transparent_30%)] dark:bg-[radial-gradient(circle_at_50%_32%,rgba(232,64,10,0.12),transparent_28%)]" />
       <div className="container relative z-10 mx-auto grid max-w-screen-2xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-16 xl:px-24">

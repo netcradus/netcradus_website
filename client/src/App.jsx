@@ -5,6 +5,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingContact from "./components/FloatingContact";
+import NewsletterPopup from "./components/NewsletterPopup";
+import WhatsAppButton from "./components/WhatsAppButton";
+import CookieConsent from "./components/CookieConsent";
 
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
@@ -22,6 +25,8 @@ import DataProtectionPage from "./pages/DataProtectionPage";
 import CookiesPage from "./pages/CookiesPage";
 import ResponsibleDisclosurePage from "./pages/ResponsibleDisclosurePage";
 import PhasePage from "./pages/phasePage";
+import Partners from "./pages/Partners";
+import PartnerApply from "./pages/PartnerApply";
 
 import Platform from "./components/Platform";
 import { useReveal } from "./hooks/useReveal";
@@ -60,7 +65,10 @@ function AppLayout() {
       ></div>
 
       <Navbar />
+      <CookieConsent />
       <FloatingContact />
+      <WhatsAppButton />
+      <NewsletterPopup />
 
       <main className="relative z-10 w-full">
         <Outlet />
@@ -95,6 +103,8 @@ function App() {
           <Route path="cookies" element={<CookiesPage />} />
           <Route path="responsible-disclosure" element={<ResponsibleDisclosurePage />} />
           <Route path="phase" element={<PhasePage />} />
+          <Route path="partners" element={<Partners />} />
+          <Route path="partners/apply" element={<PartnerApply />} />
         </Route>
       </Routes>
     </>

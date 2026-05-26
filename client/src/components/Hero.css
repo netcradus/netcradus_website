@@ -111,32 +111,56 @@
   justify-content: center;
   margin-right: -22px;
   overflow: visible;
+  background: transparent;
 }
 
-.hero-reference-visual::before {
-  content: "";
-  position: absolute;
-  inset: 9% 4% 11% 3%;
-  background: radial-gradient(circle at 53% 63%, rgba(232, 64, 10, 0.24), transparent 42%);
-  filter: blur(22px);
-  pointer-events: none;
-}
 
 .hero-reference-image {
   position: relative;
   z-index: 1;
-  width: min(112%, 940px);
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 26px 58px rgba(0, 0, 0, 0.28));
-  mask-image:
-    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, #000 8%, #000 88%, transparent 100%);
-  mask-composite: intersect;
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, #000 8%, #000 88%, transparent 100%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-mask-image: 
+    linear-gradient(to right, transparent 0%, black 25%),
+    linear-gradient(to left, transparent 0%, black 15%),
+    linear-gradient(to bottom, transparent 0%, black 15%),
+    linear-gradient(to top, transparent 0%, black 20%);
   -webkit-mask-composite: source-in;
+  mask-image: 
+    linear-gradient(to right, transparent 0%, black 25%),
+    linear-gradient(to left, transparent 0%, black 15%),
+    linear-gradient(to bottom, transparent 0%, black 15%),
+    linear-gradient(to top, transparent 0%, black 20%);
+  mask-composite: intersect;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero-reference-image {
+    -webkit-mask-image: 
+      linear-gradient(to right, transparent 0%, black 15%),
+      linear-gradient(to bottom, transparent 0%, black 10%),
+      linear-gradient(to top, transparent 0%, black 15%);
+    -webkit-mask-composite: source-in;
+    mask-image: 
+      linear-gradient(to right, transparent 0%, black 15%),
+      linear-gradient(to bottom, transparent 0%, black 10%),
+      linear-gradient(to top, transparent 0%, black 15%);
+    mask-composite: intersect;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-reference-image {
+    -webkit-mask-image: 
+      linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
+    mask-image: 
+      linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
 }
 
 .hero-visual-world {
@@ -554,35 +578,16 @@
 }
 
 [data-theme="light"] .hero-reference-visual {
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(246, 238, 230, 0.92)),
-    radial-gradient(circle at 50% 62%, rgba(232, 64, 10, 0.12), transparent 46%);
-  box-shadow:
-    0 28px 70px rgba(91, 55, 28, 0.1),
-    inset 0 0 0 1px rgba(232, 64, 10, 0.08);
-  overflow: hidden;
-}
-
-[data-theme="light"] .hero-reference-visual::before {
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(255, 250, 245, 0.74), transparent 10%, transparent 90%, rgba(255, 250, 245, 0.74)),
-    linear-gradient(180deg, rgba(255, 250, 245, 0.42), transparent 12%, transparent 88%, rgba(255, 250, 245, 0.5));
-  filter: none;
-  z-index: 2;
+  background: transparent;
 }
 
 [data-theme="light"] .hero-reference-image {
   width: min(106%, 900px);
-  opacity: 0.99;
-  filter: saturate(0.98) contrast(0.98) drop-shadow(0 20px 42px rgba(91, 55, 28, 0.12));
-  mask-image:
-    linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
-  -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  content: url('/generated/hero-light.png');
+}
+
+[data-theme="dark"] .hero-reference-image {
+  content: url('/generated/hero-dark.png');
 }
 
 [data-theme="light"] .hero-shield-title {

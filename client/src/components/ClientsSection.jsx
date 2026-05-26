@@ -16,27 +16,26 @@ const clients = [
 ];
 
 const ClientsSection = () => {
+    const marqueeClients = clients.concat(clients);
+
     return (
-        <section className="py-24 bg-premium-radial relative overflow-hidden transition-all duration-500">
+        <section className="client-marquee-section relative overflow-hidden py-24 transition-all duration-500">
             <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
                 <div className="text-center mb-20">
                     <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent font-display uppercase mb-6 block">Strategic Alliances</span>
-                    <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary mb-6 uppercase tracking-wider">Trusted by Industry <span className="text-accent italic text-4xl md:text-6xl">Leaders.</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-display font-black text-white mb-6 uppercase tracking-wider">Trusted by Industry <span className="text-accent italic text-4xl md:text-6xl">Leaders.</span></h2>
                     <div className="w-32 h-[1px] bg-accent/30 mx-auto rounded-full" />
                 </div>
 
-                <div className="relative flex overflow-x-hidden">
-                    <div className="py-12 animate-marquee whitespace-nowrap flex items-center">
-                        {clients.concat(clients).map((client, index) => (
-                            <div
-                                key={index}
-                                className="mx-16 flex-shrink-0"
-                            >
+                <div className="client-marquee-viewport">
+                    <div className="client-marquee-track py-10">
+                        {marqueeClients.map((client, index) => (
+                            <div key={`${client.name}-${index}`} className="mx-10 flex flex-shrink-0 items-center justify-center md:mx-16">
                                 <img
                                     src={client.logo}
                                     alt={client.name}
-                                    className={`h-14 md:h-16 w-auto object-contain ${
-                                        client.needsLightBg ? "bg-white/90 rounded-md px-3 py-2" : ""
+                                    className={`client-marquee-logo h-14 w-auto object-contain md:h-16 ${
+                                        client.needsLightBg ? "client-marquee-light-badge" : ""
                                     }`}
                                 />
                             </div>

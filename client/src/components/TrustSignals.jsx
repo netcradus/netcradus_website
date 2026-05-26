@@ -38,10 +38,7 @@ export default function TrustSignals() {
           <h2 className="text-4xl font-black tracking-tight text-text-primary md:text-6xl">
             Proof points that support <span className="text-accent italic">buyer confidence.</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
-            This section is structured to showcase social proof, delivery outcomes, and
-            compliance credibility as real assets and approvals are added.
-          </p>
+         
         </div>
 
         <div className="grid gap-8">
@@ -133,7 +130,7 @@ export default function TrustSignals() {
                 security insights, event participation, and customer-facing momentum.
               </p>
               <a
-                href="https://www.linkedin.com/company/netcradus-limited/posts/?feedView=all"
+                href="https://www.linkedin.com/company/netcradus-pvt-ltd/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary mt-6 inline-flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] no-underline"

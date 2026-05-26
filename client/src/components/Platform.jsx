@@ -115,9 +115,22 @@ export default function Platform() {
         label="// PLATFORM"
         title="The Netcradus Cybersecurity Platform"
         subtitle="Explore ACIS, its deployment tiers, and the intelligence engines that power autonomous cyber defense at enterprise scale."
+        backgroundImage="/img/platform bg.png"
         media={
-          <div className="overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4 shadow-[0_20px_70px_rgba(232,64,10,0.1)]">
-            <img src="/generated/AI.png" alt="ACIS platform" className="h-[320px] w-full rounded-[24px] object-cover" />
+          <div className="flex items-center justify-center">
+            <div
+              className="w-full"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%), linear-gradient(to right, black 0%, black 94%, transparent 100%)",
+                WebkitMaskComposite: "source-in",
+                maskImage:
+                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%), linear-gradient(to right, black 0%, black 94%, transparent 100%)",
+                maskComposite: "intersect",
+              }}
+            >
+              <img src="/img/platform hero image.png" alt="ACIS platform" className="max-w-full object-contain" />
+            </div>
           </div>
         }
       />
@@ -131,10 +144,11 @@ export default function Platform() {
             "ACIS Enterprise",
             "AI-SIEM Engine",
             "SOAR Automation",
+            "AI Security",
           ].map((label, index) => (
             <a
               key={label}
-              href={`#${platformSections[index].id}`}
+              href={label === "AI Security" ? "#ai-security" : `#${platformSections[index].id}`}
               className="rounded-full border border-border bg-[var(--color-surface)] px-4 py-2 text-sm font-semibold text-text-secondary transition hover:border-accent/30 hover:text-accent hover:shadow-[0_0_20px_rgba(232,64,10,0.1)]"
             >
               {label}
@@ -233,6 +247,93 @@ export default function Platform() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section id="ai-security" className="py-24 border-t border-border">
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
+          <div className="mb-12 text-center">
+            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent font-display md:text-[12px]">
+              // AI Security
+            </span>
+            <h2 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">Models We Protect</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
+              Secure your generative AI and machine learning infrastructure against specialized attack vectors.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-16">
+            <div className="rounded-[20px] border-l-4 border-l-emerald-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
+              <img src="/img/openai.png" alt="OpenAI GPT" className="mb-4 h-16 w-16 object-contain" />
+              <h3 className="text-xl font-bold text-text-primary mb-2">OpenAI GPT</h3>
+              <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
+            </div>
+            <div className="rounded-[20px] border-l-4 border-l-[#F37021] border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
+              <img src="/img/claude.png" alt="Anthropic Claude" className="mb-4 h-16 w-16 object-contain" />
+              <h3 className="text-xl font-bold text-text-primary mb-2">Anthropic Claude</h3>
+              <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
+            </div>
+            <div className="rounded-[20px] border-l-4 border-l-blue-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
+              <img src="/img/gemini.png" alt="Google Gemini" className="mb-4 h-16 w-16 object-contain" />
+              <h3 className="text-xl font-bold text-text-primary mb-2">Google Gemini</h3>
+              <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
+            </div>
+            <div className="rounded-[20px] border-l-4 border-l-zinc-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
+              <img src="/img/opensource llms.png" alt="Open-source LLMs" className="mb-4 h-16 w-16 object-contain" />
+              <h3 className="text-xl font-bold text-text-primary mb-2">Open-source LLMs</h3>
+              <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
+            </div>
+          </div>
+
+          <div className="rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-8 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md lg:p-12">
+            <h3 className="mb-8 text-2xl font-black text-text-primary">AI Threats We Mitigate</h3>
+            <div className="grid gap-x-12 gap-y-4 md:grid-cols-2">
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  Prompt Injection
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  Jailbreaking
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  Model Poisoning
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  Data Leakage
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  Training Data Attacks
+                </li>
+              </ul>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  Adversarial AI
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  AI Hallucination Abuse
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  Deepfake Threats
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  AI-generated Malware
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
+                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+                  AI Phishing Automation
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
     </div>

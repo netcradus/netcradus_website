@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import LocationMap from './LocationMap';
 import './Contact.css';
 
 const contactItems = [
@@ -14,7 +15,7 @@ const contactItems = [
   {
     icon: <MapPin size={20} />,
     label: "Technology Centre",
-    val: "Block C, Golden I, Techzone 4, Greater Noida, UP 201318, India",
+    val: "AVS City Square, Raj Nagar Ext, Ghaziabad, 201003",
   },
 ];
 
@@ -196,6 +197,8 @@ const Contact = () => {
             </div>
           </div>
         </div>
+
+        <LocationMap />
       </div>
     </section>
   );

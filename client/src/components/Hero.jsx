@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Zap,
   FileText,
+  Phone,
 } from "lucide-react";
 import AmbientMesh from "./AmbientMesh";
 import AnimatedReveal from "./ui/AnimatedReveal";
@@ -83,18 +84,18 @@ const Hero = () => {
               <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
                 <Link to="/contact">
                   <MagneticWrapper>
-                    <button className="btn-hero-primary flex items-center gap-3">
+                    <button className="btn-hero-primary btn-glow-pulse flex items-center gap-3">
                       <ShieldCheck size={18} />
-                      Initial Briefing
+                      Request Security Audit
                     </button>
                   </MagneticWrapper>
                 </Link>
 
-                <Link to="/acis">
+                <Link to="/contact">
                   <MagneticWrapper>
                     <button className="btn-hero-secondary flex items-center gap-3">
-                      <Play size={18} />
-                      Watch Overview
+                      <Phone size={18} />
+                      Request Callback
                     </button>
                   </MagneticWrapper>
                 </Link>

@@ -29,6 +29,12 @@ const team = [
     image: "/team/Kashish Sharma.png",
     bio: "Kashish Sharma oversees organizational management and business coordination at Netcradus. She maintains efficient internal workflows, supports strategic decision-making, and ensures smooth day-to-day operations across the company.",
   },
+  {
+    name: "Rahul Pratap Singh",
+    role: "Digital Marketing Head",
+    image: "/team/Rahul.jpg",
+    bio: "Rahul leads digital marketing and growth strategy at Netcradus, driving brand presence, enterprise client engagement, and content outreach campaigns across global markets.",
+  },
 ];
 
 export default function TeamSection() {

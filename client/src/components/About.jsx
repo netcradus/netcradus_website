@@ -43,11 +43,16 @@ const CERTS = [cehLogo, comptiaLogo, oscpLogo, shieldLogo, cisaLogo, cismLogo, c
 
 const About = () => {
   return (
-    <section id="about" className="relative bg-premium-radial py-24 transition-colors duration-500">
+    <section
+      id="about"
+      className="relative overflow-hidden bg-premium-radial py-24 transition-colors duration-500"
+      style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.66), rgba(0,0,0,0.66)), url('/img/built on expertise bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+    >
+      <div className="absolute inset-0 bg-black/10" />
       <div className="absolute left-[-5rem] top-28 h-72 w-72 rounded-full bg-accent/8 blur-[120px]" />
       <div className="absolute right-[-6rem] bottom-20 h-80 w-80 rounded-full bg-accent/6 blur-[130px]" />
 
-      <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
+      <div className="relative container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
           <div className="reveal space-y-12 lg:col-span-7">
             <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]">// THE MANDATE</span>
@@ -161,7 +166,7 @@ const About = () => {
                   <div>
                     <p className="text-sm font-semibold text-zinc-900 dark:text-white">India Technology Node</p>
                     <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-                      Block C, Golden I, Techzone 4, Greater Noida, UP 201318, India
+                      AVS City Square, Raj Nagar Ext, Ghaziabad, 201003
                     </p>
                   </div>
                 </div>

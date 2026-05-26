@@ -3,7 +3,7 @@ import Hero from '../components/Hero';
 import Services from '../components/Services';
 import WhyChooseUs from '../components/WhyChooseUs';
 import TrustSignals from '../components/TrustSignals';
-import TeamSection from '../components/TeamSection';
+import TeamMembersSection from '../components/TeamMembersSection';
 import ACISSection from '../components/ACISSection';
 import HowItWorks from '../components/HowItWorks';
 import CTABanner from '../components/CTABanner';
@@ -28,7 +28,7 @@ const HomePage = () => {
             <Services />
             <WhyChooseUs />
             <TrustSignals />
-            <TeamSection />
+            <TeamMembersSection />
             <HowItWorks />
             <ClientsSection />
             <CTABanner />
