@@ -70,13 +70,13 @@ const Hero = () => {
                 Autonomous Cyber Immune System
               </span>
 
-              <h1 className="hero-heading text-[clamp(3.1rem,5.35vw,5.5rem)] font-black leading-[0.94] tracking-[-0.05em] text-text-primary">
+              <h1 className="hero-heading text-[clamp(2.2rem,5.9vw,5.5rem)] font-black leading-[0.94] tracking-[-0.05em] text-text-primary">
                 <span className="block lg:whitespace-nowrap">Securing Businesses</span>
                 <span className="block lg:whitespace-nowrap">With AI-Driven Cyber</span>
                 <span className="block lg:whitespace-nowrap">Intelligence</span>
               </h1>
 
-              <h2 className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-text-secondary md:text-[1.9rem] lg:text-[1.08rem] lg:leading-relaxed">
+              <h2 className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-text-secondary lg:text-[1.08rem] lg:leading-relaxed">
                 Detect. Prevent. Respond. Enterprise-Grade SOC &amp; SIEM Monitoring for
                 Global Businesses
               </h2>

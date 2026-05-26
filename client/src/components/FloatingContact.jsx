@@ -1,14 +1,51 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Instagram, Phone, Mail, Linkedin } from 'lucide-react';
+import { Instagram, Phone, Mail, Linkedin, Facebook, Youtube } from 'lucide-react';
 
 const FloatingContact = () => {
-    const contacts = [
-        { icon: <Instagram size={18} />, href: "https://instagram.com/netcradus", label: "Instagram", color: "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]" },
-        { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/company/netcradus-pvt-ltd/", label: "LinkedIn", color: "bg-accent" },
-        { icon: <Mail size={18} />, href: "mailto:contact@netcradus.com", label: "Email", color: "bg-accent-bright" },
-        { icon: <Phone size={18} />, href: "tel:1800121008800", label: "Phone", color: "bg-orange-500" }
-    ];
+const contacts = [
+    {
+        icon: <Instagram size={18} />,
+        href: "https://instagram.com/netcradus",
+        label: "Instagram",
+        color: "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]"
+    },
+
+    {
+        icon: <Facebook size={18} />,
+        href: "https://www.facebook.com/netcradus",
+        label: "Facebook",
+        color: "bg-blue-600"
+    },
+
+    {
+        icon: <Linkedin size={18} />,
+        href: "https://www.linkedin.com/company/netcradus-pvt-ltd/",
+        label: "LinkedIn",
+        color: "bg-accent"
+    },
+
+    {
+        icon: <Youtube size={18} />,
+        href: "https://www.youtube.com/@Netcradus-acis",
+        label: "YouTube",
+        color: "bg-red-600"
+    },
+
+    {
+        icon: <Mail size={18} />,
+        href: "mailto:contact@netcradus.com",
+        label: "Email",
+        color: "bg-accent-bright"
+    },
+
+    {
+        icon: <Phone size={18} />,
+        href: "tel:1800121008800",
+        label: "Phone",
+        color: "bg-orange-500"
+    }
+];
 
     return (
         <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 pointer-events-none">
