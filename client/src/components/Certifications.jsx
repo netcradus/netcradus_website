@@ -1,5 +1,6 @@
 import React from "react";
-
+import savexLogo from "../assets/savex.png";
+import gemLogo from "../assets/gem-new-logo_page-0001.jpg";
 import isoLogo from "../assets/ISO-Loogo-removebg.png";
 import iso27701Logo from "../assets/iso-27701-removebg.png";
 import certin from "../assets/certin-Photoroom.png";
@@ -9,8 +10,10 @@ import soc2 from "../assets/soc2.png";
 const certifications = [
   { src: isoLogo, alt: "ISO/IEC 27001:2022", note: "Information Security Management" },
   { src: iso27701Logo, alt: "ISO/IEC 27701:2019", note: "Privacy Information Management" },
+  { src: gemLogo, alt: "GeM", note: "Government e Marketplace" },
   { src: gdpr, alt: "GDPR", note: "Data Protection Alignment" },
   { src: soc2, alt: "SOC 2 Type II", note: "System and Organization Controls" },
+  { src: savexLogo, alt: "SAVEX", note: "Technology Solutions Partner" },
   { src: certin, alt: "CERT-In", note: "Indian Cybersecurity Nodal Agency" },
 ];
 
