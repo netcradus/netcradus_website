@@ -14,7 +14,6 @@ import {
   Star,
 } from "lucide-react";
 
-import GallerySection from "./GallerySection";
 import AmbientMesh from "./AmbientMesh";
 import AnimatedReveal from "./ui/AnimatedReveal";
 import MagneticWrapper from "./ui/MagneticWrapper";
@@ -189,8 +188,6 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* ✅ MOVED HERE (BEST POSITION) */}
-      <GallerySection />
     </>
   );
 };

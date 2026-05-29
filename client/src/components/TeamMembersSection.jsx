@@ -41,7 +41,7 @@ const team = [
    {
     name: "Mr. Avesh Tyagi",
     role: "Sales Head",
-    image: "/dist/team/SalesHead.png",
+    image: "/team/avesh.png",
     bio: "Mr. Avesh Tyagi leads sales operations, client relationship management, and business growth initiatives to strengthen Netcradus enterprise outreach and partnerships.",
   },
 ];

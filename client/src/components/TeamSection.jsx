@@ -35,6 +35,12 @@ const team = [
     image: "/team/Rahul.jpg",
     bio: "Rahul leads digital marketing and growth strategy at Netcradus, driving brand presence, enterprise client engagement, and content outreach campaigns across global markets.",
   },
+   {
+    name: "Mr. Avesh Tyagi",
+    role: "Sales Head",
+    image: "/team/avesh.png",
+    bio: "Mr. Avesh Tyagi leads sales operations, client relationship management, and business growth initiatives to strengthen Netcradus enterprise outreach and partnerships.",
+  },
 ];
 
 export default function TeamSection() {

@@ -1,4 +1,5 @@
 import React from "react";
+import InfiniteMarquee from "./ui/InfiniteMarquee";
 
 const galleryImages = [
   "/generate1.png",
@@ -34,35 +35,8 @@ export default function GallerySection() {
           </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {galleryImages.map((image, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_30px_rgba(255,102,0,0.08)]"
-            >
-              <img
-                src={image}
-                alt={`Gallery ${index + 1}`}
-                className="h-[320px] w-full object-cover transition-all duration-700 group-hover:scale-110"
-              />
-
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-
-              {/* Text */}
-              <div className="absolute bottom-0 left-0 p-6 translate-y-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                <h3 className="text-xl font-bold text-white">
-                  Netcradus Workspace
-                </h3>
-
-                <p className="mt-2 text-sm text-white/80">
-                  Modern cybersecurity environment & team collaboration.
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Infinite Auto-Scrolling Marquee */}
+        <InfiniteMarquee images={galleryImages} />
 
       </div>
     </section>
