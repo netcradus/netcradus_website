@@ -1,27 +1,15 @@
 const testimonials = [
   {
     quote:
-      "Netcradus transformed our security posture completely. Their SOC team is exceptional—exceptional latency and surgical precision in threat response.",
-    author: "HEAD OF INFRASTRUCTURE",
-    company: "Global Financial Firm",
+      "Working with Netcradus has been a game-changer for our organization. Their cybersecurity expertise and proactive monitoring helped us secure our infrastructure and minimize potential threats before they could impact our operations. The team is highly responsive, professional, and always ready to provide the right solutions at the right time. Their ability to understand our business requirements and deliver customized security solutions truly sets them apart. We’ve seen major improvements in system reliability, security awareness, and operational efficiency since partnering with Netcradus.",
+    author: "Arjun Malhotra",
+    company: "Enterprise Technology Team",
   },
   {
     quote:
-      "The cloud migration they delivered was flawless. Zero downtime, 40% cost reduction, and a security framework that actually works.",
-    author: "CHIEF TECHNOLOGY OFFICER",
-    company: "Enterprise Healthcare",
-  },
-  {
-    quote:
-      "Their cybersecurity expertise helped us identify critical vulnerabilities before they became business risks.",
-    author: "SECURITY OPERATIONS LEAD",
-    company: "FinTech Enterprise",
-  },
-  {
-    quote:
-      "Professional execution, enterprise-grade architecture, and unmatched technical clarity throughout the engagement.",
-    author: "VP OF ENGINEERING",
-    company: "Cloud Infrastructure Company",
+      "Netcradus exceeded our expectations with their outstanding support and technical expertise. From website security to cloud management and IT consulting, every service was delivered with professionalism and attention to detail. Their team worked closely with us throughout the entire process and ensured everything was implemented smoothly. What we value most is their quick response time and commitment to customer satisfaction. Thanks to Netcradus, our business now operates with greater confidence, stronger security, and improved digital performance.",
+    author: "Sneha Kapoor",
+    company: "Global Business Services",
   },
 ];
 
