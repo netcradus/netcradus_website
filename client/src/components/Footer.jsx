@@ -276,7 +276,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-10 mt-24 overflow-hidden border-t border-border bg-background pt-16 transition-colors duration-500">
+    <footer className="relative z-10 overflow-hidden border-t border-border bg-background pt-16 transition-colors duration-500">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-accent/8 blur-[120px]" />
       <div className="absolute bottom-10 right-0 h-72 w-72 rounded-full bg-accent/6 blur-[120px]" />
