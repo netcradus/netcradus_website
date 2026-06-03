@@ -35,6 +35,7 @@
 import React, { useEffect } from 'react';
 import SubHero from '../components/SubHero';
 import About from "../components/About";
+import TechnologyPartnersSection from "../components/TechnologyPartnersSection";
 import TeamMembersSection from "../components/TeamMembersSection";
 import CTABanner from "../components/CTABanner";
 import Certifications from '../components/Certifications';
@@ -58,6 +59,7 @@ return (
         />
 
         <About />
+        <TechnologyPartnersSection />
 
         <TeamMembersSection />
 
