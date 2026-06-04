@@ -16,6 +16,7 @@ const resourceSections = [
       "Actionable guidance for defenders and leaders",
     ],
     icon: BookOpen,
+    
     action: { label: "Visit Blog", to: "/blog", icon: ExternalLink },
   },
   {

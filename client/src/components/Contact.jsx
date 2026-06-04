@@ -5,7 +5,7 @@ import LocationMap from './LocationMap';
 import './Contact.css';
 
 const contactItems = [
-  { icon: <Mail size={20} />, label: "Technical Liaison", val: "info@netcradus.com", link: "mailto:info@netcradus.com" },
+  { icon: <Mail size={20} />, label: "Technical Liaison", val: "info@netcradus.com", link: "mailto:netcradus@gmail.com" },
   { icon: <Phone size={20} />, label: "Direct Operative", val: "1800 121 008800" },
   {
     icon: <MapPin size={20} />,
@@ -38,34 +38,53 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.user_name || !formData.user_email || !formData.message) return;
+  e.preventDefault();
+  if (!formData.user_name || !formData.user_email || !formData.message) return;
 
-    setStatus("loading");
+  setStatus("loading");
 
-    try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_id",
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_id",
-        {
-          name: formData.user_name,
-          email: formData.user_email,
-          phone: formData.user_phone || "N/A",
-          company: formData.user_company || "N/A",
-          message: formData.message,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "public_key"
-      );
+  console.log("===== EMAILJS DEBUG =====");
+  console.log("SERVICE:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
+  console.log("TEMPLATE:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+  console.log("PUBLIC:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  console.log("FORM DATA:", {
+    name: formData.user_name,
+    email: formData.user_email,
+    phone: formData.user_phone,
+    company: formData.user_company,
+    message: formData.message,
+  });
 
-      setStatus("success");
-      setFormData({ user_name: "", user_company: "", user_phone: "", user_email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
-    } catch (error) {
-      console.error("Email error:", error);
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
-    }
-  };
+  try {
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        name: formData.user_name,
+        email: formData.user_email,
+        phone: formData.user_phone || "N/A",
+        company: formData.user_company || "N/A",
+        message: formData.message,
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    );
+
+    setStatus("success");
+    setFormData({
+      user_name: "",
+      user_company: "",
+      user_phone: "",
+      user_email: "",
+      message: ""
+    });
+
+    setTimeout(() => setStatus("idle"), 5000);
+  } catch (error) {
+    console.error("Email error:", error);
+    setStatus("error");
+    setTimeout(() => setStatus("idle"), 5000);
+  }
+};
 
   return (
     <section className="relative overflow-hidden bg-premium-radial py-24 transition-colors duration-500">
