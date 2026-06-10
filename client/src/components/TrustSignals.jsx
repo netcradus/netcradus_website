@@ -291,7 +291,7 @@ export default function TrustSignals() {
                 growth, security insights, event participation, and
                 customer-facing momentum.
               </p>
-
+ <div className="flex justify-center mt-6">
               <a
                 href="https://www.linkedin.com/company/netcradus-pvt-ltd/"
                 target="_blank"
@@ -300,6 +300,7 @@ export default function TrustSignals() {
               >
                 Visit LinkedIn
               </a>
+              </div>
             </div>
           </div>
         </div>
