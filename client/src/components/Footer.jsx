@@ -311,7 +311,7 @@ export default function Footer() {
                 href="mailto:contact@netcradus.com"
                 className="block transition hover:text-accent"
               >
-                📧 contact@netcradus.com
+                📧 info@netcradus.com
               </a>
 
               <a
