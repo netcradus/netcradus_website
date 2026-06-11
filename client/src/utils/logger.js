@@ -16,6 +16,6 @@ export async function sendLog(path) {
       }),
     });
   } catch (err) {
-    console.error("Logger error:", err);
+    console.error("Logger errors:", err);
   }
 }
