@@ -117,7 +117,7 @@
 
 import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-
+import { sendLog } from "./utils/logger";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -154,16 +154,23 @@ function AppLayout() {
   const location = useLocation();
 
   useEffect(() => {
-    if (window.fbq) {
-      window.fbq("track", "PageView");
-    }
 
-    if (window.gtag) {
-      window.gtag("event", "page_view", {
-        page_path: location.pathname,
-      });
-    }
-  }, [location]);
+  // Send log to Render logger
+  sendLog(location.pathname);
+
+  // Facebook Pixel
+  if (window.fbq) {
+    window.fbq("track", "PageView");
+  }
+
+  // Google Analytics
+  if (window.gtag) {
+    window.gtag("event", "page_view", {
+      page_path: location.pathname,
+    });
+  }
+
+}, [location]);
 
   return (
     <div className="bg-background min-h-screen text-text-primary font-sans overflow-x-hidden pt-20 transition-colors duration-500 selection:bg-accent/30">
