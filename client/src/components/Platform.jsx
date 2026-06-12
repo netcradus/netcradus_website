@@ -112,7 +112,7 @@ export default function Platform() {
   return (
     <div className="bg-background transition-colors duration-500">
       <PageHero
-        label="// PLATFORM"
+        label=""
         title="The Netcradus Cybersecurity Platform"
         subtitle="Explore ACIS, its deployment tiers, and the intelligence engines that power autonomous cyber defense at enterprise scale."
         backgroundImage="/img/platform bg.png"
@@ -250,7 +250,7 @@ export default function Platform() {
         </div>
       </section>
 
-      <section id="ai-security" className="py-24 border-t border-border">
+      {/* <section id="ai-security" className="py-24 border-t border-border">
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
           <div className="mb-12 text-center">
             <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent font-display md:text-[12px]">
@@ -335,7 +335,7 @@ export default function Platform() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
