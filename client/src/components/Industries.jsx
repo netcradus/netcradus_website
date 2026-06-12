@@ -16,7 +16,7 @@ const Industries = () => {
     <section id="industries" className="py-24 bg-premium-radial relative transition-colors duration-500">
       <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 text-center">
         <div className="reveal mb-20">
-          <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block">// SECTOR EXPERTISE</span>
+          <span className="text-[10px] md:text-[12px] font-bold tracking-[0.4em] text-accent uppercase mb-6 block"></span>
           <h2 className="text-4xl md:text-7xl font-display font-black text-zinc-900 dark:text-white mb-6 tracking-tighter leading-none">Industries We <span className="text-accent italic">Empower.</span></h2>
           <p className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-sans leading-relaxed max-w-2xl mx-auto">
             We don't believe in generic security. Our solutions are engineered for the specific regulatory and operational demands of your sector.
