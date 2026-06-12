@@ -182,11 +182,12 @@ const ACISSection = () => {
         {/* 🔥 NEW ARCHITECTURE SECTION */}
         <div className="architecture-section mt-28">
           <div className="section-label text-center text-accent">
-            // SYSTEM ARCHITECTURE
+      
           </div>
           <h3 className="timeline-section-title text-center">
             Multi-Layered Intelligence.
           </h3>
+          
           {/* ===== IMAGE TOP ===== */}
           {/* <div className="arch-image-wrapper mb-16">
     <img
@@ -235,7 +236,7 @@ const ACISSection = () => {
           </div>
         </div>
         <div className="acis-timeline reveal">
-          <div className="section-label text-center">// DEVELOPMENT PHASES</div>
+          <div className="section-label text-center"></div>
           <h3 className="timeline-section-title text-center">
             Implementation Journey
           </h3>
