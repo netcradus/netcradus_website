@@ -158,7 +158,7 @@ const testimonials = [
       "Netcradus has been a reliable cybersecurity partner, helping us strengthen our security posture, improve threat visibility, and implement proactive protection measures across our digital infrastructure. Their expertise and responsiveness have added significant value to our operations.",
   },
   {
-    name: "CyberHasx",
+    name: "CyberHaxs",
     role: "Cybersecurity & Risk Management Organization",
     quote:
       "Working with Netcradus has enhanced our security operations through effective monitoring, rapid incident response, and strategic cybersecurity guidance. Their commitment to excellence and technical expertise make them a trusted partner in managing evolving cyber risks.",
