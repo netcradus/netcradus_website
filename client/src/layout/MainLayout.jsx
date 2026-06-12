@@ -13,7 +13,7 @@ export default function MainLayout() {
 
     return (
 
-        
+
         <div className="min-h-screen bg-background text-white flex flex-col relative">
             {/* Scroll Progress Bar at Top */}
             <motion.div

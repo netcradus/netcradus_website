@@ -8,19 +8,17 @@ import gdpr from "../assets/gdpr.jpeg";
 import soc2 from "../assets/soc2.png";
 
 const certifications = [
-  { src: isoLogo, alt: "ISO/IEC 27001:2022", note: "Information Security Management" },
-  { src: iso27701Logo, alt: "ISO/IEC 27701:2019", note: "Privacy Information Management" },
-  // { src: gemLogo, alt: "GeM", note: "Government e Marketplace" },
-  { src: gdpr, alt: "GDPR", note: "Data Protection Alignment" },
-  { src: soc2, alt: "SOC 2 Type II", note: "System and Organization Controls" },
-<<<<<<< Updated upstream
- // { src: savexLogo, alt: "SAVEX", note: "Technology Solutions Partner" },
-=======
-  // { src: savexLogo, alt: "SAVEX", note: "Technology Solutions Partner" },
-  { src: UdeyamLogo, alt: "Udeyam", note: "Technology Solutions Partner" },
->>>>>>> Stashed changes
-  { src: certin, alt: "CERT-In", note: "Indian Cybersecurity Nodal Agency" },
+{ src: isoLogo, alt: "ISO/IEC 27001:2022", note: "Information Security Management" },
+{ src: iso27701Logo, alt: "ISO/IEC 27701:2019", note: "Privacy Information Management" },
+// { src: gemLogo, alt: "GeM", note: "Government e Marketplace" },
+{ src: gdpr, alt: "GDPR", note: "Data Protection Alignment" },
+{ src: soc2, alt: "SOC 2 Type II", note: "System and Organization Controls" },
+
+// { src: savexLogo, alt: "SAVEX", note: "Technology Solutions Partner" },
+
+{ src: certin, alt: "CERT-In", note: "Indian Cybersecurity Nodal Agency" },
 ];
+
 
 function LogoCard({ logo, index }) {
   const isWideLogo = index >= 7;
