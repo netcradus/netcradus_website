@@ -11,8 +11,8 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at top left, rgba(232, 64, 10, 0.05), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(232, 64, 10, 0.05), transparent 40%),
+    radial-gradient(circle at top left, rgba(232, 65, 10, 0.489), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(232, 65, 10, 0.537), transparent 40%),
     var(--bg-color);
   transition: background-color 0.5s ease;
 }

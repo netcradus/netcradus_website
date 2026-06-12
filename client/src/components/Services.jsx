@@ -178,7 +178,7 @@ const Services = () => {
       <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="reveal mb-16 text-center">
           <span className="mb-6 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent font-display md:text-[12px]">
-            // OUR CAPABILITIES
+          
           </span>
           <h2 className="mb-6 text-4xl font-display font-black text-text-primary md:text-6xl">
             Intelligent security, engineered for <span className="text-accent italic">resilience.</span>

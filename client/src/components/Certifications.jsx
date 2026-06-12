@@ -13,7 +13,7 @@ const certifications = [
   // { src: gemLogo, alt: "GeM", note: "Government e Marketplace" },
   { src: gdpr, alt: "GDPR", note: "Data Protection Alignment" },
   { src: soc2, alt: "SOC 2 Type II", note: "System and Organization Controls" },
-  // { src: savexLogo, alt: "SAVEX", note: "Technology Solutions Partner" },
+ // { src: savexLogo, alt: "SAVEX", note: "Technology Solutions Partner" },
   { src: certin, alt: "CERT-In", note: "Indian Cybersecurity Nodal Agency" },
 ];
 

@@ -22,7 +22,7 @@ export default function GallerySection() {
         {/* Heading */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <span className="mb-5 block text-[11px] font-bold uppercase tracking-[0.35em] text-accent">
-            Gallery
+          
           </span>
 
           <h2 className="text-4xl font-black tracking-tight text-text-primary md:text-6xl">
