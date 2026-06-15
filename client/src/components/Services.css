@@ -27,6 +27,20 @@
   transition: all 0.25s ease;
   backdrop-filter: blur(10px);
 }
+/* ADD THIS AT THE END OF THE FILE */
+@media (max-width: 768px) {
+  .services-tabs {
+    border-radius: 1.5rem;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .service-tab-btn {
+    padding: 0.6rem 0.8rem;
+    min-height: 2.5rem;
+    font-size: 0.8rem;
+  }
+}
 
 .service-tab-btn:hover {
   color: var(--color-text-primary);
