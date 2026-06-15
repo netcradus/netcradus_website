@@ -6,7 +6,7 @@ export default function LegalPageTemplate({ title, description, lastUpdated, sec
   return (
     <div className="bg-background transition-colors duration-500">
       <PageHero
-        label="// LEGAL"
+        label=""
         title={title}
         subtitle={description}
         media={

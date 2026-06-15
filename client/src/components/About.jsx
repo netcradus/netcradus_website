@@ -55,7 +55,7 @@ const About = () => {
       <div className="relative container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
           <div className="reveal space-y-12 lg:col-span-7">
-            <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]">// THE MANDATE</span>
+            <span className="block text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]"></span>
 
             <h2 className="text-4xl font-display font-black leading-none tracking-tighter text-zinc-900 dark:text-white md:text-7xl">
               Built on Expertise.

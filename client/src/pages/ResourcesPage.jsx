@@ -79,7 +79,7 @@ export default function ResourcesPage() {
   return (
     <div className="bg-background transition-colors duration-500">
       <PageHero
-        label="// RESOURCES"
+        label=""
         title="Security Intelligence, On Demand"
         subtitle="Access the latest research, reports, and technical guides from the Netcradus security team."
         media={

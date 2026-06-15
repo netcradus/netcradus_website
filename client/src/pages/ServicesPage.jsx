@@ -16,7 +16,7 @@ const ServicesPage = () => {
     return (
         <div className="bg-background transition-colors duration-500">
             <SubHero
-                label="// OUR CAPABILITIES"
+                label=""
                 title="Managed Security Services for Modern Enterprises"
                 subtitle="From proactive defense and managed detection to cloud, network, and enterprise security, Netcradus delivers managed security services built for resilient growth."
                 sectionClassName="solutions-hero"
