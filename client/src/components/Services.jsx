@@ -125,28 +125,28 @@ const SERVICE_TABS = [
     ],
     highlights: ["Security Architecture", "Board Reporting", "Vendor Risk"],
   },
-  {
-    id: "vms-hms",
-    title: "Products",
-    heading: "Visitor & Hospital Management Systems",
-    icon: Code2,
-    image: "/img/visitor and hms.png",
-    description:
-      "Netcradus builds intelligent visitor and hospital management systems that digitize access, approvals, patient workflows, and administrative operations for secure, high-performance environments.",
-    points: [
-      "Secure digital visitor onboarding with biometric verification, ID validation, and officer approval workflows",
-      "Risk-aware visitor screening, blacklist checks, and real-time gate pass issuance",
-      "Centralized patient registration, appointment scheduling, admissions, and discharge management",
-      "Integrated billing, prescription management, lab workflow tracking, and staff coordination",
-      "Role-based dashboards for security officers, reception teams, clinicians, and administrators",
-      "Audit-ready logs, data protection controls, and seamless integration with existing access systems",
-    ],
-    highlights: [
-      "Secure Access",
-      "Smart Healthcare Workflows",
-      "Operational Control",
-    ],
-  },
+  // {
+  //   id: "vms-hms",
+  //   title: "Products",
+  //   heading: "Visitor & Hospital Management Systems",
+  //   icon: Code2,
+  //   image: "/img/visitor and hms.png",
+  //   description:
+  //     "Netcradus builds intelligent visitor and hospital management systems that digitize access, approvals, patient workflows, and administrative operations for secure, high-performance environments.",
+  //   points: [
+  //     "Secure digital visitor onboarding with biometric verification, ID validation, and officer approval workflows",
+  //     "Risk-aware visitor screening, blacklist checks, and real-time gate pass issuance",
+  //     "Centralized patient registration, appointment scheduling, admissions, and discharge management",
+  //     "Integrated billing, prescription management, lab workflow tracking, and staff coordination",
+  //     "Role-based dashboards for security officers, reception teams, clinicians, and administrators",
+  //     "Audit-ready logs, data protection controls, and seamless integration with existing access systems",
+  //   ],
+  //   highlights: [
+  //     "Secure Access",
+  //     "Smart Healthcare Workflows",
+  //     "Operational Control",
+  //   ],
+  // },
 ];
 
 const softwareHighlights = [
@@ -274,30 +274,28 @@ const Services = () => {
             </div>
 
             <div className="relative">
-  <div className="absolute inset-0 rounded-[30px] bg-[radial-gradient(circle_at_50%_20%,rgba(232,64,10,0.18),transparent_45%)] blur-3xl" />
+              <div className="absolute inset-0 rounded-[30px] bg-[radial-gradient(circle_at_50%_20%,rgba(232,64,10,0.18),transparent_45%)] blur-3xl" />
 
-  <div className="relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_45%),var(--color-surface)] p-4 shadow-[0_22px_70px_rgba(232,64,10,0.08)]">
-
-    {activeService.video ? (
-      <video
-        className="max-h-[400px] w-full rounded-[12px] object-cover pointer-events-none"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src={activeService.video} type="video/mp4" />
-      </video>
-    ) : (
-      <img
-        src={activeService.image}
-        alt={activeService.heading}
-        className="max-h-[400px] w-full rounded-[12px] object-cover"
-      />
-    )}
-
-  </div>
-</div>
+              <div className="relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_45%),var(--color-surface)] p-4 shadow-[0_22px_70px_rgba(232,64,10,0.08)]">
+                {activeService.video ? (
+                  <video
+                    className="max-h-[400px] w-full rounded-[12px] object-cover pointer-events-none"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src={activeService.video} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    src={activeService.image}
+                    alt={activeService.heading}
+                    className="max-h-[400px] w-full rounded-[12px] object-cover"
+                  />
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -52,7 +52,7 @@ useEffect(() => {
 return (
     <>
         <SubHero 
-            label="// OUR ORIGIN STORY"
+            label=""
             title="About Netcradus: A Global Cybersecurity Company"
             subtitle="Netcradus was founded on the principle that security is not a feature, but a fundamental right for every organization navigating the modern threat landscape."
             backgroundImage="/img/about us bg.png"

@@ -14,7 +14,7 @@ const BlogPage = () => {
     return (
         <>
             <SubHero 
-                label="// INTELLIGENCE FEED"
+                label=" "
                 title="Cybersecurity Blog: Threat Intelligence & Research"
                 subtitle="Stay ahead of emerging threats with technical deep-dives, security research, and practical cyber defense insights."
             />

@@ -121,7 +121,7 @@ export default function CareersPage() {
             <section className="relative flex min-h-[50vh] items-center bg-premium-radial py-24">
                 <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
                     <div className="reveal max-w-4xl">
-                        <span className="mb-6 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]">// JOIN THE MISSION</span>
+                        <span className="mb-6 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]"></span>
                         <h1 className="mb-8 text-4xl font-display font-black leading-none tracking-tighter text-zinc-900 dark:text-white md:text-7xl">
                             Careers at <span className="text-accent italic">Netcradus</span>
                         </h1>
@@ -139,7 +139,7 @@ export default function CareersPage() {
             <section className="border-y border-zinc-200 bg-zinc-50 py-24 transition-colors duration-500 dark:border-zinc-800 dark:bg-zinc-900/30">
                 <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
                     <div className="reveal mx-auto mb-20 max-w-3xl text-center">
-                        <span className="mb-6 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]">// THE ADVANTAGE</span>
+                        <span className="mb-6 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]"></span>
                         <h2 className="mb-6 text-4xl font-display font-black leading-none tracking-tighter text-zinc-900 dark:text-white md:text-6xl">Why Work <span className="text-accent italic">at Netcradus?</span></h2>
                         <p className="text-lg font-sans leading-relaxed text-zinc-600 dark:text-zinc-400">We offer the opportunity to work on genuinely challenging problems in an environment that takes your development seriously.</p>
                     </div>

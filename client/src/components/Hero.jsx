@@ -168,7 +168,7 @@ const Hero = () => {
           {/* AFFORDABILITY TEXT */}
           <div className="mt-10 flex justify-center">
             <p className="hero-affordability-pill">
-              Affordable Enterprise Cybersecurity for Growing Indian Businesses
+              Enterprise Cybersecurity. Built for Scale. Trusted Worldwide.
             </p>
           </div>
 

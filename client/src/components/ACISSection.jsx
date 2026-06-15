@@ -147,7 +147,7 @@ const ACISSection = () => {
             </div>
             <div className="flex justify-center mt-6">
               <a
-                href="https://acis.netcradus.com/"
+                href="https://www.oouraa.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary acis-btn inline-flex items-center gap-2 no-underline px-4 py-2"

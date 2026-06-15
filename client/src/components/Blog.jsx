@@ -10,7 +10,7 @@ const Blog = () => {
       <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
         <div className="reveal mb-16 text-center">
           <span className="mb-6 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent md:text-[12px]">
-            // INTELLIGENCE FEED
+            
           </span>
           <h2 className="mb-6 text-4xl font-display font-black text-zinc-900 dark:text-white md:text-6xl">
             Latest from the <span className="text-accent italic">Lab.</span>
