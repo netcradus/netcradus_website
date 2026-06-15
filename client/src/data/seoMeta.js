@@ -4,7 +4,8 @@ const LEGAL_PAGE_ROBOTS = "noindex, follow, max-image-preview:large";
 export const SEO_META = {
   home: {
     path: "/",
-    title: "Netcradus | 24/7 SOC & SIEM Security Solutions for Global Businesses",
+    title:
+      "Netcradus | 24/7 SOC & SIEM Security Solutions for Global Businesses",
     description:
       "Netcradus delivers 24/7 SOC & SIEM monitoring, advanced threat detection, and enterprise-grade cybersecurity solutions to protect businesses from modern cyber threats.",
     keywords: [
@@ -174,14 +175,15 @@ export const SEO_META = {
       "Enterprise Cybersecurity Solutions",
       "Vulnerability Assessment and Penetration Testing (VAPT)",
       "Cloud Security Services",
-      "Autonomous Cyber Immune System"
+      "Autonomous Cyber Immune System",
     ],
     robots: PUBLIC_INDEX_ROBOTS,
     type: "website",
   },
   acis: {
     path: "/acis",
-    title: "ACIS by Netcradus | Autonomous Cyber Immune System & AI SIEM Platform",
+    title:
+      "ACIS by Netcradus | Autonomous Cyber Immune System & AI SIEM Platform",
     description:
       "Discover ACIS, the AI-powered Autonomous Cyber Immune System by Netcradus. Real-time threat detection, autonomous response, UEBA, SIEM, SOAR, and enterprise cyber defense.",
     keywords: [
@@ -210,7 +212,54 @@ export const SEO_META = {
       "AI driven SIEM and SOAR platform",
       "cyber immune system for enterprise security",
       "user behavior analytics cybersecurity platform",
-      "real time threat detection and automated response"
+      "real time threat detection and automated response",
+      "AI SIEM Platform",
+      "Autonomous Cyber Defense",
+      "Autonomous Cyber Immune System",
+      "UEBA Platform",
+      "SOAR Platform",
+      "Threat Detection and Response",
+      "Security Operations Automation",
+      "AI-Powered ScooterIcon",
+      "Enterprise Security Platform",
+      "Behavioral Threat Detection",
+      "Insider Threat Detection",
+      "Security Analytics Platform",
+      "Real-Time Threat Intelligence",
+      "Zero Trust Security Platform",
+      "Autonomous Incident Response",
+      "Enterprise SIEM Solution",
+      "Managed SOC Platform",
+      "SOAR Solution",
+      "UEBA Platform",
+      "Security Analytics Platform",
+      "Threat Detection and Response",
+      "Security Operations Automation",
+      "Autonomous Cyber Defense",
+      "Enterprise Cybersecurity Platform",
+      "Autonomous cyber defense solution",
+      "Enterprise threat detection and response platform",
+      "AI-based security operations center",
+      "UEBA and insider threat detection platform",
+      "Security orchestration and automated response solution",
+      "Autonomous incident response platform",
+      "AI-powered threat intelligence platform",
+      "Real-time cyber threat monitoring system",
+      "Enterprise cybersecurity automation platform",
+      "Next-generation AI SIEM solution",
+      "Self-healing cybersecurity platform",
+      "Autonomous cyber immune system",
+      "Zero Trust security monitoring platform",
+      "AI-powered security analytics platform",
+      "Enterprise Cyber Defense",
+      "Cyber Resilience Platform",
+      "Enterprise Threat Protection",
+      "Digital Risk Protection",
+      "Security Operations Platform",
+      "Security Monitoring Platform",
+      "Enterprise Risk Management",
+      "Cybersecurity for Enterprises",
+      "Business Cyber Resilience"
     ],
     robots: PUBLIC_INDEX_ROBOTS,
     type: "website",
@@ -278,7 +327,8 @@ export const SEO_META = {
   },
   resources: {
     path: "/resources",
-    title: "Cybersecurity Resources | White Papers, Reports & Research | Netcradus",
+    title:
+      "Cybersecurity Resources | White Papers, Reports & Research | Netcradus",
     description:
       "Access cybersecurity resources from Netcradus including white papers, threat reports, documentation, and security research.",
     keywords: [
@@ -400,7 +450,8 @@ export const SEO_META = {
   blogFallback: {
     path: "/blog",
     title: "Cybersecurity Article | Netcradus",
-    description: "Read Netcradus threat intelligence and cybersecurity insights.",
+    description:
+      "Read Netcradus threat intelligence and cybersecurity insights.",
     keywords: [
       "cybersecurity article",
       "threat intelligence",
