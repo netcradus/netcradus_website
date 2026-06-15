@@ -24,7 +24,7 @@ const platformSections = [
   },
   {
     id: "acis-lite",
-    title: "Affordable Security for Growing Businesses",
+    title: "Scale Fearlessly with AI-Powered Cyber Defense",
     description:
       "ACIS Lite delivers core autonomous threat detection and response capabilities for startups and SMEs. Get enterprise-grade protection without enterprise-level cost.",
     features: [
