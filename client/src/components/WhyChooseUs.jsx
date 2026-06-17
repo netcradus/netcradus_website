@@ -72,7 +72,7 @@ const sections = [
     items: whyChooseItems,
   },
   {
-    title: "Business Problems We Solve",
+    title: "The Gaps We Will Fill",
     accent: "Problems We Solve",
     summary:
       "Focused outcomes for risk reduction, uptime protection, cloud security, compliance support, and stronger day-to-day cyber resilience.",

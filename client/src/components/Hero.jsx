@@ -99,7 +99,7 @@ const Hero = () => {
                     <MagneticWrapper>
                       <button className="btn-hero-primary btn-glow-pulse flex items-center gap-3">
                         <ShieldCheck size={18} />
-                        Request Security Audit
+                        Get In Touch
                       </button>
                     </MagneticWrapper>
                   </Link>
