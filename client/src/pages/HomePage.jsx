@@ -46,7 +46,7 @@ import Hero from '../components/Hero';
 import Services from '../components/Services';
 import WhyChooseUs from '../components/WhyChooseUs';
 import TrustSignals from '../components/TrustSignals';
-import ACISSection from '../components/ACISSection';
+//import ACISSection from '../components/ACISSection';
 import HowItWorks from '../components/HowItWorks';
 import CTABanner from '../components/CTABanner';
 import ClientsSection from '../components/ClientsSection';
@@ -66,7 +66,7 @@ const HomePage = () => {
   return (
     <>
       <Hero />
-      <ACISSection />
+      {/* <ACISSection /> */}
       <LiveThreatMap />
       <Services />
       <WhyChooseUs />

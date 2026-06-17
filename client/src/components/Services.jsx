@@ -125,7 +125,33 @@ const SERVICE_TABS = [
     ],
     highlights: ["Security Architecture", "Board Reporting", "Vendor Risk"],
   },
-
+  // add vapt services as a new tab
+  {
+    id: "vapt-services",
+    title: "VAPT Services",
+    heading: "VAPT Services",
+    icon: Shield,
+    image: "/img/vapt.png",
+    description:
+      "Protect your website, web applications, network, and cloud infrastructure with Netcradus VAPT (Vulnerability Assessment & Penetration Testing) services. We identify security gaps and help you fix them before they become costly breaches.",
+    points: [
+      "Expert Ethical Hackers",
+      "Manual + Automated Testing",
+      "OWASP Top 10 Coverage",
+      "Detailed Reports with Fixes",
+      "Post-Assessment Support",
+      "Comprehensive VAPT Report",
+      "Risk Severity Ratings",
+      "Proof of Concept (PoC)",
+      "Remediation Recommendations",
+      "Re-Testing & Validation",
+    ],
+    highlights: [
+      "Network Security Testing",
+      "API Security Assessment",
+      "Website & Web Application VAPT",
+    ],
+  },
   // {
   //   id: "vms-hms",
   //   title: "Products",
@@ -148,7 +174,6 @@ const SERVICE_TABS = [
   //     "Operational Control",
   //   ],
   // },
-
 ];
 
 const softwareHighlights = [
@@ -248,7 +273,7 @@ const Services = () => {
                 {activeService.highlights.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-accent/15 bg-accent/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-accent"
+                    className="inline-flex whitespace-nowrap rounded-full border border-accent/15 bg-accent/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-accent"
                   >
                     {item}
                   </span>
@@ -276,13 +301,12 @@ const Services = () => {
             </div>
 
             <div className="relative">
-
               <div className="absolute inset-0 rounded-[30px] bg-[radial-gradient(circle_at_50%_20%,rgba(232,64,10,0.18),transparent_45%)] blur-3xl" />
 
               <div className="relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_45%),var(--color-surface)] p-4 shadow-[0_22px_70px_rgba(232,64,10,0.08)]">
                 {activeService.video ? (
                   <video
-                    className="max-h-[400px] w-full rounded-[12px] object-cover pointer-events-none"
+                    className="h-[400px] w-full rounded-[12px] object-cover object-top pointer-events-none"
                     autoPlay
                     muted
                     loop
@@ -294,12 +318,11 @@ const Services = () => {
                   <img
                     src={activeService.image}
                     alt={activeService.heading}
-                    className="max-h-[400px] w-full rounded-[12px] object-cover"
+                    className="h-[400px] w-full rounded-[12px] object-cover object-top"
                   />
                 )}
               </div>
             </div>
- 
           </div>
         </div>
       </div>

@@ -33,19 +33,19 @@ const contacts = [
         color: "bg-red-600"
     },
 
-    {
-        icon: <Mail size={18} />,
-        href: "mailto:contact@netcradus.com",
-        label: "Email",
-        color: "bg-accent-bright"
-    },
+    // {
+    //     icon: <Mail size={18} />,
+    //     href: "mailto:contact@netcradus.com",
+    //     label: "Email",
+    //     color: "bg-accent-bright"
+    // },
 
-    {
-        icon: <Phone size={18} />,
-        href: "tel:1800121008800",
-        label: "Phone",
-        color: "bg-orange-500"
-    }
+    // {
+    //     icon: <Phone size={18} />,
+    //     href: "tel:1800121008800",
+    //     label: "Phone",
+    //     color: "bg-orange-500"
+    // }
 ];
   const [isScrolling, setIsScrolling] = useState(false);
 

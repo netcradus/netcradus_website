@@ -2,6 +2,11 @@
 
 {
   "redirects": [
+        {
+      "source": "/(.*).php",
+      "destination": "/",
+      "permanent": true
+    },
     {
       "source": "/(.*)",
       "has": [

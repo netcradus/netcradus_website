@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 import StatsBar from "../components/StatsBar";
 import TechStack from "../components/TechStack";
 import Services from "../components/Services";
-import ACISSection from "../components/ACISSection";
+//import ACISSection from "../components/ACISSection";
 import LiveThreatMap from "../components/LiveThreatMap";
 import Industries from "../components/Industries";
 import AboutSection from "../components/AboutSection";
@@ -23,7 +23,7 @@ export default function Home() {
             <StatsBar />
             <TechStack />
             <Services />
-            <ACISSection />
+            {/* <ACISSection /> */}
             <LiveThreatMap />
             <HowWeWork />
             <Industries />

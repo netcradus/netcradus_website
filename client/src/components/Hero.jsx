@@ -10,8 +10,7 @@ import {
   ShieldCheck,
   Zap,
   FileText,
-  Phone,
-  // Star,
+  ArrowRight,
 } from "lucide-react";
 
 import AmbientMesh from "./AmbientMesh";
@@ -31,12 +30,14 @@ const featureCards = [
   {
     icon: BrainCircuit,
     title: "AI-Powered Threat Detection",
-    description: "Advanced ML models identify and neutralize threats in real time.",
+    description:
+      "Advanced ML models identify and neutralize threats in real time.",
   },
   {
     icon: SearchCheck,
     title: "Proactive Threat Hunting",
-    description: "Continuous threat hunting to detect hidden risks before they escalate.",
+    description:
+      "Continuous threat hunting to detect hidden risks before they escalate.",
   },
   {
     icon: Zap,
@@ -46,7 +47,8 @@ const featureCards = [
   {
     icon: FileText,
     title: "Compliance & Reporting",
-    description: "Built-in compliance with global standards and detailed reporting.",
+    description:
+      "Built-in compliance with global standards and detailed reporting.",
   },
   {
     icon: Headphones,
@@ -68,23 +70,28 @@ const Hero = () => {
 
         <div className="container relative z-10 mx-auto max-w-[1720px] px-4 sm:px-6 lg:px-14 xl:px-20 2xl:px-24">
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(520px,0.98fr)] xl:gap-20 2xl:gap-24">
-            
             {/* LEFT CONTENT */}
             <AnimatedReveal>
               <div className="max-w-[46rem] text-center lg:text-left">
-                
                 <span className="mb-8 block text-[11px] font-bold uppercase tracking-[0.4em] text-accent">
                   Autonomous Cyber Immune System
                 </span>
 
                 <h1 className="hero-heading text-[clamp(2.2rem,5.9vw,5.5rem)] font-black leading-[0.94] tracking-[-0.05em] text-text-primary">
-                  <span className="block lg:whitespace-nowrap">Securing Businesses</span>
-                  <span className="block lg:whitespace-nowrap">With AI-Driven Cyber</span>
-                  <span className="block lg:whitespace-nowrap">Intelligence</span>
+                  <span className="block lg:whitespace-nowrap">
+                    Securing Businesses
+                  </span>
+                  <span className="block lg:whitespace-nowrap">
+                    With AI-Driven Cyber
+                  </span>
+                  <span className="block lg:whitespace-nowrap">
+                    Intelligence
+                  </span>
                 </h1>
 
                 <h2 className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-text-secondary lg:text-[1.08rem]">
-                  Detect. Prevent. Respond. Enterprise-Grade SOC & SIEM Monitoring for Global Businesses
+                  Detect. Prevent. Respond. Enterprise-Grade SOC & SIEM
+                  Monitoring for Global Businesses
                 </h2>
 
                 <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
@@ -96,15 +103,18 @@ const Hero = () => {
                       </button>
                     </MagneticWrapper>
                   </Link>
-
-                  <Link to="/contact">
+                  <a
+                    href="https://www.oouraa.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <MagneticWrapper>
-                      <button className="btn-hero-secondary flex items-center gap-3">
-                        <Phone size={18} />
-                        Request Callback
+                      <button className="btn-hero-primary btn-glow-pulse flex items-center gap-3">
+                        Explore ACIS
+                        <ArrowRight size={18} />
                       </button>
                     </MagneticWrapper>
-                  </Link>
+                  </a>
                 </div>
 
                 {/* STATS */}
@@ -115,8 +125,12 @@ const Hero = () => {
                         <Icon size={22} />
                       </div>
                       <div>
-                        <p className="text-[1.85rem] font-black text-text-primary">{value}</p>
-                        <p className="mt-2 text-sm text-text-secondary">{label}</p>
+                        <p className="text-[1.85rem] font-black text-text-primary">
+                          {value}
+                        </p>
+                        <p className="mt-2 text-sm text-text-secondary">
+                          {label}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -148,7 +162,6 @@ const Hero = () => {
                     </div>
                   </a>
                 </div> */}
-
               </div>
             </AnimatedReveal>
 
@@ -162,7 +175,6 @@ const Hero = () => {
                 />
               </div>
             </AnimatedReveal>
-
           </div>
 
           {/* AFFORDABILITY TEXT */}
@@ -179,19 +191,19 @@ const Hero = () => {
                 <div className="hero-feature-icon">
                   <Icon size={24} />
                 </div>
-                <h3 className="mt-5 text-xl font-bold text-text-primary">{title}</h3>
-                <p className="mt-3 text-sm text-text-secondary">{description}</p>
+                <h3 className="mt-5 text-xl font-bold text-text-primary">
+                  {title}
+                </h3>
+                <p className="mt-3 text-sm text-text-secondary">
+                  {description}
+                </p>
               </article>
             ))}
           </div>
-
         </div>
       </section>
-
     </>
   );
 };
 
 export default Hero;
-
-

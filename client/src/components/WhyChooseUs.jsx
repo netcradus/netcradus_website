@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import {useState, useEffect, useRef } from "react";
 
 const whyChooseItems = [
   "24/7 SOC & SIEM Monitoring",
@@ -88,6 +88,15 @@ const sections = [
 ];
 
 export default function WhyChooseUs() {
+    const [activeSection, setActiveSection] = useState(0);
+
+  const nextSection = () => {
+    setActiveSection((prev) => (prev + 1) % sections.length);
+  };
+
+  const prevSection = () => {
+    setActiveSection((prev) => (prev - 1 + sections.length) % sections.length);
+  };
   const sectionRef = useRef(null);
   const glowRef = useRef(null);
 
@@ -182,50 +191,83 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        <div className="grid gap-8">
-          {sections.map((section, index) => (
-            <div
-              key={section.title}
-              className={`group why-choose-magnetic-card relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(180deg,rgba(232,64,10,0.08),transparent_24%,var(--color-surface)_75%)] p-8 shadow-[0_18px_46px_rgba(232,64,10,0.05)] hover:border-accent/25 lg:p-10 ${
-                index % 2 === 1 ? "why-choose-align-right" : "why-choose-align-left"
-              }`}
-            >
-              <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-60" />
-              <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-10">
-                <div className="lg:sticky lg:top-24 lg:self-start">
-                  <div className="why-choose-card-top flex items-start justify-between gap-4 lg:block">
-                    <div className="why-choose-card-meta why-choose-card-heading">
-                      <span className="inline-flex rounded-full border border-accent/20 bg-accent/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.28em] text-accent">
-                        {section.accent}
-                      </span>
-                      <h3 className="mt-5 text-2xl font-black tracking-tight text-text-primary md:text-3xl">
-                        {section.title}
-                      </h3>
-                      <div className="why-choose-card-line" aria-hidden="true" />
-                    </div>
-                    <div className="why-choose-card-index flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/20 bg-accent/10 text-sm font-black text-accent lg:mt-8">
-                      0{index + 1}
+      <div className="relative overflow-visible">
+        <div className="relative mx-auto w-full px-3 sm:px-4 lg:px-6 overflow-visible">
+          <button
+            onClick={prevSection}
+            className="absolute left-3 sm:left-4 lg:left-6 top-[140px] -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-accent/20 bg-accent/10 text-xl font-bold text-accent transition duration-300 hover:bg-accent hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent/50"
+            aria-label="Previous"
+          >
+            &lt;
+          </button>
+
+          <button
+            onClick={nextSection}
+            className="absolute right-3 sm:right-4 lg:right-6 top-[140px] -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-accent/20 bg-accent/10 text-xl font-bold text-accent transition duration-300 hover:bg-accent hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent/50"
+            aria-label="Next"
+          >
+            &gt;
+          </button>
+
+          <div className="lg:pl-14 lg:pr-14">
+            <div className="transition-all duration-500 ease-in-out" key={activeSection}>
+              {(() => {
+                const section = sections[activeSection];
+
+                return (
+                  <div
+                    className={`group why-choose-magnetic-card relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(180deg,rgba(232,64,10,0.08),transparent_24%,var(--color-surface)_75%)] p-8 shadow-[0_18px_46px_rgba(232,64,10,0.05)] hover:border-accent/25 lg:p-10 ${
+                      activeSection % 2 === 1
+                        ? "why-choose-align-right"
+                        : "why-choose-align-left"
+                    }`}
+                  >
+                    <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-60" />
+
+                    <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-10">
+                      <div className="lg:sticky lg:top-24 lg:self-start">
+                        <div className="why-choose-card-top flex items-start justify-between gap-4 lg:block">
+                          <div className="why-choose-card-meta why-choose-card-heading">
+                            <span className="inline-flex rounded-full border border-accent/20 bg-accent/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.28em] text-accent">
+                              {section.accent}
+                            </span>
+
+                            <h3 className="mt-5 text-2xl font-black tracking-tight text-text-primary md:text-3xl">
+                              {section.title}
+                            </h3>
+
+                            <div className="why-choose-card-line" aria-hidden="true" />
+                          </div>
+
+                          <div className="why-choose-card-index flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/20 bg-accent/10 text-sm font-black text-accent lg:mt-8">
+                            0{activeSection + 1}
+                          </div>
+                        </div>
+
+                        <p className="mt-5 text-sm leading-relaxed text-text-secondary md:text-base">
+                          {section.summary}
+                        </p>
+                      </div>
+
+                      <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                        {section.items.map((item) => (
+                          <li
+                            key={item}
+                            className="flex min-h-[88px] items-start gap-3 rounded-[20px] border border-white/40 bg-[var(--color-surface-raised)]/75 px-4 py-4 text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:border-accent/10 dark:border-white/10"
+                          >
+                            <span className="mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-accent shadow-[0_0_14px_rgba(232,64,10,0.28)]" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                  <p className="mt-5 text-sm leading-relaxed text-text-secondary md:text-base">
-                    {section.summary}
-                  </p>
-                </div>
-                <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-3" data-stagger-children>
-                  {section.items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex min-h-[88px] items-start gap-3 rounded-[20px] border border-white/40 bg-[var(--color-surface-raised)]/75 px-4 py-4 text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:border-accent/10 dark:border-white/10"
-                    >
-                      <span className="mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-accent shadow-[0_0_14px_rgba(232,64,10,0.28)]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                );
+              })()}
             </div>
-          ))}
+          </div>
         </div>
+      </div>
       </div>
     </section>
   );
