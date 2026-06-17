@@ -293,10 +293,7 @@ export default function Footer() {
 
           <div className="space-y-3 text-sm leading-relaxed text-text-secondary">
             <p>
-              Netcradus is a global cybersecurity company building autonomous cyber immune systems.
-            </p>
-            <p>
-              Our ACIS platform delivers real-time threat detection, response, and resilience for modern enterprises.
+             Netcradus is a global cybersecurity company dedicated to building autonomous cyber immune systems. Our ACIS platform empowers modern enterprises with real-time threat detection, automated response, and cyber resilience to stay ahead of evolving security challenges.
             </p>
           </div>
 
