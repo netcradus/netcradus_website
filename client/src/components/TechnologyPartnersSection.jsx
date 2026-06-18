@@ -7,7 +7,7 @@ const partners = [
   },
   {
     name: "Kratikal",
-    logo: "/technology/kratiakal.png",
+    logo: "/technology/Kratikal.png",
   },
   {
     name: "Kaspersky",
@@ -16,6 +16,15 @@ const partners = [
   {
     name: "Motadata",
     logo: "/technology/Motadata.png",
+
+  },
+  {
+    name: "Razorpay",
+    logo: "/technology/Razorpay.png",
+  },
+   {
+    name: "Onlinepantry",
+    logo: "/technology/onlinepantry.png",
   },
 ];
 
@@ -38,25 +47,44 @@ export default function TechnologyPartnersSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-          {partners.map((partner) => (
-            <div
-              key={partner.name}
-              className="flex min-h-[180px] flex-col items-center justify-center rounded-[24px] border border-white/10 bg-[var(--color-surface-raised)] p-6 transition-all duration-300 hover:border-accent/50 hover:-translate-y-1"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className="h-16 w-auto object-contain"
-              />
+        <div className="relative overflow-hidden py-10">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
 
-              <h3 className="mt-4 text-center text-sm font-semibold text-text-primary">
-                {partner.name}
-              </h3>
-            </div>
-          ))}
+          <div className="flex animate-marquee whitespace-nowrap items-center space-x-[80px] py-6">
+            {[...partners, ...partners].map((partner, index) => (
+              <div
+                key={`${partner.name}-${index}`}
+                className="flex flex-col items-center justify-center shrink-0 w-[220px]"
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="max-h-16 md:max-h-20 max-w-[160px] object-contain transition-transform duration-300 ease-out group-hover:scale-105"
+                />
+                <h3 className="mt-4 text-center text-sm md:text-base font-semibold text-text-primary">
+                  {partner.name}
+                </h3>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-marquee {
+          animation: marquee 25s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }

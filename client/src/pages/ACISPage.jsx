@@ -660,8 +660,8 @@ export const FAQSection = () => {
     <section className="bg-surface py-20 px-6">
       <div className="max-w-[720px] mx-auto">
         <div className="text-center mb-10">
-          <span className="text-[11px] font-semibold text-accent uppercase tracking-[0.1em]">FAQ</span>
-          <h2 className="text-[36px] font-bold text-text-primary mt-2">Common Questions</h2>
+          {/* <span className="text-[11px] font-semibold text-accent uppercase tracking-[0.1em]">FAQ</span> */}
+         <h2 className="text-[36px] font-bold text-text-primary mt-2">FAQs</h2>
         </div>
 
         <div className="mt-8">

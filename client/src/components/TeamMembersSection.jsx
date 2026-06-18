@@ -95,28 +95,32 @@ export default function TeamMembersSection() {
 
         {owner ? (
           <article
-            className="team-owner-card mb-12 overflow-hidden rounded-[32px]"
+            className="team-owner-card mb-10 mx-auto max-w-[900px] overflow-hidden rounded-3xl bg-[var(--color-surface-raised)] p-6 transition-transform duration-300 hover:-translate-y-1"
             data-animate-ignore="true"
           >
-            <div className="grid items-center gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-              <div className="aspect-[4/4.4] overflow-hidden bg-[var(--color-surface-raised)]">
-                <img
-                  src={owner.image}
-                  alt={owner.name}
-                  className="h-full w-full object-cover object-top"
-                />
+            <div className="grid items-center gap-6 lg:grid-cols-[220px_minmax(0,1fr)]">
+              <div className="flex items-center justify-center">
+                <div className="h-[220px] w-[220px] overflow-hidden rounded-full bg-[#0f172a]">
+                  <img
+                    src={owner.image}
+                    alt={owner.name}
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
               </div>
-              <div className="p-8 lg:p-10" data-stagger-children>
+              <div className="space-y-4" data-stagger-children>
                 <span className="inline-flex rounded-full border border-accent/20 bg-accent/8 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-accent">
-                  Owner Spotlight
+                  Founder Spotlight
                 </span>
-                <h3 className="mt-6 text-3xl font-black tracking-tight text-text-primary md:text-5xl">
-                  {owner.name}
-                </h3>
-                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent md:text-base">
-                  {owner.role}
-                </p>
-                <p className="mt-6 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">
+                <div className="space-y-3">
+                  <h3 className="text-4xl font-black tracking-tight text-text-primary">
+                    {owner.name}
+                  </h3>
+                  <p className="text-sm uppercase tracking-[0.15em] text-accent">
+                    {owner.role}
+                  </p>
+                </div>
+                <p className="max-w-2xl text-sm leading-relaxed text-text-secondary">
                   {owner.bio}
                 </p>
               </div>
@@ -124,35 +128,33 @@ export default function TeamMembersSection() {
           </article>
         ) : null}
 
-        <div className="space-y-8">
-          {members.map((member, index) => (
+        <div className="grid gap-6 md:grid-cols-2">
+          {members.map((member) => (
             <article
               key={member.name}
-              className={`team-member-card team-member-reveal overflow-hidden rounded-[28px] ${
-                index % 2 === 0 ? "from-left" : "from-right"
-              }`}
+              className="team-member-card team-member-reveal group flex h-full flex-col gap-5 overflow-hidden rounded-2xl bg-[var(--color-surface-raised)] p-6 transition-transform duration-300 hover:-translate-y-1"
               data-animate-ignore="true"
             >
-              <div className="grid items-center gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
-                <div className="aspect-[4/4.2] overflow-hidden bg-[var(--color-surface-raised)]">
+              <div className="flex items-center gap-5">
+                <div className="h-32 w-32 overflow-hidden rounded-full bg-[#0f172a]">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="h-full w-full object-cover object-top"
                   />
                 </div>
-                <div className="p-7 lg:p-9" data-stagger-children>
-                  <h3 className="text-2xl font-black tracking-tight text-text-primary md:text-4xl">
+                <div>
+                  <h3 className="text-2xl font-black tracking-tight text-text-primary">
                     {member.name}
                   </h3>
-                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+                  <p className="mt-2 text-sm uppercase tracking-[0.15em] text-accent">
                     {member.role}
-                  </p>
-                  <p className="mt-5 text-sm leading-relaxed text-text-secondary md:text-base">
-                    {member.bio}
                   </p>
                 </div>
               </div>
+              <p className="text-sm leading-relaxed text-text-secondary">
+                {member.bio}
+              </p>
             </article>
           ))}
         </div>

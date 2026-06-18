@@ -221,7 +221,7 @@ const footerColumns = [
   {
     title: "Company",
     links: [
-      { label: "About Netcradus", to: "/about" },
+      { label: "About Us", to: "/about" },
       { label: "Careers", to: "/careers" },
       { label: "Partners", to: "/partners" },
       { label: "Contact", to: "/contact" },
