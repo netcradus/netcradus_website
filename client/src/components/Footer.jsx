@@ -157,8 +157,6 @@
 //         </div>
 //       </div>
 
-
-
 //       <div className="border-t border-border py-5">
 //         <div className="mx-auto flex max-w-screen-2xl flex-col gap-3 px-4 text-sm text-text-secondary sm:px-6 md:flex-row md:items-center md:justify-between lg:px-16 xl:px-24">
 //           <p>Copyright © 2026 Netcradus. All rights reserved.</p>
@@ -174,13 +172,13 @@
 //   );
 // }
 
-
-
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import companyLogoImage from "../assets/companyLogo.png";
-import { getNewsletterConfigError, sendNewsletterSubscription } from "../lib/newsletter";
+import {
+  getNewsletterConfigError,
+  sendNewsletterSubscription,
+} from "../lib/newsletter";
 
 const footerColumns = [
   {
@@ -271,7 +269,9 @@ export default function Footer() {
     } catch (error) {
       console.error("Footer newsletter error:", error);
       setNewsletterStatus("error");
-      setNewsletterFeedback(error.message || "Subscription failed. Please try again.");
+      setNewsletterFeedback(
+        error.message || "Subscription failed. Please try again.",
+      );
     }
   };
 
@@ -293,14 +293,22 @@ export default function Footer() {
 
           <div className="space-y-3 text-sm leading-relaxed text-text-secondary">
             <p>
-             Netcradus is a global cybersecurity company dedicated to building autonomous cyber immune systems. Our ACIS platform empowers modern enterprises with real-time threat detection, automated response, and cyber resilience to stay ahead of evolving security challenges.
+              Netcradus is a global cybersecurity company dedicated to building
+              autonomous cyber immune systems. Our ACIS platform empowers modern
+              enterprises with real-time threat detection, automated response,
+              and cyber resilience to stay ahead of evolving security
+              challenges.
             </p>
           </div>
 
           <div className="space-y-2">
             <div className="text-[11px] leading-tight text-zinc-500 dark:text-zinc-400">
-              <div><strong>CIN:</strong> U62090UP2025PTC229722</div>
-              <div><strong>GSTIN:</strong> 09AAKCN7195G1ZV</div>
+              <div>
+                <strong>CIN:</strong> U62090UP2025PTC229722
+              </div>
+              <div>
+                <strong>GSTIN:</strong> 09AAKCN7195G1ZV
+              </div>
             </div>
 
             <div className="pt-2 text-sm text-text-secondary">
@@ -365,6 +373,17 @@ export default function Footer() {
                 >
                   <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
                     <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://x.com/Netcraduspvtltd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white transition-all duration-300 hover:scale-110 hover:bg-zinc-800"
+                >
+                  <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M18.244 2H21.5l-7.12 8.14L22.75 22h-6.56l-5.14-6.72L5.18 22H1.92l7.62-8.71L1.25 2h6.73l4.65 6.14L18.244 2Zm-1.15 18h1.82L7.01 3.9H5.05L17.09 20Z" />
                   </svg>
                 </a>
               </div>
