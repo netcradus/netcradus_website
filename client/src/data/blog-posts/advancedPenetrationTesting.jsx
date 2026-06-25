@@ -1,12 +1,41 @@
-import React from 'react';
+import React from "react";
 
 export const advancedPenetrationTesting = {
-    id: "advanced-penetration-testing",
-    title: "Advanced Penetration Testing: Methodologies, Tooling & Enterprise Tradecraft",
-    category: "Cybersecurity",
-    date: "February 19, 2025",
-    readTime: "10 min read",
-    content: (
+  id: "advanced-penetration-testing",
+
+  title:
+    "Advanced Penetration Testing: Methodologies, Tooling & Enterprise Tradecraft",
+
+  category: "",
+
+  date: "February 19, 2025",
+
+  readTime: "10 min read",
+
+  excerpt:
+    "Explore advanced penetration testing methodologies, red team tradecraft, adversary emulation, exploitation techniques, and enterprise security assessment strategies used to identify and mitigate critical vulnerabilities.",
+
+  seoDescription:
+    "Learn about advanced penetration testing, red teaming, adversary simulation, exploitation frameworks, security assessments, vulnerability validation, and enterprise defense improvement strategies.",
+
+  seoKeywords: [
+    "penetration testing",
+    "advanced penetration testing",
+    "red teaming",
+    "ethical hacking",
+    "adversary emulation",
+    "security assessment",
+    "vulnerability testing",
+    "enterprise security",
+    "offensive security",
+    "cybersecurity testing",
+  ],
+
+  heroImage: "/assets/blogs/advanced-penetration-testing.png",
+
+  hasWhitePaperCta: false,
+
+  content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
             <h3 className="text-xl font-display font-bold text-white mt-8 mb-4">Executive Overview</h3>
             <p>Penetration Testing (Pentesting) is a controlled, authorized simulation of real-world cyberattacks conducted to evaluate the security posture of systems, networks, applications, cloud environments, and human layers. Unlike automated vulnerability scanning, advanced penetration testing leverages offensive security methodologies, adversarial tradecraft, exploit development, and post-exploitation techniques to emulate sophisticated threat actors (including APT-level tactics).</p>

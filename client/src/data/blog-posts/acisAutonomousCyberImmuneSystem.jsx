@@ -2,16 +2,37 @@ import React from "react";
 
 export const acisAutonomousCyberImmuneSystem = {
   id: "acis-autonomous-cyber-immune-system",
+
   title: "ACIS: Autonomous Cyber Immune System",
-  category: "Platform Intelligence",
+
+  category: "",
+
   date: "April 7, 2026",
+
   readTime: "6 min read",
+
   excerpt:
-    "ACIS is Netcradus's AI-powered platform for autonomous detection, analysis, response, and continuous security learning across modern enterprise environments.",
+    "ACIS is Netcradus's next-generation Autonomous Cyber Immune System that combines AI-driven detection, intelligent analysis, automated response, and continuous security learning to protect modern enterprise environments.",
+
   seoDescription:
-    "Learn how Netcradus ACIS delivers autonomous threat detection, analysis, response, and continuous improvement for modern cyber defense.",
-  heroImage: "/generated/ai_data_network_1773394527444.png",
+    "Explore ACIS, Netcradus's Autonomous Cyber Immune System, designed for autonomous threat detection, AI-powered security operations, automated response, cyber resilience, and continuous defense optimization.",
+
+  seoKeywords: [
+    "ACIS",
+    "autonomous cyber immune system",
+    "autonomous security",
+    "AI cybersecurity",
+    "threat detection",
+    "automated incident response",
+    "SOC automation",
+    "cyber resilience",
+    "Netcradus ACIS",
+  ],
+
+  heroImage: "/assets/blogs/acis-autonomous-cyber-immune-system.png",
+
   hasWhitePaperCta: true,
+
   content: (
     <div className="space-y-6 text-base leading-relaxed text-text-secondary">
       <p>

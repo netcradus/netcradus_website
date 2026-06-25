@@ -1,12 +1,28 @@
-import React from 'react';
+import React from "react";
 
 export const blockchainTechnology = {
-    id: "blockchain-technology",
-    title: "Blockchain Technology: Architecture, Security Mechanisms & Enterprise Applications",
-    category: "Technology",
-    date: "February 25, 2025",
-    readTime: "8 min read",
-    content: (
+  id: "blockchain-technology",
+
+  title:
+    "Blockchain Technology: Architecture, Security Mechanisms & Enterprise Applications",
+
+  category: "",
+
+  date: "February 25, 2025",
+
+  readTime: "8 min read",
+
+  excerpt:
+    "Explore blockchain architecture, consensus mechanisms, cryptographic security, smart contracts, and enterprise applications transforming trust, transparency, and digital transactions.",
+
+  seoDescription:
+    "Learn how blockchain technology works, including distributed ledgers, consensus algorithms, cryptographic security, smart contracts, decentralized systems, and enterprise blockchain adoption.",
+
+  heroImage: "/assets/blogs/blockchain-technology.png",
+
+  hasWhitePaperCta: false,
+
+  content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
             <p>Blockchain technology has evolved far beyond its association with cryptocurrencies. Today, it represents a foundational distributed systems innovation with applications in finance, supply chain, cybersecurity, identity management, and decentralized computing.</p>
             <p>At its core, blockchain is a distributed, append-only ledger that enables secure, transparent, and tamper-resistant transactions without requiring centralized authority.</p>

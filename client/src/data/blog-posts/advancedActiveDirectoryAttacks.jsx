@@ -1,12 +1,41 @@
-import React from 'react';
+import React from "react";
 
 export const advancedActiveDirectoryAttacks = {
-    id: "advanced-active-directory-attacks",
-    title: "Advanced Active Directory Attacks: Enterprise Exploitation & Defense Strategy",
-    category: "Cybersecurity",
-    date: "February 3, 2025",
-    readTime: "12 min read",
-    content: (
+  id: "advanced-active-directory-attacks",
+
+  title:
+    "Advanced Active Directory Attacks: Enterprise Exploitation & Defense Strategy",
+
+  category: "",
+
+  date: "February 3, 2025",
+
+  readTime: "12 min read",
+
+  excerpt:
+    "Explore advanced Active Directory attack techniques including Kerberoasting, Pass-the-Hash, Golden Tickets, privilege escalation, lateral movement, and enterprise defense strategies for securing identity infrastructure.",
+
+  seoDescription:
+    "Learn how attackers exploit Active Directory environments through Kerberoasting, Pass-the-Hash, Golden Tickets, credential theft, privilege escalation, and advanced persistence techniques. Discover modern defense strategies for enterprise identity security.",
+
+  seoKeywords: [
+    "active directory security",
+    "kerberoasting",
+    "pass the hash",
+    "golden ticket attack",
+    "identity security",
+    "active directory attacks",
+    "privilege escalation",
+    "enterprise defense",
+    "windows security",
+    "red team operations",
+  ],
+
+  heroImage: "/assets/blogs/advanced-active-directory-attacks.png",
+
+  hasWhitePaperCta: false,
+
+  content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
             <h3 className="text-xl font-display font-bold text-white mt-8 mb-4">Executive Overview</h3>
             <p>Active Directory (AD) remains the backbone of identity and access management in enterprise Windows environments. It governs authentication, authorization, group policies, domain trust relationships, and privileged access across the organization.</p>

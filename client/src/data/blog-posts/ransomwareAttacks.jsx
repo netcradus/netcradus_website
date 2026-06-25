@@ -1,12 +1,28 @@
-import React from 'react';
+import React from "react";
 
 export const ransomwareAttacks = {
-    id: "ransomware-attacks",
-    title: "Ransomware Attacks: Technical Deep Dive into Modern Enterprise Threats",
-    category: "Threat Intelligence",
-    date: "February 28, 2025",
-    readTime: "8 min read",
-    content: (
+  id: "ransomware-attacks",
+
+  title:
+    "Ransomware Attacks: Technical Deep Dive into Modern Enterprise Threats",
+
+  category: "",
+
+  date: "February 28, 2025",
+
+  readTime: "8 min read",
+
+  excerpt:
+    "Explore how modern ransomware groups operate, from initial access and privilege escalation to lateral movement, data exfiltration, and double-extortion tactics targeting enterprises worldwide.",
+
+  seoDescription:
+    "A technical deep dive into ransomware attacks, enterprise security risks, threat actors, attack chains, ransomware defense strategies, and incident response best practices.",
+
+  heroImage: "/assets/blogs/ransomware-attacks.png",
+
+  hasWhitePaperCta: false,
+
+  content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
             <p>Ransomware has evolved from opportunistic malware into highly structured, multi-stage cyberattack operations. Modern ransomware campaigns resemble advanced persistent threats (APTs), leveraging lateral movement, privilege escalation, data exfiltration, and encryption to maximize operational disruption and financial extortion.</p>
             <p>For enterprise environments, ransomware is no longer just a malware issue — it is a business continuity, regulatory, and strategic risk.</p>

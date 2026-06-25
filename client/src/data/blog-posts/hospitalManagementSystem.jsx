@@ -1,12 +1,28 @@
-import React from 'react';
+import React from "react";
 
 export const hospitalManagementSystem = {
-    id: "hospital-management-system",
-    title: "Transforming Healthcare Operations with Modern Hospital Management Systems",
-    category: "Enterprise Solutions",
-    date: "May 8, 2026",
-    readTime: "7 min read",
-    content: (
+  id: "hospital-management-system",
+
+  title:
+    "Transforming Healthcare Operations with Modern Hospital Management Systems",
+
+  category: "",
+
+  date: "May 8, 2026",
+
+  readTime: "7 min read",
+
+  excerpt:
+    "Discover how modern Hospital Management Systems streamline patient care, automate administrative workflows, improve operational efficiency, and enhance healthcare delivery through intelligent digital transformation.",
+
+  seoDescription:
+    "Explore how Hospital Management Systems improve patient management, healthcare operations, medical records, appointment scheduling, billing, compliance, and overall hospital efficiency.",
+
+  heroImage: "/assets/blogs/hospital-management-system.png",
+
+  hasWhitePaperCta: false,
+
+  content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
             <p>Healthcare organizations manage thousands of daily operations including patient registration, appointments, prescriptions, billing, laboratory coordination, and medical record management. Handling these workflows manually often creates delays, confusion, paperwork overload, and communication gaps between departments.</p>
             <p>As hospitals and clinics continue to grow, the need for centralized digital healthcare systems has become more important than ever. Modern Hospital Management Systems (HMS) help healthcare institutions streamline operations, improve coordination, and deliver better patient care through digital automation.</p>

@@ -1,12 +1,29 @@
 import React from 'react';
 
 export const visitorManagementSystem = {
-    id: "visitor-management-system",
-    title: "Building Smarter and Safer Visitor Experiences with Modern Visitor Management Systems",
-    category: "Enterprise Solutions",
-    date: "May 13, 2026",
-    readTime: "8 min read",
-    content: (
+  id: "visitor-management-system",
+
+  title:
+    "Building Smarter and Safer Visitor Experiences with Modern Visitor Management Systems",
+
+  category: "",
+
+  date: "May 13, 2026",
+
+  readTime: "8 min read",
+
+  excerpt:
+    "Discover how modern Visitor Management Systems improve security, automate visitor onboarding, enable biometric verification, and strengthen access control for government offices, enterprises, and high-security environments.",
+
+  seoDescription:
+    "Learn how modern Visitor Management Systems improve security, visitor verification, biometric authentication, risk analysis, and operational efficiency.",
+
+  heroImage: "/assets/blogs/visitor-management-system.png",
+
+  hasWhitePaperCta: false,
+
+  content: (
+    // 👇 YAHAN TUMHARA EXISTING CONTENT SAME RAHEGA
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
             <p>In today’s security-focused world, organizations can no longer rely on traditional visitor registers and manual approval processes to manage access control. Government offices, corporate buildings, industrial facilities, educational campuses, and high-security environments require systems that are faster, smarter, and more secure.</p>
             <p>Manual visitor management methods often create delays, security gaps, and operational inefficiencies. Paper-based logs are difficult to track, identity verification is weak, and there is very little visibility into who entered the premises and why.</p>

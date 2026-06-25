@@ -748,6 +748,7 @@ export default function Footer() {
             </Link>
             <Link to="/cookies" className="transition hover:text-accent">
               Cookie Policy
+              
             </Link>
             <Link
               to="/responsible-disclosure"

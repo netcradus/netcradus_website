@@ -2,14 +2,25 @@ import React from "react";
 
 export const quantumComputingCyberIntelligence = {
   id: "quantum-computing-cyber-intelligence",
+
   title: "Quantum Computing: Redefining the Future of Cyber Intelligence",
-  category: "Future Intelligence",
+
+  category: "",
+
   date: "April 11, 2026",
+
   readTime: "5 min read",
+
   excerpt:
-    "Quantum computing is set to transform cyber intelligence, encryption, and enterprise resilience. Netcradus outlines how organizations can prepare for a quantum-aware security future.",
+    "Quantum computing is set to transform cyber intelligence, encryption, and enterprise resilience. Learn how organizations can prepare for a quantum-aware security future and adopt quantum-resistant defense strategies.",
+
   seoDescription:
-    "Explore Netcradus insights on quantum computing, cyber intelligence, quantum-resistant security, and the future of autonomous defense.",
+    "Explore Netcradus insights on quantum computing, cyber intelligence, post-quantum cryptography, quantum-resistant security, and the future of autonomous cyber defense.",
+
+  heroImage: "/assets/blogs/quantum-computing-cyber-intelligence.png",
+
+  hasWhitePaperCta: false,
+
   content: (
     <div className="space-y-6 text-base leading-relaxed text-text-secondary">
       <p>

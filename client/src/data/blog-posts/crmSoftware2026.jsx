@@ -1,17 +1,27 @@
-import React from 'react';
+import React from "react";
 
 export const crmSoftware2026 = {
-    id: "crm-software-2026",
+  id: "crm-software-2026",
 
-    title: "Why Modern Businesses Need CRM Software in 2026",
+  title: "Why Modern Businesses Need CRM Software in 2026",
 
-    category: "Business Technology",
+  category: "",
 
-    date: "May 7, 2026",
+  date: "May 7, 2026",
 
-    readTime: "4 min read",
+  readTime: "4 min read",
 
-    content: (
+  excerpt:
+    "Discover how modern CRM software helps businesses improve customer relationships, automate sales processes, enhance productivity, and drive sustainable growth in 2026.",
+
+  seoDescription:
+    "Learn why CRM software is essential for modern businesses. Explore customer relationship management, sales automation, lead tracking, analytics, customer retention, and business growth strategies.",
+
+  heroImage: "/assets/blogs/crm-software-2026.png",
+
+  hasWhitePaperCta: false,
+
+  content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
 
             <p>

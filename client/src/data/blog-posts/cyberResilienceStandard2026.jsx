@@ -2,24 +2,38 @@ import React from "react";
 
 export const cyberResilienceStandard2026 = {
   id: "cyber-resilience-new-standard-2026",
-  title: "Beyond Prevention: Why Cyber Resilience is the New Standard for 2026",
-  category: "Executive Strategy",
+
+  title:
+    "Beyond Prevention: Why Cyber Resilience is the New Standard for 2026",
+
+  category: "",
+
   date: "April 22, 2026",
+
   readTime: "7 min read",
+
   excerpt:
-    "Beyond prevention: why cyber resilience is becoming the strategic standard for organizations in 2026.",
+    "As cyber threats continue to evolve, organizations must move beyond prevention-focused security strategies. Discover why cyber resilience, rapid recovery, and operational continuity are becoming the defining standards for enterprise security in 2026.",
+
   seoDescription:
-    "Beyond Prevention: Why Cyber Resilience is the New Standard for 2026 by Mohit Sharma.",
+    "Explore why cyber resilience is replacing traditional prevention-first security models. Learn about business continuity, rapid recovery, identity-first security, immutable backups, and enterprise resilience strategies for 2026.",
+
   seoKeywords: [
     "cyber resilience",
     "cyber resilience 2026",
     "business continuity",
-    "time to remediate",
+    "cyber recovery",
     "immutable backups",
     "identity-first security",
+    "enterprise resilience",
+    "cybersecurity strategy",
+    "operational continuity",
   ],
-  heroImage: "/generated/secure_shield_concept_1773394778055.png",
+
+  heroImage: "/assets/blogs/cyber-resilience-2026.png",
+
   hasWhitePaperCta: false,
+
   content: (
     <div className="space-y-6 text-base leading-relaxed text-text-secondary">
       <p>By Mohit Sharma</p>

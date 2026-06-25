@@ -1,12 +1,28 @@
-import React from 'react';
+import React from "react";
 
 export const cybersecurityArchitecture = {
-    id: "cybersecurity-architecture",
-    title: "Cybersecurity: Architecture, Threat Landscape & Enterprise Defense Engineering",
-    category: "Cybersecurity",
-    date: "February 24, 2025",
-    readTime: "9 min read",
-    content: (
+  id: "cybersecurity-architecture",
+
+  title:
+    "Cybersecurity: Architecture, Threat Landscape & Enterprise Defense Engineering",
+
+  category: "",
+
+  date: "February 24, 2025",
+
+  readTime: "9 min read",
+
+  excerpt:
+    "Explore modern cybersecurity architecture, evolving threat landscapes, Zero Trust frameworks, and enterprise defense engineering strategies designed to protect critical infrastructure and digital assets.",
+
+  seoDescription:
+    "Learn how cybersecurity architecture, threat intelligence, Zero Trust security, security operations, and enterprise defense engineering help organizations build resilient cyber defenses.",
+
+  heroImage: "/assets/blogs/cybersecurity-architecture.png",
+
+  hasWhitePaperCta: false,
+
+  content: (
         <div className="space-y-6 text-gray-300 font-sans leading-relaxed">
             <p>Cybersecurity is no longer a perimeter-focused IT function — it is a strategic discipline that integrates risk management, system architecture, threat intelligence, identity governance, and operational resilience.</p>
             <p>Modern enterprises operate in hybrid environments that span on-premise infrastructure, multi-cloud platforms, SaaS ecosystems, remote workforces, APIs, and IoT devices. This expanding attack surface has fundamentally changed how cybersecurity must be designed and implemented.</p>
