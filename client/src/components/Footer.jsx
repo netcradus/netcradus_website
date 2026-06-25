@@ -502,7 +502,7 @@ const footerColumns = [
   {
     title: "Resources",
     links: [
-      { label: "Intelligence Blog", to: "/blog" },
+      { label: "Blogs", to: "/blog" },
       { label: "White Papers", to: "/resources" },
       { label: "Case Studies", to: "/resources" },
       { label: "Documentation", to: "/resources" },
