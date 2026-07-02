@@ -7,6 +7,7 @@ const partners = [
   { name: "Motadata", logo: "/technology/Motadata.png" },
   { name: "Razorpay", logo: "/technology/Razorpay.png" },
   { name: "Onlinepantry", logo: "/technology/onlinepantry.png" },
+  { name: "Zapier", logo: "/technology/zapier.png" },
 ];
 
 export default function TechnologyPartnersSection() {
