@@ -34,9 +34,9 @@ const team = [
   },
   {
     name: "Rahul Pratap Singh",
-    role: "Digital Marketing Head",
+    role: "Project Manager",
     image: "/team/Rahul.jpg",
-    bio: "Rahul leads digital growth, brand positioning, and market-facing communication to strengthen Netcradus visibility and enterprise engagement.",
+    bio: "Rahul Pratap Singh is the Project Manager at Netcradus Pvt. Ltd., overseeing technology projects from planning to delivery. He ensures seamless team coordination, timely execution, and high-quality solutions across cybersecurity, software development, and IT services.",
   },
    {
     name: "Mr. Avesh Tyagi",
