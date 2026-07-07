@@ -38,12 +38,7 @@ const team = [
     image: "/team/Rahul.jpg",
     bio: "Rahul Pratap Singh is the Project Manager at Netcradus Pvt. Ltd., overseeing technology projects from planning to delivery. He ensures seamless team coordination, timely execution, and high-quality solutions across cybersecurity, software development, and IT services.",
   },
-   {
-    name: "Mr. Avesh Tyagi",
-    role: "Sales Head",
-    image: "/team/avesh.png",
-    bio: "Mr. Avesh Tyagi leads sales operations, client relationship management, and business growth initiatives to strengthen Netcradus enterprise outreach and partnerships.",
-  },
+   
 ];
 
 export default function TeamMembersSection() {
