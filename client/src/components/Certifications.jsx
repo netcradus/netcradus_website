@@ -141,11 +141,11 @@ const certifications = [
     alt: "ICO",
     note: "Information Commissioner's Office",
   },
-  {
-    src: nist,
-    alt: "NIST",
-    note: "National Institute of Standards and Technology",
-  },
+  // {
+  //   src: nist,
+  //   alt: "NIST",
+  //   note: "National Institute of Standards and Technology",
+  // },
 ];
 
 function LogoCard({ logo }) {
