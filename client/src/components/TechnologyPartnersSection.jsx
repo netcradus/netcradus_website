@@ -8,7 +8,12 @@ const partners = [
   { name: "Razorpay", logo: "/technology/Razorpay.png" },
   { name: "Onlinepantry", logo: "/technology/onlinepantry.png" },
   { name: "Zapier", logo: "/technology/zapier.png" },
+<<<<<<< HEAD
+=======
+  { name: "Delta", logo: "/technology/delta.png" },
+>>>>>>> 603b932 ( design a product page)
 ];
+
 
 export default function TechnologyPartnersSection() {
   const repeatedPartners = [...partners, ...partners];

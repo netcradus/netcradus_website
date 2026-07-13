@@ -10,9 +10,10 @@ import {
   Code2,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import ServiceDetailLayout from "./ServiceDetailLayout";
 import "./Services.css";
 
-const SERVICE_TABS = [
+export const SERVICE_TABS = [
   {
     id: "cybersecurity",
     title: "Cybersecurity",
@@ -238,92 +239,10 @@ const Services = () => {
         </div>
 
         <div
-          className="services-tabs reveal"
-          style={{ transitionDelay: "0.2s" }}
-        >
-          {SERVICE_TABS.map((tab) => {
-            const Icon = tab.icon;
-            const active = activeTab === tab.id;
-
-            return (
-              <button
-                key={tab.id}
-                onClick={() => {
-                  setActiveTab(tab.id);
-                  window.history.replaceState(null, "", `?tab=${tab.id}`);
-                }}
-                className={`service-tab-btn ${active ? "active" : ""}`}
-              >
-                <span className="tab-icon">
-                  <Icon size={18} />
-                </span>
-                <span className="tab-text">{tab.title}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        <div
           className="service-content-pillar reveal"
           style={{ transitionDelay: "0.35s" }}
         >
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="space-y-8">
-              <div className="flex flex-wrap gap-3">
-                {activeService.highlights.map((item) => (
-                  <span
-                    key={item}
-                    className="inline-flex whitespace-nowrap rounded-full border border-accent/15 bg-accent/8 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-accent"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-              <div>
-                <h3 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">
-                  {activeService.heading}
-                </h3>
-                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
-                  {activeService.description}
-                </p>
-              </div>
-              <ul className="grid gap-4 md:grid-cols-2">
-                {activeService.points.map((point) => (
-                  <li
-                    key={point}
-                    className="rounded-[22px] border border-border bg-[var(--color-surface-raised)]/70 p-5 text-sm leading-relaxed text-text-secondary shadow-[0_0_24px_rgba(232,64,10,0.04)]"
-                  >
-                    <div className="mb-3 h-2 w-2 rounded-full bg-accent shadow-[0_0_14px_rgba(232,64,10,0.25)]" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 rounded-[30px] bg-[radial-gradient(circle_at_50%_20%,rgba(232,64,10,0.18),transparent_45%)] blur-3xl" />
-
-              <div className="relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_45%),var(--color-surface)] p-4 shadow-[0_22px_70px_rgba(232,64,10,0.08)]">
-                {activeService.video ? (
-                  <video
-                    className="h-[400px] w-full rounded-[12px] object-cover object-top pointer-events-none"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                  >
-                    <source src={activeService.video} type="video/mp4" />
-                  </video>
-                ) : (
-                  <img
-                    src={activeService.image}
-                    alt={activeService.heading}
-                    className="h-[400px] w-full rounded-[12px] object-cover object-top"
-                  />
-                )}
-              </div>
-            </div>
-          </div>
+          <ServiceDetailLayout service={activeService} />
         </div>
       </div>
     </section>

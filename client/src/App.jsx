@@ -1,6 +1,10 @@
+
+
+
+
 // import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 // import { useEffect } from "react";
-
+// import { sendLog } from "./utils/logger";
 // import Navbar from "./components/Navbar";
 // import Footer from "./components/Footer";
 // import ScrollToTop from "./components/ScrollToTop";
@@ -12,6 +16,9 @@
 // import HomePage from "./pages/HomePage";
 // import ServicesPage from "./pages/ServicesPage";
 // import ACISPage from "./pages/ACISPage";
+// import NetXDRPage from "./pages/NetXDRPage";
+// import CRMPage from "./pages/CRMPage";
+// import NetCradPage from "./pages/NetCradPage";
 // import AboutPage from "./pages/AboutPage";
 // import BlogPage from "./pages/BlogPage";
 // import BlogPostPage from "./pages/BlogPostPage";
@@ -37,23 +44,27 @@
 //   const location = useLocation();
 
 //   useEffect(() => {
-//     // Meta Pixel PageView
-//     if (window.fbq) {
-//       window.fbq("track", "PageView");
-//     }
 
-//     // Google Ads PageView
-//     if (window.gtag) {
-//       window.gtag("event", "page_view", {
-//         page_path: location.pathname,
-//       });
-//     }
-//   }, [location]);
+//   // Send log to Render logger
+//   sendLog(location.pathname);
+
+//   // Facebook Pixel
+//   if (window.fbq) {
+//     window.fbq("track", "PageView");
+//   }
+
+//   // Google Analytics
+//   if (window.gtag) {
+//     window.gtag("event", "page_view", {
+//       page_path: location.pathname,
+//     });
+//   }
+
+// }, [location]);
 
 //   return (
 //     <div className="bg-background min-h-screen text-text-primary font-sans overflow-x-hidden pt-20 transition-colors duration-500 selection:bg-accent/30">
 
-//       {/* Background effects */}
 //       <div className="fixed inset-0 z-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none transition-opacity duration-1000"></div>
 
 //       <div
@@ -90,6 +101,9 @@
 //           <Route path="platform" element={<Platform />} />
 //           <Route path="services" element={<ServicesPage />} />
 //           <Route path="acis" element={<ACISPage />} />
+//           <Route path="netxdr" element={<NetXDRPage />} />
+//           <Route path="crm" element={<CRMPage />} />
+//           <Route path="netcrad" element={<NetCradPage />} />
 //           <Route path="about" element={<AboutPage />} />
 //           <Route path="blog" element={<BlogPage />} />
 //           <Route path="blog/:slug" element={<BlogPostPage />} />
@@ -112,9 +126,6 @@
 // }
 
 // export default App;
-
-
-
 import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { sendLog } from "./utils/logger";
@@ -128,6 +139,14 @@ import CookieConsent from "./components/CookieConsent";
 
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
+import CyberSecurityPage from "./pages/services/CyberSecurity";
+import ManagedSOCPage from "./pages/services/ManagedSOC";
+import CloudSecurityPage from "./pages/services/CloudSecurity";
+import AISecurityPage from "./pages/services/AISecurity";
+import NetworkSecurityPage from "./pages/services/NetworkSecurity";
+import EnterpriseSecurityPage from "./pages/services/EnterpriseSecurity";
+import VAPTPage from "./pages/services/VAPT";
+import ABDMPage from "./pages/services/ABDM";
 import ACISPage from "./pages/ACISPage";
 import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
@@ -210,6 +229,14 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="platform" element={<Platform />} />
           <Route path="services" element={<ServicesPage />} />
+          <Route path="services/cybersecurity" element={<CyberSecurityPage />} />
+          <Route path="services/managed-soc" element={<ManagedSOCPage />} />
+          <Route path="services/cloud-security" element={<CloudSecurityPage />} />
+          <Route path="services/ai-security" element={<AISecurityPage />} />
+          <Route path="services/network-security" element={<NetworkSecurityPage />} />
+          <Route path="services/enterprise-security" element={<EnterpriseSecurityPage />} />
+          <Route path="services/vapt" element={<VAPTPage />} />
+          <Route path="services/abdm" element={<ABDMPage />} />
           <Route path="acis" element={<ACISPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="blog" element={<BlogPage />} />
