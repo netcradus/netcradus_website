@@ -1184,77 +1184,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* SECTION 4 — Trust Logos strip (Mockup style certifications) */}
-      <section className="trust-logos-strip">
-        <div className="trust-logos-container">
-          <h4 className="trust-logos-title">Trusted by Businesses Across Industries</h4>
-          <div className="trust-logos-grid">
-            {/* ISO */}
-            <div className="trust-logo-item">
-              <img src={isoLogo} alt="ISO 27001 Certified" className="trust-logo-img" />
-              <span className="trust-logo-text">ISO</span>
-              <span className="trust-logo-sub">27001:2013</span>
-            </div>
-            
-            {/* CERT-IN */}
-            <div className="trust-logo-item">
-              <img src={certinLogo} alt="CERT-IN Empanelled" className="trust-logo-img" />
-              <span className="trust-logo-text">CERT-IN</span>
-              <span className="trust-logo-sub">Empanelled</span>
-            </div>
 
-            {/* CMMI */}
-            <div className="trust-logo-item">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: "#7C3AED" }}>
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                <path d="M8 12h8m-4-4v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-              <span className="trust-logo-text">CMMI</span>
-              <span className="trust-logo-sub">Level 3</span>
-            </div>
-
-            {/* Microsoft */}
-            <div className="trust-logo-item" style={{ gap: "6px" }}>
-              <svg width="35" height="35" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="10.5" height="10.5" fill="#F25022"/>
-                <rect x="12.5" width="10.5" height="10.5" fill="#7FBA00"/>
-                <rect y="12.5" width="10.5" height="10.5" fill="#00A4EF"/>
-                <rect x="12.5" y="12.5" width="10.5" height="10.5" fill="#FFB900"/>
-              </svg>
-              <span className="trust-logo-text">Microsoft</span>
-              <span className="trust-logo-sub">Partner</span>
-            </div>
-
-            {/* AWS */}
-            <div className="trust-logo-item">
-              <svg width="45" height="28" viewBox="0 0 48 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: "#FF9900" }}>
-                <path d="M20 22c-3 0-5-2-5-5s2-5 5-5 5 2 5 5-2 5-5 5zM35 22c-3 0-5-2-5-5s2-5 5-5 5 2 5 5-2 5-5 5z" stroke="currentColor" strokeWidth="2"/>
-                <path d="M12 25c10 5 20 5 24 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                <path d="M34 22l3 3-4 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-              <span className="trust-logo-text">aws</span>
-              <span className="trust-logo-sub">Partner Network</span>
-            </div>
-
-            {/* Google Cloud */}
-            <div className="trust-logo-item">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#EA4335"/>
-                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#4285F4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span className="trust-logo-text">Google Cloud</span>
-              <span className="trust-logo-sub">Partner</span>
-            </div>
-
-            {/* 500+ Projects */}
-            <div className="trust-logo-item">
-              <Users size={32} style={{ color: "#3B82F6" }} />
-              <span className="trust-logo-text">500+</span>
-              <span className="trust-logo-sub">Projects Delivered</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQs Section */}
       <section className="faq-section">

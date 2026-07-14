@@ -580,9 +580,9 @@ export default function Footer() {
         <div className="space-y-6 lg:col-span-4">
           <div className="flex items-center gap-3">
             <img
-              src={companyLogoImage}
+              src="/Netcradus logo01.png"
               alt="Netcradus logo"
-              className="h-18 w-auto object-contain brightness-150 drop-shadow-[0_0_10px_rgba(232,64,10,0.2)]"
+              className="h-18 w-auto object-contain"
             />
           </div>
 

@@ -1,47 +1,56 @@
 .cta-banner-section {
-  background: #ffffff !important;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  background: #03050d !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
 }
 
 .cta-banner-section h2 {
-  color: #1b1d4d !important;
+  color: #ffffff !important;
   font-family: "Inter", sans-serif;
+  position: relative;
+  z-index: 10;
 }
 
 .cta-banner-section h2 span {
-  color: rgba(27, 29, 77, 0.5) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
   font-style: italic;
 }
 
 .cta-banner-section p {
-  color: #4b5563 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   font-family: "Inter", sans-serif;
+  position: relative;
+  z-index: 10;
 }
 
 .cta-banner-btn-primary {
-  background: #1b1d4d !important;
+  background: #ff6a00 !important;
   color: #ffffff !important;
-  box-shadow: 0 10px 30px rgba(27, 29, 77, 0.15) !important;
+  box-shadow: 0 10px 30px rgba(255, 106, 0, 0.25) !important;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  z-index: 10;
 }
 
 .cta-banner-btn-primary:hover {
-  background: #e8400a !important;
-  color: #ffffff !important;
-  box-shadow: 0 10px 30px rgba(232, 64, 10, 0.25) !important;
+  background: #ff7b1a !important;
+  box-shadow: 0 10px 30px rgba(255, 123, 26, 0.35) !important;
   transform: translateY(-2px) scale(1.05) !important;
 }
 
 .cta-banner-btn-secondary {
-  border: 1.5px solid rgba(27, 29, 77, 0.2) !important;
-  color: #1b1d4d !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
   background: transparent !important;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  z-index: 10;
 }
 
 .cta-banner-btn-secondary:hover {
-  border-color: #1b1d4d !important;
-  background: rgba(27, 29, 77, 0.04) !important;
+  border-color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
   transform: translateY(-2px) scale(1.05) !important;
 }

@@ -61,7 +61,7 @@ useTheme();
         
         <Link to="/" className="flex items-center gap-2 group">
           <img
-            src={companyLogoImage}
+            src="/Netcradus logo01.png"
             alt="Netcradus"
             className="h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
