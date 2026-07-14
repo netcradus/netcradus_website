@@ -9,6 +9,7 @@ const partners = [
   { name: "Onlinepantry", logo: "/technology/onlinepantry.png" },
   { name: "Zapier", logo: "/technology/zapier.png" },
   { name: "Delta", logo: "/technology/delta.png" },
+  { name: "Cato", logo: "/technology/Cato.png" },
 ];
 
 
