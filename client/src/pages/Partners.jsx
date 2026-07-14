@@ -2263,6 +2263,25 @@ import {
   TrendingUp,
   Users,
   Globe,
+  // Additional icons for benefits and idealFor
+  Server,
+  Award,
+  User,
+  Briefcase,
+  Monitor,
+  Building,
+  Shield,
+  Cpu,
+  Network,
+  Cloud,
+  Check,
+  Rocket,
+  Clock,
+  Handshake,
+  Heart,
+  Landmark,
+  Factory,
+  GraduationCap,
 } from "lucide-react";
 
 /* ══════════════════════════════════════════════════════════════════
@@ -2275,50 +2294,118 @@ import {
    ══════════════════════════════════════════════════════════════════ */
 const benefits = [
   {
-    icon: ShieldCheck,
-    title: "REPLACE ME — Benefit Title 1",
-    text: "REPLACE ME — placeholder description of this partnership benefit.",
+    icon: Shield,
+    title: "AI-Powered Security",
+    text: "Leverage AI-driven analytics to detect, investigate, and respond to threats before they impact your business.",
   },
   {
     icon: TrendingUp,
-    title: "REPLACE ME — Benefit Title 2",
-    text: "REPLACE ME — placeholder description of this partnership benefit.",
+    title: "24x7 Security Operations",
+    text: "Our SOC continuously monitors your environment, ensuring rapid detection and immediate incident response.",
   },
   {
     icon: Users,
-    title: "REPLACE ME — Benefit Title 3",
-    text: "REPLACE ME — placeholder description of this partnership benefit.",
+    title: "Certified Security Experts",
+    text: "Our certified professionals provide VAPT, SIEM, Cloud Security, Compliance, and Incident Response services.",
   },
   {
     icon: Globe,
-    title: "REPLACE ME — Benefit Title 4",
-    text: "REPLACE ME — placeholder description of this partnership benefit.",
+    title: "Enterprise Ready",
+    text: "From startups to global enterprises, our solutions scale with your infrastructure and business growth.",
   },
+];
+
+const stats = [
+  {
+    icon: Rocket,
+    value: "500+",
+    label: "Projects Delivered",
+    color: "#FF5A1F",
+    bgColor: "rgba(255, 90, 31, 0.1)",
+  },
+  {
+    icon: Shield,
+    value: "99.9%",
+    label: "Service Availability",
+    color: "#3B82F6",
+    bgColor: "rgba(59, 130, 246, 0.1)",
+  },
+  {
+    icon: Clock,
+    value: "24x7",
+    label: "SOC Monitoring",
+    color: "#FF5A1F",
+    bgColor: "rgba(255, 90, 31, 0.1)",
+  },
+  {
+    icon: Award,
+    value: "10+",
+    label: "Years Experience",
+    color: "#3B82F6",
+    bgColor: "rgba(59, 130, 246, 0.1)",
+  },
+];
+
+const trustIndustries = [
+  { text: "Healthcare", icon: Heart },
+  { text: "Banking", icon: Landmark },
+  { text: "Manufacturing", icon: Factory },
+  { text: "Government", icon: Building },
+  { text: "Education", icon: GraduationCap },
+  { text: "IT", icon: Monitor },
+  { text: "Startups", icon: Rocket },
 ];
 
 const models = [
   {
     num: "01",
-    title: "REPLACE ME — Model Name 1",
-    description: "REPLACE ME — placeholder description of this partnership model.",
-    features: ["REPLACE ME feature 1", "REPLACE ME feature 2", "REPLACE ME feature 3"],
-    idealFor: ["REPLACE ME segment 1", "REPLACE ME segment 2"],
+    title: "Referral Partner",
+    description: "Recommend Netcradus to your network and earn attractive commissions for every successful client conversion.",
+    features: [
+      "No investment required",
+      "Attractive commission payouts",
+      "Dedicated sales support",
+      "Monthly payout cycle"
+    ],
+    idealFor: [
+      { text: "Freelancers", icon: User },
+      { text: "Consultants", icon: Briefcase },
+      { text: "IT Professionals", icon: Monitor }
+    ],
   },
   {
     num: "02",
-    title: "REPLACE ME — Model Name 2",
-    description: "REPLACE ME — placeholder description of this partnership model.",
-    features: ["REPLACE ME feature 1", "REPLACE ME feature 2", "REPLACE ME feature 3"],
-    idealFor: ["REPLACE ME segment 1", "REPLACE ME segment 2"],
+    title: "Channel Partner",
+    description: "Grow your business by offering Netcradus cybersecurity solutions under an official partnership program.",
+    features: [
+      "Higher commission structure",
+      "Co-branded sales materials",
+      "Pre-sales & technical support",
+      "Priority lead assistance"
+    ],
+    idealFor: [
+      { text: "IT Companies", icon: Building },
+      { text: "MSPs & MSSPs", icon: Shield },
+      { text: "System Integrators", icon: Cpu }
+    ],
     badge: "Popular",
     accent: "#E8400A",
   },
   {
     num: "03",
-    title: "REPLACE ME — Model Name 3",
-    description: "REPLACE ME — placeholder description of this partnership model.",
-    features: ["REPLACE ME feature 1", "REPLACE ME feature 2", "REPLACE ME feature 3"],
-    idealFor: ["REPLACE ME segment 1", "REPLACE ME segment 2"],
+    title: "Strategic Alliance",
+    description: "Build long-term business relationships through joint go-to-market initiatives and enterprise opportunities.",
+    features: [
+      "Enterprise project collaboration",
+      "Joint marketing campaigns",
+      "Dedicated partnership manager",
+      "Custom commercial plans"
+    ],
+    idealFor: [
+      { text: "Technology Partners", icon: Network },
+      { text: "Cloud Providers", icon: Cloud },
+      { text: "Consulting Firms", icon: Users }
+    ],
   },
 ];
 
@@ -3180,7 +3267,7 @@ export default function Partners() {
           border-radius: 26px;
           padding: 2.5rem;
           position: relative;
-          overflow: hidden;
+          overflow: visible;
           transition: 0.35s cubic-bezier(0.4,0,0.2,1);
           box-shadow: var(--card-shadow);
           display: flex;
@@ -3192,14 +3279,15 @@ export default function Partners() {
           border-color: rgba(232,64,10,0.4);
         }
         .model-num {
-          font-size: 48px;
+          font-size: 80px;
           font-weight: 900;
           line-height: 1;
-          opacity: 0.09;
+          opacity: 0.15;
           position: absolute;
-          top: 1.25rem; right: 1.5rem;
+          top: 0.75rem; right: 1.5rem;
           font-variant-numeric: tabular-nums;
-          color: var(--highlight);
+          color: #E8400A;
+          user-select: none;
         }
         .model-title {
           font-size: 18px;
@@ -3217,20 +3305,16 @@ export default function Partners() {
         .model-features {
           list-style: none;
           padding: 0; margin: 0;
-          display: flex; flex-direction: column; gap: 0.4rem;
-          margin-bottom: 1.25rem;
+          display: flex; flex-direction: column; gap: 0.75rem;
+          margin-bottom: 1.75rem;
         }
         .model-features li {
-          font-size: 13px;
+          font-size: 14px;
           color: var(--para);
-          display: flex; align-items: center; gap: 0.5rem;
-        }
-        .model-features li::before {
-          content: '';
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: var(--highlight);
-          flex-shrink: 0;
+          display: flex;
+          align-items: flex-start;
+          gap: 0.65rem;
+          line-height: 1.5;
         }
         .chip-row {
           display: flex; flex-wrap: wrap; gap: 0.4rem;
@@ -3446,6 +3530,18 @@ export default function Partners() {
           .model-grid { grid-template-columns: 1fr; }
           .premium-section { padding: 80px 1.25rem; }
         }
+
+        @media (max-width: 1024px) {
+          .stat-column-item {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 1.25rem !important;
+          }
+          .stat-column-item:last-child {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+          }
+        }
       `}</style>
 
       <div className="particle-field" aria-hidden="true">
@@ -3551,22 +3647,163 @@ export default function Partners() {
         <section className="premium-section sec-black">
           <SectionAtmosphere dark />
           <div className="partners-section">
-            <div style={{ textAlign: "center", marginBottom: "0.5rem" }} className="reveal">
-              <span className="section-badge">Why Partner With Us</span>
+            <div style={{ textAlign: "center", marginBottom: "3rem" }} className="reveal">
+              <span className="section-badge" style={{ color: "#FF5A1F", background: "rgba(255,90,31,0.12)", borderColor: "rgba(255,90,31,0.3)" }}>Why Partner With Us</span>
+              <h2 className="section-title" style={{ fontSize: "clamp(32px, 5vw, 56px)", color: "#FFFFFF" }}>
+                Why Partner With <span style={{ color: "#FF5A1F" }}>Netcradus</span>
+              </h2>
+              {/* Diamond separator */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", margin: "1rem 0" }}>
+                <span style={{ width: "24px", height: "1px", background: "linear-gradient(90deg, transparent, #FF5A1F)" }} />
+                <span style={{ width: "6px", height: "6px", transform: "rotate(45deg)", background: "#FF5A1F" }} />
+                <span style={{ width: "24px", height: "1px", background: "linear-gradient(90deg, #FF5A1F, transparent)" }} />
+              </div>
+              <p className="section-subtitle" style={{ margin: "0 auto", color: "rgba(255, 255, 255, 0.7)", maxWidth: "700px" }}>
+                Empowering businesses with AI-driven security, 24×7 monitoring, expertise, and scalable solutions for a safer digital future.
+              </p>
             </div>
-            <h2 className="section-title reveal" style={{ textAlign: "center" }}>
-              Why Partner With Netcradus
-            </h2>
+            
+            {/* Benefit cards */}
             <div className="benefit-grid reveal-stagger">
               {benefits.map((b) => (
-                <div key={b.title} className="benefit-card">
-                  <div className="benefit-icon">
+                <div key={b.title} className="benefit-card" style={{ display: "flex", flexDirection: "column", background: "rgba(17, 17, 17, 0.6)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+                  <div className="benefit-icon" style={{
+                    width: "52px",
+                    height: "52px",
+                    borderRadius: "50%",
+                    border: "1.5px solid #FF5A1F",
+                    background: "rgba(255, 90, 31, 0.1)",
+                    color: "#FF5A1F",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "1.25rem"
+                  }}>
                     <b.icon size={22} />
                   </div>
-                  <h3>{b.title}</h3>
-                  <p>{b.text}</p>
+                  <h3 style={{ fontSize: "18px", fontWeight: "800", color: "#FFFFFF", marginBottom: "0.75rem" }}>{b.title}</h3>
+                  <p style={{ flexGrow: 1, marginBottom: "1.75rem", fontSize: "14px", color: "rgba(255, 255, 255, 0.7)", lineHeight: "1.6" }}>{b.text}</p>
+                  <Link to="/contact" className="learn-more-link" style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    color: "#FF5A1F",
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                  }}>
+                    Learn More <ArrowRight size={14} />
+                  </Link>
                 </div>
               ))}
+            </div>
+
+            {/* Stats Bar */}
+            <div className="reveal" style={{
+              marginTop: "3rem",
+              background: "rgba(17, 17, 17, 0.6)",
+              backdropFilter: "blur(20px)",
+              webkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
+              borderRadius: "24px",
+              padding: "2rem 1.5rem",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "1.5rem",
+            }}>
+              {stats.map((item, index) => (
+                <div key={item.label} style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "1.25rem",
+                  padding: "0.5rem 1rem",
+                  borderRight: index < stats.length - 1 ? "1px solid rgba(255, 255, 255, 0.08)" : "none",
+                }} className="stat-column-item">
+                  <div style={{
+                    width: "52px",
+                    height: "52px",
+                    borderRadius: "50%",
+                    border: `1.5px solid ${item.color}`,
+                    background: item.bgColor,
+                    color: item.color,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}>
+                    <item.icon size={22} />
+                  </div>
+                  <div>
+                    <h3 style={{
+                      fontSize: "26px",
+                      fontWeight: "900",
+                      color: "#FFFFFF",
+                      margin: 0,
+                      lineHeight: "1.1",
+                      fontFamily: "'Outfit', sans-serif",
+                    }}>
+                      {item.value}
+                    </h3>
+                    <p style={{
+                      fontSize: "13px",
+                      color: "rgba(255, 255, 255, 0.6)",
+                      margin: 0,
+                      marginTop: "2px",
+                      whiteSpace: "nowrap",
+                    }}>
+                      {item.label}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Trust Bar */}
+            <div className="reveal" style={{
+              marginTop: "2rem",
+              background: "rgba(17, 17, 17, 0.4)",
+              backdropFilter: "blur(20px)",
+              webkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255, 255, 255, 0.05)",
+              borderRadius: "20px",
+              padding: "1.25rem 2rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "2rem",
+              flexWrap: "wrap",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", color: "#FFFFFF", fontWeight: "700", fontSize: "14px" }}>
+                <span style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "32px",
+                  height: "32px",
+                  borderRadius: "8px",
+                  background: "rgba(255, 90, 31, 0.12)",
+                  color: "#FF5A1F",
+                }}>
+                  <Handshake size={16} />
+                </span>
+                Trusted by Organizations Across
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
+                {trustIndustries.map((item) => (
+                  <div key={item.text} style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    color: "rgba(255, 255, 255, 0.7)",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                  }}>
+                    <item.icon size={14} style={{ color: "rgba(255, 255, 255, 0.4)" }} />
+                    {item.text}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -3575,37 +3812,167 @@ export default function Partners() {
         <section className="premium-section">
           <SectionAtmosphere />
           <div className="partners-section">
-            <div style={{ textAlign: "center" }} className="reveal">
+            <div style={{ textAlign: "center", marginBottom: "3rem" }} className="reveal">
               <span className="section-badge">Partnership Models</span>
-              <h2 className="section-title">Partnership Models</h2>
+              <h2 className="section-title" style={{ fontSize: "clamp(32px, 5vw, 56px)" }}>
+                Partnership <span style={{ color: "#E8400A" }}>Models</span>
+              </h2>
               <p className="section-subtitle" style={{ margin: "0 auto" }}>
-                Choose the model that fits your organization
+                Choose the partnership model that best aligns with your business goals and start earning with Netcradus.
               </p>
             </div>
             <div className="model-grid reveal-stagger">
               {models.map((m) => (
-                <div key={m.num} className="model-card">
+                <div
+                  key={m.num}
+                  className="model-card"
+                  style={m.badge ? {
+                    borderColor: "#E8400A",
+                    boxShadow: "0 16px 48px rgba(232, 64, 10, 0.08)",
+                  } : undefined}
+                >
                   <span className="model-num">{m.num}</span>
-                  {m.badge && <span className="model-badge-custom">{m.badge}</span>}
-                  <h3 className="model-title" style={{ color: m.accent === "#E8400A" ? "#E8400A" : undefined }}>
+                  {m.badge && (
+                    <div style={{
+                      position: "absolute",
+                      top: "0",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      background: "#E8400A",
+                      color: "#FFFFFF",
+                      fontSize: "10px",
+                      fontWeight: "800",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.15em",
+                      padding: "5px 16px",
+                      borderRadius: "6px",
+                      boxShadow: "0 4px 12px rgba(232, 64, 10, 0.3)",
+                      zIndex: 10,
+                    }}>
+                      {m.badge}
+                    </div>
+                  )}
+                  <h3 className="model-title" style={{ fontSize: "22px", fontWeight: "900", color: "#1E1B4B", marginBottom: "1rem" }}>
                     {m.title}
                   </h3>
-                  <p className="model-desc">{m.description}</p>
+                  <p className="model-desc" style={{ fontSize: "14px", lineHeight: "1.6", color: "#6B7280", marginBottom: "1.75rem" }}>
+                    {m.description}
+                  </p>
                   <ul className="model-features">
-                    {m.features.map((f) => <li key={f}>{f}</li>)}
+                    {m.features.map((f) => (
+                      <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: "10px", fontSize: "14px", lineHeight: "1.5", color: "#4B5563" }}>
+                        <span style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: "18px",
+                          height: "18px",
+                          borderRadius: "50%",
+                          background: "rgba(232, 64, 10, 0.08)",
+                          color: "#E8400A",
+                          flexShrink: 0,
+                          marginTop: "2px"
+                        }}>
+                          <Check size={11} style={{ strokeWidth: 3 }} />
+                        </span>
+                        {f}
+                      </li>
+                    ))}
                   </ul>
-                  <div style={{ marginTop: "auto" }}>
-                    <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--para)", marginBottom: "0.5rem" }}>
+                  <div style={{ marginTop: "auto", borderTop: "1px solid rgba(0, 0, 0, 0.05)", paddingTop: "1.5rem" }}>
+                    <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: "0.75rem" }}>
                       Ideal For
                     </p>
                     <div className="chip-row">
                       {m.idealFor.map((i) => (
-                        <span key={i} className="chip">{i}</span>
+                        <span key={i.text} className="chip" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "12px", padding: "6px 12px" }}>
+                          {i.icon && <i.icon size={13} style={{ color: "#E8400A", strokeWidth: 2 }} />}
+                          {i.text}
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Bottom CTA Box */}
+            <div className="reveal" style={{
+              marginTop: "4.5rem",
+              background: "linear-gradient(180deg, #FFFFFF 0%, #FAFBFF 100%)",
+              border: "1px solid rgba(232, 64, 10, 0.15)",
+              borderRadius: "28px",
+              padding: "2.5rem 3rem",
+              boxShadow: "0 10px 40px rgba(30, 27, 75, 0.04)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "2.5rem",
+              flexWrap: "wrap",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "1.75rem", flexWrap: "wrap" }}>
+                <div style={{
+                  width: "60px",
+                  height: "60px",
+                  borderRadius: "50%",
+                  background: "rgba(232, 64, 10, 0.08)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#E8400A",
+                  flexShrink: 0,
+                  boxShadow: "0 8px 24px rgba(232, 64, 10, 0.1)",
+                }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-headset"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                </div>
+                <div style={{ maxWidth: "600px" }}>
+                  <h3 style={{
+                    fontSize: "20px",
+                    fontWeight: "800",
+                    color: "#1E1B4B",
+                    marginBottom: "6px",
+                    letterSpacing: "-0.01em",
+                  }}>
+                    Not Sure Which Partnership Fits You?
+                  </h3>
+                  <p style={{
+                    fontSize: "14.5px",
+                    color: "#6B7280",
+                    margin: 0,
+                    lineHeight: "1.6",
+                  }}>
+                    Our partnership team will help you choose the right program based on your business model and growth goals.
+                  </p>
+                </div>
+              </div>
+              <Link to="/contact" style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                background: "#E8400A",
+                color: "#FFFFFF",
+                fontWeight: "700",
+                fontSize: "15px",
+                padding: "14px 32px",
+                borderRadius: "14px",
+                transition: "0.25s cubic-bezier(0.4,0,0.2,1)",
+                textDecoration: "none",
+                boxShadow: "0 6px 20px rgba(232, 64, 10, 0.25)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#FF5520";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow = "0 10px 28px rgba(232, 64, 10, 0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#E8400A";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 6px 20px rgba(232, 64, 10, 0.25)";
+              }}
+              >
+                Talk to Partnership Team
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
         </section>
