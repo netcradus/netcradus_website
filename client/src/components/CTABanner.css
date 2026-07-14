@@ -1,16 +1,47 @@
 .cta-banner-section {
-  background: var(--color-accent) !important;
+  background: #ffffff !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.cta-banner-section h2,
+.cta-banner-section h2 {
+  color: #1b1d4d !important;
+  font-family: "Inter", sans-serif;
+}
+
+.cta-banner-section h2 span {
+  color: rgba(27, 29, 77, 0.5) !important;
+  font-style: italic;
+}
+
 .cta-banner-section p {
-  color: white !important;
-}
-
-.cta-banner h2 {
+  color: #4b5563 !important;
   font-family: "Inter", sans-serif;
 }
 
-.cta-banner p {
-  font-family: "Inter", sans-serif;
+.cta-banner-btn-primary {
+  background: #1b1d4d !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(27, 29, 77, 0.15) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.cta-banner-btn-primary:hover {
+  background: #e8400a !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(232, 64, 10, 0.25) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+}
+
+.cta-banner-btn-secondary {
+  border: 1.5px solid rgba(27, 29, 77, 0.2) !important;
+  color: #1b1d4d !important;
+  background: transparent !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.cta-banner-btn-secondary:hover {
+  border-color: #1b1d4d !important;
+  background: rgba(27, 29, 77, 0.04) !important;
+  transform: translateY(-2px) scale(1.05) !important;
 }
