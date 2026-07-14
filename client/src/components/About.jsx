@@ -166,7 +166,7 @@ const About = () => {
                   <div>
                     <p className="text-sm font-semibold text-zinc-900 dark:text-white">India Technology Node</p>
                     <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-                      AVS City Square, Raj Nagar Ext, Ghaziabad, 201003
+                      Office no. 609, 6th floor, AVS CITY SQUARE, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003
                     </p>
                   </div>
                 </div>

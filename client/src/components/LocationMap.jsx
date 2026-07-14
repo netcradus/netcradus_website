@@ -8,7 +8,7 @@ export default function LocationMap() {
       flag: "🇮🇳",
       label: "India Office",
       title: "Netcradus — Ghaziabad, India",
-      address: "AVS City Square, Raj Nagar Extension, Ghaziabad, Uttar Pradesh, India",
+      address: "Office no. 609, 6th floor, AVS CITY SQUARE, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003",
       mapQuery: "Netcradus, Ghaziabad, Uttar Pradesh, India",
       hours: "Mon – Sat, 10:00 AM – 7:00 PM (IST)",
     },

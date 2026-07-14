@@ -148,6 +148,8 @@ import EnterpriseSecurityPage from "./pages/services/EnterpriseSecurity";
 import VAPTPage from "./pages/services/VAPT";
 import ABDMPage from "./pages/services/ABDM";
 import ACISPage from "./pages/ACISPage";
+import CRMPage from "./pages/CRMPage";
+import NetXDRPage from "./pages/NetXDRPage";
 import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
@@ -238,6 +240,8 @@ function App() {
           <Route path="services/vapt" element={<VAPTPage />} />
           <Route path="services/abdm" element={<ABDMPage />} />
           <Route path="acis" element={<ACISPage />} />
+          <Route path="crm" element={<CRMPage />} />
+          <Route path="netxdr" element={<NetXDRPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:slug" element={<BlogPostPage />} />

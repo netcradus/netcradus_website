@@ -582,7 +582,7 @@ export default function Footer() {
             <img
               src={companyLogoImage}
               alt="Netcradus logo"
-              className="h-12 w-auto object-contain brightness-150 drop-shadow-[0_0_10px_rgba(232,64,10,0.2)]"
+              className="h-18 w-auto object-contain brightness-150 drop-shadow-[0_0_10px_rgba(232,64,10,0.2)]"
             />
           </div>
 

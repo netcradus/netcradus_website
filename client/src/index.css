@@ -189,27 +189,10 @@
   }
 
   .solutions-hero {
-    min-height: 100vh;
-    background-image: url("/generated/solutions background.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
     isolation: isolate;
-  }
-
-  .solutions-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-  }
-
-  .solutions-hero h1,
-  .solutions-hero h2,
-  .solutions-hero h3,
-  .solutions-hero p {
-    color: #f8fafc;
   }
 
   .why-choose-cursor-glow {

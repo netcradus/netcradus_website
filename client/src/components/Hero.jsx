@@ -94,28 +94,7 @@ const Hero = () => {
                   Monitoring for Global Businesses
                 </h2>
 
-                <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
-                  <Link to="/contact">
-                    <MagneticWrapper>
-                      <button className="btn-hero-primary btn-glow-pulse flex items-center gap-3">
-                        <ShieldCheck size={18} />
-                        Get In Touch
-                      </button>
-                    </MagneticWrapper>
-                  </Link>
-                  <a
-                    href="https://www.oouraa.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MagneticWrapper>
-                      <button className="btn-hero-primary btn-glow-pulse flex items-center gap-3">
-                        Explore ACIS
-                        <ArrowRight size={18} />
-                      </button>
-                    </MagneticWrapper>
-                  </a>
-                </div>
+
 
                 {/* STATS */}
                 <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 md:grid-cols-4">

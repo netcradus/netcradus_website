@@ -34,49 +34,73 @@ import {
   Check,
   Navigation,
   ChevronDown,
-  ArrowUpRight
+  ArrowUpRight,
+  Users,
+  Calendar,
+  Settings
 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import LocationMap from './LocationMap';
 import './Contact.css';
+
+// Import certifications/trust logos
+import isoLogo from '../assets/ISO-Loogo-removebg.png';
+import certinLogo from '../assets/certin.png';
+import iso27701Logo from '../assets/iso-27701-removebg.png';
+import msmeLogo from '../assets/msme-removebg.png';
+import udyamLogo from '../assets/udyam.png';
+import soc2Logo from '../assets/soc2.png';
+import gdprLogo from '../assets/gdpr.jpeg';
 
 // ─────────────────────────────────────────────────────────────────────────
 // Config & Data Lists
 // ─────────────────────────────────────────────────────────────────────────
 const trustPoints = [
-  { icon: ShieldCheck, label: "Encrypted submissions" },
-  { icon: Clock3, label: "1-hour average response" },
-  { icon: FileLock2, label: "NDA available on request" },
+  { icon: Phone, label: "24x7 Support" },
+  { icon: Clock3, label: "1 Hour Response" },
+  { icon: ShieldCheck, label: "NDA Available" },
+  { icon: Settings, label: "ISO-Compliant Engagements" },
 ];
 
 const contactOptions = [
   {
     id: "sales",
     icon: ShieldCheck,
-    title: "Talk to Sales",
-    description: "Discuss cybersecurity strategy and enterprise solutions.",
-    cta: "Talk to Sales",
+    title: "Sales & Consulting",
+    description: "Discuss enterprise security, VAPT, SOC and compliance requirements.",
+    cta: "Contact Sales",
+    color: "#E8400A",
+    rgb: "232, 64, 10",
+    bgLight: "rgba(232, 64, 10, 0.08)",
   },
   {
     id: "support",
     icon: Wrench,
     title: "Technical Support",
-    description: "Support for existing Netcradus customers and ACIS™ deployments.",
+    description: "Existing customers can raise and track support requests.",
     cta: "Get Support",
+    color: "#3B82F6",
+    rgb: "59, 130, 246",
+    bgLight: "rgba(59, 130, 246, 0.08)",
   },
   {
     id: "incident",
     icon: Siren,
     title: "Incident Response",
-    description: "Immediate assistance for active cyber incidents.",
+    description: "Immediate assistance during cybersecurity incidents.",
     cta: "Report Incident",
+    color: "#10B981",
+    rgb: "16, 185, 129",
+    bgLight: "rgba(16, 185, 129, 0.08)",
   },
   {
     id: "partnerships",
     icon: Handshake,
     title: "Partnerships",
-    description: "Technology, reseller, and business partnership opportunities.",
-    cta: "Explore Partnership",
+    description: "Become a technology or channel partner and grow with Netcradus.",
+    cta: "Partner With Us",
+    color: "#8B5CF6",
+    rgb: "139, 92, 246",
+    bgLight: "rgba(139, 92, 246, 0.08)",
   },
 ];
 
@@ -153,7 +177,7 @@ function Magnetic({ children, className = "", strength = 14 }) {
   );
 }
 
-function TiltCard({ isActive, onClick, children }) {
+function TiltCard({ isActive, onClick, color, rgb, bgLight, children }) {
   const ref = useRef(null);
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
@@ -179,7 +203,14 @@ function TiltCard({ isActive, onClick, children }) {
       onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformPerspective: 800 }}
+      style={{ 
+        rotateX, 
+        rotateY, 
+        transformPerspective: 800,
+        "--accent-color": color,
+        "--accent-color-rgb": rgb,
+        "--bg-accent-light": bgLight
+      }}
       whileTap={{ scale: 0.98 }}
       aria-pressed={isActive}
       className={`card-premium card-sheen group card-option-btn ${
@@ -318,6 +349,69 @@ function CopyButton({ value }) {
   );
 }
 
+const FloatingShieldVisual = () => {
+  return (
+    <div className="podium-container">
+      {/* Background radial glow */}
+      <div className="absolute w-[300px] h-[300px] rounded-full bg-radial-glow blur-[80px] opacity-40 z-0"></div>
+      
+      {/* Podium Rings */}
+      <div className="podium-base" />
+      <div className="podium-glow-ring" />
+
+      {/* Main Shield */}
+      <motion.div
+        animate={{ y: [0, -14, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="shield-3d-wrapper"
+      >
+        <div className="shield-container">
+          <div className="shield-inner">
+            <ShieldCheck size={56} className="shield-logo-mark" strokeWidth={1.5} />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Floating Orbit Nodes */}
+      <motion.div
+        animate={{ y: [-8, 8, -8], x: [-4, 4, -4] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="orbit-node"
+        style={{ top: "18%", left: "15%", borderColor: "#E8400A", borderStyle: "solid", borderWidth: "1.5px" }}
+      >
+        <Lock size={18} className="text-[#E8400A]" />
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [8, -8, 8], x: [4, -4, 4] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+        className="orbit-node"
+        style={{ top: "15%", right: "15%", borderColor: "#3B82F6", borderStyle: "solid", borderWidth: "1.5px" }}
+      >
+        <Cloud size={18} className="text-[#3B82F6]" />
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [-10, 10, -10], x: [5, -5, 5] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="orbit-node"
+        style={{ bottom: "25%", left: "12%", borderColor: "#10B981", borderStyle: "solid", borderWidth: "1.5px" }}
+      >
+        <Users size={18} className="text-[#10B981]" />
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [10, -10, 10], x: [-5, 5, -5] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+        className="orbit-node"
+        style={{ bottom: "22%", right: "12%", borderColor: "#8B5CF6", borderStyle: "solid", borderWidth: "1.5px" }}
+      >
+        <Cpu size={18} className="text-[#8B5CF6]" />
+      </motion.div>
+    </div>
+  );
+};
+
 // ─────────────────────────────────────────────────────────────────────────
 // Primary Contact Component
 // ─────────────────────────────────────────────────────────────────────────
@@ -328,14 +422,14 @@ const Contact = () => {
 
   const [status, setStatus] = useState("idle");
   const [formData, setFormData] = useState({
-    user_name: "",
+    first_name: "",
+    last_name: "",
     user_company: "",
     user_phone: "",
     user_email: "",
     message: ""
   });
   
-  // Custom states added for UI matching (recreated options + service select)
   const [selectedOptionId, setSelectedOptionId] = useState(null);
   const [selectedService, setSelectedService] = useState("");
   const [file, setFile] = useState(null);
@@ -345,9 +439,9 @@ const Contact = () => {
   const fileInputRef = useRef(null);
 
   const optionToService = {
-    sales: "enterprise-software",
-    support: "managed-soc",
-    incident: "compliance",
+    sales: "vapt",
+    support: "enterprise-software",
+    incident: "managed-soc",
     partnerships: "other",
   };
 
@@ -358,13 +452,14 @@ const Contact = () => {
 
   const validate = () => {
     const nextErrors = {};
-    if (!formData.user_name.trim()) nextErrors.user_name = "Full name is required.";
+    if (!formData.first_name.trim()) nextErrors.first_name = "First name is required.";
+    if (!formData.last_name.trim()) nextErrors.last_name = "Last name is required.";
     if (!formData.user_email.trim()) {
       nextErrors.user_email = "Business email is required.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.user_email)) {
       nextErrors.user_email = "Enter a valid email address.";
     }
-    if (!formData.message.trim()) nextErrors.message = "Tell us briefly what you need.";
+    if (!formData.message.trim()) nextErrors.message = "Message details are required.";
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   };
@@ -375,22 +470,13 @@ const Contact = () => {
 
     setStatus("loading");
 
-    console.log("FORM DATA:", {
-      name: formData.user_name,
-      email: formData.user_email,
-      phone: formData.user_phone,
-      company: formData.user_company,
-      message: formData.message,
-      service: selectedService,
-      fileName: file ? file.name : null
-    });
-
     try {
+      const fullName = `${formData.first_name.trim()} ${formData.last_name.trim()}`;
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          name: formData.user_name,
+          name: fullName,
           email: formData.user_email,
           phone: formData.user_phone || "N/A",
           company: formData.user_company || "N/A",
@@ -402,7 +488,8 @@ const Contact = () => {
       setReferenceId(`NC-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
       setStatus("success");
       setFormData({
-        user_name: "",
+        first_name: "",
+        last_name: "",
         user_company: "",
         user_phone: "",
         user_email: "",
@@ -431,7 +518,8 @@ const Contact = () => {
 
   function resetForm() {
     setFormData({
-      user_name: "",
+      first_name: "",
+      last_name: "",
       user_company: "",
       user_phone: "",
       user_email: "",
@@ -450,63 +538,89 @@ const Contact = () => {
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   }
 
-  const infoCards = [
-    { icon: Phone, label: "Phone", value: "1800 12100 8800", href: "tel:1800121008800", copyValue: "1800 12100 8800" },
-    { icon: Mail, label: "Email", value: "info@netcradus.com", href: "mailto:info@netcradus.com", copyValue: "info@netcradus.com" },
-    { icon: Clock, label: "Business Hours", value: "Mon–Sat, 10:00 AM–7:00 PM" },
-    { icon: MapPin, label: "Office Address", value: "Leicester, UK · Ghaziabad, India" },
-  ];
-
   return (
     <div className="contact-section-wrapper">
       <AmbientBackground />
 
-      {/* Hero Header */}
+      {/* Hero Section Split Layout */}
       <section className="hero-section">
         <div className="hero-glow" />
-        <div className="hero-content">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="kicker"
-          >
-            <span className="hero-pulse-dot">
-              <span className="hero-pulse-ping" />
-              <span className="hero-pulse-core" />
-            </span>
-            Establish Connection
-          </motion.p>
+        <div className="hero-section-grid">
+          {/* Left Column: Heading, buttons and indicators */}
+          <div className="hero-content">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="kicker"
+            >
+              <span className="hero-pulse-dot">
+                <span className="hero-pulse-ping" />
+                <span className="hero-pulse-core" />
+              </span>
+              CONTACT NETCRADUS
+            </motion.p>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="hero-title"
-          >
-            Contact <span>Netcradus</span>
-          </motion.h1>
+            <motion.h1 
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="hero-title"
+            >
+              Enterprise Cybersecurity <br />
+              Starts With a <span>Conversation</span>
+            </motion.h1>
 
-          <p className="hero-description">
-            Have questions about cybersecurity, Managed SOC, VAPT, Cloud Security, AI Solutions, or
-            enterprise services? Our experts are ready to help.
-          </p>
+            <p className="hero-description">
+              Speak directly with our cybersecurity specialists for VAPT, SOC, Cloud Security, Compliance, AI Security, and Managed Security Services.
+            </p>
 
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="hero-action-buttons"
+            >
+              <a href="#contact-form" className="btn-primary-talk">
+                <Phone size={16} />
+                Talk to an Expert
+              </a>
+              <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="btn-secondary-schedule">
+                <Calendar size={16} />
+                Schedule Meeting
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="hero-checklist-bar"
+            >
+              {trustPoints.map((point, index) => {
+                const Icon = point.icon;
+                return (
+                  <span key={index} className="checklist-item">
+                    <Icon size={14} className="text-[var(--nc-cyan)]" />
+                    {point.label}
+                  </span>
+                );
+              })}
+            </motion.div>
+          </div>
+
+          {/* Right Column: Hero Visual Image */}
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="trust-strip"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="hero-image-container"
           >
-            {trustPoints.map((point, index) => {
-              const Icon = point.icon;
-              return (
-                <span key={index} className="trust-point">
-                  <Icon size={14} className="text-[var(--nc-electric)]" />
-                  {point.label}
-                </span>
-              );
-            })}
+            <img 
+              src="/img/contact page background.png" 
+              alt="Cybersecurity Shield Visual" 
+              className="hero-mobile-only-image" 
+            />
           </motion.div>
         </div>
       </section>
@@ -527,7 +641,13 @@ const Contact = () => {
                   transition={{ duration: 0.45, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
                   style={{ display: 'flex', justifyContent: 'center', width: '100%', height: '100%' }}
                 >
-                  <TiltCard isActive={isActive} onClick={() => handleOptionSelect(option.id)}>
+                  <TiltCard 
+                    isActive={isActive} 
+                    onClick={() => handleOptionSelect(option.id)}
+                    color={option.color}
+                    rgb={option.rgb}
+                    bgLight={option.bgLight}
+                  >
                     {isActive && (
                       <motion.span
                         initial={{ scale: 0, opacity: 0 }}
@@ -544,8 +664,8 @@ const Contact = () => {
                     <h3 className="card-option-title">{option.title}</h3>
                     <p className="card-option-desc">{option.description}</p>
                     <span className="card-option-cta">
-                      {isActive ? "Selected — scroll to form" : option.cta}
-                      <ArrowUpRight size={14} />
+                      {isActive ? "Selected" : option.cta}
+                      <ArrowRight size={14} style={{ marginLeft: "4px" }} />
                     </span>
                   </TiltCard>
                 </motion.div>
@@ -592,34 +712,54 @@ const Contact = () => {
                   className="card-premium card-sheen contact-form-card"
                 >
                   <div className="form-header">
-                    <h2>Send Us a Message</h2>
+                    <h2>Let's Secure Your Business</h2>
                     <p>
-                      Fields marked <span className="text-[#C2410C]">*</span> are required. We typically reply within
-                      one business hour.
+                      Fields marked with <span className="text-[#C2410C]">*</span> are required.
                     </p>
                   </div>
 
                   <div className="form-fields-grid">
-                    {/* Full Name */}
+                    {/* First Name */}
                     <div className="form-field-container">
-                      <label htmlFor="user_name" className="field-label">
-                        Full Name<span className="text-[#C2410C]">*</span>
+                      <label htmlFor="first_name" className="field-label">
+                        First Name<span className="text-[#C2410C]">*</span>
                       </label>
                       <div className="input-wrapper">
-                        <User className={`field-icon ${formData.user_name ? "active" : ""}`} size={16} strokeWidth={1.75} />
                         <input
-                          id="user_name"
-                          name="user_name"
+                          id="first_name"
+                          name="first_name"
                           type="text"
-                          value={formData.user_name}
+                          value={formData.first_name}
                           onChange={handleChange}
-                          placeholder="e.g. John Doe"
-                          aria-invalid={!!errors.user_name}
-                          className={`field-input ${errors.user_name ? "border-error" : ""}`}
+                          placeholder="First Name*"
+                          aria-invalid={!!errors.first_name}
+                          className={`field-input ${errors.first_name ? "border-error" : ""}`}
                         />
                       </div>
                       <div className="error-area">
-                        {errors.user_name && <p className="text-error">{errors.user_name}</p>}
+                        {errors.first_name && <p className="text-error">{errors.first_name}</p>}
+                      </div>
+                    </div>
+
+                    {/* Last Name */}
+                    <div className="form-field-container">
+                      <label htmlFor="last_name" className="field-label">
+                        Last Name<span className="text-[#C2410C]">*</span>
+                      </label>
+                      <div className="input-wrapper">
+                        <input
+                          id="last_name"
+                          name="last_name"
+                          type="text"
+                          value={formData.last_name}
+                          onChange={handleChange}
+                          placeholder="Last Name*"
+                          aria-invalid={!!errors.last_name}
+                          className={`field-input ${errors.last_name ? "border-error" : ""}`}
+                        />
+                      </div>
+                      <div className="error-area">
+                        {errors.last_name && <p className="text-error">{errors.last_name}</p>}
                       </div>
                     </div>
 
@@ -629,14 +769,13 @@ const Contact = () => {
                         Business Email<span className="text-[#C2410C]">*</span>
                       </label>
                       <div className="input-wrapper">
-                        <Mail className={`field-icon ${formData.user_email ? "active" : ""}`} size={16} strokeWidth={1.75} />
                         <input
                           id="user_email"
                           name="user_email"
                           type="email"
                           value={formData.user_email}
                           onChange={handleChange}
-                          placeholder="you@company.com"
+                          placeholder="Business Email*"
                           aria-invalid={!!errors.user_email}
                           className={`field-input ${errors.user_email ? "border-error" : ""}`}
                         />
@@ -649,17 +788,16 @@ const Contact = () => {
                     {/* Phone */}
                     <div className="form-field-container">
                       <label htmlFor="user_phone" className="field-label">
-                        Phone Number
+                        Phone Number*
                       </label>
                       <div className="input-wrapper">
-                        <Phone className={`field-icon ${formData.user_phone ? "active" : ""}`} size={16} strokeWidth={1.75} />
                         <input
                           id="user_phone"
                           name="user_phone"
                           type="tel"
                           value={formData.user_phone}
                           onChange={handleChange}
-                          placeholder="+1 (555) 000-0000"
+                          placeholder="Phone Number*"
                           className="field-input"
                         />
                       </div>
@@ -669,54 +807,53 @@ const Contact = () => {
                     {/* Company */}
                     <div className="form-field-container">
                       <label htmlFor="user_company" className="field-label">
-                        Company Name
+                        Company Name*
                       </label>
                       <div className="input-wrapper">
-                        <Building2 className={`field-icon ${formData.user_company ? "active" : ""}`} size={16} strokeWidth={1.75} />
                         <input
                           id="user_company"
                           name="user_company"
                           type="text"
                           value={formData.user_company}
                           onChange={handleChange}
-                          placeholder="Netcradus Ltd"
+                          placeholder="Company Name*"
                           className="field-input"
                         />
                       </div>
                       <div className="error-area" />
                     </div>
-                  </div>
 
-                  {/* Service Dropdown */}
-                  <div className="form-field-container mt-4">
-                    <label htmlFor="selectedService" className="field-label">
-                      Service Required<span className="text-[#C2410C]">*</span>
-                    </label>
-                    <div className="input-wrapper">
-                      <select
-                        id="selectedService"
-                        value={selectedService}
-                        onChange={(e) => setSelectedService(e.target.value)}
-                        className="field-input field-select"
-                      >
-                        <option value="" disabled>Select a service...</option>
-                        {serviceOptions.map((opt) => (
-                          <option key={opt.id} value={opt.id}>
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
+                    {/* Service Dropdown */}
+                    <div className="form-field-container">
+                      <label htmlFor="selectedService" className="field-label">
+                        Service Required<span className="text-[#C2410C]">*</span>
+                      </label>
+                      <div className="input-wrapper">
+                        <select
+                          id="selectedService"
+                          value={selectedService}
+                          onChange={(e) => setSelectedService(e.target.value)}
+                          className="field-input field-select"
+                        >
+                          <option value="" disabled>Service Required*</option>
+                          {serviceOptions.map((opt) => (
+                            <option key={opt.id} value={opt.id}>
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-nc-muted" />
+                      </div>
+                      <div className="error-area" />
                     </div>
-                    <div className="error-area" />
                   </div>
 
                   {/* Message */}
                   <div className="form-field-container mt-4">
                     <label htmlFor="message" className="field-label">
-                      Message<span className="text-[#C2410C]">*</span>
+                      How can we help you?
                     </label>
                     <div className="input-wrapper">
-                      <MessageSquare className={`field-icon icon-textarea ${formData.message ? "active" : ""}`} size={16} strokeWidth={1.75} />
                       <textarea
                         id="message"
                         name="message"
@@ -724,7 +861,7 @@ const Contact = () => {
                         onChange={(e) => {
                           if (e.target.value.length <= 600) handleChange(e);
                         }}
-                        placeholder="Tell us about your project or enquiry..."
+                        placeholder="How can we help you?"
                         aria-invalid={!!errors.message}
                         className={`field-input field-textarea ${errors.message ? "border-error" : ""}`}
                       />
@@ -799,7 +936,7 @@ const Contact = () => {
                           </>
                         ) : (
                           <>
-                            Send Message
+                            Request Consultation
                             <ArrowRight size={18} />
                           </>
                         )}
@@ -816,80 +953,308 @@ const Contact = () => {
             </AnimatePresence>
           </div>
 
-          {/* Right Column: Contact Information Cards */}
+          {/* Right Column: Get In Touch (Mockup Blue Gradient Panel) */}
           <div className="info-panel">
             <motion.div
               initial={{ opacity: 0, x: 16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4 }}
-              className="card-premium live-soc-banner"
+              className="get-in-touch-card"
             >
-              <span className="live-soc-ping">
-                <span className="live-soc-ping-annulus" />
-                <span className="live-soc-ping-core" />
-              </span>
-              <p>
-                SOC Monitoring — <span className="live">Live</span>
-              </p>
-            </motion.div>
+              {/* Map Outline Overlay - Dotted grid world map aesthetic */}
+              <div className="get-in-touch-map-bg">
+                <svg width="100%" height="100%" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", top: 0, left: 0, opacity: 0.12 }}>
+                  <circle cx="200" cy="150" r="2" fill="#3b82f6" opacity="0.3" />
+                  <circle cx="210" cy="160" r="3" fill="#3b82f6" opacity="0.4" />
+                  <circle cx="250" cy="180" r="2" fill="#3b82f6" opacity="0.3" />
+                  <circle cx="300" cy="120" r="4" fill="#3b82f6" opacity="0.2" />
+                  {/* UK Map dots */}
+                  <circle cx="480" cy="140" r="4" fill="#E8400A" opacity="0.8" />
+                  <circle cx="480" cy="140" r="8" stroke="#E8400A" strokeWidth="1" opacity="0.4" className="animate-ping" style={{ transformOrigin: "480px 140px" }} />
+                  {/* India Map dots */}
+                  <circle cx="680" cy="220" r="4" fill="#E8400A" opacity="0.8" />
+                  <circle cx="680" cy="220" r="8" stroke="#E8400A" strokeWidth="1" opacity="0.4" className="animate-ping" style={{ transformOrigin: "680px 220px" }} />
+                  {/* Grid lines */}
+                  <path d="M100,50 L900,50 M100,100 L900,100 M100,150 L900,150 M100,200 L900,200 M100,250 L900,250 M100,300 L900,300 M100,350 L900,350" stroke="#3b82f6" strokeWidth="0.5" strokeDasharray="3 6" opacity="0.1" />
+                  <path d="M150,20 L150,450 M250,20 L250,450 M350,20 L350,450 M450,20 L450,450 M550,20 L550,450 M650,20 L650,450 M750,20 L750,450 M850,20 L850,450" stroke="#3b82f6" strokeWidth="0.5" strokeDasharray="3 6" opacity="0.1" />
+                </svg>
+              </div>
 
-            {infoCards.map((card, i) => {
-              const Icon = card.icon;
-              const content = (
-                <>
-                  <div className="info-icon-wrapper">
-                    <Icon size={18} strokeWidth={1.75} />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="info-card-label">{card.label}</p>
-                    <p className="info-card-value">{card.value}</p>
-                  </div>
-                  {card.copyValue && <CopyButton value={card.copyValue} />}
-                </>
-              );
+              <div className="get-in-touch-content">
+                <div className="get-in-touch-header">
+                  <h2>Get In Touch</h2>
+                  <p>Speak to our global engineering offices or reach our dispatch desk directly.</p>
+                </div>
 
-              return (
-                <motion.div
-                  key={card.label}
-                  initial={{ opacity: 0, x: 16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.4, delay: 0.06 + i * 0.06 }}
-                >
-                  {card.href ? (
-                    <a href={card.href} className="card-premium card-sheen info-card clickable">
-                      {content}
-                    </a>
-                  ) : (
-                    <div className="card-premium card-sheen info-card">
-                      {content}
+                <div className="get-in-touch-info-list">
+                  {/* Phone */}
+                  <div className="get-in-touch-item">
+                    <div className="get-in-touch-icon-box">
+                      <Phone size={18} />
                     </div>
-                  )}
-                </motion.div>
-              );
-            })}
+                    <div className="get-in-touch-details">
+                      <p className="get-in-touch-label">Sales Inquiries</p>
+                      <p className="get-in-touch-value">1800121008800</p>
+                      <p className="get-in-touch-value-desc">Toll Free (India) · 24/7 Dispatch</p>
+                    </div>
+                    <CopyButton value="1800121008800" />
+                  </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-              className="card-premium info-secure-notice"
-            >
-              <ShieldCheck size={16} className="text-nc-success shrink-0" style={{ marginTop: '2px' }} strokeWidth={1.75} />
-              <p>
-                Your information is securely transmitted and handled confidentially.
-              </p>
+                  {/* Email */}
+                  <div className="get-in-touch-item">
+                    <div className="get-in-touch-icon-box">
+                      <Mail size={18} />
+                    </div>
+                    <div className="get-in-touch-details">
+                      <p className="get-in-touch-label">Email Us</p>
+                      <p className="get-in-touch-value">info@netcradus.com</p>
+                      <p className="get-in-touch-value-desc">General and partner inquiries</p>
+                    </div>
+                    <CopyButton value="info@netcradus.com" />
+                  </div>
+
+                  {/* Office */}
+                  <div className="get-in-touch-item">
+                    <div className="get-in-touch-icon-box">
+                      <MapPin size={18} />
+                    </div>
+                    <div className="get-in-touch-details">
+                      <p className="get-in-touch-label">Our Office</p>
+                      <p className="get-in-touch-value" style={{ fontSize: '0.85rem' }}>
+                        Netcradus Pvt. Ltd.<br />
+                        Office no. 609, 6th floor, AVS CITY SQUARE, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Business Hours */}
+                  <div className="get-in-touch-item">
+                    <div className="get-in-touch-icon-box">
+                      <Clock size={18} />
+                    </div>
+                    <div className="get-in-touch-details">
+                      <p className="get-in-touch-label">Business Hours</p>
+                      <p className="get-in-touch-value">Mon - Fri : 9:00 AM - 6:00 PM (IST)</p>
+                      <p className="get-in-touch-value-desc">Engineering support operates 24/7</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="get-in-touch-secure-badge">
+                  <ShieldCheck size={16} className="text-[#3b82f6] shrink-0" style={{ marginTop: '2px' }} strokeWidth={1.75} />
+                  <p>
+                    Your information is securely transmitted and handled confidentially in accordance with our data policy.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — Global Offices Maps */}
-      <div className="relative z-10">
-        <LocationMap />
-      </div>
+      {/* SECTION 3 — Styled Locations Banner and Dual Google Maps Grid */}
+      <section className="relative z-10 px-4">
+        {/* Banner */}
+        <div className="location-banner-card">
+          <div className="location-banner-left">
+            <span className="location-banner-kicker">OUR LOCATION</span>
+            <h2 className="location-banner-title">Visit Our Office</h2>
+            <p className="location-banner-desc">Strategically located to serve our clients across India, UK, and worldwide.</p>
+          </div>
+          <button 
+            type="button" 
+            className="btn-view-map"
+            onClick={() => document.getElementById("office-maps")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            <MapPin size={18} />
+            View on Map
+          </button>
+        </div>
+
+        {/* Dual Maps Grid */}
+        <div id="office-maps" className="location-maps-grid">
+          {/* India Card (Ghaziabad / Rajnagar Extension) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="global-office-card"
+          >
+            <div className="global-office-map-container">
+              <iframe
+                title="Netcradus Rajnagar map"
+                src="https://www.google.com/maps?q=Netcradus,%20Ghaziabad,%20Uttar%20Pradesh,%20India&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="office-map-iframe"
+              />
+              <div className="office-badge">
+                <span className="office-badge-flag">🇮🇳</span>
+                <span className="office-badge-label">Rajnagar Extension</span>
+              </div>
+            </div>
+            <div className="global-office-details">
+              <div className="office-details-header">
+                <div>
+                  <span className="office-details-kicker">India Office</span>
+                  <h3 className="global-office-title">Netcradus — Rajnagar, India</h3>
+                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Netcradus,%20Ghaziabad,%20Uttar%20Pradesh,%20India"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="directions-btn"
+                >
+                  <Navigation size={14} />
+                  Get Directions
+                </a>
+              </div>
+              <div className="office-info-list">
+                <div className="office-info-item">
+                  <MapPin size={16} className="shrink-0" />
+                  <span>Office no. 609, 6th floor, AVS CITY SQUARE, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003</span>
+                </div>
+                <div className="office-info-item">
+                  <Clock size={16} className="shrink-0" />
+                  <span>Mon – Sat, 10:00 AM – 7:00 PM (IST)</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* UK Card (Leicester) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="global-office-card"
+          >
+            <div className="global-office-map-container">
+              <iframe
+                title="Netcradus UK map"
+                src="https://www.google.com/maps?q=London%20Road,%20Leicester,%20LE2%200QS,%20England&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="office-map-iframe"
+              />
+              <div className="office-badge">
+                <span className="office-badge-flag">🇬🇧</span>
+                <span className="office-badge-label">UK Office</span>
+              </div>
+            </div>
+            <div className="global-office-details">
+              <div className="office-details-header">
+                <div>
+                  <span className="office-details-kicker">UK Office</span>
+                  <h3 className="global-office-title">Netcradus — Leicester, UK</h3>
+                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=London%20Road,%20Leicester,%20LE2%200QS,%20England"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="directions-btn"
+                >
+                  <Navigation size={14} />
+                  Get Directions
+                </a>
+              </div>
+              <div className="office-info-list">
+                <div className="office-info-item">
+                  <MapPin size={16} className="shrink-0" />
+                  <span>London Road, Leicester, LE2 0QS, England, United Kingdom</span>
+                </div>
+                <div className="office-info-item">
+                  <Clock size={16} className="shrink-0" />
+                  <span>Mon – Sat, 10:00 AM – 7:00 PM (GMT)</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — Trust Logos strip (Mockup style certifications) */}
+      <section className="trust-logos-strip">
+        <div className="trust-logos-container">
+          <h4 className="trust-logos-title">Trusted by Businesses Across Industries</h4>
+          <div className="trust-logos-grid">
+            {/* ISO */}
+            <div className="trust-logo-item">
+              <img src={isoLogo} alt="ISO 27001 Certified" className="trust-logo-img" />
+              <span className="trust-logo-text">ISO</span>
+              <span className="trust-logo-sub">27001:2013</span>
+            </div>
+            
+            {/* CERT-IN */}
+            <div className="trust-logo-item">
+              <img src={certinLogo} alt="CERT-IN Empanelled" className="trust-logo-img" />
+              <span className="trust-logo-text">CERT-IN</span>
+              <span className="trust-logo-sub">Empanelled</span>
+            </div>
+
+            {/* CMMI */}
+            <div className="trust-logo-item">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: "#7C3AED" }}>
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                <path d="M8 12h8m-4-4v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+              <span className="trust-logo-text">CMMI</span>
+              <span className="trust-logo-sub">Level 3</span>
+            </div>
+
+            {/* Microsoft */}
+            <div className="trust-logo-item" style={{ gap: "6px" }}>
+              <svg width="35" height="35" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="10.5" height="10.5" fill="#F25022"/>
+                <rect x="12.5" width="10.5" height="10.5" fill="#7FBA00"/>
+                <rect y="12.5" width="10.5" height="10.5" fill="#00A4EF"/>
+                <rect x="12.5" y="12.5" width="10.5" height="10.5" fill="#FFB900"/>
+              </svg>
+              <span className="trust-logo-text">Microsoft</span>
+              <span className="trust-logo-sub">Partner</span>
+            </div>
+
+            {/* AWS */}
+            <div className="trust-logo-item">
+              <svg width="45" height="28" viewBox="0 0 48 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: "#FF9900" }}>
+                <path d="M20 22c-3 0-5-2-5-5s2-5 5-5 5 2 5 5-2 5-5 5zM35 22c-3 0-5-2-5-5s2-5 5-5 5 2 5 5-2 5-5 5z" stroke="currentColor" strokeWidth="2"/>
+                <path d="M12 25c10 5 20 5 24 0" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                <path d="M34 22l3 3-4 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+              <span className="trust-logo-text">aws</span>
+              <span className="trust-logo-sub">Partner Network</span>
+            </div>
+
+            {/* Google Cloud */}
+            <div className="trust-logo-item">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#EA4335"/>
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#4285F4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="trust-logo-text">Google Cloud</span>
+              <span className="trust-logo-sub">Partner</span>
+            </div>
+
+            {/* 500+ Projects */}
+            <div className="trust-logo-item">
+              <Users size={32} style={{ color: "#3B82F6" }} />
+              <span className="trust-logo-text">500+</span>
+              <span className="trust-logo-sub">Projects Delivered</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* FAQs Section */}
       <section className="faq-section">

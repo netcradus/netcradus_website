@@ -57,13 +57,13 @@ useTheme();
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
-<div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 grid grid-cols-[auto_1fr_auto] items-center h-20">
+<div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 grid grid-cols-[auto_1fr_auto] items-center h-24">
         
         <Link to="/" className="flex items-center gap-2 group">
           <img
             src={companyLogoImage}
             alt="Netcradus"
-            className="h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            className="h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
 
@@ -149,14 +149,22 @@ useTheme();
         </div>
                 
 
-        <div className="flex justify-end items-center">
+        <div className="flex justify-end items-center gap-6">
+          <Link 
+            to="/contact" 
+            className="desktop-only btn-primary px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg hover:scale-105 transition-all no-underline"
+            style={{ background: 'var(--color-accent)', color: '#ffffff' }}
+          >
+            Talk to an Expert
+          </Link>
+
           <button
             className="mobile-menu-toggle p-2 lg:hidden text-zinc-900 dark:text-white"
             onClick={() => setIsMenuOpen(prev => !prev)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-          </div>
+        </div>
       </div>
 
       <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>

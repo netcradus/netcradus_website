@@ -21,9 +21,13 @@ const ServicesPage = () => {
                 subtitle="From proactive defense and managed detection to cloud, network, and enterprise security, Netcradus delivers managed security services built for resilient growth."
                 sectionClassName="solutions-hero"
                 visual={
-                    <div className="relative w-full h-[400px] rounded-xl overflow-hidden shadow-[0_20px_80px_rgba(232,64,10,0.15)] border border-border">
-                        <div className="absolute inset-0 bg-[#e8400a] mix-blend-overlay opacity-10 z-10" />
-                     
+                    <div className="flex justify-center items-center">
+                        <img 
+                            src="/generated/solution image.png" 
+                            alt="Cybersecurity Shield" 
+                            className="w-full h-auto max-h-[420px] object-contain"
+                            style={{ filter: 'drop-shadow(0 20px 45px rgba(255, 107, 0, 0.12))' }}
+                        />
                     </div>
                 }
             />
