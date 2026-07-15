@@ -1,25 +1,26 @@
 import React from "react";
-import { MapPin, Clock, Navigation } from "lucide-react";
+import { MapPin, Mail, Phone, Navigation } from "lucide-react";
 
 export default function LocationMap() {
   const offices = [
     {
       id: "india",
       flag: "🇮🇳",
-      label: "India Office",
-      title: "Netcradus — Ghaziabad, India",
-      address: "Office no. 609, 6th floor, AVS CITY SQUARE, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003",
-      mapQuery: "Netcradus, Ghaziabad, Uttar Pradesh, India",
-      hours: "Mon – Sat, 10:00 AM – 7:00 PM (IST)",
+      label: "India Headquarters",
+      title: "India Headquarters",
+      address: "AVS City Square, Delhi NCR, India",
+      email: "info@netcradus.in",
+      phone: "+91 72909 09571",
+      mapQuery: "AVS City Square, Ghaziabad, Uttar Pradesh, India",
     },
     {
       id: "uk",
       flag: "🇬🇧",
-      label: "UK Office",
-      title: "Netcradus — Leicester, UK",
-      address: "London Road, Leicester, LE2 0QS, England",
-      mapQuery: "Netcradus, Leicester, United Kingdom",
-      hours: "Mon – Sat, 10:00 AM – 7:00 PM (UK)",
+      label: "United Kingdom Office",
+      title: "United Kingdom Office",
+      address: "London, United Kingdom",
+      email: "info@netcradus.in",
+      mapQuery: "London, United Kingdom",
     },
   ];
 
@@ -29,7 +30,7 @@ export default function LocationMap() {
         <span className="offices-kicker">Find Us</span>
         <h2 className="offices-title">Our Offices</h2>
         <p className="offices-desc" style={{ margin: "0.5rem auto 0 auto" }}>
-          Two teams, one SOC. Reach out to whichever office is closer to you.
+          Visit our offices or connect with our teams across regions. We're here to support your business wherever you are.
         </p>
       </div>
 
@@ -59,11 +60,11 @@ export default function LocationMap() {
                   <span className="office-badge-label">{office.label}</span>
                 </div>
 
-                {/* Floating purple pin marker */}
+                {/* Floating pin marker */}
                 <div className="office-map-pin">
                   <div className="pin-wrapper">
                     <span className="pin-ping" />
-                    <div className="pin-core">
+                    <div className="pin-core" style={{ backgroundColor: "#E8400A" }}>
                       <MapPin size={16} className="text-white" strokeWidth={2.25} />
                     </div>
                     <span className="pin-tail" />
@@ -74,7 +75,7 @@ export default function LocationMap() {
               <div className="global-office-details">
                 <div className="office-details-header">
                   <div>
-                    <span className="office-details-kicker">{office.label}</span>
+                    <span className="office-details-kicker" style={{ color: "#E8400A" }}>{office.label}</span>
                     <h3 className="global-office-title">{office.title}</h3>
                   </div>
                   <a
@@ -89,15 +90,25 @@ export default function LocationMap() {
                   </a>
                 </div>
 
-                <div className="office-info-list" style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: "8px" }}>
-                  <div className="office-info-item" style={{ display: "flex", gap: "8px", alignItems: "flex-start", fontSize: "0.875rem", color: "var(--nc-muted)" }}>
-                    <MapPin size={16} className="shrink-0" style={{ color: "#7C3AED" }} strokeWidth={1.75} />
+                <div className="office-info-list" style={{ marginTop: "1.25rem", display: "flex", flexDirection: "column", gap: "10px" }}>
+                  <div className="office-info-item" style={{ display: "flex", gap: "10px", alignItems: "flex-start", fontSize: "0.875rem", color: "rgba(255,255,255,0.7)" }}>
+                    <MapPin size={16} className="shrink-0" style={{ color: "#E8400A" }} strokeWidth={1.75} />
                     <span>{office.address}</span>
                   </div>
-                  <div className="office-info-item" style={{ display: "flex", gap: "8px", alignItems: "flex-start", fontSize: "0.875rem", color: "var(--nc-muted)" }}>
-                    <Clock size={16} className="shrink-0" style={{ color: "#7C3AED" }} strokeWidth={1.75} />
-                    <span>{office.hours}</span>
-                  </div>
+                  
+                  {office.email && (
+                    <div className="office-info-item" style={{ display: "flex", gap: "10px", alignItems: "center", fontSize: "0.875rem", color: "rgba(255,255,255,0.7)" }}>
+                      <Mail size={16} className="shrink-0" style={{ color: "#E8400A" }} strokeWidth={1.75} />
+                      <a href={`mailto:${office.email}`} className="hover:text-[#E8400A] transition-colors">{office.email}</a>
+                    </div>
+                  )}
+
+                  {office.phone && (
+                    <div className="office-info-item" style={{ display: "flex", gap: "10px", alignItems: "center", fontSize: "0.875rem", color: "rgba(255,255,255,0.7)" }}>
+                      <Phone size={16} className="shrink-0" style={{ color: "#E8400A" }} strokeWidth={1.75} />
+                      <a href={`tel:${office.phone.replace(/\s+/g, '')}`} className="hover:text-[#E8400A] transition-colors">{office.phone}</a>
+                    </div>
+                  )}
                 </div>
 
                 <a

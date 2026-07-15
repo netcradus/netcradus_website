@@ -34,10 +34,6 @@ const CTABanner = () => {
           <Link to="/contact" className="cta-banner-btn-primary px-12 py-5 font-display font-black text-xs uppercase tracking-[0.3em] rounded-full shadow-2xl hover:scale-105 transition-all no-underline">
             Book a Free Consultation
           </Link>
-
-          <Link to="/contact" className="cta-banner-btn-secondary px-12 py-5 font-display font-black text-xs uppercase tracking-[0.3em] rounded-full hover:scale-105 transition-all no-underline">
-            Schedule Demo
-          </Link>
         </div>
 
       </div>

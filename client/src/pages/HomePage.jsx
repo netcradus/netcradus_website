@@ -51,7 +51,6 @@ import HowItWorks from '../components/HowItWorks';
 import CTABanner from '../components/CTABanner';
 import ClientsSection from '../components/ClientsSection';
 import LiveThreatMap from '../components/LiveThreatMap';
-import Certifications from '../components/Certifications';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { SEO_META } from '../data/seoMeta';
 
@@ -66,14 +65,13 @@ const HomePage = () => {
     <>
       <Hero />
       {/* <ACISSection /> */}
-      <LiveThreatMap />
       <Services />
+      <LiveThreatMap />
       <WhyChooseUs />
       <TrustSignals />
       <HowItWorks />
       <ClientsSection />
       <CTABanner />
-      <Certifications />
     </>
   );
 };

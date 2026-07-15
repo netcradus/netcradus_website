@@ -10,6 +10,7 @@ const partners = [
   { name: "Zapier", logo: "/technology/zapier.png" },
   { name: "Delta", logo: "/technology/delta.png" },
   { name: "Cato", logo: "/technology/Cato.png" },
+  { name: "OURAA", logo: "/technology/ouraa.png" }
 ];
 
 

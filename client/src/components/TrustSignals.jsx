@@ -259,50 +259,6 @@ export default function TrustSignals() {
               </div>
             </div>
           </div>
-
-          <div className="grid gap-8 xl:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-[28px] border border-border bg-[var(--color-surface)]/85 p-8 shadow-[0_18px_46px_rgba(232,64,10,0.05)]">
-              <h3 className="text-2xl font-black tracking-tight text-text-primary">
-                Certifications &amp; Awards
-              </h3>
-
-              <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-                {certifications.map(({ icon: Icon, label }) => (
-                  <li
-                    key={label}
-                    className="flex items-center gap-3 rounded-[22px] border border-border bg-[var(--color-surface-raised)]/70 px-4 py-4 text-sm text-text-secondary"
-                  >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-2xl border border-accent/20 bg-accent/8 text-accent">
-                      <Icon size={18} />
-                    </span>
-                    <span>{label}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="rounded-[28px] border border-border bg-[linear-gradient(90deg,rgba(232,64,10,0.12),transparent_55%),var(--color-surface)] p-8 shadow-[0_18px_46px_rgba(232,64,10,0.05)]">
-              <h3 className="text-2xl font-black tracking-tight text-text-primary">
-                Follow Netcradus on LinkedIn
-              </h3>
-
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary">
-                Use LinkedIn as the live proof stream for company updates, team
-                growth, security insights, event participation, and
-                customer-facing momentum.
-              </p>
- <div className="flex justify-center mt-6">
-              <a
-                href="https://www.linkedin.com/company/netcradus-pvt-ltd/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary mt-6 inline-flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] no-underline"
-              >
-                Visit LinkedIn
-              </a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

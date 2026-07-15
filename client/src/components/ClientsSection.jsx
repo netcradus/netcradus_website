@@ -34,7 +34,11 @@ const ClientsSection = () => {
                                 <img
                                     src={client.logo}
                                     alt={client.name}
-                                    className={`client-marquee-logo h-14 w-auto object-contain md:h-16 ${
+                                    className={`client-marquee-logo object-contain transition-all duration-300 ${
+                                        client.name === "Client 6" 
+                                          ? "h-16 md:h-20 scale-[1.15] px-2" 
+                                          : "h-14 w-auto md:h-16"
+                                    } ${
                                         client.needsLightBg ? "client-marquee-light-badge" : ""
                                     }`}
                                 />

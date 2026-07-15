@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import SubHero from '../components/SubHero';
-import CTABanner from '../components/CTABanner';
+import SolutionsCTABanner from '../components/SolutionsCTABanner';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { Layers, Globe, Lock } from 'lucide-react';
 
@@ -51,7 +51,7 @@ const NetCradPage = () => {
         </div>
       </section>
 
-      <CTABanner />
+      <SolutionsCTABanner />
     </>
   );
 };

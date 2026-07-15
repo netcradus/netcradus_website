@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  CheckCircle2, 
-  Loader2, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  CheckCircle2,
+  Loader2,
   ArrowRight,
   ShieldCheck,
   Clock3,
@@ -41,6 +41,7 @@ import {
 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
+import LocationMap from './LocationMap';
 
 // Import certifications/trust logos
 import isoLogo from '../assets/ISO-Loogo-removebg.png';
@@ -203,9 +204,9 @@ function TiltCard({ isActive, onClick, color, rgb, bgLight, children }) {
       onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ 
-        rotateX, 
-        rotateY, 
+      style={{
+        rotateX,
+        rotateY,
         transformPerspective: 800,
         "--accent-color": color,
         "--accent-color-rgb": rgb,
@@ -213,9 +214,8 @@ function TiltCard({ isActive, onClick, color, rgb, bgLight, children }) {
       }}
       whileTap={{ scale: 0.98 }}
       aria-pressed={isActive}
-      className={`card-premium card-sheen group card-option-btn ${
-        isActive ? "active" : ""
-      }`}
+      className={`card-premium card-sheen group card-option-btn ${isActive ? "active" : ""
+        }`}
     >
       {children}
     </motion.button>
@@ -281,7 +281,7 @@ function AmbientBackground() {
 
       <motion.div
         className="absolute h-[560px] w-[560px] rounded-full blur-[120px]"
-        style={{ 
+        style={{
           background: "radial-gradient(closest-side, #E8400A3d, transparent 70%)",
           position: 'absolute',
           top: "-8%",
@@ -295,7 +295,7 @@ function AmbientBackground() {
       />
       <motion.div
         className="absolute h-[480px] w-[480px] rounded-full blur-[120px]"
-        style={{ 
+        style={{
           background: "radial-gradient(closest-side, #C2410C33, transparent 70%)",
           position: 'absolute',
           top: "35%",
@@ -354,7 +354,7 @@ const FloatingShieldVisual = () => {
     <div className="podium-container">
       {/* Background radial glow */}
       <div className="absolute w-[300px] h-[300px] rounded-full bg-radial-glow blur-[80px] opacity-40 z-0"></div>
-      
+
       {/* Podium Rings */}
       <div className="podium-base" />
       <div className="podium-glow-ring" />
@@ -429,7 +429,7 @@ const Contact = () => {
     user_email: "",
     message: ""
   });
-  
+
   const [selectedOptionId, setSelectedOptionId] = useState(null);
   const [selectedService, setSelectedService] = useState("");
   const [file, setFile] = useState(null);
@@ -561,7 +561,7 @@ const Contact = () => {
               CONTACT NETCRADUS
             </motion.p>
 
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -571,25 +571,7 @@ const Contact = () => {
               Starts With a <span>Conversation</span>
             </motion.h1>
 
-            <p className="hero-description">
-              Speak directly with our cybersecurity specialists for VAPT, SOC, Cloud Security, Compliance, AI Security, and Managed Security Services.
-            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="hero-action-buttons"
-            >
-              <a href="#contact-form" className="btn-primary-talk">
-                <Phone size={16} />
-                Talk to an Expert
-              </a>
-              <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="btn-secondary-schedule">
-                <Calendar size={16} />
-                Schedule Meeting
-              </a>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
@@ -616,64 +598,16 @@ const Contact = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="hero-image-container"
           >
-            <img 
-              src="/img/contact page background.png" 
-              alt="Cybersecurity Shield Visual" 
-              className="hero-mobile-only-image" 
+            <img
+              src="/img/contact background.png"
+              alt="Cybersecurity Shield Visual"
+              className="hero-mobile-only-image"
             />
           </motion.div>
         </div>
       </section>
 
-      {/* SECTION 1 — Contact Option Cards (Centered 4-Column Grid) */}
-      <section className="options-section">
-        <div className="options-container">
-          <div className="options-grid">
-            {contactOptions.map((option, i) => {
-              const Icon = option.icon;
-              const isActive = selectedOptionId === option.id;
-              return (
-                <motion.div
-                  key={option.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.45, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ display: 'flex', justifyContent: 'center', width: '100%', height: '100%' }}
-                >
-                  <TiltCard 
-                    isActive={isActive} 
-                    onClick={() => handleOptionSelect(option.id)}
-                    color={option.color}
-                    rgb={option.rgb}
-                    bgLight={option.bgLight}
-                  >
-                    {isActive && (
-                      <motion.span
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        className="card-check-badge"
-                      >
-                        <Check size={12} strokeWidth={3} />
-                      </motion.span>
-                    )}
 
-                    <div className="card-icon-container">
-                      <Icon size={20} strokeWidth={1.75} />
-                    </div>
-                    <h3 className="card-option-title">{option.title}</h3>
-                    <p className="card-option-desc">{option.description}</p>
-                    <span className="card-option-cta">
-                      {isActive ? "Selected" : option.cta}
-                      <ArrowRight size={14} style={{ marginLeft: "4px" }} />
-                    </span>
-                  </TiltCard>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 2 — Form (65%) + Info Panel (35%) */}
       <section id="contact-form" className="main-contact-section">
@@ -882,12 +816,12 @@ const Contact = () => {
 
                   {/* File Uploader */}
                   <div className="attachment-container">
-                    <input 
-                      ref={fileInputRef} 
-                      type="file" 
-                      onChange={handleFileChange} 
-                      className="hidden" 
-                      id="attachment" 
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      onChange={handleFileChange}
+                      className="hidden"
+                      id="attachment"
                     />
                     {file ? (
                       <div className="file-attached-info">
@@ -898,10 +832,10 @@ const Contact = () => {
                             <p className="font-mono text-[11px] text-nc-muted" style={{ margin: 0 }}>{formatBytes(file.size)}</p>
                           </div>
                         </div>
-                        <button 
-                          type="button" 
-                          onClick={() => setFile(null)} 
-                          aria-label="Remove attachment" 
+                        <button
+                          type="button"
+                          onClick={() => setFile(null)}
+                          aria-label="Remove attachment"
                           className="copy-btn"
                           style={{ opacity: 1 }}
                         >
@@ -988,55 +922,92 @@ const Contact = () => {
                 </div>
 
                 <div className="get-in-touch-info-list">
-                  {/* Phone */}
-                  <div className="get-in-touch-item">
-                    <div className="get-in-touch-icon-box">
-                      <Phone size={18} />
+                  {/* Call Us (Clickable Phone Number Card) */}
+                  <div className="get-in-touch-item hover:shadow-[0_0_15px_rgba(232,64,10,0.15)] transition-all duration-300">
+                    <div className="get-in-touch-icon-box" style={{ borderColor: "#E8400A" }}>
+                      <Phone size={18} className="text-[#E8400A]" />
                     </div>
                     <div className="get-in-touch-details">
-                      <p className="get-in-touch-label">Sales Inquiries</p>
-                      <p className="get-in-touch-value">1800121008800</p>
-                      <p className="get-in-touch-value-desc">Toll Free (India) · 24/7 Dispatch</p>
+                      <p className="get-in-touch-label">Call Us</p>
+                      <a href="tel:+917290909571" className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "1.1rem", fontWeight: "bold" }}>
+                        +91 72909 09571
+                      </a>
+                      <p className="get-in-touch-value-desc">24×7 Emergency Incident Response</p>
                     </div>
-                    <CopyButton value="1800121008800" />
+                    <CopyButton value="+91 72909 09571" />
                   </div>
 
-                  {/* Email */}
-                  <div className="get-in-touch-item">
-                    <div className="get-in-touch-icon-box">
-                      <Mail size={18} />
+                  {/* Email Us (3 professional contact emails) */}
+                  <div className="get-in-touch-item" style={{ flexDirection: "column", alignItems: "flex-start", gap: "1rem" }}>
+                    <div className="flex items-center gap-3">
+                      <div className="get-in-touch-icon-box">
+                        <Mail size={18} />
+                      </div>
+                      <p className="get-in-touch-label" style={{ marginBottom: 0 }}>Email Us</p>
                     </div>
-                    <div className="get-in-touch-details">
-                      <p className="get-in-touch-label">Email Us</p>
-                      <p className="get-in-touch-value">info@netcradus.com</p>
-                      <p className="get-in-touch-value-desc">General and partner inquiries</p>
+                    <div className="w-full pl-11 space-y-4">
+                      <div className="flex items-center justify-between group">
+                        <div>
+                          <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>General Enquiries</p>
+                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>info@netcradus.in</p>
+                        </div>
+                        <CopyButton value="info@netcradus.in" />
+                      </div>
+                      <div className="flex items-center justify-between group">
+                        <div>
+                          <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>Emergency Support (24×7)</p>
+                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>support@netcradus.in</p>
+                        </div>
+                        <CopyButton value="support@netcradus.in" />
+                      </div>
+                      <div className="flex items-center justify-between group">
+                        <div>
+                          <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>Sales & Business Enquiries</p>
+                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>sales@netcradus.in</p>
+                        </div>
+                        <CopyButton value="sales@netcradus.in" />
+                      </div>
                     </div>
-                    <CopyButton value="info@netcradus.com" />
                   </div>
 
-                  {/* Office */}
+                  {/* India Node Address */}
                   <div className="get-in-touch-item">
                     <div className="get-in-touch-icon-box">
                       <MapPin size={18} />
                     </div>
                     <div className="get-in-touch-details">
-                      <p className="get-in-touch-label">Our Office</p>
+                      <p className="get-in-touch-label">India Node</p>
                       <p className="get-in-touch-value" style={{ fontSize: '0.85rem' }}>
-                        Netcradus Pvt. Ltd.<br />
-                        Office no. 609, 6th floor, AVS CITY SQUARE, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003
+                        AVS City Square<br />
+                        Delhi NCR, India
                       </p>
                     </div>
                   </div>
 
-                  {/* Business Hours */}
+                  {/* UK Headquarters Address */}
+                  <div className="get-in-touch-item">
+                    <div className="get-in-touch-icon-box">
+                      <MapPin size={18} />
+                    </div>
+                    <div className="get-in-touch-details">
+                      <p className="get-in-touch-label">UK Headquarters</p>
+                      <p className="get-in-touch-value" style={{ fontSize: '0.85rem' }}>
+                        Netcradus Ltd.<br />
+                        London Road, Leicester, LE2 0QS, England, United Kingdom
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Business Hours (24x7 Security Operations) */}
                   <div className="get-in-touch-item">
                     <div className="get-in-touch-icon-box">
                       <Clock size={18} />
                     </div>
                     <div className="get-in-touch-details">
-                      <p className="get-in-touch-label">Business Hours</p>
-                      <p className="get-in-touch-value">Mon - Fri : 9:00 AM - 6:00 PM (IST)</p>
-                      <p className="get-in-touch-value-desc">Engineering support operates 24/7</p>
+                      <p className="get-in-touch-label">24×7 Security Operations</p>
+                      <p className="get-in-touch-value-desc" style={{ marginTop: '4px', fontSize: '0.8rem', lineHeight: '1.4' }}>
+                        Our Security Operations Center (SOC) provides continuous monitoring, incident response, and enterprise cybersecurity support around the clock.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -1053,136 +1024,10 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* SECTION 3 — Styled Locations Banner and Dual Google Maps Grid */}
-      <section className="relative z-10 px-4">
-        {/* Banner */}
-        <div className="location-banner-card">
-          <div className="location-banner-left">
-            <span className="location-banner-kicker">OUR LOCATION</span>
-            <h2 className="location-banner-title">Visit Our Office</h2>
-            <p className="location-banner-desc">Strategically located to serve our clients across India, UK, and worldwide.</p>
-          </div>
-          <button 
-            type="button" 
-            className="btn-view-map"
-            onClick={() => document.getElementById("office-maps")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            <MapPin size={18} />
-            View on Map
-          </button>
-        </div>
-
-        {/* Dual Maps Grid */}
-        <div id="office-maps" className="location-maps-grid">
-          {/* India Card (Ghaziabad / Rajnagar Extension) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="global-office-card"
-          >
-            <div className="global-office-map-container">
-              <iframe
-                title="Netcradus Rajnagar map"
-                src="https://www.google.com/maps?q=Netcradus,%20Ghaziabad,%20Uttar%20Pradesh,%20India&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="office-map-iframe"
-              />
-              <div className="office-badge">
-                <span className="office-badge-flag">🇮🇳</span>
-                <span className="office-badge-label">Rajnagar Extension</span>
-              </div>
-            </div>
-            <div className="global-office-details">
-              <div className="office-details-header">
-                <div>
-                  <span className="office-details-kicker">India Office</span>
-                  <h3 className="global-office-title">Netcradus — Rajnagar, India</h3>
-                </div>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Netcradus,%20Ghaziabad,%20Uttar%20Pradesh,%20India"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="directions-btn"
-                >
-                  <Navigation size={14} />
-                  Get Directions
-                </a>
-              </div>
-              <div className="office-info-list">
-                <div className="office-info-item">
-                  <MapPin size={16} className="shrink-0" />
-                  <span>Office no. 609, 6th floor, AVS CITY SQUARE, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003</span>
-                </div>
-                <div className="office-info-item">
-                  <Clock size={16} className="shrink-0" />
-                  <span>Mon – Sat, 10:00 AM – 7:00 PM (IST)</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* UK Card (Leicester) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="global-office-card"
-          >
-            <div className="global-office-map-container">
-              <iframe
-                title="Netcradus UK map"
-                src="https://www.google.com/maps?q=London%20Road,%20Leicester,%20LE2%200QS,%20England&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="office-map-iframe"
-              />
-              <div className="office-badge">
-                <span className="office-badge-flag">🇬🇧</span>
-                <span className="office-badge-label">UK Office</span>
-              </div>
-            </div>
-            <div className="global-office-details">
-              <div className="office-details-header">
-                <div>
-                  <span className="office-details-kicker">UK Office</span>
-                  <h3 className="global-office-title">Netcradus — Leicester, UK</h3>
-                </div>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=London%20Road,%20Leicester,%20LE2%200QS,%20England"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="directions-btn"
-                >
-                  <Navigation size={14} />
-                  Get Directions
-                </a>
-              </div>
-              <div className="office-info-list">
-                <div className="office-info-item">
-                  <MapPin size={16} className="shrink-0" />
-                  <span>London Road, Leicester, LE2 0QS, England, United Kingdom</span>
-                </div>
-                <div className="office-info-item">
-                  <Clock size={16} className="shrink-0" />
-                  <span>Mon – Sat, 10:00 AM – 7:00 PM (GMT)</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* SECTION 3 — Global Offices Maps */}
+      <div className="relative z-10">
+        <LocationMap />
+      </div>
 
 
 
@@ -1206,8 +1051,8 @@ const Contact = () => {
                     className="faq-trigger"
                   >
                     <span className="faq-question">{item.question}</span>
-                    <motion.span 
-                      animate={{ rotate: isOpen ? 180 : 0 }} 
+                    <motion.span
+                      animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.25 }}
                       className="faq-icon-wrapper"
                     >

@@ -133,7 +133,7 @@
 
 @media (min-width: 992px) {
   .hero-section {
-    background: url('/img/contact page background.png') no-repeat center center;
+    background: url('/img/contact background.png') no-repeat center center;
     background-size: cover;
   }
 }

@@ -857,9 +857,6 @@ export const FooterCTA = () => {
         <a href="/contact" className="bg-brand-gradient  text-[15px] font-semibold py-[13px] px-[28px] rounded-lg transition-all duration-200 ">
           Request Early Access
         </a>
-        <a href="/contact" className="border border-accent text-accent text-[15px] font-semibold py-[13px] px-[28px] rounded-lg transition-all duration-200 hover:bg-accent/10">
-          Book a Demo Call
-        </a>
       </div>
       <p className="text-[12px] text-text-secondary">
         14-day free trial · No credit card · Cancel anytime

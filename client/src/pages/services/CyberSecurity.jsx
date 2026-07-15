@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import SubHero from "../../components/SubHero";
-import CTABanner from "../../components/CTABanner";
+import SolutionsCTABanner from "../../components/SolutionsCTABanner";
 import ServiceDetailLayout from "../../components/ServiceDetailLayout";
 import { SERVICE_TABS } from "../../components/Services";
 
@@ -19,7 +19,7 @@ const CyberSecurityPage = () => {
           <ServiceDetailLayout service={service} />
         </div>
       </section>
-      <CTABanner />
+      <SolutionsCTABanner />
     </div>
   );
 };

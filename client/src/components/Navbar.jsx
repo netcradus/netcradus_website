@@ -63,7 +63,7 @@ useTheme();
           <img
             src="/Netcradus logo01.png"
             alt="Netcradus"
-            className="h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            className="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
 
@@ -257,13 +257,6 @@ useTheme();
             <ChevronRight size={18} />
           </Link>
 
-          <Link
-            to="/contact"
-            className="btn-primary mt-6 text-center py-3"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Book a Demo
-          </Link>
         </div>
       </div>
     </nav>

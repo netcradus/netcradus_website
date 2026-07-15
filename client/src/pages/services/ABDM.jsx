@@ -397,14 +397,8 @@ const ABDMPage = () => {
                   to="/contact"
                   className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-7 py-3.5 text-sm font-bold text-white shadow-[0_18px_45px_-14px_rgba(249,115,22,0.6)] transition-transform duration-300 hover:-translate-y-0.5"
                 >
-                  Request Demo
-                  <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-bold text-white backdrop-blur transition-colors duration-300 hover:border-sky-300/50 hover:text-sky-200"
-                >
                   Talk to Experts
+                  <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>
             </Reveal>
@@ -621,12 +615,6 @@ const ABDMPage = () => {
                 className="rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-7 py-3.5 text-sm font-bold text-white shadow-[0_18px_45px_-14px_rgba(249,115,22,0.6)] transition-transform duration-300 hover:-translate-y-0.5"
               >
                 Request a Free Consultation
-              </Link>
-              <Link
-                to="/contact"
-                className="rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-bold text-white backdrop-blur transition-colors duration-300 hover:border-sky-300/50 hover:text-sky-200"
-              >
-                Schedule a Demo
               </Link>
             </div>
           </Reveal>

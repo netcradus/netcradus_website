@@ -52,8 +52,9 @@ export default function NewsletterPopup() {
     // Don't show if already subscribed
     if (localStorage.getItem(LS_KEY) === "true") return;
 
-    const timer = setTimeout(() => setVisible(true), 8000);
-    return () => clearTimeout(timer);
+    // TEMPORARILY DISABLED - Enable newsletter popup before production
+    // const timer = setTimeout(() => setVisible(true), 8000);
+    // return () => clearTimeout(timer);
   }, [location.pathname]);
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import SubHero from '../components/SubHero';
 import Services from "../components/Services";
 import Industries from "../components/Industries";
-import CTABanner from "../components/CTABanner";
+import SolutionsCTABanner from "../components/SolutionsCTABanner";
 import { usePageMeta } from '../hooks/usePageMeta';
 import { SEO_META } from '../data/seoMeta';
 
@@ -33,7 +33,7 @@ const ServicesPage = () => {
             />
             <Services />
             <Industries />
-            <CTABanner />
+            <SolutionsCTABanner />
         </div>
     );
 };

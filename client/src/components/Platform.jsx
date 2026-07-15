@@ -1,9 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Download, Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { SEO_META } from "../data/seoMeta";
 import PageHero from "./PageHero";
+import AmbientMesh from "./AmbientMesh";
+
+const TYPING_SEQUENCES = [
+  "Protecting Endpoints...",
+  "Monitoring Cloud...",
+  "Stopping Ransomware...",
+  "Correlating Threats...",
+  "Powered by ACIS + NETXDR"
+];
 
 const platformSections = [
   {
@@ -103,57 +113,309 @@ const platformSections = [
 export default function Platform() {
   usePageMeta(SEO_META.platform.title, SEO_META.platform.description);
 
+  const [translateXAmount, setTranslateXAmount] = useState(-150);
+  const [activeTab, setActiveTab] = useState("acis-overview");
+  
+  // Typewriter effect states
+  const [typingText, setTypingText] = useState("");
+  const [sequenceIndex, setSequenceIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setTranslateXAmount(-20);
+      } else if (window.innerWidth < 1024) {
+        setTranslateXAmount(-50);
+      } else if (window.innerWidth < 1280) {
+        setTranslateXAmount(-100);
+      } else {
+        setTranslateXAmount(-150);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Typewriter effect hook
+  useEffect(() => {
+    const currentFullText = TYPING_SEQUENCES[sequenceIndex];
+    let timer;
+
+    if (isDeleting) {
+      timer = setTimeout(() => {
+        setTypingText(currentFullText.substring(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+      }, 40);
+    } else {
+      timer = setTimeout(() => {
+        setTypingText(currentFullText.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+      }, 70);
+    }
+
+    if (!isDeleting && charIndex === currentFullText.length) {
+      timer = setTimeout(() => setIsDeleting(true), 1500);
+    } else if (isDeleting && charIndex === 0) {
+      setIsDeleting(false);
+      setSequenceIndex((prev) => (prev + 1) % TYPING_SEQUENCES.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, sequenceIndex]);
+
+  // Scrollspy effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        "acis-overview",
+        "acis-lite",
+        "acis-pro",
+        "acis-enterprise",
+        "ai-siem-engine",
+        "soar-automation",
+        "ai-security"
+      ];
+      
+      const scrollPosition = window.scrollY + 250;
+
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveTab(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const tierCards = platformSections.filter((section) => section.tier);
 
   return (
     <div className="bg-background transition-colors duration-500">
-      <PageHero
-        label=""
-        title="The Netcradus Cybersecurity Platform"
-        subtitle="Explore ACIS, its deployment tiers, and the intelligence engines that power autonomous cyber defense at enterprise scale."
-        backgroundImage="/img/platform bg.png"
-        media={
-          <div className="flex items-center justify-center">
-            <div
-              className="w-full"
-              style={{
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%), linear-gradient(to right, black 0%, black 94%, transparent 100%)",
-                WebkitMaskComposite: "source-in",
-                maskImage:
-                  "linear-gradient(to bottom, black 0%, black 82%, transparent 100%), linear-gradient(to right, black 0%, black 94%, transparent 100%)",
-                maskComposite: "intersect",
-              }}
-            >
-              <img src="/img/platform hero image.png" alt="ACIS platform" className="max-w-full object-contain" />
+      {/* Custom Hero section */}
+      <section
+        className="relative overflow-x-hidden py-24 md:py-32"
+        style={{
+          backgroundImage: "linear-gradient(rgba(0,0,0,0.64), rgba(0,0,0,0.64)), url('/img/platform bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      >
+        <AmbientMesh />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_32%,rgba(255,107,0,0.08),transparent_30%)]" />
+        
+        <div className="container relative z-10 mx-auto grid max-w-screen-2xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-16 xl:px-24">
+          {/* Left Column: Content */}
+          <div className="max-w-3xl">
+            {/* 1. Next-Gen Cyber Defence Badge */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/8 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FF6B00]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B00] animate-ping" />
+              Next-Generation Cyber Defence
+            </div>
+
+            {/* 2. Primary Heading */}
+            <h1 className="text-4xl font-black leading-tight tracking-tighter text-white md:text-6.5xl">
+              The Netcradus <br />
+              <span className="text-white">Cybersecurity Platform</span>
+            </h1>
+
+            {/* 3. Subtitle with Glowing Pulsing ACIS & NETXDR */}
+            <div className="mt-4 flex items-center gap-2 text-lg md:text-2xl font-black text-gray-400">
+              <span>Powered by</span>
+              <span className="text-[#FF6B00] tracking-wider animate-pulse ml-1" style={{ filter: "drop-shadow(0 0 8px rgba(255, 107, 0, 0.6))" }}>ACIS</span>
+              <span className="text-gray-500 font-normal">+</span>
+              <span className="text-[#00E5FF] tracking-wider animate-pulse" style={{ filter: "drop-shadow(0 0 8px rgba(0, 229, 255, 0.6))" }}>NETXDR</span>
+            </div>
+
+            {/* 4. Description paragraph */}
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300 md:text-lg">
+              Experience the power of ACIS (Autonomous Cyber Immune System) and NETXDR, combining AI-driven threat detection, autonomous response, real-time visibility, and intelligent cyber defence in one unified security platform.
+            </p>
+
+            {/* 5. Four premium feature pills */}
+            <div className="mt-8 grid grid-cols-2 gap-3 max-w-lg">
+              {[
+                { text: "AI Powered Detection", icon: "🛡" },
+                { text: "Autonomous Response", icon: "⚡" },
+                { text: "Unified Visibility", icon: "🌐" },
+                { text: "Enterprise Ready", icon: "🔒" }
+              ].map((pill, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 rounded-xl border border-white/8 bg-white/4 px-4 py-2.5 text-xs sm:text-sm font-semibold text-gray-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#FF6B00]/40 hover:shadow-[0_0_15px_rgba(255,107,0,0.15)] hover:text-white"
+                >
+                  <span>{pill.icon}</span>
+                  <span>{pill.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* 6. Typewriter loop effect */}
+            <div className="mt-6 flex items-center gap-2 font-mono text-xs sm:text-sm text-gray-400 min-h-[24px]">
+              <span className="text-[#FF6B00] font-bold">&gt;_</span>
+              <span>{typingText}</span>
+              <span className="h-4 w-1.5 bg-[#FF6B00] animate-pulse" />
+            </div>
+
+            {/* 7. Extra operation badges */}
+            <div className="mt-4 flex items-center gap-4 text-[10px] font-bold text-gray-500">
+              <span className="flex items-center gap-1.5"><span className="text-[#FF6B00]">ACIS</span> → Detect</span>
+              <span className="text-gray-700">|</span>
+              <span className="flex items-center gap-1.5"><span className="text-[#00E5FF]">NETXDR</span> → Correlate</span>
+              <span className="text-gray-700">|</span>
+              <span className="flex items-center gap-1.5"><span className="text-white">SOC</span> → Protect</span>
+            </div>
+
+            {/* 8. CTA Buttons */}
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#acis-overview"
+                className="rounded-xl bg-[#FF6B00] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#FF6B00]/20 transition-all duration-300 hover:bg-[#ff8533] hover:shadow-[#FF6B00]/35 hover:-translate-y-0.5"
+              >
+                Explore ACIS
+              </a>
+              <a
+                href="#soar-automation"
+                className="rounded-xl border border-[#FF6B00]/50 bg-transparent px-6 py-3.5 text-sm font-bold text-[#FF6B00] transition-all duration-300 hover:bg-[#FF6B00]/8 hover:-translate-y-0.5"
+              >
+                Discover NETXDR
+              </a>
             </div>
           </div>
-        }
-      />
 
-      <section className="sticky top-20 z-20 border-y border-border bg-background/80 py-4 backdrop-blur-xl">
+          {/* Right Column: Visual Elements */}
+          <div className="relative flex items-center justify-center overflow-visible min-h-[480px] lg:-translate-y-12">
+            {/* Animated orange connection lines representing AI Communication */}
+            <div className="absolute right-[45%] top-1/2 -translate-y-1/2 w-[240px] h-[160px] pointer-events-none z-0 hidden lg:block overflow-visible">
+              <svg className="w-full h-full overflow-visible">
+                <defs>
+                  <linearGradient id="rayGrad" x1="100%" y1="50%" x2="0%" y2="50%">
+                    <stop offset="0%" stopColor="#FF6B00" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#FF6B00" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 220 40 L 40 20"
+                  stroke="url(#rayGrad)"
+                  strokeWidth="1.5"
+                  strokeDasharray="6, 6"
+                  className="animate-pulse"
+                >
+                  <animate attributeName="stroke-dashoffset" values="40;0" dur="2.5s" repeatCount="indefinite" />
+                </path>
+                <path
+                  d="M 220 80 L 10 80"
+                  stroke="url(#rayGrad)"
+                  strokeWidth="1.5"
+                  strokeDasharray="6, 6"
+                  className="animate-pulse"
+                >
+                  <animate attributeName="stroke-dashoffset" values="40;0" dur="2.2s" repeatCount="indefinite" />
+                </path>
+                <path
+                  d="M 220 120 L 30 140"
+                  stroke="url(#rayGrad)"
+                  strokeWidth="1.5"
+                  strokeDasharray="6, 6"
+                  className="animate-pulse"
+                >
+                  <animate attributeName="stroke-dashoffset" values="40;0" dur="2.8s" repeatCount="indefinite" />
+                </path>
+              </svg>
+            </div>
+
+            {/* Soft orange halo glow directly behind robot to stand out */}
+            <div className="absolute w-[360px] h-[360px] rounded-full bg-[#FF6B00]/12 blur-[90px] pointer-events-none z-0" />
+
+            {/* Glowing network particles & rotating circular rings behind robot */}
+            <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none opacity-20">
+              <div className="absolute w-[520px] h-[520px] border border-dashed border-[#FF6B00]/40 rounded-full animate-spin-cw" />
+              <div className="absolute w-[640px] h-[640px] border border-dashed border-[#00E5FF]/20 rounded-full animate-spin-ccw" />
+              <div className="absolute w-[400px] h-[400px] border border-[#FF6B00]/15 rounded-full animate-ping" style={{ animationDuration: "6s" }} />
+            </div>
+
+            {/* Floating and Breathing Robot Image Wrapper */}
+            <motion.div
+              className="w-full max-w-[340px] sm:max-w-[460px] lg:max-w-[640px] z-10 relative lg:-mb-32 lg:translate-y-12"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, black 0%, black 85%, transparent 100%), linear-gradient(to right, black 0%, black 95%, transparent 100%)",
+                WebkitMaskComposite: "source-in",
+                maskImage:
+                  "linear-gradient(to bottom, black 0%, black 85%, transparent 100%), linear-gradient(to right, black 0%, black 95%, transparent 100%)",
+                maskComposite: "intersect",
+              }}
+              animate={{
+                y: [0, -10, 0],
+                scale: [1, 1.02, 1],
+                x: [0, translateXAmount, translateXAmount, 0, 0]
+              }}
+              transition={{
+                y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
+                scale: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                x: { duration: 9, times: [0, 0.4, 0.5, 0.9, 1], ease: "easeInOut", repeat: Infinity }
+              }}
+            >
+              <img src="/img/platform hero image.png" alt="ACIS platform" className="w-full object-contain" />
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Improved Sticky Navigation Tabs */}
+      <section className="sticky top-20 z-20 border-y border-white/5 bg-black/60 py-4.5 backdrop-blur-xl">
         <div className="mx-auto flex max-w-screen-2xl flex-wrap gap-3 px-4 sm:px-6 lg:px-16 xl:px-24">
           {[
-            "ACIS Overview",
-            "ACIS Lite",
-            "ACIS Pro",
-            "ACIS Enterprise",
-            "AI-SIEM Engine",
-            "SOAR Automation",
-            "AI Security",
-          ].map((label, index) => (
-            <a
-              key={label}
-              href={label === "AI Security" ? "#ai-security" : `#${platformSections[index].id}`}
-              className="rounded-full border border-border bg-[var(--color-surface)] px-4 py-2 text-sm font-semibold text-text-secondary transition hover:border-accent/30 hover:text-accent hover:shadow-[0_0_20px_rgba(232,64,10,0.1)]"
-            >
-              {label}
-            </a>
-          ))}
+            { label: "ACIS Overview", id: "acis-overview" },
+            { label: "ACIS Lite", id: "acis-lite" },
+            { label: "ACIS Pro", id: "acis-pro" },
+            { label: "ACIS Enterprise", id: "acis-enterprise" },
+            { label: "AI-SIEM Engine", id: "ai-siem-engine" },
+            { label: "SOAR Automation", id: "soar-automation" },
+            { label: "AI Security", id: "ai-security" },
+          ].map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <a
+                key={tab.label}
+                href={`#${tab.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(tab.id)?.scrollIntoView({ behavior: "smooth" });
+                  setActiveTab(tab.id);
+                }}
+                className={`relative rounded-xl border px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-300 backdrop-blur-md ${
+                  isActive
+                    ? "border-[#FF6B00]/40 bg-[#FF6B00]/10 text-white shadow-[0_0_20px_rgba(255,107,0,0.15)]"
+                    : "border-white/10 bg-white/5 text-gray-400 hover:border-[#FF6B00]/20 hover:text-white hover:shadow-[0_0_15px_rgba(255,107,0,0.06)]"
+                }`}
+              >
+                {tab.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabUnderline"
+                    className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#FF6B00]"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </a>
+            );
+          })}
         </div>
       </section>
 
@@ -225,18 +487,7 @@ export default function Platform() {
                     <Download size={16} />
                   </a>
                 ) : null}
-                {section.id === "soar-automation" ? (
-                  <div id="integrations-api" className="mt-8 rounded-[24px] border border-accent/15 bg-accent/6 p-6">
-                    <h3 className="text-xl font-black text-text-primary">Integrations / API</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                      Connect ACIS with enterprise tooling across ticketing, collaboration, alerting, and orchestration systems using managed integrations and API-led workflows.
-                    </p>
-                    <Link to="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent transition hover:text-accent-bright">
-                      Request integration details
-                      <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                ) : null}
+
               </div>
 
               <div className={index % 2 === 1 ? "lg:order-1" : ""}>

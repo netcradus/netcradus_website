@@ -1,273 +1,394 @@
-import {useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Shield,
+  Radar,
+  Lock,
+  Activity,
+  ShieldCheck,
+  Server,
+  Bell,
+  Users,
+  Cpu,
+  ShieldAlert,
+  Globe,
+  BrainCircuit,
+} from "lucide-react";
 
-const whyChooseItems = [
-  "24/7 SOC & SIEM Monitoring",
-  "Advanced Threat Detection",
-  "Enterprise-Grade Cybersecurity Solutions",
-  "Global Business Security Expertise",
-  "Proactive Cyber Defense Approach",
-  "Real-Time Threat Monitoring",
-  "AI-Powered Security Operations",
-  "End-to-End Digital Protection",
-  "Scalable Security for Modern Businesses",
-  "VAPT & Vulnerability Assessment",
-  "Cloud & Network Security Solutions",
-  "Fast Incident Response & Risk Management",
-  "Protection Against Modern Cyber Threats",
-  "Business-Focused Cybersecurity Strategy",
-  "Trusted Partner for Digital Resilience",
+const FEATURES_DATA = [
+  // Left Side (from top to bottom)
+  { title: "24/7 SOC & SIEM Monitoring", icon: Shield, angle: -135, side: "left" },
+  { title: "Global Business Security Expertise", icon: Globe, angle: -155, side: "left" },
+  { title: "AI-Powered Security Operations", icon: BrainCircuit, angle: -175, side: "left" },
+  { title: "VAPT & Vulnerability Assessment", icon: ShieldCheck, angle: 165, side: "left" },
+  { title: "Protection Against Modern Cyber Threats", icon: ShieldAlert, angle: 145, side: "left" },
+  { title: "Real-Time Threat Monitoring", icon: Cpu, angle: 125, side: "left" },
+  
+  // Right Side (from top to bottom)
+  { title: "Advanced Threat Detection", icon: Radar, angle: -45, side: "right" },
+  { title: "Enterprise-Grade Cybersecurity Solutions", icon: Lock, angle: -25, side: "right" },
+  { title: "Proactive Cyber Defense Approach", icon: Activity, angle: -5, side: "right" },
+  { title: "End-to-End Digital Protection", icon: Shield, angle: 15, side: "right" },
+  { title: "Cloud & Network Security Solutions", icon: Server, angle: 35, side: "right" },
+  { title: "Fast Incident Response & Risk Management", icon: Bell, angle: 55, side: "right" },
+  
+  // Bottom Center
+  { title: "Trusted Partner for Digital Resilience", icon: Users, angle: 90, side: "bottom" },
 ];
 
-const businessProblems = [
-  "Protection from Cyber Attacks",
-  "Prevention of Data Breaches",
-  "24/7 Threat Monitoring & Detection",
-  "Ransomware Attack Prevention",
-  "Securing Cloud Infrastructure",
-  "Reducing Business Downtime",
-  "Protecting Customer & Financial Data",
-  "Early Detection of Security Vulnerabilities",
-  "Preventing Unauthorized System Access",
-  "Phishing & Email Threat Protection",
-  "Improving Regulatory & Security Compliance",
-  "Faster Incident Response & Recovery",
-  "Securing Remote Work Environments",
-  "Reducing Cybersecurity Risks for Businesses",
-  "Protecting Business Reputation & Trust",
-  "Continuous Security Monitoring for Enterprises",
-  "Preventing Financial Loss from Cyber Threats",
-  "Strengthening Digital Infrastructure Security",
-  "Managing Security Operations Efficiently",
-  "Helping Businesses Stay Operational & Secure",
-];
+const BackgroundParticles = () => {
+  const particles = Array.from({ length: 25 }).map((_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 3 + 1,
+    duration: Math.random() * 12 + 8,
+    delay: Math.random() * -20,
+  }));
 
-const differentiators = [
-  "24/7 Real-Time SOC & SIEM Monitoring",
-  "Focus on Proactive Threat Prevention Not Just Detection",
-  "Global Enterprise-Focused Security Solutions",
-  "End-to-End Cybersecurity + Software Expertise",
-  "Advanced Threat Intelligence & Behavioral Analytics",
-  "Customized Security Solutions for Modern Businesses",
-  "Scalable Security Infrastructure for Global Companies",
-  "Faster Threat Detection & Incident Response",
-  "Cloud Network & Endpoint Security Under One Roof",
-  "Business-Centric Cybersecurity Strategy",
-  "Continuous Monitoring with Intelligent Automation",
-  "Secure Digital Transformation for Enterprises",
-  "Strong Focus on Digital Resilience & Business Continuity",
-  "UK + India Presence for Global Service Capability",
-  "Modern Security Architecture Built for Evolving Threats",
-  "Integration of AI Automation & Threat Hunting",
-  "Tailored Cybersecurity Solutions Instead of Generic Services",
-  "Enterprise-Grade Security with Agile Support Model",
-  "Long-Term Partnership & Client-Focused Approach",
-];
-
-const sections = [
-  {
-    title: "Why should clients choose Netcradus",
-    accent: "Choose Netcradus",
-    summary:
-      "A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.",
-    items: whyChooseItems,
-  },
-  {
-    title: "The Gaps We Fill",
-    accent: "Problems We Solve",
-    summary:
-      "Focused outcomes for risk reduction, uptime protection, cloud security, compliance support, and stronger day-to-day cyber resilience.",
-    items: businessProblems,
-  },
-  {
-    title: "What Sets Us Apart",
-    accent: "What Sets Us Apart",
-    summary:
-      "A differentiated delivery model that combines proactive monitoring, security engineering, global support capability, and long-term partnership.",
-    items: differentiators,
-  },
-];
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full bg-[#FF6B00]/15"
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+          }}
+          animate={{
+            y: [0, -50, 0],
+            opacity: [0.1, 0.6, 0.1],
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default function WhyChooseUs() {
-    const [activeSection, setActiveSection] = useState(0);
+  const containerRef = useRef(null);
+  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+  const [orbitRadius, setOrbitRadius] = useState(440);
+  const [coreDiameter, setCoreDiameter] = useState(400);
 
-  const nextSection = () => {
-    setActiveSection((prev) => (prev + 1) % sections.length);
-  };
-
-  const prevSection = () => {
-    setActiveSection((prev) => (prev - 1 + sections.length) % sections.length);
-  };
-  const sectionRef = useRef(null);
-  const glowRef = useRef(null);
-
+  // Responsive adjustments for the Orbit radius & Core size to prevent overflow
   useEffect(() => {
-    const section = sectionRef.current;
-    const glow = glowRef.current;
+    const handleResize = () => {
+      const w = window.innerWidth;
+      if (w < 640) {
+        setOrbitRadius(250);
+        setCoreDiameter(230);
+      } else if (w < 1024) {
+        setOrbitRadius(320);
+        setCoreDiameter(280);
+      } else if (w < 1440) {
+        setOrbitRadius(390);
+        setCoreDiameter(340);
+      } else {
+        setOrbitRadius(440);
+        setCoreDiameter(400); // reduced by ~20% (was 480px)
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    if (!section || !glow) {
-      return undefined;
+  // Handle Mouse movement for subtle Parallax
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      setMouseOffset({ x: x * 25, y: y * 25 });
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("mousemove", handleMouseMove);
     }
-
-    const cards = Array.from(section.querySelectorAll(".why-choose-magnetic-card"));
-    const current = { x: 0, y: 0 };
-    const target = { x: 0, y: 0 };
-    let frameId = 0;
-
-    const animateGlow = () => {
-      current.x += (target.x - current.x) * 0.12;
-      current.y += (target.y - current.y) * 0.12;
-      glow.style.transform = `translate3d(${current.x - 25}px, ${current.y - 25}px, 0)`;
-      frameId = window.requestAnimationFrame(animateGlow);
-    };
-
-    const updateCards = (event) => {
-      const sectionRect = section.getBoundingClientRect();
-      target.x = event.clientX - sectionRect.left;
-      target.y = event.clientY - sectionRect.top;
-      glow.style.opacity = "1";
-
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const deltaX = event.clientX - centerX;
-        const deltaY = event.clientY - centerY;
-        const distance = Math.hypot(deltaX, deltaY);
-        const proximity = Math.max(0, 1 - Math.min(distance, 150) / 150);
-        const shiftX = (deltaX / 150) * 8 * proximity;
-        const shiftY = (deltaY / 150) * 8 * proximity;
-        const scale = 1 + proximity * 0.05;
-        const spread = proximity * 20;
-
-        card.style.transform = `translate3d(${shiftX}px, ${shiftY}px, 0) scale(${scale})`;
-        card.style.boxShadow = `0 18px 46px rgba(232, 64, 10, 0.08), 0 0 ${spread}px rgba(232, 64, 10, 0.35)`;
-        card.style.transition = "transform 0.14s linear, box-shadow 0.14s linear";
-      });
-    };
-
-    const resetCards = () => {
-      glow.style.opacity = "0";
-      cards.forEach((card) => {
-        card.style.transform = "translate3d(0, 0, 0) scale(1)";
-        card.style.boxShadow = "0 18px 46px rgba(232, 64, 10, 0.05)";
-        card.style.transition = "transform 0.4s ease-out, box-shadow 0.4s ease-out";
-      });
-    };
-
-    frameId = window.requestAnimationFrame(animateGlow);
-    section.addEventListener("mousemove", updateCards);
-    section.addEventListener("mouseleave", resetCards);
-
     return () => {
-      window.cancelAnimationFrame(frameId);
-      section.removeEventListener("mousemove", updateCards);
-      section.removeEventListener("mouseleave", resetCards);
+      if (container) {
+        container.removeEventListener("mousemove", handleMouseMove);
+      }
     };
   }, []);
+
+  const coreRadius = coreDiameter / 2;
+
+  // Custom visual CSS rules
+  const customStyles = `
+    @keyframes coreSpinClockwise {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    @keyframes coreSpinCounter {
+      0% { transform: translate(-50%, -50%) rotate(360deg); }
+      100% { transform: translate(-50%, -50%) rotate(0deg); }
+    }
+    @keyframes coreWavePulse {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.65; }
+      100% { transform: translate(-50%, -50%) scale(1.25); opacity: 0; }
+    }
+    @keyframes chooseFloat1 {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-6px); }
+    }
+    @keyframes chooseFloat2 {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-4px); }
+    }
+    .animate-spin-cw {
+      animation: coreSpinClockwise 32s linear infinite;
+    }
+    .animate-spin-ccw {
+      animation: coreSpinCounter 38s linear infinite;
+    }
+    .animate-pulse-wave {
+      animation: coreWavePulse 4.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+    .hover-card-sweep:hover {
+      box-shadow: 0 0 25px rgba(255, 107, 0, 0.35);
+      border-color: rgba(255, 107, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
+    }
+  `;
+
+  // Calculate coordinates for connection lines mapping to each card's inner dot
+  const getCardLayoutProps = (feat) => {
+    let r = orbitRadius;
+    if (feat.side === "bottom") {
+      r = orbitRadius + 50; // Push bottom card down slightly to prevent overlaps
+    }
+    const angleRad = (feat.angle * Math.PI) / 180;
+    const x = Math.cos(angleRad) * r;
+    const y = Math.sin(angleRad) * r;
+
+    // Relative center of SVG coordinates is 600
+    const centerX = 600;
+    const centerY = 600;
+
+    const startX = centerX + Math.cos(angleRad) * coreRadius;
+    const startY = centerY + Math.sin(angleRad) * coreRadius;
+
+    // Card dimensions: width = 240px, height = 60px
+    let dotX = centerX + x;
+    let dotY = centerY + y;
+
+    if (feat.side === "left") {
+      dotX += 120; // right edge of left card
+    } else if (feat.side === "right") {
+      dotX -= 120; // left edge of right card
+    } else if (feat.side === "bottom") {
+      dotY -= 30;  // top edge of bottom card
+    }
+
+    return { x, y, startX, startY, dotX, dotY };
+  };
 
   return (
     <section
       id="why-netcradus"
-      ref={sectionRef}
-      className="relative overflow-hidden bg-premium-radial py-24 transition-colors duration-500"
-      style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.68)), url('/img/key features bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+      ref={containerRef}
+      className="relative w-full py-40 overflow-hidden flex items-center justify-center min-h-[1250px] lg:min-h-[1400px] z-10 select-none"
+      style={{
+        background: "radial-gradient(circle at 50% 50%, #111827 0%, #070B13 60%, #030509 100%)",
+      }}
     >
-      <div className="absolute inset-0 bg-black/20" />
-      <div ref={glowRef} className="why-choose-cursor-glow" aria-hidden="true" />
-      <div className="absolute left-[-5rem] top-24 h-64 w-64 rounded-full bg-accent/8 blur-[120px]" />
-      <div className="absolute right-[-4rem] bottom-8 h-72 w-72 rounded-full bg-accent/8 blur-[140px]" />
+      <style>{customStyles}</style>
+      <BackgroundParticles />
 
-      <div className="relative container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <span className="mb-5 block text-[11px] font-bold uppercase tracking-[0.35em] text-accent">
-            Why Netcradus
+      {/* Ambient background glowing spots */}
+      <div className="absolute top-[15%] left-[15%] h-[400px] w-[400px] rounded-full bg-[#3B82F6]/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[15%] right-[15%] h-[450px] w-[450px] rounded-full bg-[#FF6B00]/4 blur-[130px] pointer-events-none" />
+
+      {/* Parallax coordinate wrapper for absolute centered items */}
+      <div
+        className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
+        style={{
+          transform: `translate3d(${mouseOffset.x}px, ${mouseOffset.y}px, 0)`,
+        }}
+      >
+        {/* SVG connection lines - inside the parallax container to lock alignment */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] pointer-events-none z-10 flex items-center justify-center overflow-visible">
+          <svg className="w-full h-full overflow-visible">
+            {/* 360-degree decorative sun rays (spikes) all around the core circumference */}
+            {Array.from({ length: 36 }).map((_, i) => {
+              const angleDeg = i * (360 / 36);
+              const angleRad = (angleDeg * Math.PI) / 180;
+              const centerX = 600;
+              const centerY = 600;
+
+              // Vary lengths slightly for a natural, premium solar aesthetic
+              const rayLength = 15 + (i % 3 === 0 ? 15 : 0) + (i % 2 === 0 ? 5 : 0);
+              
+              const startX = centerX + Math.cos(angleRad) * coreRadius;
+              const startY = centerY + Math.sin(angleRad) * coreRadius;
+              const endX = centerX + Math.cos(angleRad) * (coreRadius + rayLength);
+              const endY = centerY + Math.sin(angleRad) * (coreRadius + rayLength);
+
+              const showDot = i % 4 === 0;
+
+              return (
+                <g key={`decorative-ray-${i}`}>
+                  <line
+                    x1={startX}
+                    y1={startY}
+                    x2={endX}
+                    y2={endY}
+                    stroke="rgba(255, 107, 0, 0.35)"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                  />
+                  {showDot && (
+                    <circle
+                      cx={endX}
+                      cy={endY}
+                      r="1.2"
+                      fill="#FF6B00"
+                      opacity="0.85"
+                      style={{ filter: "drop-shadow(0 0 2px #FF6B00)" }}
+                    />
+                  )}
+                </g>
+              );
+            })}
+
+            {FEATURES_DATA.map((feat, idx) => {
+              const { startX, startY, dotX, dotY } = getCardLayoutProps(feat);
+
+              return (
+                <g key={idx}>
+                  {/* Thin static connection beam */}
+                  <line
+                    x1={startX}
+                    y1={startY}
+                    x2={dotX}
+                    y2={dotY}
+                    stroke="rgba(255, 107, 0, 0.22)"
+                    strokeWidth="1.2"
+                    strokeDasharray="4 4"
+                  />
+
+                  {/* Flowing animated light particles travelling center -> card */}
+                  <circle r="2.5" fill="#FF6B00" style={{ filter: "drop-shadow(0 0 4px #FF6B00)" }}>
+                    <animate
+                      attributeName="cx"
+                      from={startX}
+                      to={dotX}
+                      dur="3.2s"
+                      begin={`${idx * 0.25}s`}
+                      repeatCount="indefinite"
+                    />
+                    <animate
+                      attributeName="cy"
+                      from={startY}
+                      to={dotY}
+                      dur="3.2s"
+                      begin={`${idx * 0.25}s`}
+                      repeatCount="indefinite"
+                    />
+                    <animate
+                      attributeName="opacity"
+                      values="0;1;1;0"
+                      keyTimes="0;0.1;0.9;1"
+                      dur="3.2s"
+                      begin={`${idx * 0.25}s`}
+                      repeatCount="indefinite"
+                    />
+                  </circle>
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+
+
+        {/* CENTER: Large premium circular glass hub */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#FF6B00]/50 shadow-[0_0_60px_rgba(255,107,0,0.42),inset_0_0_60px_rgba(59,130,246,0.22)] flex flex-col items-center justify-center p-10 text-center relative z-20 pointer-events-auto select-text"
+          style={{
+            width: `${coreDiameter}px`,
+            height: `${coreDiameter}px`,
+            background: "radial-gradient(circle, rgba(4, 6, 12, 0.99) 0%, rgba(2, 3, 6, 1) 100%)",
+          }}
+        >
+          {/* Subtle concentric inner rings */}
+          <div className="absolute inset-4 rounded-full border border-[#FF6B00]/8 pointer-events-none" />
+          <div className="absolute inset-8 rounded-full border border-[#FF6B00]/4 pointer-events-none" />
+
+          {/* Core content */}
+          <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-[#FF6B00] mb-2.5">
+            Choose Netcradus
           </span>
-          <h2 className="text-4xl font-black tracking-tight text-text-primary md:text-6xl">
-            Security outcomes built for <span className="text-accent italic">modern businesses.</span>
+          
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3.5 tracking-tight uppercase leading-tight max-w-[270px] font-sans">
+            Why Should Clients <br />
+            Choose Netcradus
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
-            Netcradus helps enterprises strengthen cyber resilience with continuous monitoring,
-            faster response, and practical security strategy aligned to business risk.
+
+          <div className="border border-[#FF6B00]/45 bg-[#FF6B00]/12 h-7 w-11 flex items-center justify-center rounded text-[11px] font-black text-[#FF6B00] mb-4">
+            01
+          </div>
+
+          <p className="text-[11px] sm:text-xs text-gray-300 leading-relaxed max-w-[265px]">
+            A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.
           </p>
         </div>
 
-      <div className="relative overflow-visible">
-        <div className="relative mx-auto w-full px-3 sm:px-4 lg:px-6 overflow-visible">
-          <button
-            onClick={prevSection}
-            className="absolute left-3 sm:left-4 lg:left-6 top-[140px] -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-accent/20 bg-accent/10 text-xl font-bold text-accent transition duration-300 hover:bg-accent hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent/50"
-            aria-label="Previous"
-          >
-            &lt;
-          </button>
+        {/* Orbiting feature glass cards positioned symmetrically */}
+        {FEATURES_DATA.map((feat, idx) => {
+          const { x, y } = getCardLayoutProps(feat);
+          const Icon = feat.icon;
 
-          <button
-            onClick={nextSection}
-            className="absolute right-3 sm:right-4 lg:right-6 top-[140px] -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-accent/20 bg-accent/10 text-xl font-bold text-accent transition duration-300 hover:bg-accent hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent/50"
-            aria-label="Next"
-          >
-            &gt;
-          </button>
+          const floatDelay = `${idx * 0.4}s`;
+          const floatAnim = idx % 2 === 0 ? "chooseFloat1" : "chooseFloat2";
 
-          <div className="lg:pl-14 lg:pr-14">
-            <div className="transition-all duration-500 ease-in-out" key={activeSection}>
-              {(() => {
-                const section = sections[activeSection];
+          return (
+            <div
+              key={feat.title}
+              className="absolute z-20 overflow-visible pointer-events-auto"
+              style={{
+                left: `calc(50% + ${x}px)`,
+                top: `calc(50% + ${y}px)`,
+                animation: `${floatAnim} 6.5s ease-in-out infinite`,
+                animationDelay: floatDelay,
+              }}
+            >
+              <div className="hover-card-sweep relative flex items-center gap-3 backdrop-blur-xl border border-white/8 bg-black/55 shadow-[0_15px_35px_rgba(0,0,0,0.45)] rounded-[18px] px-4.5 py-3.5 select-none cursor-pointer transition-all duration-300 w-[215px] sm:w-[240px] hover:border-[#FF6B00]/50 hover:shadow-[0_0_25px_rgba(255,107,0,0.35)]">
+                {/* Connecting Dot Indicator */}
+                {feat.side === "left" && (
+                  <span className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 rounded-full bg-[#FF6B00] shadow-[0_0_8px_#FF6B00] z-30" />
+                )}
+                {feat.side === "right" && (
+                  <span className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#FF6B00] shadow-[0_0_8px_#FF6B00] z-30" />
+                )}
+                {feat.side === "bottom" && (
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#FF6B00] shadow-[0_0_8px_#FF6B00] z-30" />
+                )}
 
-                return (
-                  <div
-                    className={`group why-choose-magnetic-card relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(180deg,rgba(232,64,10,0.08),transparent_24%,var(--color-surface)_75%)] p-8 shadow-[0_18px_46px_rgba(232,64,10,0.05)] hover:border-accent/25 lg:p-10 ${
-                      activeSection % 2 === 1
-                        ? "why-choose-align-right"
-                        : "why-choose-align-left"
-                    }`}
-                  >
-                    <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-60" />
-
-                    <div className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-10">
-                      <div className="lg:sticky lg:top-24 lg:self-start">
-                        <div className="why-choose-card-top flex items-start justify-between gap-4 lg:block">
-                          <div className="why-choose-card-meta why-choose-card-heading">
-                            <span className="inline-flex rounded-full border border-accent/20 bg-accent/8 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.28em] text-accent">
-                              {section.accent}
-                            </span>
-
-                            <h3 className="mt-5 text-2xl font-black tracking-tight text-text-primary md:text-3xl">
-                              {section.title}
-                            </h3>
-
-                            <div className="why-choose-card-line" aria-hidden="true" />
-                          </div>
-
-                          <div className="why-choose-card-index flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/20 bg-accent/10 text-sm font-black text-accent lg:mt-8">
-                            0{activeSection + 1}
-                          </div>
-                        </div>
-
-                        <p className="mt-5 text-sm leading-relaxed text-text-secondary md:text-base">
-                          {section.summary}
-                        </p>
-                      </div>
-
-                      <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                        {section.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex min-h-[88px] items-start gap-3 rounded-[20px] border border-white/40 bg-[var(--color-surface-raised)]/75 px-4 py-4 text-sm leading-relaxed text-text-secondary transition-colors duration-300 group-hover:border-accent/10 dark:border-white/10"
-                          >
-                            <span className="mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-accent shadow-[0_0_14px_rgba(232,64,10,0.28)]" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                );
-              })()}
+                {/* Icon box */}
+                <div className="h-9 w-9 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] flex items-center justify-center flex-shrink-0">
+                  <Icon size={16} />
+                </div>
+                {/* Title */}
+                <div className="text-[10px] sm:text-xs font-extrabold text-white text-left leading-snug">
+                  {feat.title}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
+          );
+        })}
       </div>
     </section>
   );
