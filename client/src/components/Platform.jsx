@@ -1,11 +1,222 @@
 import React, { useEffect, useState } from "react";
-import { Download, Check, ArrowRight } from "lucide-react";
+import { Download, Check, ArrowRight, Shield, Eye, Cpu, Zap, Search, Key, Cloud, Activity, Monitor, Info, AlertTriangle, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { SEO_META } from "../data/seoMeta";
 import PageHero from "./PageHero";
 import AmbientMesh from "./AmbientMesh";
+
+const smoothScrollTo = (targetId, duration = 600) => {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  const targetPosition = target.getBoundingClientRect().top + window.scrollY - 160;
+  const startPosition = window.scrollY;
+  const distance = targetPosition - startPosition;
+  let startTime = null;
+
+  const animation = (currentTime) => {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const run = ease(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animation);
+  };
+
+  const ease = (t, b, c, d) => {
+    t /= d / 2;
+    if (t < 1) return (c / 2) * t * t + b;
+    t--;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
+  };
+  requestAnimationFrame(animation);
+};
+
+const netxdrCapabilities = [
+  {
+    title: "AI-Powered Threat Detection",
+    image: "/assets/netxdr1.png",
+    paragraphs: [
+      "NetXDR leverages next-generation artificial intelligence and deep learning models to continuously inspect operational telemetry and event streams in real time. By establishing a dynamic baseline of normal activity, our AI engine detects zero-day attacks, insider threats, and evasive adversary behaviors that traditional signature-based detection systems miss.",
+      "The platform's cognitive security layer works at line speed to automatically isolate threats at the moment of entry. This proactive approach dramatically reduces response times from hours to fractions of a second, preventing attackers from establishing persistence or initiating lateral movement within your corporate infrastructure."
+    ],
+    bullets: [
+      "Dynamic Behavioral Baselining across all assets",
+      "Real-time Machine Learning anomaly identification",
+      "Zero-day exploit and fileless malware prevention",
+      "Continuous attack vector risk scanning",
+      "Automated indicator of compromise (IoC) tagging"
+    ]
+  },
+  {
+    title: "Unified Visibility",
+    image: "/assets/netxdr2.png",
+    paragraphs: [
+      "Achieve ultimate control over your security operations with centralized visibility across endpoints, multi-cloud workspaces, identity databases, and network infrastructures. NetXDR unifies disparate logs and telemetry data streams into a single, intuitive interface, eliminating security blind spots and operational siloes.",
+      "This complete contextual intelligence allows security analysts to trace malicious activity from the initial point of entry all the way through affected resources. Integrated maps, visual graphs, and live connection logs provide complete visibility into the health and security posture of your organization."
+    ],
+    bullets: [
+      "Single pane of glass console for multi-layered environments",
+      "Comprehensive endpoint, network, cloud, and user audit trail",
+      "Cross-vector data aggregation and normalized search",
+      "Real-time visual attack path and connection mapping",
+      "Interactive live infrastructure security score boards"
+    ]
+  },
+  {
+    title: "Intelligent Event Correlation",
+    image: "/assets/netxdr3.png",
+    paragraphs: [
+      "Enterprises generate millions of logs per second, making manual investigation impossible. NetXDR's correlation engine automatically aggregates and analyzes relationships between isolated events across cloud, endpoint, and network telemetry to surface actual incidents while filtering out system noise.",
+      "By grouping alerts based on risk, severity, and MITRE ATT&CK techniques, the platform provides security teams with structured incident alerts. This significantly reduces alert fatigue, allowing analysts to focus on real threats and make faster, more informed decisions."
+    ],
+    bullets: [
+      "Automated cross-vector telemetry correlation",
+      "Reduction of alert noise by up to 98%",
+      "MITRE ATT&CK framework technique mapping",
+      "Root-cause incident reconstruction timelines",
+      "Prioritized threat severity scoring algorithms"
+    ]
+  },
+  {
+    title: "Automated Incident Response",
+    image: "/assets/netxdr4.png",
+    paragraphs: [
+      "Neutralize cyber threats instantly using automated response playbooks. NetXDR SOAR capabilities execute immediate, policy-driven response actions the moment a malicious threat is confirmed—minimizing dwell time and containing incidents before they cause business disruption.",
+      "From isolating compromised hosts and disabling breached user accounts to updating firewall rules and quarantine zones, the system provides zero-touch incident remediation. Manual approvals can be built into critical playbooks to preserve analyst control."
+    ],
+    bullets: [
+      "Zero-touch host isolation and user credential suspension",
+      "Dynamic SOAR workflow and playbook builder",
+      "Bi-directional integrations with JIRA and ServiceNow",
+      "Custom approval gates for business-critical workflows",
+      "Automated network firewall and API access adjustments"
+    ]
+  },
+  {
+    title: "Threat Hunting",
+    image: "/assets/netxdr5.png",
+    paragraphs: [
+      "Proactively search for hidden adversaries and advanced persistent threats (APTs) residing silently within your corporate environment. NetXDR provides analysts with powerful threat hunting capabilities, utilizing historical telemetry and global indicators of compromise to uncover hidden threats.",
+      "With rapid search queries, interactive relationship graphs, and automated script execution, hunting teams can test hypotheses, verify system integrity, and eliminate malicious actors who have bypassed initial security defenses."
+    ],
+    bullets: [
+      "Ad-hoc query search across historical log archives",
+      "Continuous threat indicators of compromise (IoC) scanning",
+      "Pre-built advanced threat hunting playbooks",
+      "Adversarial simulation and path stress testing",
+      "Automated security posture vulnerability checks"
+    ]
+  },
+  {
+    title: "Identity Protection",
+    image: "/assets/netxdr6.png",
+    paragraphs: [
+      "Compromised credentials represent the primary entry point for modern corporate breaches. NetXDR monitors user behavior, access requests, and credential usage in real time to detect compromised accounts, privilege misuse, and lateral movement attempts before they lead to data theft.",
+      "By correlating access patterns with geographic locations, system usage, and device signatures, NetXDR establishes dynamic identity risk profiles. Any abnormal behavior triggers step-up authentication or automatic access revocation."
+    ],
+    bullets: [
+      "User and Entity Behavior Analytics (UEBA) profiles",
+      "Real-time detection of compromised user credentials",
+      "Adaptive step-up MFA and access permission controls",
+      "Privileged access monitoring and behavior auditing",
+      "Geographic and session anomaly risk scoring"
+    ]
+  },
+  {
+    title: "Cloud Security Monitoring",
+    image: "/assets/netxdr7.png",
+    paragraphs: [
+      "Secure your hybrid and multi-cloud environments against complex configurations and cloud-native threats. NetXDR integrates with AWS, Azure, Google Cloud, and SaaS platforms to deliver continuous visibility, risk detection, and compliance auditing across containerized workloads and databases.",
+      "The platform automatically identifies insecure API integrations, excessive user permissions, and compliance drifts. By correlating cloud API telemetry with endpoint logs, NetXDR provides complete protection across distributed networks."
+    ],
+    bullets: [
+      "Multi-cloud workload and container security auditing",
+      "Continuous cloud compliance and configuration scanning",
+      "Real-time monitoring of cloud API access logs",
+      "Detection of credential abuse and excessive privileges",
+      "Serverless and virtual machine integrity monitoring"
+    ]
+  },
+  {
+    title: "Network Detection",
+    image: "/assets/netxdr8.png",
+    paragraphs: [
+      "Identify command-and-control communication, lateral movement, and data exfiltration at the network layer. NetXDR monitors network telemetry, flow logs, and packets to spot anomalies and suspicious connections in real time without impacting throughput.",
+      "By identifying abnormal traffic patterns and malicious lateral movement between server segments, the platform detects threats that bypass traditional perimeter defenses. Integrated network security playbooks trigger automatic port blocks or segment isolation."
+    ],
+    bullets: [
+      "Real-time flow log analysis and packet inspections",
+      "Lateral movement and internal scanning detection",
+      "Command-and-control (C2) communication filtering",
+      "Automated network segment firewall blocking",
+      "Anomalous data transfer volume alerts"
+    ]
+  },
+  {
+    title: "Endpoint Security",
+    image: "/assets/netxdr9.png",
+    paragraphs: [
+      "Protect your workforce devices, servers, and virtual machines from ransomware, fileless malware, and unauthorized access. NetXDR Endpoint Security delivers continuous telemetry, endpoint detection, and device control across Windows, macOS, Linux, and mobile operating systems.",
+      "The agent-based system operates with minimal system overhead, monitoring process memory, network connections, and system changes to block threats locally. If an endpoint is compromised, the agent isolates the device to prevent lateral spread."
+    ],
+    bullets: [
+      "Anti-ransomware process locking and rollbacks",
+      "Fileless malware and memory exploit prevention",
+      "Cross-platform support for Windows, macOS, and Linux",
+      "Host-based firewall and device control settings",
+      "Offline protection with local machine learning models"
+    ]
+  },
+  {
+    title: "Threat Intelligence",
+    image: "/assets/netxdr10.png",
+    paragraphs: [
+      "Enrich your security alerts with global context and predictive threat intelligence. NetXDR automatically integrates global threat feeds, adversary profiles, and active campaign data to help security teams prioritize alerts based on threat severity.",
+      "By understanding who is targeting your industry and what tactics they use, the system enables predictive defense. Threat profiles are updated continuously to proactively protect endpoints and networks against emerging campaigns."
+    ],
+    bullets: [
+      "Continuous ingestion of global threat intelligence feeds",
+      "Adversary profile mapping and campaign indicators",
+      "Prioritization based on attack source and history",
+      "Automatic tagging of emerging threat patterns",
+      "Collaboration across threat sharing networks"
+    ]
+  },
+  {
+    title: "Risk Prioritization",
+    image: "/assets/acis-alerts.png",
+    paragraphs: [
+      "Manage risk effectively by prioritizing vulnerabilities, critical configurations, and active threats based on business impact. NetXDR automatically evaluates the business value of affected assets and the severity of threats to compile a real-time risk list.",
+      "This focus helps security teams direct resources to critical systems first, preventing operational downtime and data breaches. Vulnerability management reports are generated instantly to support security compliance audits."
+    ],
+    bullets: [
+      "Asset business value and impact mapping",
+      "Automated vulnerability risk calculations",
+      "Real-time compliance drift and health checks",
+      "Prioritized remediation work lists for analysts",
+      "Detailed compliance reports for ISO and SOC audits"
+    ]
+  },
+  {
+    title: "Seamless Integrations",
+    image: "/assets/acis-log-explorer.png",
+    paragraphs: [
+      "Create a unified security ecosystem by integrating NetXDR with your existing tools, cloud platforms, identity providers, and business software. NetXDR supports hundreds of native out-of-the-box integrations, ensuring rapid setup and data ingestion.",
+      "This comprehensive connector library supports REST APIs, syslog databases, and cloud webhooks to normalize security telemetry. The system ensures complete compatibility without requiring you to replace your existing tools."
+    ],
+    bullets: [
+      "Hundreds of native connectors for cloud, SaaS, and OS",
+      "REST API and syslog data ingestion normalization",
+      "Bi-directional workflows with ITSM tools",
+      "Flexible webhook configurations for custom alerts",
+      "Zero-friction onboarding and tool consolidation"
+    ]
+  }
+];
+
+
 
 const TYPING_SEQUENCES = [
   "Protecting Endpoints...",
@@ -180,29 +391,28 @@ export default function Platform() {
         "acis-enterprise",
         "ai-siem-engine",
         "soar-automation",
-        "ai-security"
+        "netxdr"
       ];
       
-      const scrollPosition = window.scrollY + 250;
+      let currentActive = "acis-overview";
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveTab(sectionId);
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 180 && rect.bottom >= 180) {
+            currentActive = sectionId;
             break;
           }
         }
       }
+      setActiveTab(currentActive);
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const tierCards = platformSections.filter((section) => section.tier);
 
   return (
     <div className="bg-background transition-colors duration-500">
@@ -284,12 +494,21 @@ export default function Platform() {
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="#acis-overview"
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollTo("acis-overview", 600);
+                }}
                 className="rounded-xl bg-[#FF6B00] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#FF6B00]/20 transition-all duration-300 hover:bg-[#ff8533] hover:shadow-[#FF6B00]/35 hover:-translate-y-0.5"
               >
                 Explore ACIS
               </a>
               <a
-                href="#soar-automation"
+                href="#netxdr"
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollTo("netxdr", 600);
+                  setActiveTab("netxdr");
+                }}
                 className="rounded-xl border border-[#FF6B00]/50 bg-transparent px-6 py-3.5 text-sm font-bold text-[#FF6B00] transition-all duration-300 hover:bg-[#FF6B00]/8 hover:-translate-y-0.5"
               >
                 Discover NETXDR
@@ -387,7 +606,7 @@ export default function Platform() {
             { label: "ACIS Enterprise", id: "acis-enterprise" },
             { label: "AI-SIEM Engine", id: "ai-siem-engine" },
             { label: "SOAR Automation", id: "soar-automation" },
-            { label: "AI Security", id: "ai-security" },
+            { label: "NetXDR", id: "netxdr" },
           ].map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -396,7 +615,7 @@ export default function Platform() {
                 href={`#${tab.id}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById(tab.id)?.scrollIntoView({ behavior: "smooth" });
+                  smoothScrollTo(tab.id, 600);
                   setActiveTab(tab.id);
                 }}
                 className={`relative rounded-xl border px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-300 backdrop-blur-md ${
@@ -419,52 +638,17 @@ export default function Platform() {
         </div>
       </section>
 
-      <section className="py-12">
-        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
-          <div className="grid gap-6 lg:grid-cols-3">
-            {tierCards.map((tier) => (
-              <article
-                key={tier.id}
-                id={tier.id}
-                className={`premium-card rounded-[28px] border p-8 backdrop-blur-md ${
-                  tier.featured
-                    ? "border-accent/30 bg-[linear-gradient(180deg,rgba(232,64,10,0.08),transparent_55%),var(--color-surface)] shadow-[0_0_40px_rgba(232,64,10,0.12)]"
-                    : "border-border bg-[var(--color-surface)]/88"
-                }`}
-              >
-                <div className="mb-4 inline-flex rounded-full border border-accent/15 bg-accent/8 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-accent">
-                  {tier.tier}
-                </div>
-                <h2 className="text-3xl font-black tracking-tight text-text-primary">{tier.title}</h2>
-                <p className="mt-4 text-base leading-relaxed text-text-secondary">{tier.description}</p>
-                <ul className="mt-6 space-y-3">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
-                      <Check size={16} className="mt-0.5 shrink-0 text-accent" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-0">
-        <div className="mx-auto max-w-screen-2xl space-y-8 px-4 pb-24 sm:px-6 lg:px-16 xl:px-24">
+      <section className="pt-12 pb-0">
+        <div className="mx-auto max-w-screen-2xl space-y-8 px-4 sm:px-6 lg:px-16 xl:px-24">
           {platformSections.map((section, index) => (
             <article
               key={section.id}
               id={section.id}
-              className={`grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:items-center ${section.cardClass || ""} ${
+              className={`scroll-mt-[160px] grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:items-center ${section.cardClass || ""} ${
                 index % 2 === 1 ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"
               }`}
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <div className="mb-4 inline-flex rounded-full border border-accent/15 bg-accent/8 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-accent">
-                  {section.tier || section.title}
-                </div>
                 <h2 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">{section.title}</h2>
                 <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">{section.description}</p>
                 <ul className="mt-6 grid gap-3 md:grid-cols-2">
@@ -501,92 +685,118 @@ export default function Platform() {
         </div>
       </section>
 
-      {/* <section id="ai-security" className="py-24 border-t border-border">
-        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
-          <div className="mb-12 text-center">
-            <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent font-display md:text-[12px]">
-              // AI Security
-            </span>
-            <h2 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">Models We Protect</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">
-              Secure your generative AI and machine learning infrastructure against specialized attack vectors.
-            </p>
-          </div>
+      <div id="netxdr" className="scroll-mt-[160px]">
+        <section
+          className="mt-8 pt-12 pb-0 border-t border-border/20"
+        >
+          <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
+            <article className="grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              
+              {/* Left Column: Heading, Paragraph, and Feature Chips */}
+              <div className="text-left">
+                <div className="mb-4 inline-flex rounded-full border border-accent/15 bg-accent/8 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-accent">
+                  NETXDR
+                </div>
+                <h2 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">
+                  One Platform for Complete Threat Detection & Response
+                </h2>
+                <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">
+                  NetXDR continuously monitors endpoints, networks, cloud workloads, user identities, and business applications from a single intelligent platform. Using AI-powered analytics, behavioral detection, and real-time event correlation, it identifies sophisticated cyber threats faster, prioritizes critical risks, and automates response actions. This enables security teams to reduce alert fatigue, accelerate investigations, and strengthen enterprise-wide cyber resilience.
+                </p>
+                
+                <ul className="mt-6 grid gap-3 md:grid-cols-2">
+                  {[
+                    "AI-Powered Threat Detection",
+                    "Unified Visibility",
+                    "Intelligent Event Correlation",
+                    "Automated Incident Response",
+                    "Threat Hunting",
+                    "Identity Protection",
+                  ].map((feature) => (
+                    <li
+                      key={feature}
+                      className="rounded-[20px] border border-border bg-[var(--color-surface-raised)]/70 px-4 py-3 text-sm text-text-secondary shadow-[0_0_22px_rgba(232,64,10,0.04)] hover:border-accent/40 hover:text-white hover:shadow-[0_0_15px_rgba(232,64,10,0.08)] transition-all duration-300 cursor-default"
+                    >
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-16">
-            <div className="rounded-[20px] border-l-4 border-l-emerald-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
-              <img src="/img/openai.png" alt="OpenAI GPT" className="mb-4 h-16 w-16 object-contain" />
-              <h3 className="text-xl font-bold text-text-primary mb-2">OpenAI GPT</h3>
-              <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
-            </div>
-            <div className="rounded-[20px] border-l-4 border-l-[#F37021] border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
-              <img src="/img/claude.png" alt="Anthropic Claude" className="mb-4 h-16 w-16 object-contain" />
-              <h3 className="text-xl font-bold text-text-primary mb-2">Anthropic Claude</h3>
-              <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
-            </div>
-            <div className="rounded-[20px] border-l-4 border-l-blue-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
-              <img src="/img/gemini.png" alt="Google Gemini" className="mb-4 h-16 w-16 object-contain" />
-              <h3 className="text-xl font-bold text-text-primary mb-2">Google Gemini</h3>
-              <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
-            </div>
-            <div className="rounded-[20px] border-l-4 border-l-zinc-500 border-y border-r border-border bg-[var(--color-surface)]/88 p-6 shadow-sm">
-              <img src="/img/opensource llms.png" alt="Open-source LLMs" className="mb-4 h-16 w-16 object-contain" />
-              <h3 className="text-xl font-bold text-text-primary mb-2">Open-source LLMs</h3>
-              <p className="text-sm text-text-secondary font-medium">Protected by ACIS</p>
-            </div>
-          </div>
+              {/* Right Column: Image */}
+              <div className="w-full">
+                <div className="relative overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(232,64,10,0.12),transparent_55%)]" />
+                  <img
+                    src="/assets/netxdr6.png"
+                    alt="One Platform for Complete Threat Detection & Response"
+                    className="relative h-[320px] w-full rounded-[22px] object-cover"
+                  />
+                </div>
+              </div>
 
-          <div className="rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-8 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md lg:p-12">
-            <h3 className="mb-8 text-2xl font-black text-text-primary">AI Threats We Mitigate</h3>
-            <div className="grid gap-x-12 gap-y-4 md:grid-cols-2">
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  Prompt Injection
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  Jailbreaking
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  Model Poisoning
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  Data Leakage
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  Training Data Attacks
-                </li>
-              </ul>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  Adversarial AI
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  AI Hallucination Abuse
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  Deepfake Threats
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  AI-generated Malware
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3 text-sm text-text-secondary">
-                  <div className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  AI Phishing Automation
-                </li>
-              </ul>
-            </div>
+            </article>
           </div>
-        </div>
-      </section> */}
+        </section>
+
+        {netxdrCapabilities.map((feat, index) => {
+          const isImageLeft = index % 2 === 0;
+          return (
+            <section
+              key={index}
+              className={`scroll-mt-[160px] mt-8 pt-12 border-t border-border/20 ${
+                index === netxdrCapabilities.length - 1 ? "pb-24" : "pb-12"
+              }`}
+            >
+              <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
+                <article className="grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                  
+                  {/* Text Column */}
+                  <div className={`text-left ${isImageLeft ? "lg:order-2" : "lg:order-1"}`}>
+                    <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent font-display md:text-[12px]">
+                      // NetXDR Capability
+                    </span>
+                    <h3 className="text-3xl font-black tracking-tight text-white md:text-5xl leading-tight">
+                      {feat.title}
+                    </h3>
+                    <div className="mt-5 space-y-4 max-w-3xl">
+                      {feat.paragraphs.map((para, pIdx) => (
+                        <p key={pIdx} className="text-base leading-relaxed text-text-secondary md:text-lg">
+                          {para}
+                        </p>
+                      ))}
+                    </div>
+                    
+                    <ul className="mt-6 grid gap-3 md:grid-cols-2">
+                      {feat.bullets.map((bullet, bIdx) => (
+                        <li
+                          key={bIdx}
+                          className="rounded-[20px] border border-border bg-[var(--color-surface-raised)]/70 px-4 py-3 text-sm text-text-secondary shadow-[0_0_22px_rgba(232,64,10,0.04)] hover:border-accent/40 hover:text-white hover:shadow-[0_0_15px_rgba(232,64,10,0.08)] transition-all duration-300 cursor-default"
+                        >
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Image Column */}
+                  <div className={`w-full ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
+                    <div className="relative overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(232,64,10,0.12),transparent_55%)]" />
+                      <img
+                        src={feat.image}
+                        alt={feat.title}
+                        className="relative h-[320px] w-full rounded-[22px] object-cover"
+                      />
+                    </div>
+                  </div>
+
+                </article>
+              </div>
+            </section>
+          );
+        })}
+      </div>
     </div>
   );
 }

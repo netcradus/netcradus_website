@@ -186,21 +186,28 @@ export default function WhyChooseUs() {
     let dotY = centerY + y;
 
     if (feat.side === "left") {
-      dotX += 120; // right edge of left card
+      dotX += 130; // 120px card half-width + 10px gap
     } else if (feat.side === "right") {
-      dotX -= 120; // left edge of right card
+      dotX -= 130; // 120px card half-width + 10px gap
     } else if (feat.side === "bottom") {
-      dotY -= 30;  // top edge of bottom card
+      dotY -= 40;  // 30px card half-height + 10px gap
     }
 
     return { x, y, startX, startY, dotX, dotY };
+  };
+
+  const getWrapperHeight = () => {
+    if (orbitRadius === 250) return 414;
+    if (orbitRadius === 320) return 512;
+    if (orbitRadius === 390) return 610;
+    return 682;
   };
 
   return (
     <section
       id="why-netcradus"
       ref={containerRef}
-      className="relative w-full py-40 overflow-hidden flex items-center justify-center min-h-[1250px] lg:min-h-[1400px] z-10 select-none"
+      className="relative w-full pt-[140px] sm:pt-[150px] lg:pt-[170px] pb-[180px] sm:pb-[200px] lg:pb-[260px] overflow-hidden flex flex-col items-center justify-start z-10 select-none"
       style={{
         background: "radial-gradient(circle at 50% 50%, #111827 0%, #070B13 60%, #030509 100%)",
       }}
@@ -212,11 +219,33 @@ export default function WhyChooseUs() {
       <div className="absolute top-[15%] left-[15%] h-[400px] w-[400px] rounded-full bg-[#3B82F6]/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[15%] right-[15%] h-[450px] w-[450px] rounded-full bg-[#FF6B00]/4 blur-[130px] pointer-events-none" />
 
+      {/* Standalone Section Heading */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-30 text-center w-full max-w-5xl mx-auto px-4"
+      >
+        <h2 className="relative font-extrabold tracking-tight uppercase select-none leading-none text-4xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[72px] font-sans">
+          {/* Subtle Orange Glow behind the heading */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] sm:w-[350px] h-[80px] bg-accent/20 rounded-full blur-[60px] sm:blur-[80px] pointer-events-none z-0" />
+          
+          <span className="relative z-10 text-white mr-3 sm:mr-4">
+            Why Choose
+          </span>{" "}
+          <span className="relative z-10 bg-gradient-to-r from-accent to-accent-bright bg-clip-text text-transparent filter drop-shadow-[0_0_15px_rgba(255,107,0,0.25)]">
+            Netcradus
+          </span>
+        </h2>
+      </motion.div>
+
       {/* Parallax coordinate wrapper for absolute centered items */}
       <div
-        className="absolute inset-0 w-full h-full overflow-visible pointer-events-none"
+        className="relative w-full overflow-visible pointer-events-none mt-[50px] md:mt-[60px]"
         style={{
           transform: `translate3d(${mouseOffset.x}px, ${mouseOffset.y}px, 0)`,
+          height: `${getWrapperHeight()}px`,
         }}
       >
         {/* SVG connection lines - inside the parallax container to lock alignment */}
@@ -307,6 +336,15 @@ export default function WhyChooseUs() {
                       repeatCount="indefinite"
                     />
                   </circle>
+
+                  {/* Static connection dot at the end of the line */}
+                  <circle
+                    cx={dotX}
+                    cy={dotY}
+                    r="4"
+                    fill="#FF6B00"
+                    style={{ filter: "drop-shadow(0 0 6px #FF6B00)" }}
+                  />
                 </g>
               );
             })}
@@ -328,20 +366,7 @@ export default function WhyChooseUs() {
           <div className="absolute inset-8 rounded-full border border-[#FF6B00]/4 pointer-events-none" />
 
           {/* Core content */}
-          <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-[#FF6B00] mb-2.5">
-            Choose Netcradus
-          </span>
-          
-          <h2 className="text-lg sm:text-xl lg:text-2xl font-black text-white mb-3.5 tracking-tight uppercase leading-tight max-w-[270px] font-sans">
-            Why Should Clients <br />
-            Choose Netcradus
-          </h2>
-
-          <div className="border border-[#FF6B00]/45 bg-[#FF6B00]/12 h-7 w-11 flex items-center justify-center rounded text-[11px] font-black text-[#FF6B00] mb-4">
-            01
-          </div>
-
-          <p className="text-[11px] sm:text-xs text-gray-300 leading-relaxed max-w-[265px]">
+          <p className="text-sm sm:text-base font-semibold text-gray-200 leading-[1.75] max-w-[340px] text-center">
             A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.
           </p>
         </div>
@@ -365,18 +390,7 @@ export default function WhyChooseUs() {
                 animationDelay: floatDelay,
               }}
             >
-              <div className="hover-card-sweep relative flex items-center gap-3 backdrop-blur-xl border border-white/8 bg-black/55 shadow-[0_15px_35px_rgba(0,0,0,0.45)] rounded-[18px] px-4.5 py-3.5 select-none cursor-pointer transition-all duration-300 w-[215px] sm:w-[240px] hover:border-[#FF6B00]/50 hover:shadow-[0_0_25px_rgba(255,107,0,0.35)]">
-                {/* Connecting Dot Indicator */}
-                {feat.side === "left" && (
-                  <span className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-2 h-2 rounded-full bg-[#FF6B00] shadow-[0_0_8px_#FF6B00] z-30" />
-                )}
-                {feat.side === "right" && (
-                  <span className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#FF6B00] shadow-[0_0_8px_#FF6B00] z-30" />
-                )}
-                {feat.side === "bottom" && (
-                  <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#FF6B00] shadow-[0_0_8px_#FF6B00] z-30" />
-                )}
-
+              <div className="hover-card-sweep relative flex items-center gap-[18px] backdrop-blur-xl border border-white/8 bg-black/55 shadow-[0_15px_35px_rgba(0,0,0,0.45)] rounded-[18px] pl-[16px] pr-[16px] py-[14px] select-none cursor-pointer transition-all duration-300 w-[215px] sm:w-[240px] hover:border-[#FF6B00]/50 hover:shadow-[0_0_25px_rgba(255,107,0,0.35)]">
                 {/* Icon box */}
                 <div className="h-9 w-9 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] flex items-center justify-center flex-shrink-0">
                   <Icon size={16} />

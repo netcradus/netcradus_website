@@ -11,7 +11,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
-  HeartPulse,
 } from "lucide-react";
 
 export const SOLUTIONS = [
@@ -73,34 +72,72 @@ export const SOLUTIONS = [
   },
 ];
 
-const WHY_CHOOSE_US = [
-  "Certified Security Experts",
-  "24×7 Monitoring",
-  "Compliance Ready",
-  "AI Powered Detection",
-  "End-to-End Protection",
+const CORE_SECURITY = [
+  {
+    id: "cybersecurity",
+    name: "Cybersecurity",
+    description: "End-to-end protection against evolving cyber threats.",
+    path: "/services/cybersecurity",
+    icon: Shield,
+  },
+  {
+    id: "managed-soc",
+    name: "Managed SOC",
+    description: "24×7 monitoring and rapid threat detection & response.",
+    path: "/services/managed-soc",
+    icon: Radar,
+  },
+  {
+    id: "network-security",
+    name: "Network Security",
+    description: "Defend your perimeter and internal network segments.",
+    path: "/services/network-security",
+    icon: Network,
+  },
 ];
 
-const FEATURED_SOLUTION = {
-  id: "abdm",
-  name: "Ayushman Bharat Digital Mission (ABDM)",
-  description:
-    "Secure, interoperable and consent-driven digital healthcare platform.",
-  path: "/services/abdm",
-  icon: HeartPulse,
-};
+const SPECIALIZED_SECURITY = [
+  {
+    id: "cloud-security",
+    name: "Cloud Security",
+    description: "Secure cloud workloads, SaaS, and hybrid environments.",
+    path: "/services/cloud-security",
+    icon: Cloud,
+  },
+  {
+    id: "ai-security",
+    name: "AI Security",
+    description: "Protect AI models, LLMs, and enterprise agents.",
+    path: "/services/ai-security",
+    icon: BrainCircuit,
+  },
+  {
+    id: "enterprise-security",
+    name: "Enterprise Security",
+    description: "Tailored, enterprise-grade security programs.",
+    path: "/services/enterprise-security",
+    icon: Building2,
+  },
+  {
+    id: "vapt",
+    name: "VAPT Services",
+    description: "Vulnerability assessment & penetration testing.",
+    path: "/services/vapt",
+    icon: ShieldCheck,
+  },
+];
 
 const SolutionsMegaMenu = ({ isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -14 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -14 }}
+          initial={{ opacity: 0, scale: 0.97, y: -10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.97, y: -10 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed top-[100px] left-1/2 z-[1000] w-[950px] max-w-[92vw]"
-          style={{ marginLeft: "-475px" }}
+          className="fixed top-[100px] left-1/2 z-[1000] w-[1140px] max-w-[94vw]"
+          style={{ marginLeft: "-570px" }}
           onMouseLeave={onClose}
         >
           {/* Caret / pointer arrow */}
@@ -112,123 +149,148 @@ const SolutionsMegaMenu = ({ isOpen, onClose }) => {
               height: "18px",
               background: "#fff",
               transform: "translateX(-50%) rotate(45deg)",
-              borderTop: "1px solid #E5E7EB",
-              borderLeft: "1px solid #E5E7EB",
+              borderTop: "1px solid rgba(255, 107, 0, 0.12)",
+              borderLeft: "1px solid rgba(255, 107, 0, 0.12)",
               borderRadius: "3px 0 0 0",
             }}
           />
 
           <div
-            className="relative z-10 bg-white border overflow-hidden"
+            className="relative z-10 border overflow-hidden bg-gradient-to-br from-white/95 via-white/98 to-orange-50/20 backdrop-blur-xl"
             style={{
-              borderRadius: "20px",
-              borderColor: "#E5E7EB",
+              borderRadius: "24px",
+              borderColor: "rgba(255, 107, 0, 0.12)",
               boxShadow:
-                "0 20px 50px -12px rgba(17,24,39,0.16), 0 6px 16px -6px rgba(17,24,39,0.08)",
+                "0 24px 70px rgba(255, 107, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04)",
             }}
           >
-            <div className="grid" style={{ gridTemplateColumns: "380px 1fr" }}>
-              {/* LEFT SECTION - Solutions vertical list */}
-              <div style={{ borderRight: "1px solid #E5E7EB" }}>
-                {SOLUTIONS.map((solution) => {
-                  const Icon = solution.icon;
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 items-stretch">
+              
+              {/* COLUMN 1 - Core Security Services */}
+              <div className="flex flex-col text-left space-y-4">
+                <div className="mb-4">
+                  <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-gray-900 pb-2 relative">
+                    Core Security Services
+                    <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-accent" />
+                  </h3>
+                </div>
 
-                  return (
-                    <Link
-                      key={solution.id}
-                      to={solution.path}
-                      onClick={onClose}
-                      className="group flex items-center gap-3.5 px-6 py-3.5 transition-colors duration-300"
-                      style={{ textDecoration: "none", borderBottom: "1px solid #F3F4F6" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = "#FFF7ED")}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                    >
-                      <div
-                        className="w-9 h-9 flex items-center justify-center shrink-0 transition-all duration-300"
-                        style={{ borderRadius: "10px", background: "#FFF0E5", color: "#FF6A00" }}
+                <div className="flex flex-col gap-2">
+                  {CORE_SECURITY.map((solution) => {
+                    const Icon = solution.icon;
+                    return (
+                      <Link
+                        key={solution.id}
+                        to={solution.path}
+                        onClick={onClose}
+                        className="group flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50/40 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
                       >
-                        <Icon size={17} />
-                      </div>
-
-                      <div className="flex-1 min-w-0">
-                        <h4 className="text-sm font-bold" style={{ color: "#111827" }}>
-                          {solution.name}
-                        </h4>
-                        <p className="text-xs leading-snug truncate" style={{ color: "#6B7280" }}>
-                          {solution.description}
-                        </p>
-                      </div>
-
-                      <ArrowRight
-                        size={15}
-                        className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                        style={{ color: "#FF6A00" }}
-                      />
-                    </Link>
-                  );
-                })}
+                        <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50/60 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
+                          <Icon size={18} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-sm font-bold text-gray-900 transition-colors duration-300 group-hover:text-accent">
+                            {solution.name}
+                          </h4>
+                          <p className="text-xs text-gray-500 leading-normal mt-1">
+                            {solution.description}
+                          </p>
+                        </div>
+                        <ArrowRight
+                          size={14}
+                          className="shrink-0 mt-1 text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* RIGHT SECTION - Featured solution + Why Choose Us */}
-              <div className="p-7" style={{ background: "#FAFAFA" }}>
-                <span
-                  className="block text-[11px] font-bold uppercase tracking-[0.2em] mb-3"
-                  style={{ color: "#FF6A00" }}
-                >
-                  Our Special Solution
-                </span>
+              {/* COLUMN 2 - Specialized Solutions */}
+              <div className="flex flex-col text-left space-y-4">
+                <div className="mb-4">
+                  <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-gray-900 pb-2 relative">
+                    Specialized Solutions
+                    <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-accent" />
+                  </h3>
+                </div>
 
-                <Link
-                  to={FEATURED_SOLUTION.path}
-                  onClick={onClose}
-                  className="group block bg-white p-5 mb-6 transition-all duration-300"
-                  style={{
-                    borderRadius: "16px",
-                    border: "1px solid #FCD9BB",
-                    textDecoration: "none",
-                    boxShadow: "0 8px 20px -8px rgba(255,106,0,0.15)",
-                  }}
-                >
-                  <div
-                    className="w-11 h-11 flex items-center justify-center mb-3"
-                    style={{ borderRadius: "12px", background: "#FFF0E5", color: "#FF6A00" }}
-                  >
-                    <FEATURED_SOLUTION.icon size={20} />
+                <div className="flex flex-col gap-2">
+                  {SPECIALIZED_SECURITY.map((solution) => {
+                    const Icon = solution.icon;
+                    return (
+                      <Link
+                        key={solution.id}
+                        to={solution.path}
+                        onClick={onClose}
+                        className="group flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50/40 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
+                      >
+                        <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50/60 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
+                          <Icon size={18} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-sm font-bold text-gray-900 transition-colors duration-300 group-hover:text-accent">
+                            {solution.name}
+                          </h4>
+                          <p className="text-xs text-gray-500 leading-normal mt-1">
+                            {solution.description}
+                          </p>
+                        </div>
+                        <ArrowRight
+                          size={14}
+                          className="shrink-0 mt-1 text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* COLUMN 3 - Featured Panel */}
+              <div className="md:col-span-2 lg:col-span-1">
+                <div className="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-accent via-accent-bright to-orange-600 p-8 text-white flex flex-col justify-between h-full group/panel shadow-[0_10px_30px_rgba(255,107,0,0.15)]">
+                  {/* Floating Background Shapes */}
+                  <div className="absolute top-[-20%] right-[-20%] w-[180px] h-[180px] rounded-full bg-white/10 blur-2xl animate-pulse duration-4000" />
+                  <div className="absolute bottom-[-10%] left-[-10%] w-[120px] h-[120px] rounded-full bg-black/10 blur-xl" />
+
+                  {/* Network SVG Overlay */}
+                  <div className="absolute inset-0 opacity-20 pointer-events-none">
+                    <svg className="w-full h-full" viewBox="0 0 300 300">
+                      <path d="M 50 50 L 150 150 L 250 50" stroke="white" strokeWidth="1" strokeDasharray="4 4" />
+                      <path d="M 50 250 L 150 150 L 250 250" stroke="white" strokeWidth="1" strokeDasharray="4 4" />
+                      <circle cx="150" cy="150" r="8" fill="white" className="animate-ping" style={{ animationDuration: '3s' }} />
+                      <circle cx="50" cy="50" r="4" fill="white" />
+                      <circle cx="250" cy="50" r="4" fill="white" />
+                      <circle cx="50" cy="250" r="4" fill="white" />
+                      <circle cx="250" cy="250" r="4" fill="white" />
+                    </svg>
                   </div>
 
-                  <h4 className="text-sm font-bold mb-1.5" style={{ color: "#111827" }}>
-                    {FEATURED_SOLUTION.name}
-                  </h4>
+                  <div className="relative z-10 space-y-4">
+                    <span className="inline-block text-[9px] font-black uppercase tracking-[0.25em] bg-white/20 px-3 py-1 rounded-full backdrop-blur-md">
+                      Featured Panel
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-black leading-tight text-white">
+                      Enterprise Solutions
+                    </h3>
+                    <p className="text-xs leading-relaxed text-white/85">
+                      Discover AI-powered cybersecurity, healthcare, cloud, and digital transformation solutions designed to secure and accelerate modern businesses.
+                    </p>
+                  </div>
 
-                  <p className="text-xs leading-relaxed mb-4" style={{ color: "#6B7280" }}>
-                    {FEATURED_SOLUTION.description}
-                  </p>
-
-                  <span
-                    className="inline-flex items-center gap-1.5 text-xs font-bold transition-all duration-300 group-hover:gap-2.5"
-                    style={{ color: "#FF6A00" }}
-                  >
-                    Learn More <ArrowRight size={13} />
-                  </span>
-                </Link>
-
-                <h4 className="text-sm font-bold mb-3.5" style={{ color: "#111827" }}>
-                  Why Choose Our Solutions?
-                </h4>
-
-                <ul className="flex flex-col gap-2.5">
-                  {WHY_CHOOSE_US.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-2.5 text-sm"
-                      style={{ color: "#374151" }}
+                  <div className="relative z-10 pt-6">
+                    <Link
+                      to="/services"
+                      onClick={onClose}
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-accent font-bold text-xs shadow-lg shadow-black/10 hover:bg-orange-50 hover:scale-103 transition-all duration-300 no-underline"
                     >
-                      <CheckCircle2 size={15} style={{ color: "#FF6A00" }} strokeWidth={2.5} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                      Explore Solutions
+                      <ArrowRight size={14} className="transition-transform duration-300 group-hover/panel:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </motion.div>

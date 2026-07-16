@@ -949,23 +949,23 @@ const Contact = () => {
                       <div className="flex items-center justify-between group">
                         <div>
                           <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>General Enquiries</p>
-                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>info@netcradus.in</p>
+                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>info@netcradus.com</p>
                         </div>
-                        <CopyButton value="info@netcradus.in" />
+                        <CopyButton value="info@netcradus.com " />
                       </div>
                       <div className="flex items-center justify-between group">
                         <div>
                           <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>Emergency Support (24×7)</p>
-                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>support@netcradus.in</p>
+                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>support@netcradus.com</p>
                         </div>
-                        <CopyButton value="support@netcradus.in" />
+                        <CopyButton value="support@netcradus.com" />
                       </div>
                       <div className="flex items-center justify-between group">
                         <div>
                           <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>Sales & Business Enquiries</p>
-                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>sales@netcradus.in</p>
+                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>sales@netcradus.com</p>
                         </div>
-                        <CopyButton value="sales@netcradus.in" />
+                        <CopyButton value="sales@netcradus.com" />
                       </div>
                     </div>
                   </div>

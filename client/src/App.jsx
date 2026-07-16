@@ -165,6 +165,7 @@ import ResponsibleDisclosurePage from "./pages/ResponsibleDisclosurePage";
 import PhasePage from "./pages/phasePage";
 import Partners from "./pages/Partners";
 import PartnerApply from "./pages/PartnerApply";
+import NetCradPage from "./pages/NetCradPage";
 
 import Platform from "./components/Platform";
 import { useReveal } from "./hooks/useReveal";
@@ -242,6 +243,7 @@ function App() {
           <Route path="acis" element={<ACISPage />} />
           <Route path="crm" element={<CRMPage />} />
           <Route path="netxdr" element={<NetXDRPage />} />
+          <Route path="netcrad" element={<NetCradPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:slug" element={<BlogPostPage />} />

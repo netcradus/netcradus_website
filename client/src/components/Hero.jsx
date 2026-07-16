@@ -398,7 +398,7 @@ export default function Hero() {
                       to="/contact"
                       className="btn-orange-override-primary w-full sm:w-auto px-9 py-4 text-white font-extrabold text-xs uppercase tracking-[0.2em] rounded-full shadow-lg hover:scale-105 transition-all text-center no-underline"
                     >
-                      Get Free Consultation
+                      Get Consultation
                     </Link>
                   </div>
 
