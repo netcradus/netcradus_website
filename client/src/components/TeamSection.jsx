@@ -6,12 +6,6 @@ const team = [
     bio: "With over 30 years of cross-industry business experience, Mr. D. K. Sharma brings deep strategic insight and leadership to Netcradus. As Director, he drives the company's long-term vision, operational direction, and business development across global markets.",
   },
   {
-    name: "Divya Gupta",
-    role: "Co-Founder, COO & Business Head",
-    image: "/team/Divya Gupta.jpeg",
-    bio: "Divya Gupta co-founded Netcradus and leads its operations as COO and Business Head. She oversees strategic planning, client relations, and operational excellence, and has been central to expanding Netcradus' footprint in the cybersecurity and IT industry.",
-  },
-  {
     name: "Mohit Sharma",
     role: "Founder & CEO",
     image: "/team/Mohit Sharma.png",

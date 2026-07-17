@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  Lock,
   CircleDollarSign,
   Zap,
   FileCheck,
@@ -56,7 +55,7 @@ const CyberSecurityPage = () => {
 
   return (
     <div className="bg-background text-text-primary transition-colors duration-500 overflow-x-hidden">
-      
+
       {/* SECTION 1 – HERO */}
       <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
         {/* Background Gradients & Effects */}
@@ -73,7 +72,7 @@ const CyberSecurityPage = () => {
 
         <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Content */}
             <div className="lg:col-span-6 text-left space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/20 bg-accent/8">
@@ -93,7 +92,7 @@ const CyberSecurityPage = () => {
               <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-xl">
                 Cyber threats are no longer limited to large enterprises. Every business connected to the internet is a potential target. Whether you're a startup, SME, or global organization, cybersecurity is essential to protect your data, operations, reputation, and customers.
               </p>
-              
+
               <p className="text-base text-text-secondary leading-relaxed max-w-xl">
                 At Netcradus, we help organizations stay ahead of evolving cyber threats with intelligent security solutions, proactive monitoring, and expert-driven defense strategies.
               </p>
@@ -115,9 +114,10 @@ const CyberSecurityPage = () => {
               </div>
             </div>
 
-            {/* Right Illustration */}
+            {/* Right Illustration: Direct Loop Video Component */}
             <div className="lg:col-span-6 flex justify-center relative">
               <div className="absolute w-[350px] h-[350px] rounded-full bg-accent/8 blur-[80px] pointer-events-none z-0" />
+
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -125,12 +125,18 @@ const CyberSecurityPage = () => {
                 className="relative z-10 w-full max-w-[500px]"
               >
                 <div className="relative overflow-hidden rounded-[28px] border border-border bg-surface p-4 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
-                  <img
-                    src="/img/cybersecurity.png"
-                    alt="Cyber Security Services"
-                    className="w-full h-auto object-contain rounded-[20px]"
-                    style={{ filter: "drop-shadow(0 15px 30px rgba(255, 107, 0, 0.15))" }}
-                  />
+                  {/* Looping Inline Video Player */}
+                  <div className="relative overflow-hidden rounded-[20px] aspect-video w-full bg-[#0f172a] flex items-center justify-center shadow-[0_15px_30px_rgba(255,107,0,0.15)]">
+                    <video
+                      src="/img/Netcradus cyber security.mp4"
+                      className="w-full h-full object-cover rounded-[20px]"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      controls
+                    />
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -143,7 +149,7 @@ const CyberSecurityPage = () => {
       <section className="py-24 border-t border-border/20 bg-black/20">
         <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Image */}
             <div className="lg:col-span-6 order-2 lg:order-1 flex justify-center">
               <div className="relative w-full max-w-[500px]">
@@ -185,7 +191,7 @@ const CyberSecurityPage = () => {
       <section className="py-24 border-t border-border/20">
         <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Content */}
             <div className="lg:col-span-6 text-left space-y-6">
               <span className="text-xs font-black uppercase tracking-[0.25em] text-accent">
@@ -195,7 +201,7 @@ const CyberSecurityPage = () => {
                 Why Cyber Security Matters
               </h2>
               <p className="text-base sm:text-lg text-text-secondary leading-relaxed">
-                Every click, login, online transaction, and cloud application creates new opportunities for cybercriminals. 
+                Every click, login, online transaction, and cloud application creates new opportunities for cybercriminals.
               </p>
               <p className="text-base text-text-secondary leading-relaxed">
                 Modern cybersecurity provides continuous protection by identifying vulnerabilities, detecting threats in real time, and responding before attacks can escalate.
@@ -209,9 +215,9 @@ const CyberSecurityPage = () => {
             <div className="lg:col-span-6">
               <div className="relative rounded-[24px] border border-accent/20 bg-gradient-to-br from-white/5 to-orange-500/5 p-8 backdrop-blur-md shadow-[0_15px_30px_rgba(255,107,0,0.03)]">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-                
+
                 <h3 className="text-xl font-extrabold text-white mb-6">Security Landscape In Numbers</h3>
-                
+
                 <div className="space-y-6">
                   <div className="flex items-center gap-6 pb-6 border-b border-border/10">
                     <span className="text-4xl md:text-5xl font-black text-accent">$4.45M</span>
@@ -325,7 +331,7 @@ const CyberSecurityPage = () => {
       <section className="py-24 border-t border-border/20 bg-black/20">
         <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Content */}
             <div className="lg:col-span-5 text-left space-y-5">
               <span className="text-xs font-black uppercase tracking-[0.25em] text-accent">Market Drivers</span>
@@ -452,7 +458,7 @@ const CyberSecurityPage = () => {
       <section className="py-24 border-t border-border/20">
         <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Content */}
             <div className="lg:col-span-7 text-left space-y-6">
               <span className="text-xs font-black uppercase tracking-[0.25em] text-accent">Next Horizon</span>
@@ -544,7 +550,7 @@ const CyberSecurityPage = () => {
       {/* SECTION 11 – FINAL CTA */}
       <section className="py-20 border-t border-border/20 relative overflow-hidden bg-gradient-to-br from-surface to-orange-950/20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,107,0,0.12),transparent_60%)] pointer-events-none" />
-        
+
         <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10 text-center space-y-8">
           <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
             Ready to Secure Your Business?
@@ -552,20 +558,20 @@ const CyberSecurityPage = () => {
           <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto">
             Don't wait for a cyber attack to take action. Ensure protection of your organization with continuous, proactive monitoring.
           </p>
-          
-          <div className="flex flex-wrap gap-4 justify-center pt-2">
+
+          <div className="flex flex-wrap gap-4 justify-center pt-2 relative z-10">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-accent text-white font-bold text-sm shadow-lg shadow-accent/25 hover:bg-accent-bright transition-all duration-300 no-underline"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-accent text-white font-semibold text-base shadow-lg shadow-accent/25 hover:bg-accent-bright transition-all duration-300 no-underline whitespace-nowrap"
             >
-              Get a Free Security Consultation
-              <ArrowRight size={16} />
+              Schedule a Security Assessment
+              <ArrowRight size={16} className="text-white" />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border bg-white/5 text-white font-bold text-sm hover:bg-white/10 transition-all duration-300 no-underline"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/25 hover:border-[#FF6B00] text-white hover:text-[#FF6B00] hover:bg-[rgba(255,107,0,0.08)] font-semibold text-base transition-all duration-300 no-underline whitespace-nowrap"
             >
-              Talk to a Cybersecurity Expert
+              Talk to Our Experts
             </Link>
           </div>
         </div>

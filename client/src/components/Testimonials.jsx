@@ -82,16 +82,26 @@ export default function Testimonials() {
     }, [currentIndex, isHovered]);
 
     return (
-        <SectionWrapper className="bg-background border-y border-[var(--border-color)] transition-colors duration-300">
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24 items-center">
+        <SectionWrapper 
+            className="border-y border-white/5 relative overflow-hidden transition-colors duration-300"
+            style={{ backgroundColor: "#0B0B0D" }}
+        >
+            {/* Soft off-white radial gradient behind the section */}
+            <div 
+                className="absolute inset-0 pointer-events-none z-0"
+                style={{
+                    background: "radial-gradient(circle at top left, rgba(255,248,240,0.14), transparent 60%)"
+                }}
+            />
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24 items-center">
 
                 {/* Left Side */}
                 <div className="lg:col-span-1">
 
                     <div className="flex items-center gap-2 mb-6">
-                        <div className="w-1 h-3 bg-primary" />
-                        <span className="mono-label text-primary">
+                        <div className="w-1.5 h-4 bg-primary" />
+                        <span className="mono-label text-primary font-bold">
                             DOSSIER_FEEDBACK: 04
                         </span>
                     </div>
@@ -142,24 +152,43 @@ export default function Testimonials() {
                                 className="w-full h-full"
                             >
                                 <GlassCard
-                                    hover={true}
-                                    className="p-10 border-[var(--border-color)] bg-surface-color/5 h-full min-h-[300px] sm:min-h-[250px] md:min-h-[220px] lg:min-h-[250px] xl:min-h-[220px] flex flex-col justify-between"
+                                    hover={false}
+                                    className="p-10 h-full min-h-[300px] sm:min-h-[250px] md:min-h-[220px] lg:min-h-[250px] xl:min-h-[220px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(0,0,0,0.22),0_0_50px_rgba(255,245,235,0.25)]"
+                                    style={{
+                                        backgroundColor: "rgba(255, 252, 248, 0.94)",
+                                        backdropFilter: "blur(16px)",
+                                        WebkitBackdropFilter: "blur(16px)",
+                                        border: "1px solid rgba(255, 255, 255, 0.45)",
+                                        boxShadow: "0 20px 50px rgba(0,0,0,0.18), 0 0 40px rgba(255,245,235,0.18)"
+                                    }}
                                 >
                                     <Quote
-                                        className="absolute top-8 right-8 text-primary/10 w-12 h-12"
+                                        className="absolute top-8 right-8 text-[#FF6B00]/15 w-12 h-12"
                                         strokeWidth={1}
                                     />
 
-                                    <p className="text-[var(--text-primary)] font-sans text-sm md:text-lg leading-relaxed mb-8 opacity-80 italic relative z-10">
+                                    <p 
+                                        className="font-sans text-sm md:text-lg font-medium leading-relaxed mb-8 italic relative z-10"
+                                        style={{ color: "#444444" }}
+                                    >
                                         "{TESTIMONIALS_DATA[currentIndex].quote}"
                                     </p>
 
-                                    <div className="relative z-10 pt-6 border-t border-[var(--border-color)] mt-auto">
-                                        <h4 className="mono-label !text-primary mb-1">
+                                    <div 
+                                        className="relative z-10 pt-6 mt-auto"
+                                        style={{ borderTop: "1px solid rgba(17, 17, 17, 0.15)" }}
+                                    >
+                                        <h4 
+                                            className="mono-label mb-1 font-bold"
+                                            style={{ color: "#111111" }}
+                                        >
                                             {TESTIMONIALS_DATA[currentIndex].industry}
                                         </h4>
 
-                                        <p className="font-mono text-[9px] text-[var(--text-secondary)] uppercase tracking-widest">
+                                        <p 
+                                            className="font-mono text-[9px] uppercase tracking-widest font-semibold"
+                                            style={{ color: "#FF6B00" }}
+                                        >
                                             {TESTIMONIALS_DATA[currentIndex].company}
                                         </p>
                                     </div>
@@ -169,10 +198,10 @@ export default function Testimonials() {
                     </div>
 
                     {/* Navigation Controls */}
-                    <div className="flex items-center justify-between max-w-xs mx-auto pt-2">
+                    <div className="flex items-center justify-between max-w-xs mx-auto pt-2 relative z-10">
                         <button
                             onClick={handlePrev}
-                            className="p-2.5 rounded-full border border-white/10 hover:border-primary/50 text-white/60 hover:text-primary transition-all bg-surface/20 hover:scale-105"
+                            className="p-2.5 rounded-full bg-white text-black hover:text-[#FF6B00] shadow-md border border-white hover:border-[#FF6B00] transition-all hover:scale-105"
                             aria-label="Previous Testimonial"
                         >
                             <ChevronLeft size={16} />
@@ -184,7 +213,7 @@ export default function Testimonials() {
                                     key={idx}
                                     onClick={() => handleDotClick(idx)}
                                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                        idx === currentIndex ? "bg-primary w-5" : "bg-white/20 hover:bg-white/40"
+                                        idx === currentIndex ? "bg-[#FF6B00] w-5" : "bg-white/20 hover:bg-white/40"
                                     }`}
                                 />
                             ))}
@@ -192,7 +221,7 @@ export default function Testimonials() {
 
                         <button
                             onClick={handleNext}
-                            className="p-2.5 rounded-full border border-white/10 hover:border-primary/50 text-white/60 hover:text-primary transition-all bg-surface/20 hover:scale-105"
+                            className="p-2.5 rounded-full bg-white text-black hover:text-[#FF6B00] shadow-md border border-white hover:border-[#FF6B00] transition-all hover:scale-105"
                             aria-label="Next Testimonial"
                         >
                             <ChevronRight size={16} />
