@@ -8,11 +8,11 @@ export default function LocationMap() {
       flag: "🇮🇳",
       label: "India Headquarters",
       title: "India Headquarters",
-      address: "Block C. 444, Golden I, Tech Zone IV, Greater Noida, UP - 201306",
+      address: "Office no. 609, 6th Floor, AVS City Square, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003, India",
       hours: "Monday - Friday: 9:00 AM - 6:00 PM IST",
       email: "info@netcradus.in",
       phone: "+91 72909 09571",
-      mapQuery: "Golden I, Tech Zone IV, Greater Noida, Uttar Pradesh, India",
+      mapQuery: "Office no. 609, 6th Floor, AVS City Square, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003, India",
     },
     {
       id: "uk",

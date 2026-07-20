@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronRight, ChevronDown, Phone } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
-import companyLogoImage from '../assets/companyLogo.png';
 import SolutionsMegaMenu, { SOLUTIONS } from './SolutionsMegaMenu';
 import ProductMegaMenu, { PRODUCTS } from './ProductMegaMenu';
 import './Navbar.css';
 
 const Navbar = () => {
-useTheme();
+  useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null); // 'solutions' | 'products' | null
   const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+
+  const closeTimeoutRef = useRef(null);
+  const navRef = useRef(null);
   const location = useLocation();
 
+  // Handle Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -26,6 +28,7 @@ useTheme();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll on mobile drawer open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -38,11 +41,60 @@ useTheme();
     };
   }, [isMenuOpen]);
 
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Platform', path: '/platform' },
-    { name: 'Contact', path: '/contact' },
-  ];
+  // Close mega menus on route change
+  useEffect(() => {
+    setActiveMenu(null);
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Click Outside & Escape key handlers
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setActiveMenu(null);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setActiveMenu(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  // Hover Handlers with 180ms debounce delay
+  const handleMouseEnter = (menuName) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    setActiveMenu(menuName);
+  };
+
+  const handleMouseLeave = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 180);
+  };
+
+  // Click / Touch Toggle Handler
+  const handleMenuToggle = (menuName, e) => {
+    e.stopPropagation();
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    setActiveMenu((prev) => (prev === menuName ? null : menuName));
+  };
 
   const isActiveLink = (path) => {
     if (path === '/') {
@@ -56,9 +108,10 @@ useTheme();
   };
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
-<div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 grid grid-cols-[auto_1fr_auto] items-center h-24">
+    <nav ref={navRef} className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 grid grid-cols-[auto_1fr_auto] items-center h-24">
         
+        {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2 group">
           <img
             src="/Netcradus logo01.png"
@@ -67,7 +120,8 @@ useTheme();
           />
         </Link>
 
-       <div className="nav-links desktop-only flex justify-center items-center gap-8">
+        {/* Desktop Navigation */}
+        <div className="nav-links desktop-only flex justify-center items-center gap-8">
           <Link
             to="/"
             className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
@@ -90,49 +144,77 @@ useTheme();
             Platform
           </Link>
 
+          {/* Solutions Mega Menu Trigger */}
           <div
-            className={`nav-item-solutions ${isSolutionsOpen ? 'open' : ''}`}
-            onMouseEnter={() => setIsSolutionsOpen(true)}
-            onMouseLeave={() => setIsSolutionsOpen(false)}
+            className={`nav-item-solutions relative ${activeMenu === 'solutions' ? 'open' : ''}`}
+            onMouseEnter={() => handleMouseEnter('solutions')}
+            onMouseLeave={handleMouseLeave}
           >
-            <Link
-              to="/services"
-              className={`nav-link-solutions nav-link text-sm font-semibold tracking-wide transition-colors ${
-                isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path))
+            <button
+              type="button"
+              onClick={(e) => handleMenuToggle('solutions', e)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleMenuToggle('solutions', e);
+                }
+              }}
+              aria-expanded={activeMenu === 'solutions'}
+              aria-haspopup="true"
+              className={`nav-link-solutions nav-link text-sm font-semibold tracking-wide transition-colors flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
+                isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)) || activeMenu === 'solutions'
                   ? 'active text-accent'
                   : 'text-text-secondary hover:text-accent'
               }`}
             >
               Solutions
-              <ChevronDown size={14} />
-            </Link>
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-300 ${activeMenu === 'solutions' ? 'rotate-180 text-accent' : ''}`}
+              />
+            </button>
 
             <SolutionsMegaMenu
-              isOpen={isSolutionsOpen}
-              onClose={() => setIsSolutionsOpen(false)}
+              isOpen={activeMenu === 'solutions'}
+              onClose={() => setActiveMenu(null)}
+              onMouseEnter={() => handleMouseEnter('solutions')}
+              onMouseLeave={handleMouseLeave}
             />
           </div>
 
+          {/* Products Mega Menu Trigger */}
           <div
-            className={`nav-item-products ${isProductsOpen ? 'open' : ''}`}
-            onMouseEnter={() => setIsProductsOpen(true)}
-            onMouseLeave={() => setIsProductsOpen(false)}
+            className={`nav-item-products relative ${activeMenu === 'products' ? 'open' : ''}`}
+            onMouseEnter={() => handleMouseEnter('products')}
+            onMouseLeave={handleMouseLeave}
           >
             <button
               type="button"
-              className={`nav-link-products nav-link text-sm font-semibold tracking-wide transition-colors ${
-                PRODUCTS.some((p) => isActiveLink(p.path))
+              onClick={(e) => handleMenuToggle('products', e)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleMenuToggle('products', e);
+                }
+              }}
+              aria-expanded={activeMenu === 'products'}
+              aria-haspopup="true"
+              className={`nav-link-products nav-link text-sm font-semibold tracking-wide transition-colors flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
+                PRODUCTS.some((p) => isActiveLink(p.path)) || activeMenu === 'products'
                   ? 'active text-accent'
                   : 'text-text-secondary hover:text-accent'
               }`}
             >
               Products
-              <ChevronDown size={14} />
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-300 ${activeMenu === 'products' ? 'rotate-180 text-accent' : ''}`}
+              />
             </button>
 
             <ProductMegaMenu
-              isOpen={isProductsOpen}
-              onClose={() => setIsProductsOpen(false)}
+              isOpen={activeMenu === 'products'}
+              onClose={() => setActiveMenu(null)}
+              onMouseEnter={() => handleMouseEnter('products')}
+              onMouseLeave={handleMouseLeave}
             />
           </div>
 
@@ -147,12 +229,22 @@ useTheme();
             Contact
           </Link>
         </div>
-                
 
-        <div className="flex justify-end items-center gap-6">
+        {/* CTA & Mobile Hamburger Toggle */}
+        <div className="flex justify-end items-center gap-3 sm:gap-4">
+          {/* Toll-Free Number CTA Button */}
+          <a
+            href="tel:1800121008800"
+            className="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 md:px-4 md:py-2.5 lg:px-5 lg:py-3 text-[13px] md:text-[14px] lg:text-[15px] font-semibold text-[#111111] bg-white border border-[#FF6A00] rounded-full transition-all duration-300 hover:bg-[#FF6A00] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(255,106,0,0.35)] no-underline whitespace-nowrap group shrink-0"
+          >
+            <Phone size={15} className="shrink-0 text-[#FF6A00] group-hover:text-white transition-colors duration-300" />
+            <span>1800 121 008800</span>
+          </a>
+
+          {/* Talk to an Expert CTA Button */}
           <Link 
             to="/contact" 
-            className="desktop-only btn-primary px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg hover:scale-105 transition-all no-underline"
+            className="desktop-only btn-primary px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg hover:scale-105 transition-all no-underline shrink-0"
             style={{ background: 'var(--color-accent)', color: '#ffffff' }}
           >
             Talk to an Expert
@@ -161,17 +253,20 @@ useTheme();
           <button
             className="mobile-menu-toggle p-2 lg:hidden text-zinc-900 dark:text-white"
             onClick={() => setIsMenuOpen(prev => !prev)}
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Drawer */}
       <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
         <div className="mobile-header">
           <button
             onClick={() => setIsMenuOpen(false)}
             className="mobile-close"
+            aria-label="Close menu"
           >
             <X size={28} />
           </button>
@@ -256,6 +351,18 @@ useTheme();
             Contact
             <ChevronRight size={18} />
           </Link>
+
+          {/* Mobile Toll-Free Number CTA Button */}
+          <div className="pt-6 px-2">
+            <a
+              href="tel:1800121008800"
+              className="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3.5 text-[15px] font-semibold text-[#111111] bg-white border border-[#FF6A00] rounded-full transition-all duration-300 hover:bg-[#FF6A00] hover:text-white no-underline shadow-md group"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Phone size={18} className="text-[#FF6A00] group-hover:text-white transition-colors" />
+              <span>1800 121 008800</span>
+            </a>
+          </div>
 
         </div>
       </div>

@@ -79,11 +79,18 @@ export default function WhyChooseUs() {
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
   const [orbitRadius, setOrbitRadius] = useState(440);
   const [coreDiameter, setCoreDiameter] = useState(400);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
   // Responsive adjustments for the Orbit radius & Core size to prevent overflow
   useEffect(() => {
     const handleResize = () => {
       const w = window.innerWidth;
+      if (w < 1024) {
+        setIsMobileOrTablet(true);
+      } else {
+        setIsMobileOrTablet(false);
+      }
+
       if (w < 640) {
         setOrbitRadius(250);
         setCoreDiameter(230);
@@ -95,9 +102,10 @@ export default function WhyChooseUs() {
         setCoreDiameter(340);
       } else {
         setOrbitRadius(440);
-        setCoreDiameter(400); // reduced by ~20% (was 480px)
+        setCoreDiameter(400);
       }
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -106,7 +114,7 @@ export default function WhyChooseUs() {
   // Handle Mouse movement for subtle Parallax
   useEffect(() => {
     const handleMouseMove = (e) => {
-      if (!containerRef.current) return;
+      if (!containerRef.current || isMobileOrTablet) return;
       const rect = containerRef.current.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -122,24 +130,12 @@ export default function WhyChooseUs() {
         container.removeEventListener("mousemove", handleMouseMove);
       }
     };
-  }, []);
+  }, [isMobileOrTablet]);
 
   const coreRadius = coreDiameter / 2;
 
   // Custom visual CSS rules
   const customStyles = `
-    @keyframes coreSpinClockwise {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-    @keyframes coreSpinCounter {
-      0% { transform: translate(-50%, -50%) rotate(360deg); }
-      100% { transform: translate(-50%, -50%) rotate(0deg); }
-    }
-    @keyframes coreWavePulse {
-      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.65; }
-      100% { transform: translate(-50%, -50%) scale(1.25); opacity: 0; }
-    }
     @keyframes chooseFloat1 {
       0%, 100% { transform: translate(-50%, -50%) translateY(0); }
       50% { transform: translate(-50%, -50%) translateY(-6px); }
@@ -148,15 +144,6 @@ export default function WhyChooseUs() {
       0%, 100% { transform: translate(-50%, -50%) translateY(0); }
       50% { transform: translate(-50%, -50%) translateY(-4px); }
     }
-    .animate-spin-cw {
-      animation: coreSpinClockwise 32s linear infinite;
-    }
-    .animate-spin-ccw {
-      animation: coreSpinCounter 38s linear infinite;
-    }
-    .animate-pulse-wave {
-      animation: coreWavePulse 4.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
     .hover-card-sweep:hover {
       box-shadow: 0 0 25px rgba(255, 107, 0, 0.35);
       border-color: rgba(255, 107, 0, 0.5);
@@ -164,33 +151,30 @@ export default function WhyChooseUs() {
     }
   `;
 
-  // Calculate coordinates for connection lines mapping to each card's inner dot
   const getCardLayoutProps = (feat) => {
     let r = orbitRadius;
     if (feat.side === "bottom") {
-      r = orbitRadius + 50; // Push bottom card down slightly to prevent overlaps
+      r = orbitRadius + 50;
     }
     const angleRad = (feat.angle * Math.PI) / 180;
     const x = Math.cos(angleRad) * r;
     const y = Math.sin(angleRad) * r;
 
-    // Relative center of SVG coordinates is 600
     const centerX = 600;
     const centerY = 600;
 
     const startX = centerX + Math.cos(angleRad) * coreRadius;
     const startY = centerY + Math.sin(angleRad) * coreRadius;
 
-    // Card dimensions: width = 240px, height = 60px
     let dotX = centerX + x;
     let dotY = centerY + y;
 
     if (feat.side === "left") {
-      dotX += 130; // 120px card half-width + 10px gap
+      dotX += 130;
     } else if (feat.side === "right") {
-      dotX -= 130; // 120px card half-width + 10px gap
+      dotX -= 130;
     } else if (feat.side === "bottom") {
-      dotY -= 40;  // 30px card half-height + 10px gap
+      dotY -= 40;
     }
 
     return { x, y, startX, startY, dotX, dotY };
@@ -207,7 +191,7 @@ export default function WhyChooseUs() {
     <section
       id="why-netcradus"
       ref={containerRef}
-      className="relative w-full pt-[140px] sm:pt-[150px] lg:pt-[170px] pb-[180px] sm:pb-[200px] lg:pb-[260px] overflow-hidden flex flex-col items-center justify-start z-10 select-none"
+      className="relative w-full pt-[80px] sm:pt-[100px] lg:pt-[140px] pb-[80px] sm:pb-[100px] lg:pb-[180px] overflow-hidden flex flex-col items-center justify-start z-10 select-none responsive-section-padding"
       style={{
         background: "radial-gradient(circle at 50% 50%, #111827 0%, #070B13 60%, #030509 100%)",
       }}
@@ -216,8 +200,8 @@ export default function WhyChooseUs() {
       <BackgroundParticles />
 
       {/* Ambient background glowing spots */}
-      <div className="absolute top-[15%] left-[15%] h-[400px] w-[400px] rounded-full bg-[#3B82F6]/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[15%] right-[15%] h-[450px] w-[450px] rounded-full bg-[#FF6B00]/4 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[15%] left-[15%] h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] rounded-full bg-[#3B82F6]/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[15%] right-[15%] h-[350px] w-[350px] sm:h-[450px] sm:w-[450px] rounded-full bg-[#FF6B00]/4 blur-[130px] pointer-events-none" />
 
       {/* Standalone Section Heading */}
       <motion.div
@@ -227,9 +211,8 @@ export default function WhyChooseUs() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-30 text-center w-full max-w-5xl mx-auto px-4"
       >
-        <h2 className="relative font-extrabold tracking-tight uppercase select-none leading-none text-4xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[72px] font-sans">
-          {/* Subtle Orange Glow behind the heading */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] sm:w-[350px] h-[80px] bg-accent/20 rounded-full blur-[60px] sm:blur-[80px] pointer-events-none z-0" />
+        <h2 className="relative font-extrabold tracking-tight uppercase select-none leading-none text-3xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[72px] font-sans">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] sm:w-[350px] h-[80px] bg-accent/20 rounded-full blur-[60px] sm:blur-[80px] pointer-events-none z-0" />
           
           <span className="relative z-10 text-white mr-3 sm:mr-4">
             Why Choose
@@ -240,170 +223,187 @@ export default function WhyChooseUs() {
         </h2>
       </motion.div>
 
-      {/* Parallax coordinate wrapper for absolute centered items */}
-      <div
-        className="relative w-full overflow-visible pointer-events-none mt-[50px] md:mt-[60px]"
-        style={{
-          transform: `translate3d(${mouseOffset.x}px, ${mouseOffset.y}px, 0)`,
-          height: `${getWrapperHeight()}px`,
-        }}
-      >
-        {/* SVG connection lines - inside the parallax container to lock alignment */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] pointer-events-none z-10 flex items-center justify-center overflow-visible">
-          <svg className="w-full h-full overflow-visible">
-            {/* 360-degree decorative sun rays (spikes) all around the core circumference */}
-            {Array.from({ length: 36 }).map((_, i) => {
-              const angleDeg = i * (360 / 36);
-              const angleRad = (angleDeg * Math.PI) / 180;
-              const centerX = 600;
-              const centerY = 600;
-
-              // Vary lengths slightly for a natural, premium solar aesthetic
-              const rayLength = 15 + (i % 3 === 0 ? 15 : 0) + (i % 2 === 0 ? 5 : 0);
-              
-              const startX = centerX + Math.cos(angleRad) * coreRadius;
-              const startY = centerY + Math.sin(angleRad) * coreRadius;
-              const endX = centerX + Math.cos(angleRad) * (coreRadius + rayLength);
-              const endY = centerY + Math.sin(angleRad) * (coreRadius + rayLength);
-
-              const showDot = i % 4 === 0;
-
-              return (
-                <g key={`decorative-ray-${i}`}>
-                  <line
-                    x1={startX}
-                    y1={startY}
-                    x2={endX}
-                    y2={endY}
-                    stroke="rgba(255, 107, 0, 0.35)"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                  />
-                  {showDot && (
-                    <circle
-                      cx={endX}
-                      cy={endY}
-                      r="1.2"
-                      fill="#FF6B00"
-                      opacity="0.85"
-                      style={{ filter: "drop-shadow(0 0 2px #FF6B00)" }}
-                    />
-                  )}
-                </g>
-              );
-            })}
-
-            {FEATURES_DATA.map((feat, idx) => {
-              const { startX, startY, dotX, dotY } = getCardLayoutProps(feat);
-
-              return (
-                <g key={idx}>
-                  {/* Thin static connection beam */}
-                  <line
-                    x1={startX}
-                    y1={startY}
-                    x2={dotX}
-                    y2={dotY}
-                    stroke="rgba(255, 107, 0, 0.22)"
-                    strokeWidth="1.2"
-                    strokeDasharray="4 4"
-                  />
-
-                  {/* Flowing animated light particles travelling center -> card */}
-                  <circle r="2.5" fill="#FF6B00" style={{ filter: "drop-shadow(0 0 4px #FF6B00)" }}>
-                    <animate
-                      attributeName="cx"
-                      from={startX}
-                      to={dotX}
-                      dur="3.2s"
-                      begin={`${idx * 0.25}s`}
-                      repeatCount="indefinite"
-                    />
-                    <animate
-                      attributeName="cy"
-                      from={startY}
-                      to={dotY}
-                      dur="3.2s"
-                      begin={`${idx * 0.25}s`}
-                      repeatCount="indefinite"
-                    />
-                    <animate
-                      attributeName="opacity"
-                      values="0;1;1;0"
-                      keyTimes="0;0.1;0.9;1"
-                      dur="3.2s"
-                      begin={`${idx * 0.25}s`}
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-
-                  {/* Static connection dot at the end of the line */}
-                  <circle
-                    cx={dotX}
-                    cy={dotY}
-                    r="4"
-                    fill="#FF6B00"
-                    style={{ filter: "drop-shadow(0 0 6px #FF6B00)" }}
-                  />
-                </g>
-              );
-            })}
-          </svg>
-        </div>
-
-
-        {/* CENTER: Large premium circular glass hub */}
+      {/* DESKTOP LAYOUT: Radial Orbit */}
+      {!isMobileOrTablet ? (
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#FF6B00]/50 shadow-[0_0_60px_rgba(255,107,0,0.42),inset_0_0_60px_rgba(59,130,246,0.22)] flex flex-col items-center justify-center p-10 text-center relative z-20 pointer-events-auto select-text"
+          className="relative w-full overflow-visible pointer-events-none mt-[50px] md:mt-[60px]"
           style={{
-            width: `${coreDiameter}px`,
-            height: `${coreDiameter}px`,
-            background: "radial-gradient(circle, rgba(4, 6, 12, 0.99) 0%, rgba(2, 3, 6, 1) 100%)",
+            transform: `translate3d(${mouseOffset.x}px, ${mouseOffset.y}px, 0)`,
+            height: `${getWrapperHeight()}px`,
           }}
         >
-          {/* Subtle concentric inner rings */}
-          <div className="absolute inset-4 rounded-full border border-[#FF6B00]/8 pointer-events-none" />
-          <div className="absolute inset-8 rounded-full border border-[#FF6B00]/4 pointer-events-none" />
+          {/* SVG connection lines */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] pointer-events-none z-10 flex items-center justify-center overflow-visible">
+            <svg className="w-full h-full overflow-visible">
+              {Array.from({ length: 36 }).map((_, i) => {
+                const angleDeg = i * (360 / 36);
+                const angleRad = (angleDeg * Math.PI) / 180;
+                const centerX = 600;
+                const centerY = 600;
+                const rayLength = 15 + (i % 3 === 0 ? 15 : 0) + (i % 2 === 0 ? 5 : 0);
+                
+                const startX = centerX + Math.cos(angleRad) * coreRadius;
+                const startY = centerY + Math.sin(angleRad) * coreRadius;
+                const endX = centerX + Math.cos(angleRad) * (coreRadius + rayLength);
+                const endY = centerY + Math.sin(angleRad) * (coreRadius + rayLength);
 
-          {/* Core content */}
-          <p className="text-sm sm:text-base font-semibold text-gray-200 leading-[1.75] max-w-[340px] text-center">
-            A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.
-          </p>
-        </div>
+                const showDot = i % 4 === 0;
 
-        {/* Orbiting feature glass cards positioned symmetrically */}
-        {FEATURES_DATA.map((feat, idx) => {
-          const { x, y } = getCardLayoutProps(feat);
-          const Icon = feat.icon;
+                return (
+                  <g key={`decorative-ray-${i}`}>
+                    <line
+                      x1={startX}
+                      y1={startY}
+                      x2={endX}
+                      y2={endY}
+                      stroke="rgba(255, 107, 0, 0.35)"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                    />
+                    {showDot && (
+                      <circle
+                        cx={endX}
+                        cy={endY}
+                        r="1.2"
+                        fill="#FF6B00"
+                        opacity="0.85"
+                        style={{ filter: "drop-shadow(0 0 2px #FF6B00)" }}
+                      />
+                    )}
+                  </g>
+                );
+              })}
 
-          const floatDelay = `${idx * 0.4}s`;
-          const floatAnim = idx % 2 === 0 ? "chooseFloat1" : "chooseFloat2";
+              {FEATURES_DATA.map((feat, idx) => {
+                const { startX, startY, dotX, dotY } = getCardLayoutProps(feat);
 
-          return (
-            <div
-              key={feat.title}
-              className="absolute z-20 overflow-visible pointer-events-auto"
-              style={{
-                left: `calc(50% + ${x}px)`,
-                top: `calc(50% + ${y}px)`,
-                animation: `${floatAnim} 6.5s ease-in-out infinite`,
-                animationDelay: floatDelay,
-              }}
-            >
-              <div className="hover-card-sweep relative flex items-center gap-[18px] backdrop-blur-xl border border-white/8 bg-black/55 shadow-[0_15px_35px_rgba(0,0,0,0.45)] rounded-[18px] pl-[16px] pr-[16px] py-[14px] select-none cursor-pointer transition-all duration-300 w-[215px] sm:w-[240px] hover:border-[#FF6B00]/50 hover:shadow-[0_0_25px_rgba(255,107,0,0.35)]">
-                {/* Icon box */}
-                <div className="h-9 w-9 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] flex items-center justify-center flex-shrink-0">
-                  <Icon size={16} />
-                </div>
-                {/* Title */}
-                <div className="text-[10px] sm:text-xs font-extrabold text-white text-left leading-snug">
-                  {feat.title}
+                return (
+                  <g key={idx}>
+                    <line
+                      x1={startX}
+                      y1={startY}
+                      x2={dotX}
+                      y2={dotY}
+                      stroke="rgba(255, 107, 0, 0.22)"
+                      strokeWidth="1.2"
+                      strokeDasharray="4 4"
+                    />
+                    <circle r="2.5" fill="#FF6B00" style={{ filter: "drop-shadow(0 0 4px #FF6B00)" }}>
+                      <animate
+                        attributeName="cx"
+                        from={startX}
+                        to={dotX}
+                        dur="3.2s"
+                        begin={`${idx * 0.25}s`}
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="cy"
+                        from={startY}
+                        to={dotY}
+                        dur="3.2s"
+                        begin={`${idx * 0.25}s`}
+                        repeatCount="indefinite"
+                      />
+                      <animate
+                        attributeName="opacity"
+                        values="0;1;1;0"
+                        keyTimes="0;0.1;0.9;1"
+                        dur="3.2s"
+                        begin={`${idx * 0.25}s`}
+                        repeatCount="indefinite"
+                      />
+                    </circle>
+                    <circle
+                      cx={dotX}
+                      cy={dotY}
+                      r="4"
+                      fill="#FF6B00"
+                      style={{ filter: "drop-shadow(0 0 6px #FF6B00)" }}
+                    />
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+
+          {/* CENTER: Large circular glass hub */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#FF6B00]/50 shadow-[0_0_60px_rgba(255,107,0,0.42),inset_0_0_60px_rgba(59,130,246,0.22)] flex flex-col items-center justify-center p-10 text-center relative z-20 pointer-events-auto select-text"
+            style={{
+              width: `${coreDiameter}px`,
+              height: `${coreDiameter}px`,
+              background: "radial-gradient(circle, rgba(4, 6, 12, 0.99) 0%, rgba(2, 3, 6, 1) 100%)",
+            }}
+          >
+            <div className="absolute inset-4 rounded-full border border-[#FF6B00]/8 pointer-events-none" />
+            <div className="absolute inset-8 rounded-full border border-[#FF6B00]/4 pointer-events-none" />
+            <p className="text-sm sm:text-base font-semibold text-gray-200 leading-[1.75] max-w-[340px] text-center">
+              A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.
+            </p>
+          </div>
+
+          {/* Orbiting feature glass cards */}
+          {FEATURES_DATA.map((feat, idx) => {
+            const { x, y } = getCardLayoutProps(feat);
+            const Icon = feat.icon;
+            const floatDelay = `${idx * 0.4}s`;
+            const floatAnim = idx % 2 === 0 ? "chooseFloat1" : "chooseFloat2";
+
+            return (
+              <div
+                key={feat.title}
+                className="absolute z-20 overflow-visible pointer-events-auto"
+                style={{
+                  left: `calc(50% + ${x}px)`,
+                  top: `calc(50% + ${y}px)`,
+                  animation: `${floatAnim} 6.5s ease-in-out infinite`,
+                  animationDelay: floatDelay,
+                }}
+              >
+                <div className="hover-card-sweep relative flex items-center gap-[18px] backdrop-blur-xl border border-white/8 bg-black/55 shadow-[0_15px_35px_rgba(0,0,0,0.45)] rounded-[18px] pl-[16px] pr-[16px] py-[14px] select-none cursor-pointer transition-all duration-300 w-[215px] sm:w-[240px] hover:border-[#FF6B00]/50 hover:shadow-[0_0_25px_rgba(255,107,0,0.35)]">
+                  <div className="h-9 w-9 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] flex items-center justify-center flex-shrink-0">
+                    <Icon size={16} />
+                  </div>
+                  <div className="text-[10px] sm:text-xs font-extrabold text-white text-left leading-snug">
+                    {feat.title}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : (
+        /* MOBILE & TABLET RESPONSIVE LAYOUT: Stacked Center Circle + Clean Grid */
+        <div className="w-full max-w-4xl mx-auto mt-8 flex flex-col items-center gap-8 relative z-20 px-4">
+          {/* Center Glass Hub */}
+          <div className="w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] rounded-full border border-[#FF6B00]/50 shadow-[0_0_50px_rgba(255,107,0,0.35)] flex flex-col items-center justify-center p-6 text-center bg-[#04060c]">
+            <p className="text-xs sm:text-sm font-semibold text-gray-200 leading-relaxed">
+              A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.
+            </p>
+          </div>
+
+          {/* Cards Grid: 1 col on mobile, 2 cols on tablet */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mt-4">
+            {FEATURES_DATA.map((feat) => {
+              const Icon = feat.icon;
+              return (
+                <div
+                  key={feat.title}
+                  className="flex items-center gap-4 backdrop-blur-xl border border-white/10 bg-black/60 shadow-lg rounded-2xl p-4 hover:border-[#FF6B00]/50 transition-all"
+                >
+                  <div className="h-10 w-10 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/30 text-[#FF6B00] flex items-center justify-center flex-shrink-0">
+                    <Icon size={18} />
+                  </div>
+                  <div className="text-xs sm:text-sm font-bold text-white text-left leading-snug">
+                    {feat.title}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

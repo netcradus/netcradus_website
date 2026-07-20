@@ -575,14 +575,14 @@ export default function Footer() {
       <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-accent/8 blur-[120px]" />
       <div className="absolute bottom-10 right-0 h-72 w-72 rounded-full bg-accent/6 blur-[120px]" />
 
-      <div className="relative mx-auto grid max-w-screen-2xl gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-12 lg:px-16 xl:px-24">
+      <div className="relative mx-auto grid max-w-screen-2xl gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-12 lg:px-16 xl:px-24 text-center sm:text-left">
         {/* Left Section */}
-        <div className="space-y-6 lg:col-span-4">
+        <div className="space-y-6 lg:col-span-4 flex flex-col items-center sm:items-start">
           <div className="flex items-center gap-3">
             <img
               src="/Netcradus logo01.png"
               alt="Netcradus logo"
-              className="h-18 w-auto object-contain"
+              className="h-18 w-auto object-contain mx-auto sm:mx-0"
             />
           </div>
 
@@ -596,7 +596,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2 w-full">
             <div className="text-[11px] leading-tight text-white">
               <div>
                 <strong>CIN:</strong> U62090UP2025PTC229722
@@ -622,7 +622,7 @@ export default function Footer() {
               </a>
 
               {/* Social Icons */}
-              <div className="flex items-center gap-3 pt-4">
+              <div className="flex items-center justify-center sm:justify-start gap-3 pt-4">
                 <a
                   href="https://instagram.com/netcradus"
                   target="_blank"

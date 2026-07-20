@@ -429,15 +429,7 @@ export default function Platform() {
               <span className="text-white">Cybersecurity Platform</span>
             </h1>
 
-            {/* 3. Subtitle with Glowing Pulsing ACIS & NETXDR */}
-            <div className="mt-4 flex items-center gap-2 text-lg md:text-2xl font-black text-gray-400">
-              <span>Powered by</span>
-              <span className="text-[#FF6B00] tracking-wider animate-pulse ml-1" style={{ filter: "drop-shadow(0 0 8px rgba(255, 107, 0, 0.6))" }}>ACIS</span>
-              <span className="text-gray-500 font-normal">+</span>
-              <span className="text-[#00E5FF] tracking-wider animate-pulse" style={{ filter: "drop-shadow(0 0 8px rgba(0, 229, 255, 0.6))" }}>NETXDR</span>
-            </div>
-
-            {/* 4. Description paragraph */}
+            {/* 3. Description paragraph */}
             <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300 md:text-lg">
               Experience the power of ACIS (Autonomous Cyber Immune System) and NETXDR, combining AI-driven threat detection, autonomous response, real-time visibility, and intelligent cyber defence in one unified security platform.
             </p>

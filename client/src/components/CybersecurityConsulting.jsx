@@ -11,7 +11,6 @@ import {
   Award,
   Check,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
 
 const MotionLink = motion(Link);
@@ -265,9 +264,9 @@ export default function CybersecurityConsulting() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl sm:text-5.5xl font-black font-display tracking-tight text-[#0B132B] mb-6 leading-[1.05]"
           >
-            Defend Your Perimeter. <br />
+            Secure Everything. <br />
             <span className="bg-gradient-to-r from-[#FF6B00] to-[#E05300] bg-clip-text text-transparent">
-              Empower Your Enterprise.
+              Detect Faster.
             </span>
           </motion.h2>
 
@@ -663,68 +662,6 @@ export default function CybersecurityConsulting() {
             </motion.div>
           ))}
         </div>
-
-        {/* Call To Action banner */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7 }}
-          className="relative max-w-4xl mx-auto rounded-[24px] bg-[#0B132B] p-10 sm:p-12 overflow-hidden text-center shadow-[0_20px_50px_rgba(11,19,43,0.12)] border border-[#FF6B00]/15"
-        >
-          {/* Subtle inside grid overlays and lights */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,107,0,0.15),transparent_45%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_80%,rgba(255,107,0,0.06),transparent_35%)]" />
-          
-          <div className="relative z-10 flex flex-col items-center">
-            
-            <div className="inline-flex items-center gap-1 bg-white/5 border border-white/10 px-3 py-1 rounded-full mb-6 text-[#FF6B00] text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="h-3 w-3" /> Zero Risk Roadmap
-            </div>
-
-            <h3 className="text-2xl sm:text-4.5xl font-black text-white tracking-tight mb-4 leading-tight">
-              Ready to Strengthen Your Security Strategy?
-            </h3>
-            
-            <p className="text-gray-400 max-w-2xl text-sm sm:text-base leading-relaxed mb-6 font-sans">
-              Speak with our lead advisory consultants to outline a posture assessment, prioritize your compliance objectives, and identify operational gaps.
-            </p>
-
-            {/* Trust Statement */}
-            <p className="text-[#FF6B00] font-semibold text-xs tracking-wider uppercase mb-8 max-w-2xl opacity-90 font-sans leading-relaxed">
-              Trusted by leading global enterprises, financial institutions, and critical infrastructure providers to secure their digital operations.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto relative z-20">
-              
-              {/* Premium Button: Schedule a Security Assessment */}
-              <Link
-                to="/contact"
-                className="relative group min-w-[260px] px-8 py-4 rounded-xl bg-[#FF6B00] hover:bg-[#E05300] text-white font-semibold text-base flex items-center justify-center gap-2 overflow-hidden transition-all duration-300 shadow-[0_6px_20px_rgba(255,107,0,0.3)] hover:shadow-[0_10px_25px_rgba(255,107,0,0.45)] hover:scale-[1.02] active:scale-[0.98] no-underline whitespace-nowrap"
-              >
-                {/* Ripple glow visual overlay */}
-                <span className="btn-shimmer pointer-events-none" />
-                
-                <span className="relative z-10 text-white font-semibold text-base flex items-center justify-center">
-                  Schedule a Security Assessment
-                </span>
-                <ArrowRight className="h-4 w-4 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-
-              {/* Premium Button: Talk to Our Experts */}
-              <Link
-                to="/contact"
-                className="relative group min-w-[260px] px-8 py-4 rounded-xl bg-transparent border border-white/25 hover:border-[#FF6B00] text-white hover:text-[#FF6B00] hover:bg-[rgba(255,107,0,0.08)] font-semibold text-base flex items-center justify-center gap-2 overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] no-underline whitespace-nowrap"
-              >
-                <span className="relative z-10 text-white font-semibold text-base flex items-center justify-center group-hover:text-[#FF6B00] transition-colors duration-300">
-                  Talk to Our Experts
-                </span>
-              </Link>
-
-            </div>
-
-          </div>
-        </motion.div>
 
       </div>
     </section>

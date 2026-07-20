@@ -96,7 +96,7 @@ const BUSINESS_SOLUTIONS = [
   },
 ];
 
-const ProductMegaMenu = ({ isOpen, onClose }) => {
+const ProductMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -104,10 +104,11 @@ const ProductMegaMenu = ({ isOpen, onClose }) => {
           initial={{ opacity: 0, scale: 0.97, y: -10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.97, y: -10 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="fixed top-[100px] left-1/2 z-[1000] w-[1140px] max-w-[94vw]"
           style={{ marginLeft: "-570px" }}
-          onMouseLeave={onClose}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
         >
           {/* Caret / pointer arrow */}
           <div
