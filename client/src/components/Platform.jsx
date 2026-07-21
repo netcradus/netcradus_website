@@ -34,7 +34,6 @@ const smoothScrollTo = (targetId, duration = 600) => {
 };
 
 const netxdrCapabilities = [
-
   {
     title: "Unified Visibility",
     image: "/assets/netxdr2.png",
@@ -67,7 +66,7 @@ const netxdrCapabilities = [
   },
   {
     title: "Automated Incident Response",
-    image: "/public/incidents.png",
+    image: "/assets/incidents.png",
     paragraphs: [
       "Neutralize cyber threats instantly using automated response playbooks. Cyrix XDR SOAR capabilities execute immediate, policy-driven response actions the moment a malicious threat is confirmed—minimizing dwell time and containing incidents before they cause business disruption.",
       "From isolating compromised hosts and disabling breached user accounts to updating firewall rules and quarantine zones, the system provides zero-touch incident remediation. Manual approvals can be built into critical playbooks to preserve analyst control."
@@ -82,7 +81,7 @@ const netxdrCapabilities = [
   },
   {
     title: "Threat Hunting",
-    image: "/public/threat hunting.png",
+    image: "/assets/threat-hunting.png",
     paragraphs: [
       "Proactively search for hidden adversaries and advanced persistent threats (APTs) residing silently within your corporate environment. Cyrix XDR provides analysts with powerful threat hunting capabilities, utilizing historical telemetry and global indicators of compromise to uncover hidden threats.",
       "With rapid search queries, interactive relationship graphs, and automated script execution, hunting teams can test hypotheses, verify system integrity, and eliminate malicious actors who have bypassed initial security defenses."
@@ -97,7 +96,7 @@ const netxdrCapabilities = [
   },
   {
     title: "Identity Protection",
-    image: "/assets/netxdr6.png ",
+    image: "/assets/netxdr6.png",
     paragraphs: [
       "Compromised credentials represent the primary entry point for modern corporate breaches. Cyrix XDR monitors user behavior, access requests, and credential usage in real time to detect compromised accounts, privilege misuse, and lateral movement attempts before they lead to data theft.",
       "By correlating access patterns with geographic locations, system usage, and device signatures, Cyrix XDR establishes dynamic identity risk profiles. Any abnormal behavior triggers step-up authentication or automatic access revocation."
@@ -157,7 +156,7 @@ const netxdrCapabilities = [
   },
   {
     title: "Threat Intelligence",
-    image: "/public/threat intelligence.png",
+    image: "/assets/acis-threat-intel.png",
     paragraphs: [
       "Enrich your security alerts with global context and predictive threat intelligence. Cyrix XDR automatically integrates global threat feeds, adversary profiles, and active campaign data to help security teams prioritize alerts based on threat severity.",
       "By understanding who is targeting your industry and what tactics they use, the system enables predictive defense. Threat profiles are updated continuously to proactively protect endpoints and networks against emerging campaigns."
@@ -567,7 +566,12 @@ export default function Platform() {
                 x: { duration: 9, times: [0, 0.4, 0.5, 0.9, 1], ease: "easeInOut", repeat: Infinity }
               }}
             >
-              <img src="/img/platform hero image.png" alt="ACIS platform" className="w-full object-contain" />
+              <img 
+                src="/img/platform hero image.png" 
+                alt="ACIS platform" 
+                className="w-full object-contain" 
+                onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
+              />
             </motion.div>
 
           </div>
@@ -653,7 +657,12 @@ export default function Platform() {
               <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                 <div className="relative overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(232,64,10,0.12),transparent_55%)]" />
-                  <img src={section.image} alt={section.title} className="relative h-[320px] w-full rounded-[22px] object-cover" />
+                  <img
+                    src={section.image}
+                    alt={section.title}
+                    className="relative h-[320px] w-full rounded-[22px] object-cover"
+                    onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
+                  />
                 </div>
               </div>
             </article>
@@ -707,6 +716,7 @@ export default function Platform() {
                     src="/assets/netxdr6.png"
                     alt="One Platform for Complete Threat Detection & Response"
                     className="relative h-[320px] w-full rounded-[22px] object-cover"
+                    onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
                   />
                 </div>
               </div>
@@ -762,6 +772,7 @@ export default function Platform() {
                         src={feat.image}
                         alt={feat.title}
                         className="relative h-[320px] w-full rounded-[22px] object-cover"
+                        onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
                       />
                     </div>
                   </div>
