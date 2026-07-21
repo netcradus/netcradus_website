@@ -62,7 +62,7 @@ return (
         <About />
         <TechnologyPartnersSection />
 
-        <TeamMembersSection />
+        {/* <TeamMembersSection /> */}
 
         <GallerySection />
 

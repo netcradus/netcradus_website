@@ -1,3 +1,6 @@
+// Toggle to temporarily show/hide team member photos
+const showPhotos = false;
+
 const team = [
   {
     name: "Mr. D. K. Sharma",
@@ -58,13 +61,15 @@ export default function TeamSection() {
               key={member.name}
               className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(232,64,10,0.06),transparent_35%),var(--color-surface)] shadow-[0_18px_46px_rgba(232,64,10,0.05)]"
             >
-              <div className="aspect-[4/4.3] overflow-hidden border-b border-border bg-[var(--color-surface-raised)]">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
+              {showPhotos && (
+                <div className="aspect-[4/4.3] overflow-hidden border-b border-border bg-[var(--color-surface-raised)]">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+              )}
               <div className="p-7">
                 <h3 className="text-2xl font-black tracking-tight text-text-primary">
                   {member.name}
