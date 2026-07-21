@@ -6,6 +6,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 import { SEO_META } from "../data/seoMeta";
 import PageHero from "./PageHero";
 import AmbientMesh from "./AmbientMesh";
+import ImageLightbox from "./ImageLightbox";
 
 const smoothScrollTo = (targetId, duration = 600) => {
   const target = document.getElementById(targetId);
@@ -311,6 +312,7 @@ export default function Platform() {
 
   const [translateXAmount, setTranslateXAmount] = useState(-150);
   const [activeTab, setActiveTab] = useState("acis-overview");
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   // Typewriter effect states
   const [typingText, setTypingText] = useState("");
@@ -569,7 +571,8 @@ export default function Platform() {
               <img 
                 src="/img/platform hero image.png" 
                 alt="ACIS platform" 
-                className="w-full object-contain" 
+                className="w-full object-contain cursor-zoom-in hover:opacity-90 transition-opacity" 
+                onClick={() => setLightboxImage({ src: "/img/platform hero image.png", alt: "ACIS platform" })}
                 onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
               />
             </motion.div>
@@ -660,7 +663,8 @@ export default function Platform() {
                   <img
                     src={section.image}
                     alt={section.title}
-                    className="relative h-[320px] w-full rounded-[22px] object-cover"
+                    className="relative h-[320px] w-full rounded-[22px] object-cover cursor-zoom-in hover:opacity-90 transition-opacity"
+                    onClick={() => setLightboxImage({ src: section.image, alt: section.title })}
                     onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
                   />
                 </div>
@@ -715,7 +719,8 @@ export default function Platform() {
                   <img
                     src="/assets/netxdr6.png"
                     alt="One Platform for Complete Threat Detection & Response"
-                    className="relative h-[320px] w-full rounded-[22px] object-cover"
+                    className="relative h-[320px] w-full rounded-[22px] object-cover cursor-zoom-in hover:opacity-90 transition-opacity"
+                    onClick={() => setLightboxImage({ src: "/assets/netxdr6.png", alt: "One Platform for Complete Threat Detection & Response" })}
                     onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
                   />
                 </div>
@@ -771,7 +776,8 @@ export default function Platform() {
                       <img
                         src={feat.image}
                         alt={feat.title}
-                        className="relative h-[320px] w-full rounded-[22px] object-cover"
+                        className="relative h-[320px] w-full rounded-[22px] object-cover cursor-zoom-in hover:opacity-90 transition-opacity"
+                        onClick={() => setLightboxImage({ src: feat.image, alt: feat.title })}
                         onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
                       />
                     </div>
@@ -783,6 +789,14 @@ export default function Platform() {
           );
         })}
       </div>
+
+      {/* Image Lightbox Modal */}
+      <ImageLightbox
+        src={lightboxImage?.src}
+        alt={lightboxImage?.alt}
+        isOpen={!!lightboxImage}
+        onClose={() => setLightboxImage(null)}
+      />
     </div>
   );
 }
