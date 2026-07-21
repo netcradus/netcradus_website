@@ -99,8 +99,8 @@ const INTEGRATIONS = [
 
 const NetXDRPage = () => {
   usePageMeta(
-    'Net XDR | Extended Detection & Response Security Platform | Netcradus',
-    'Net XDR unifies telemetry data across endpoints, network nodes, and cloud workloads to provide automated security correlation, response, and risk prevention.'
+    'Cyrix XDR | Extended Detection & Response Security Platform | Netcradus',
+    'Cyrix XDR unifies telemetry data across endpoints, network nodes, and cloud workloads to provide automated security correlation, response, and risk prevention.'
   );
 
   useEffect(() => {
@@ -120,7 +120,7 @@ const NetXDRPage = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="xdr-hero-kicker">
-                NET <span>XDR</span>
+                CYRIX <span>XDR</span>
               </h1>
               <p className="xdr-hero-desc">
                 Unified. Intelligent. Resilient.
@@ -200,17 +200,17 @@ const NetXDRPage = () => {
         </div>
       </section>
 
-      {/* SECTION 3 — WHY NET XDR? */}
+      {/* SECTION 3 — WHY CYRIX XDR? */}
       <section className="xdr-section">
         <div className="xdr-container">
           <div className="why-xdr-grid">
             {/* Left Content */}
             <div>
               <h2 className="why-xdr-title">
-                Why <span>NET XDR?</span>
+                Why <span>CYRIX XDR?</span>
               </h2>
               <p className="why-xdr-desc">
-                NET XDR unifies telemetry data from across your enterprise network to deliver complete visual context, immediate incident correlation, and smart containment actions.
+                Cyrix XDR unifies telemetry data from across your enterprise network to deliver complete visual context, immediate incident correlation, and smart containment actions.
               </p>
               
               <div className="why-xdr-checklist">
@@ -314,7 +314,7 @@ const NetXDRPage = () => {
             <div className="flex justify-center items-center">
               <img 
                 src="/img/netxdr dashboard.png" 
-                alt="NetXDR Security Dashboard" 
+                alt="Cyrix XDR Security Dashboard" 
                 className="w-full h-auto object-contain rounded-3xl"
                 style={{ 
                   filter: 'drop-shadow(0 25px 60px rgba(0,0,0,0.55))',

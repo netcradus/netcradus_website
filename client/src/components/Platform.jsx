@@ -39,7 +39,7 @@ const netxdrCapabilities = [
     title: "Unified Visibility",
     image: "/assets/netxdr2.png",
     paragraphs: [
-      "Achieve ultimate control over your security operations with centralized visibility across endpoints, multi-cloud workspaces, identity databases, and network infrastructures. NetXDR unifies disparate logs and telemetry data streams into a single, intuitive interface, eliminating security blind spots and operational siloes.",
+      "Achieve ultimate control over your security operations with centralized visibility across endpoints, multi-cloud workspaces, identity databases, and network infrastructures. Cyrix XDR unifies disparate logs and telemetry data streams into a single, intuitive interface, eliminating security blind spots and operational siloes.",
       "This complete contextual intelligence allows security analysts to trace malicious activity from the initial point of entry all the way through affected resources. Integrated maps, visual graphs, and live connection logs provide complete visibility into the health and security posture of your organization."
     ],
     bullets: [
@@ -54,7 +54,7 @@ const netxdrCapabilities = [
     title: "Intelligent Event Correlation",
     image: "/assets/netxdr3.png",
     paragraphs: [
-      "Enterprises generate millions of logs per second, making manual investigation impossible. NetXDR's correlation engine automatically aggregates and analyzes relationships between isolated events across cloud, endpoint, and network telemetry to surface actual incidents while filtering out system noise.",
+      "Enterprises generate millions of logs per second, making manual investigation impossible. Cyrix XDR's correlation engine automatically aggregates and analyzes relationships between isolated events across cloud, endpoint, and network telemetry to surface actual incidents while filtering out system noise.",
       "By grouping alerts based on risk, severity, and MITRE ATT&CK techniques, the platform provides security teams with structured incident alerts. This significantly reduces alert fatigue, allowing analysts to focus on real threats and make faster, more informed decisions."
     ],
     bullets: [
@@ -69,7 +69,7 @@ const netxdrCapabilities = [
     title: "Automated Incident Response",
     image: "/public/incidents.png",
     paragraphs: [
-      "Neutralize cyber threats instantly using automated response playbooks. NetXDR SOAR capabilities execute immediate, policy-driven response actions the moment a malicious threat is confirmed—minimizing dwell time and containing incidents before they cause business disruption.",
+      "Neutralize cyber threats instantly using automated response playbooks. Cyrix XDR SOAR capabilities execute immediate, policy-driven response actions the moment a malicious threat is confirmed—minimizing dwell time and containing incidents before they cause business disruption.",
       "From isolating compromised hosts and disabling breached user accounts to updating firewall rules and quarantine zones, the system provides zero-touch incident remediation. Manual approvals can be built into critical playbooks to preserve analyst control."
     ],
     bullets: [
@@ -84,7 +84,7 @@ const netxdrCapabilities = [
     title: "Threat Hunting",
     image: "/public/threat hunting.png",
     paragraphs: [
-      "Proactively search for hidden adversaries and advanced persistent threats (APTs) residing silently within your corporate environment. NetXDR provides analysts with powerful threat hunting capabilities, utilizing historical telemetry and global indicators of compromise to uncover hidden threats.",
+      "Proactively search for hidden adversaries and advanced persistent threats (APTs) residing silently within your corporate environment. Cyrix XDR provides analysts with powerful threat hunting capabilities, utilizing historical telemetry and global indicators of compromise to uncover hidden threats.",
       "With rapid search queries, interactive relationship graphs, and automated script execution, hunting teams can test hypotheses, verify system integrity, and eliminate malicious actors who have bypassed initial security defenses."
     ],
     bullets: [
@@ -99,8 +99,8 @@ const netxdrCapabilities = [
     title: "Identity Protection",
     image: "/assets/netxdr6.png ",
     paragraphs: [
-      "Compromised credentials represent the primary entry point for modern corporate breaches. NetXDR monitors user behavior, access requests, and credential usage in real time to detect compromised accounts, privilege misuse, and lateral movement attempts before they lead to data theft.",
-      "By correlating access patterns with geographic locations, system usage, and device signatures, NetXDR establishes dynamic identity risk profiles. Any abnormal behavior triggers step-up authentication or automatic access revocation."
+      "Compromised credentials represent the primary entry point for modern corporate breaches. Cyrix XDR monitors user behavior, access requests, and credential usage in real time to detect compromised accounts, privilege misuse, and lateral movement attempts before they lead to data theft.",
+      "By correlating access patterns with geographic locations, system usage, and device signatures, Cyrix XDR establishes dynamic identity risk profiles. Any abnormal behavior triggers step-up authentication or automatic access revocation."
     ],
     bullets: [
       "User and Entity Behavior Analytics (UEBA) profiles",
@@ -114,8 +114,8 @@ const netxdrCapabilities = [
     title: "Cloud Security Monitoring",
     image: "/assets/netxdr7.png",
     paragraphs: [
-      "Secure your hybrid and multi-cloud environments against complex configurations and cloud-native threats. NetXDR integrates with AWS, Azure, Google Cloud, and SaaS platforms to deliver continuous visibility, risk detection, and compliance auditing across containerized workloads and databases.",
-      "The platform automatically identifies insecure API integrations, excessive user permissions, and compliance drifts. By correlating cloud API telemetry with endpoint logs, NetXDR provides complete protection across distributed networks."
+      "Secure your hybrid and multi-cloud environments against complex configurations and cloud-native threats. Cyrix XDR integrates with AWS, Azure, Google Cloud, and SaaS platforms to deliver continuous visibility, risk detection, and compliance auditing across containerized workloads and databases.",
+      "The platform automatically identifies insecure API integrations, excessive user permissions, and compliance drifts. By correlating cloud API telemetry with endpoint logs, Cyrix XDR provides complete protection across distributed networks."
     ],
     bullets: [
       "Multi-cloud workload and container security auditing",
@@ -129,7 +129,7 @@ const netxdrCapabilities = [
     title: "Network Detection",
     image: "/assets/netxdr8.png",
     paragraphs: [
-      "Identify command-and-control communication, lateral movement, and data exfiltration at the network layer. NetXDR monitors network telemetry, flow logs, and packets to spot anomalies and suspicious connections in real time without impacting throughput.",
+      "Identify command-and-control communication, lateral movement, and data exfiltration at the network layer. Cyrix XDR monitors network telemetry, flow logs, and packets to spot anomalies and suspicious connections in real time without impacting throughput.",
       "By identifying abnormal traffic patterns and malicious lateral movement between server segments, the platform detects threats that bypass traditional perimeter defenses. Integrated network security playbooks trigger automatic port blocks or segment isolation."
     ],
     bullets: [
@@ -144,7 +144,7 @@ const netxdrCapabilities = [
     title: "Endpoint Security",
     image: "/assets/netxdr9.png",
     paragraphs: [
-      "Protect your workforce devices, servers, and virtual machines from ransomware, fileless malware, and unauthorized access. NetXDR Endpoint Security delivers continuous telemetry, endpoint detection, and device control across Windows, macOS, Linux, and mobile operating systems.",
+      "Protect your workforce devices, servers, and virtual machines from ransomware, fileless malware, and unauthorized access. Cyrix XDR Endpoint Security delivers continuous telemetry, endpoint detection, and device control across Windows, macOS, Linux, and mobile operating systems.",
       "The agent-based system operates with minimal system overhead, monitoring process memory, network connections, and system changes to block threats locally. If an endpoint is compromised, the agent isolates the device to prevent lateral spread."
     ],
     bullets: [
@@ -159,7 +159,7 @@ const netxdrCapabilities = [
     title: "Threat Intelligence",
     image: "/public/threat intelligence.png",
     paragraphs: [
-      "Enrich your security alerts with global context and predictive threat intelligence. NetXDR automatically integrates global threat feeds, adversary profiles, and active campaign data to help security teams prioritize alerts based on threat severity.",
+      "Enrich your security alerts with global context and predictive threat intelligence. Cyrix XDR automatically integrates global threat feeds, adversary profiles, and active campaign data to help security teams prioritize alerts based on threat severity.",
       "By understanding who is targeting your industry and what tactics they use, the system enables predictive defense. Threat profiles are updated continuously to proactively protect endpoints and networks against emerging campaigns."
     ],
     bullets: [
@@ -174,7 +174,7 @@ const netxdrCapabilities = [
     title: "Risk Prioritization",
     image: "/assets/acis-alerts.png",
     paragraphs: [
-      "Manage risk effectively by prioritizing vulnerabilities, critical configurations, and active threats based on business impact. NetXDR automatically evaluates the business value of affected assets and the severity of threats to compile a real-time risk list.",
+      "Manage risk effectively by prioritizing vulnerabilities, critical configurations, and active threats based on business impact. Cyrix XDR automatically evaluates the business value of affected assets and the severity of threats to compile a real-time risk list.",
       "This focus helps security teams direct resources to critical systems first, preventing operational downtime and data breaches. Vulnerability management reports are generated instantly to support security compliance audits."
     ],
     bullets: [
@@ -189,7 +189,7 @@ const netxdrCapabilities = [
     title: "Seamless Integrations",
     image: "/assets/acis-log-explorer.png",
     paragraphs: [
-      "Create a unified security ecosystem by integrating NetXDR with your existing tools, cloud platforms, identity providers, and business software. NetXDR supports hundreds of native out-of-the-box integrations, ensuring rapid setup and data ingestion.",
+      "Create a unified security ecosystem by integrating Cyrix XDR with your existing tools, cloud platforms, identity providers, and business software. Cyrix XDR supports hundreds of native out-of-the-box integrations, ensuring rapid setup and data ingestion.",
       "This comprehensive connector library supports REST APIs, syslog databases, and cloud webhooks to normalize security telemetry. The system ensures complete compatibility without requiring you to replace your existing tools."
     ],
     bullets: [
@@ -209,7 +209,7 @@ const TYPING_SEQUENCES = [
   "Monitoring Cloud...",
   "Stopping Ransomware...",
   "Correlating Threats...",
-  "Powered by ACIS + NETXDR"
+  "Powered by ACIS + CYRIX XDR"
 ];
 
 const platformSections = [
@@ -431,7 +431,7 @@ export default function Platform() {
 
             {/* 3. Description paragraph */}
             <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300 md:text-lg">
-              Experience the power of ACIS (Autonomous Cyber Immune System) and NETXDR, combining AI-driven threat detection, autonomous response, real-time visibility, and intelligent cyber defence in one unified security platform.
+              Experience the power of ACIS (Autonomous Cyber Immune System) and CYRIX XDR, combining AI-driven threat detection, autonomous response, real-time visibility, and intelligent cyber defence in one unified security platform.
             </p>
 
             {/* 5. Four premium feature pills */}
@@ -463,7 +463,7 @@ export default function Platform() {
             <div className="mt-4 flex items-center gap-4 text-[10px] font-bold text-gray-500">
               <span className="flex items-center gap-1.5"><span className="text-[#FF6B00]">ACIS</span> → Detect</span>
               <span className="text-gray-700">|</span>
-              <span className="flex items-center gap-1.5"><span className="text-[#00E5FF]">NETXDR</span> → Correlate</span>
+              <span className="flex items-center gap-1.5"><span className="text-[#00E5FF]">CYRIX XDR</span> → Correlate</span>
               <span className="text-gray-700">|</span>
               <span className="flex items-center gap-1.5"><span className="text-white">SOC</span> → Protect</span>
             </div>
@@ -489,7 +489,7 @@ export default function Platform() {
                 }}
                 className="rounded-xl border border-[#FF6B00]/50 bg-transparent px-6 py-3.5 text-sm font-bold text-[#FF6B00] transition-all duration-300 hover:bg-[#FF6B00]/8 hover:-translate-y-0.5"
               >
-                Discover NETXDR
+                Discover CYRIX XDR
               </a>
             </div>
           </div>
@@ -584,7 +584,7 @@ export default function Platform() {
             { label: "ACIS Enterprise", id: "acis-enterprise" },
             { label: "AI-SIEM Engine", id: "ai-siem-engine" },
             { label: "SOAR Automation", id: "soar-automation" },
-            { label: "NetXDR", id: "netxdr" },
+            { label: "Cyrix XDR", id: "netxdr" },
           ].map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -671,13 +671,13 @@ export default function Platform() {
               {/* Left Column: Heading, Paragraph, and Feature Chips */}
               <div className="text-left">
                 <div className="mb-4 inline-flex rounded-full border border-accent/15 bg-accent/8 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-accent">
-                  NETXDR
+                  CYRIX XDR
                 </div>
                 <h2 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">
                   One Platform for Complete Threat Detection & Response
                 </h2>
                 <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">
-                  NetXDR continuously monitors endpoints, networks, cloud workloads, user identities, and business applications from a single intelligent platform. Using AI-powered analytics, behavioral detection, and real-time event correlation, it identifies sophisticated cyber threats faster, prioritizes critical risks, and automates response actions. This enables security teams to reduce alert fatigue, accelerate investigations, and strengthen enterprise-wide cyber resilience.
+                  Cyrix XDR continuously monitors endpoints, networks, cloud workloads, user identities, and business applications from a single intelligent platform. Using AI-powered analytics, behavioral detection, and real-time event correlation, it identifies sophisticated cyber threats faster, prioritizes critical risks, and automates response actions. This enables security teams to reduce alert fatigue, accelerate investigations, and strengthen enterprise-wide cyber resilience.
                 </p>
 
                 <ul className="mt-6 grid gap-3 md:grid-cols-2">
@@ -729,7 +729,7 @@ export default function Platform() {
                   {/* Text Column */}
                   <div className={`text-left ${isImageLeft ? "lg:order-2" : "lg:order-1"}`}>
                     <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent font-display md:text-[12px]">
-                      // NetXDR Capability
+                      // Cyrix XDR Capability
                     </span>
                     <h3 className="text-3xl font-black tracking-tight text-white md:text-5xl leading-tight">
                       {feat.title}

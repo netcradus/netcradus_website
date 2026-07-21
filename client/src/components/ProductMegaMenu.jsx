@@ -21,7 +21,7 @@ export const PRODUCTS = [
   },
   {
     id: "netxdr",
-    name: "NetXDR",
+    name: "Cyrix XDR",
     tagline: "Extended Detection",
     description: "AI-powered unified endpoint, cloud and network protection.",
     path: "/netxdr",
@@ -64,7 +64,7 @@ const CYBERSECURITY_PLATFORM = [
   },
   {
     id: "netxdr",
-    name: "NetXDR",
+    name: "Cyrix XDR",
     description: "AI-powered unified endpoint, cloud and network protection.",
     path: "/netxdr",
     icon: Radar,
