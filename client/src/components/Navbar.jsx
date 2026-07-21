@@ -109,19 +109,28 @@ const Navbar = () => {
 
   return (
     <nav ref={navRef} className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
-      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 grid grid-cols-[auto_1fr_auto] items-center h-24">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 flex lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between h-20 lg:h-24">
         
-        {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+        {/* Mobile Left: Hamburger Toggle */}
+        <button
+          className="lg:hidden w-10 h-10 flex items-center justify-center text-white bg-transparent border-none cursor-pointer p-0 shrink-0 z-10"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
+
+        {/* Brand Logo (Centered on mobile, Left aligned on desktop) */}
+        <Link to="/" className="flex items-center justify-center gap-2 group mx-auto lg:mx-0">
           <img
             src="/Netcradus logo01.png"
             alt="Netcradus"
-            className="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            className="h-10 sm:h-12 md:h-14 lg:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="nav-links desktop-only flex justify-center items-center gap-8">
+        <div className="nav-links desktop-only hidden lg:flex justify-center items-center gap-8">
           <Link
             to="/"
             className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
@@ -230,33 +239,34 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* CTA & Mobile Hamburger Toggle */}
-        <div className="flex justify-end items-center gap-3 sm:gap-4">
-          {/* Toll-Free Number CTA Button */}
+        {/* CTA Buttons & Mobile Phone Call Icon */}
+        <div className="flex justify-end items-center gap-3 sm:gap-4 shrink-0 z-10">
+          {/* Mobile Right: Circular Phone Call Icon Button */}
           <a
             href="tel:1800121008800"
-            className="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 md:px-4 md:py-2.5 lg:px-5 lg:py-3 text-[13px] md:text-[14px] lg:text-[15px] font-semibold text-[#111111] bg-white border border-[#FF6A00] rounded-full transition-all duration-300 hover:bg-[#FF6A00] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(255,106,0,0.35)] no-underline whitespace-nowrap group shrink-0"
+            className="lg:hidden w-10 h-10 rounded-full border border-[#FF6B00] flex items-center justify-center text-[#FF6B00] hover:bg-[#FF6B00] hover:text-white transition-colors duration-300 shrink-0"
+            aria-label="Call Us"
+          >
+            <Phone size={18} />
+          </a>
+
+          {/* Desktop Toll-Free Number CTA Button */}
+          <a
+            href="tel:1800121008800"
+            className="hidden lg:inline-flex items-center gap-2 px-3.5 py-2 md:px-4 md:py-2.5 lg:px-5 lg:py-3 text-[13px] md:text-[14px] lg:text-[15px] font-semibold text-[#111111] bg-white border border-[#FF6A00] rounded-full transition-all duration-300 hover:bg-[#FF6A00] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(255,106,0,0.35)] no-underline whitespace-nowrap group shrink-0"
           >
             <Phone size={15} className="shrink-0 text-[#FF6A00] group-hover:text-white transition-colors duration-300" />
             <span>1800 121 008800</span>
           </a>
 
-          {/* Talk to an Expert CTA Button */}
+          {/* Desktop Talk to an Expert CTA Button */}
           <Link 
             to="/contact" 
-            className="desktop-only btn-primary px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg hover:scale-105 transition-all no-underline shrink-0"
+            className="hidden lg:inline-flex btn-primary px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg hover:scale-105 transition-all no-underline shrink-0"
             style={{ background: 'var(--color-accent)', color: '#ffffff' }}
           >
             Talk to an Expert
           </Link>
-
-          <button
-            className="mobile-menu-toggle p-2 lg:hidden text-zinc-900 dark:text-white"
-            onClick={() => setIsMenuOpen(prev => !prev)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
       </div>
 
