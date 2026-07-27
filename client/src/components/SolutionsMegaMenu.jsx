@@ -148,21 +148,21 @@ const SolutionsMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
               top: "-8px",
               width: "18px",
               height: "18px",
-              background: "#fff",
+              background: "#FFFFFF",
               transform: "translateX(-50%) rotate(45deg)",
-              borderTop: "1px solid rgba(255, 107, 0, 0.12)",
-              borderLeft: "1px solid rgba(255, 107, 0, 0.12)",
+              borderTop: "1px solid #E5E7EB",
+              borderLeft: "1px solid #E5E7EB",
               borderRadius: "3px 0 0 0",
             }}
           />
 
           <div
-            className="relative z-10 border overflow-hidden bg-gradient-to-br from-white/95 via-white/98 to-orange-50/20 backdrop-blur-xl"
+            className="relative z-10 overflow-hidden bg-white"
             style={{
               borderRadius: "24px",
-              borderColor: "rgba(255, 107, 0, 0.12)",
-              boxShadow:
-                "0 24px 70px rgba(255, 107, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04)",
+              border: "1px solid #E5E7EB",
+              background: "#FFFFFF",
+              boxShadow: "0 20px 50px rgba(0, 0, 0, 0.12)",
             }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 items-stretch">
@@ -170,7 +170,7 @@ const SolutionsMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
               {/* COLUMN 1 - Core Security Services */}
               <div className="flex flex-col text-left space-y-4">
                 <div className="mb-4">
-                  <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-gray-900 pb-2 relative">
+                  <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-[#111827] pb-2 relative">
                     Core Security Services
                     <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-accent" />
                   </h3>
@@ -184,16 +184,16 @@ const SolutionsMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
                         key={solution.id}
                         to={solution.path}
                         onClick={onClose}
-                        className="group flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50/40 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
+                        className="group flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
                       >
-                        <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50/60 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
+                        <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
                           <Icon size={18} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-bold text-gray-900 transition-colors duration-300 group-hover:text-accent">
+                          <h4 className="text-sm font-bold text-[#111827] transition-colors duration-300 group-hover:text-accent">
                             {solution.name}
                           </h4>
-                          <p className="text-xs text-gray-500 leading-normal mt-1">
+                          <p className="text-xs text-[#6B7280] leading-normal mt-1">
                             {solution.description}
                           </p>
                         </div>
@@ -210,7 +210,7 @@ const SolutionsMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
               {/* COLUMN 2 - Specialized Solutions */}
               <div className="flex flex-col text-left space-y-4">
                 <div className="mb-4">
-                  <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-gray-900 pb-2 relative">
+                  <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-[#111827] pb-2 relative">
                     Specialized Solutions
                     <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-accent" />
                   </h3>
@@ -224,16 +224,16 @@ const SolutionsMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
                         key={solution.id}
                         to={solution.path}
                         onClick={onClose}
-                        className="group flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50/40 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
+                        className="group flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
                       >
-                        <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50/60 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
+                        <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
                           <Icon size={18} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-bold text-gray-900 transition-colors duration-300 group-hover:text-accent">
+                          <h4 className="text-sm font-bold text-[#111827] transition-colors duration-300 group-hover:text-accent">
                             {solution.name}
                           </h4>
-                          <p className="text-xs text-gray-500 leading-normal mt-1">
+                          <p className="text-xs text-[#6B7280] leading-normal mt-1">
                             {solution.description}
                           </p>
                         </div>
@@ -268,7 +268,7 @@ const SolutionsMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
                   </div>
 
                   <div className="relative z-10 space-y-4">
-                    <span className="inline-block text-[9px] font-black uppercase tracking-[0.25em] bg-white/20 px-3 py-1 rounded-full backdrop-blur-md">
+                    <span className="inline-block text-[9px] font-black uppercase tracking-[0.25em] bg-white/20 px-3 py-1 rounded-full">
                       Featured Panel
                     </span>
                     <h3 className="text-xl md:text-2xl font-black leading-tight text-white">
