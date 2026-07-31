@@ -18,10 +18,10 @@ export default function CyberTree3D() {
         {/* Subtle Ambient Radial Glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,107,0,0.15),transparent_70%)] pointer-events-none z-10" />
 
-        {/* Cyber Tree Image Visual */}
+        {/* Homepage Background Image Visual */}
         <img
-          src="/img/cyber-tree.jpg"
-          alt="Netcradus Cybersecurity Tree of Life"
+          src="/img/homepage bg.png"
+          alt="Netcradus Cybersecurity Homepage Visual"
           className="w-full h-full object-cover sm:object-contain transition-transform duration-700 ease-out group-hover:scale-102"
         />
 

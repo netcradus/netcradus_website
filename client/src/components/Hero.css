@@ -121,13 +121,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  -webkit-mask-image: 
+  -webkit-mask-image:
     linear-gradient(to right, transparent 0%, black 25%),
     linear-gradient(to left, transparent 0%, black 15%),
     linear-gradient(to bottom, transparent 0%, black 15%),
     linear-gradient(to top, transparent 0%, black 20%);
   -webkit-mask-composite: source-in;
-  mask-image: 
+  mask-image:
     linear-gradient(to right, transparent 0%, black 25%),
     linear-gradient(to left, transparent 0%, black 15%),
     linear-gradient(to bottom, transparent 0%, black 15%),
@@ -138,12 +138,12 @@
 /* Tablet */
 @media (max-width: 1024px) {
   .hero-reference-image {
-    -webkit-mask-image: 
+    -webkit-mask-image:
       linear-gradient(to right, transparent 0%, black 15%),
       linear-gradient(to bottom, transparent 0%, black 10%),
       linear-gradient(to top, transparent 0%, black 15%);
     -webkit-mask-composite: source-in;
-    mask-image: 
+    mask-image:
       linear-gradient(to right, transparent 0%, black 15%),
       linear-gradient(to bottom, transparent 0%, black 10%),
       linear-gradient(to top, transparent 0%, black 15%);
@@ -154,9 +154,9 @@
 /* Mobile */
 @media (max-width: 768px) {
   .hero-reference-image {
-    -webkit-mask-image: 
+    -webkit-mask-image:
       linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
-    mask-image: 
+    mask-image:
       linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
@@ -239,7 +239,7 @@
   pointer-events: none;
 }
 
-.hero-pedestal > * {
+.hero-pedestal>* {
   pointer-events: none;
 }
 
@@ -1119,6 +1119,7 @@
     justify-content: center;
   }
 }
+
 /* ================= GOOGLE REVIEWS SECTION ================= */
 
 .google-review-section {
@@ -1134,17 +1135,17 @@
   border-radius: 24px;
   border: 1px solid rgba(255, 138, 31, 0.22);
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-    rgba(15,15,15,0.88);
-  backdrop-filter:blur(14px);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    rgba(15, 15, 15, 0.88);
+  backdrop-filter: blur(14px);
   padding: 1.4rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   box-shadow:
-    0 20px 50px rgba(0,0,0,0.22),
-    0 0 40px rgba(232,64,10,0.08);
+    0 20px 50px rgba(0, 0, 0, 0.22),
+    0 0 40px rgba(232, 64, 10, 0.08);
   transition: all 0.3s ease;
 }
 
@@ -1152,8 +1153,8 @@
   transform: translateY(-4px);
   border-color: rgba(255, 138, 31, 0.45);
   box-shadow:
-    0 24px 60px rgba(0,0,0,0.28),
-    0 0 50px rgba(232,64,10,0.16);
+    0 24px 60px rgba(0, 0, 0, 0.28),
+    0 0 50px rgba(232, 64, 10, 0.16);
 }
 
 .google-review-left {
@@ -1166,7 +1167,7 @@
   width: 68px;
   height: 68px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1187,7 +1188,7 @@
 }
 
 .google-review-content p {
-  color: rgba(255,255,255,0.72);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.94rem;
   line-height: 1.5;
 }
@@ -1221,21 +1222,21 @@
   font-size: 12px;
   transition: all 0.3s ease;
   white-space: nowrap;
-  box-shadow: 0 14px 34px rgba(232,64,10,0.28);
+  box-shadow: 0 14px 34px rgba(232, 64, 10, 0.28);
 }
 
 .google-review-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 50px rgba(232,64,10,0.38);
+  box-shadow: 0 20px 50px rgba(232, 64, 10, 0.38);
 }
 
 /* LIGHT THEME */
 
 [data-theme="light"] .google-review-card {
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.92), rgba(247,241,235,0.96)),
-    rgba(255,255,255,0.9);
-  border-color: rgba(232,64,10,0.12);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 241, 235, 0.96)),
+    rgba(255, 255, 255, 0.9);
+  border-color: rgba(232, 64, 10, 0.12);
 }
 
 [data-theme="light"] .google-review-content h3 {
@@ -1243,7 +1244,7 @@
 }
 
 [data-theme="light"] .google-review-content p {
-  color: rgba(0,0,0,0.62);
+  color: rgba(0, 0, 0, 0.62);
 }
 
 [data-theme="light"] .google-review-rating {
@@ -1251,7 +1252,7 @@
 }
 
 [data-theme="light"] .google-review-icon {
-  background: rgba(232,64,10,0.06);
+  background: rgba(232, 64, 10, 0.06);
 }
 
 /* MOBILE */
@@ -1272,4 +1273,102 @@
     justify-content: center;
     text-align: center;
   }
+}
+
+/* ==========================================================================
+   PREMIUM ENTERPRISE CYBERSECURITY HERO REDESIGN STYLES
+   ========================================================================== */
+
+.orange-gradient-text {
+  background: linear-gradient(135deg, #FF6A00 0%, #FF9D2E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-heading {
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: normal;
+  hyphens: none;
+}
+
+.text-cyan-brand-gradient {
+  background: linear-gradient(135deg, #00D9FF 0%, #4CC9F0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.35));
+}
+
+.text-orange-brand-gradient {
+  background: linear-gradient(135deg, #FF7A18 0%, #FF9A3D 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 122, 24, 0.35));
+}
+
+.text-cyan-brand-1fc8ff {
+  color: #1FC8FF;
+  filter: drop-shadow(0 0 12px rgba(31, 200, 255, 0.4));
+}
+
+.text-orange-brand-ff7a1a {
+  color: #FF7A1A;
+  filter: drop-shadow(0 0 12px rgba(255, 122, 26, 0.4));
+}
+
+@keyframes floatGlobe {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-globe {
+  animation: floatGlobe 6s ease-in-out infinite;
+}
+
+@keyframes networkPulse {
+
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(1.05);
+  }
+}
+
+.animate-network-pulse {
+  animation: networkPulse 8s ease-in-out infinite;
+}
+
+@keyframes fadeUpText {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUpText 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up-buttons {
+  animation: fadeUpText 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  opacity: 0;
 }
