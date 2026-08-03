@@ -137,6 +137,14 @@
 
 /* Tablet */
 @media (max-width: 1024px) {
+  .hero-visual-wrap {
+    min-height: auto;
+    margin-right: 0;
+  }
+  .hero-reference-visual {
+    min-height: 400px;
+    margin-right: 0;
+  }
   .hero-reference-image {
     -webkit-mask-image:
       linear-gradient(to right, transparent 0%, black 15%),
@@ -153,6 +161,14 @@
 
 /* Mobile */
 @media (max-width: 768px) {
+  .hero-visual-wrap {
+    min-height: auto;
+    margin-right: 0;
+  }
+  .hero-reference-visual {
+    min-height: 280px;
+    margin-right: 0;
+  }
   .hero-reference-image {
     -webkit-mask-image:
       linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);

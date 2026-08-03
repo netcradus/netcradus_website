@@ -1,6 +1,7 @@
 const LOGGER_URL = import.meta.env.VITE_LOGGER_URL;
 
 export async function sendLog(path) {
+  if (!LOGGER_URL) return;
   try {
     await fetch(`${LOGGER_URL}/log`, {
       method: "POST",

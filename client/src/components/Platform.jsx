@@ -663,7 +663,7 @@ export default function Platform() {
                   <img
                     src={section.image}
                     alt={section.title}
-                    className="relative h-[320px] w-full rounded-[22px] object-cover cursor-zoom-in hover:opacity-90 transition-opacity"
+                    className="relative max-h-[360px] w-full rounded-[22px] object-contain cursor-zoom-in hover:opacity-90 transition-opacity"
                     onClick={() => setLightboxImage({ src: section.image, alt: section.title })}
                     onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
                   />
@@ -719,7 +719,7 @@ export default function Platform() {
                   <img
                     src="/assets/netxdr6.png"
                     alt="One Platform for Complete Threat Detection & Response"
-                    className="relative h-[320px] w-full rounded-[22px] object-cover cursor-zoom-in hover:opacity-90 transition-opacity"
+                    className="relative max-h-[360px] w-full rounded-[22px] object-contain cursor-zoom-in hover:opacity-90 transition-opacity"
                     onClick={() => setLightboxImage({ src: "/assets/netxdr6.png", alt: "One Platform for Complete Threat Detection & Response" })}
                     onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
                   />
@@ -776,7 +776,7 @@ export default function Platform() {
                       <img
                         src={feat.image}
                         alt={feat.title}
-                        className="relative h-[320px] w-full rounded-[22px] object-cover cursor-zoom-in hover:opacity-90 transition-opacity"
+                        className="relative max-h-[360px] w-full rounded-[22px] object-contain cursor-zoom-in hover:opacity-90 transition-opacity"
                         onClick={() => setLightboxImage({ src: feat.image, alt: feat.title })}
                         onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
                       />

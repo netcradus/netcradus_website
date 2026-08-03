@@ -59,7 +59,7 @@ const FloatingContact = () => {
         opacity: isScrolling ? 0.6 : 1,
       }}
       transition={{ duration: 0.3 }}
-      className="fixed right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-2.5 pointer-events-none scale-85 sm:scale-100 origin-right"
+      className="fixed right-1 xs:right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-2 pointer-events-none scale-75 xs:scale-85 sm:scale-100 origin-right max-w-[calc(100vw-8px)]"
     >
       {/* Top Share Button */}
       <a

@@ -92,36 +92,36 @@ export default function Hero() {
       }}
     >
       {/* Left Content Container */}
-      <div className="relative z-10 w-full px-6 sm:px-10 lg:pl-[80px] text-left max-w-[1280px]">
+      <div className="relative z-10 w-full px-4 sm:px-10 lg:pl-[80px] text-left max-w-[1280px]">
         
         {/* Main 3-Line Heading */}
         <h1
-          className="hero-heading font-extrabold text-[42px] sm:text-[56px] lg:text-[70px] leading-[1.05] tracking-[-2px] max-w-[520px]"
+          className="hero-heading font-extrabold text-[28px] xs:text-[34px] sm:text-[52px] lg:text-[70px] leading-[1.08] tracking-[-1px] sm:tracking-[-2px] max-w-[520px]"
           style={{ textShadow: "0 4px 18px rgba(0, 0, 0, 0.35)" }}
         >
-          <span className="block whitespace-nowrap text-white">Comprehensive</span>
-          <span className="block whitespace-nowrap">
+          <span className="block whitespace-normal sm:whitespace-nowrap text-white">Comprehensive</span>
+          <span className="block whitespace-normal sm:whitespace-nowrap">
             <span className="text-white">Enterprise </span>
             <span className="text-cyan-brand-1fc8ff">Cyber</span>
           </span>
-          <span className="block whitespace-nowrap text-orange-brand-ff7a1a">
+          <span className="block whitespace-normal sm:whitespace-nowrap text-orange-brand-ff7a1a">
             Protection
           </span>
         </h1>
 
         {/* Description (24px below heading) */}
-        <p className="mt-[24px] text-[18px] font-medium leading-relaxed text-[#C7D0DA] max-w-[450px]">
+        <p className="mt-4 sm:mt-[24px] text-[15px] sm:text-[18px] font-medium leading-relaxed text-[#C7D0DA] max-w-[450px]">
           Protect your enterprise with AI-powered cybersecurity, real-time threat detection, XDR, SIEM, SOAR and 24×7 SOC monitoring.
         </p>
 
         {/* Feature List (20px below description) */}
-        <div className="mt-[20px] space-y-2.5 max-w-[450px]">
+        <div className="mt-4 sm:mt-[20px] space-y-2.5 max-w-[450px]">
           {featureBullets.map((bullet, idx) => (
             <div key={idx} className="flex items-center gap-3">
               <span className="flex items-center justify-center w-4 h-4 rounded-full bg-[#1FC8FF]/20 border border-[#1FC8FF]/50 shadow-[0_0_8px_rgba(31,200,255,0.45)] shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#1FC8FF] animate-pulse" />
               </span>
-              <span className="text-[14px] font-semibold text-white/90 tracking-wide">
+              <span className="text-[13px] sm:text-[14px] font-semibold text-white/90 tracking-wide">
                 {bullet}
               </span>
             </div>
@@ -129,7 +129,7 @@ export default function Hero() {
         </div>
 
         {/* 4 × 2 Glassmorphism Statistic Cards Grid (30px below feature list) */}
-        <div className="mt-[30px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[18px] max-w-[1060px]">
+        <div className="mt-6 sm:mt-[30px] grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-[18px] max-w-[1060px]">
           {statCards.map((card, idx) => (
             <div
               key={idx}

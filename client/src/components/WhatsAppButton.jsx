@@ -32,14 +32,14 @@ const WhatsAppButton = () => {
 
                 .wa-floating-btn {
                     position: fixed;
-                    bottom: 20px;
-                    right: 20px;
+                    bottom: 16px;
+                    right: 16px;
                     z-index: 50;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 52px;
-                    height: 52px;
+                    width: 48px;
+                    height: 48px;
                     background-color: #25D366;
                     color: white;
                     border-radius: 50%;
@@ -50,6 +50,15 @@ const WhatsAppButton = () => {
                     border: 2px solid rgba(255, 255, 255, 0.15);
                     overflow: hidden;
                     text-decoration: none;
+                }
+
+                @media (min-width: 576px) {
+                    .wa-floating-btn {
+                        width: 54px;
+                        height: 54px;
+                        bottom: 24px;
+                        right: 24px;
+                    }
                 }
 
                 @media (min-width: 768px) {
