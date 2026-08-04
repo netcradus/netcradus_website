@@ -14,13 +14,13 @@ export default function Hero() {
 
   return (
     <section className="relative flex flex-col justify-center min-h-screen w-full overflow-hidden bg-[#050B14] select-text pt-[60px] pb-10">
-      {/* Background Video (15% Brightness & 10% Contrast Increase for Hex Pattern & Blue Network Lines) */}
+      {/* Background Video (Full Uncropped Display across all Screen Sizes with object-contain) */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none brightness-115 contrast-110"
+        className="absolute inset-0 w-full h-full object-contain mx-auto my-auto z-0 pointer-events-none brightness-115 contrast-110 select-none"
       >
         <source src="/videos/homebg.mp4" type="video/mp4" />
       </video>
