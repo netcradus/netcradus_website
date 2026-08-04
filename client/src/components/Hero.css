@@ -79,10 +79,10 @@
 }
 
 .brand-hero-title {
-  font-size: clamp(48px, 9.5vw, 130px);
+  font-size: clamp(34px, 7.5vw, 110px);
   font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -3px;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
 }
 
 .hero-stat {
@@ -348,10 +348,10 @@
 }
 
 .brand-hero-title {
-  font-size: clamp(48px, 9.5vw, 130px);
+  font-size: clamp(34px, 7.5vw, 110px);
   font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -3px;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
 }
 
 .hero-shield-copy {

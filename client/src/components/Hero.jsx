@@ -14,66 +14,109 @@ export default function Hero() {
 
   return (
     <section className="relative flex flex-col justify-center min-h-screen w-full overflow-hidden bg-[#050B14] select-text pt-[60px] pb-10">
-      {/* Background Video */}
+      {/* Background Video (15% Brightness & 10% Contrast Increase for Hex Pattern & Blue Network Lines) */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none brightness-115 contrast-110"
       >
         <source src="/videos/homebg.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark Overlay for Text Contrast & Readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/85 via-[#050B14]/70 to-[#050B14]/85 z-0 pointer-events-none" />
-      
+      {/* Balanced Overlay for Enhanced Background Visibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/65 via-[#050B14]/50 to-[#050B14]/65 z-0 pointer-events-none" />
+
       {/* Centered Content Container */}
       <div className="relative z-10 w-full px-4 sm:px-10 text-center max-w-[1280px] mx-auto flex flex-col items-center">
-        {/* Large NETCRADUS Brand Title */}
+        {/* Large ⓃⒺⓉⒸⓇⒶⒹⓊⓈ Brand Title - Reduced Glow (by 40%) */}
         <div
-          className="brand-hero-title font-black uppercase tracking-[-3px] text-center mx-auto mb-6 sm:mb-9 select-none"
+          className="brand-hero-title font-black uppercase text-center mx-auto mb-[45px] select-none"
           style={{
             fontFamily: "'Space Grotesk', 'Sora', 'Inter', sans-serif",
-            fontSize: "clamp(48px, 9.5vw, 130px)",
+            fontSize: "clamp(34px, 7.5vw, 110px)",
             fontWeight: 900,
-            lineHeight: 0.95,
-            filter: "drop-shadow(0 0 35px rgba(255, 107, 0, 0.25))",
+            lineHeight: 1.1,
+            letterSpacing: "0.04em",
+            filter: "drop-shadow(0 0 20px rgba(255, 107, 0, 0.25))",
           }}
         >
-          <span className="text-[#FFFFFF]">NETCR</span>
+          <span className="text-[#FFFFFF]">ⓃⒺⓉⒸⓇ</span>
           <span
             style={{
-              background: "linear-gradient(90deg, #FF6B00 0%, #FF9F43 100%)",
+              background:
+                "linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 50%, #FF7A00 50%, #FF7A00 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
+              filter: "drop-shadow(0 0 12px rgba(255, 122, 0, 0.20))",
+              display: "inline-block",
             }}
           >
-            ADUS
+            Ⓐ
+          </span>
+          <span
+            style={{
+              color: "#FF7A00",
+              filter: "drop-shadow(0 0 12px rgba(255, 122, 0, 0.20))",
+            }}
+          >
+            ⒹⓊⓈ
           </span>
         </div>
 
-        {/* Hero Heading */}
+        {/* Hero Heading - Two-Line Premium Typography */}
         <h1
-          className="hero-heading hero-title font-extrabold max-w-[1100px] text-center mx-auto mb-4 sm:mb-6"
+          className="hero-heading hero-title flex flex-col items-center justify-center max-w-[1100px] text-center mx-auto mb-[40px] select-text"
           style={{
-            fontFamily: "'Space Grotesk', 'Sora', 'Clash Display', 'Manrope', sans-serif",
-            fontSize: "clamp(42px, 6vw, 88px)",
-            fontWeight: 800,
-            lineHeight: 1.05,
-            letterSpacing: "-2px",
+            lineHeight: 1.2,
           }}
         >
-          <span className="text-[#F8FAFC]">Confidence in Every </span>
+          {/* Line 1: Pure White (#FFFFFF) Luminous Glow */}
           <span
-            className="inline-block"
+            className="block font-semibold"
             style={{
-              background: "linear-gradient(90deg, #FF6B00 0%, #FF9F43 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              color: "#FFFFFF",
+              fontFamily: "'Great Vibes', 'Alex Brush', cursive",
+              fontSize: "clamp(34px, 4.2vw, 54px)",
+              letterSpacing: "1px",
+              lineHeight: 1.25,
+              textShadow:
+                "0 0 18px rgba(255, 255, 255, 0.45), 0 0 20px rgba(255, 255, 255, 0.35), 0 0 35px rgba(142, 219, 255, 0.15), 0 4px 16px rgba(0, 0, 0, 0.35)",
+              marginBottom: "22px",
             }}
           >
-            Connection.
+            Confidence in Every
+          </span>
+
+          {/* Line 2: Blackletter Gothic (Enlarged by 35-40% to 98px) - Solid "Connec" (White) & "tion." (Brand Orange #FF7A00) */}
+          <span
+            className="block font-bold"
+            style={{
+              fontFamily: "'UnifrakturMaguntia', 'MedievalSharp', serif",
+              fontSize: "clamp(60px, 7.8vw, 98px)",
+              letterSpacing: "0.02em",
+              lineHeight: 1.1,
+            }}
+          >
+            <span
+              className="text-[#FFFFFF]"
+              style={{
+                textShadow:
+                  "0 0 10px rgba(255, 255, 255, 0.18), 0 6px 18px rgba(0, 0, 0, 0.35)",
+              }}
+            >
+              Connec
+            </span>
+            <span
+              className="text-[#FF7A00]"
+              style={{
+                textShadow:
+                  "0 0 12px rgba(255, 122, 0, 0.25), 0 6px 18px rgba(0, 0, 0, 0.35)",
+              }}
+            >
+              tion.
+            </span>
           </span>
         </h1>
 
