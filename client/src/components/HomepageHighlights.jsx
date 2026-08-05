@@ -8,7 +8,7 @@ const HIGHLIGHTS = [
     category: 'Industry Recognition',
     title: 'Netcradus recognized for enterprise-grade managed security',
     image: '/images/highlight-security.png',
-    link: '/about',
+    link: '/acis',
     gradientId: 'gradRecognize',
     color1: '#ff2fb0',
     color2: '#ff7b29',

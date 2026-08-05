@@ -196,17 +196,28 @@ function AppLayout() {
 }, [location]);
 
   return (
-    <div className="bg-background min-h-screen text-text-primary font-sans overflow-x-hidden pt-20 transition-colors duration-500 selection:bg-accent/30">
+    <div className="bg-[#05060A] min-h-screen text-text-primary font-sans overflow-x-hidden pt-20 transition-colors duration-500 selection:bg-accent/30 relative">
 
-      <div className="fixed inset-0 z-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none transition-opacity duration-1000"></div>
+      {/* Enterprise Cyberpunk Ambient Glow Background System (Splunk / Linear / Stripe) */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#05060A]">
+        {/* Glow 1: Large Radial Glow from Right Side (#FF2D95 -> #D946EF -> transparent, 14% Opacity) */}
+        <div className="cyber-glow-r absolute top-[20%] -right-[10%] w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,#FF2D95_0%,#D946EF_50%,transparent_75%)] opacity-14 blur-[140px] animate-cyberpunk-glow" />
 
-      <div
-        className="fixed inset-0 z-[1] pointer-events-none opacity-[0.03] dark:opacity-[0.05]"
-        style={{
-          backgroundImage:
-            `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      ></div>
+        {/* Glow 2: Radial Glow from Bottom Right Corner (#8B5CF6 -> transparent, 16% Opacity) */}
+        <div className="cyber-glow-br absolute -bottom-[15%] -right-[10%] w-[750px] h-[750px] rounded-full bg-[radial-gradient(circle_at_center,#8B5CF6_0%,transparent_70%)] opacity-16 blur-[130px] animate-cyberpunk-glow-delay" />
+
+        {/* Glow 3: Soft Magenta Glow behind AI Section (#D946EF, 10% Opacity) */}
+        <div className="cyber-glow-ai absolute top-[55%] right-[15%] w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle_at_center,#D946EF_0%,transparent_65%)] opacity-10 blur-[135px] animate-cyberpunk-glow-slow" />
+
+        {/* Glow 4: Subtle Purple Glow on Left Side for Balance (#6D28D9 / #8B5CF6, 9% Opacity) */}
+        <div className="cyber-glow-l absolute top-[35%] -left-[15%] w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle_at_center,#6D28D9_0%,#8B5CF6_45%,transparent_70%)] opacity-9 blur-[135px] animate-cyberpunk-glow-slow" />
+
+        {/* Dark Center Radial Mask for High Text Contrast */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(5,6,10,0.85)_0%,rgba(5,6,10,0.4)_60%,transparent_100%)] pointer-events-none" />
+
+        {/* Soft Vignette Overlay for Depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_45%,rgba(5,6,10,0.85)_100%)] pointer-events-none" />
+      </div>
 
       <Navbar />
       <CookieConsent />

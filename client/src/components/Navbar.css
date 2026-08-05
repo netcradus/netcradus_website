@@ -504,3 +504,106 @@
 .animate-fade-in {
   animation: fadeIn 0.4s ease forwards;
 }
+
+/* ==========================================================================
+   NAVBAR COUNTRY SELECTOR DROPDOWN (Strict Design Spec)
+   ========================================================================== */
+.nav-country-selector-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 60;
+}
+
+.nav-country-btn {
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.nav-country-btn:hover {
+  border-color: #FF6A00;
+  background: rgba(255, 106, 0, 0.05);
+}
+
+.nav-country-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: #0B0F17;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  animation: navDropdownFade 0.25s ease-out forwards;
+  z-index: 100;
+}
+
+@keyframes navDropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-country-search-input {
+  width: 100%;
+  height: 34px;
+  padding: 0 10px;
+  background: #161B26;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.nav-country-search-input:focus {
+  border-color: #FF6A00;
+}
+
+.nav-country-search-input::placeholder {
+  color: #A1A1AA;
+}
+
+.nav-country-option {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-country-option:hover,
+.nav-country-option.highlighted {
+  background: #1A1A1A;
+}
+
+.nav-country-option.selected {
+  color: #FF6A00;
+  font-weight: 600;
+}

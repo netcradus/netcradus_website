@@ -6,6 +6,163 @@ import SolutionsMegaMenu, { SOLUTIONS } from './SolutionsMegaMenu';
 import ProductMegaMenu, { PRODUCTS } from './ProductMegaMenu';
 import './Navbar.css';
 
+const NAVBAR_COUNTRIES = [
+  { id: "gb", name: "United Kingdom", flag: "🇬🇧" },
+  { id: "us", name: "United States", flag: "🇺🇸" },
+  { id: "au", name: "Australia", flag: "🇦🇺" },
+  { id: "ae", name: "Dubai (UAE)", flag: "🇦🇪" },
+];
+
+function NavbarCountryDropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
+
+  const containerRef = useRef(null);
+  const searchInputRef = useRef(null);
+
+  const filteredCountries = NAVBAR_COUNTRIES.filter((c) =>
+    c.name.toLowerCase().includes(searchQuery.toLowerCase().trim())
+  );
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      setSearchQuery("");
+      setHighlightedIndex(0);
+      setTimeout(() => searchInputRef.current?.focus(), 50);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    setHighlightedIndex(0);
+  }, [searchQuery]);
+
+  const handleKeyDown = (e) => {
+    if (!isOpen) {
+      if (e.key === "Enter" || e.key === "ArrowDown" || e.key === " ") {
+        e.preventDefault();
+        setIsOpen(true);
+      }
+      return;
+    }
+
+    if (e.key === "Escape") {
+      e.preventDefault();
+      setIsOpen(false);
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setHighlightedIndex((prev) =>
+        prev < filteredCountries.length - 1 ? prev + 1 : 0
+      );
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setHighlightedIndex((prev) =>
+        prev > 0 ? prev - 1 : filteredCountries.length - 1
+      );
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (filteredCountries[highlightedIndex]) {
+        setSelectedCountry(filteredCountries[highlightedIndex]);
+        setIsOpen(false);
+      }
+    }
+  };
+
+  return (
+    <div ref={containerRef} className="relative nav-country-selector-wrapper" onKeyDown={handleKeyDown}>
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        className="nav-country-btn"
+      >
+        <span className="flex items-center gap-1.5 truncate">
+          {selectedCountry ? (
+            <>
+              <span className="text-base leading-none">{selectedCountry.flag}</span>
+              <span className="truncate">{selectedCountry.name}</span>
+            </>
+          ) : (
+            <>
+              <span className="text-base leading-none">🌐</span>
+              <span>Global</span>
+            </>
+          )}
+        </span>
+        <ChevronDown
+          size={14}
+          className={`transition-transform duration-250 shrink-0 ${
+            isOpen ? "rotate-180 text-[#FF6A00]" : "text-white/70"
+          }`}
+        />
+      </button>
+
+      {isOpen && (
+        <div className="nav-country-dropdown-panel" role="listbox">
+          <div className="p-2 border-b border-white/10">
+            <input
+              ref={searchInputRef}
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Find a country or region"
+              className="nav-country-search-input"
+            />
+          </div>
+          <ul className="max-h-48 overflow-y-auto p-1 custom-country-scrollbar">
+            {filteredCountries.length > 0 ? (
+              filteredCountries.map((country, index) => {
+                const isSelected = selectedCountry?.id === country.id;
+                const isHighlighted = highlightedIndex === index;
+
+                return (
+                  <li
+                    key={country.id}
+                    role="option"
+                    aria-selected={isSelected}
+                    onClick={() => {
+                      setSelectedCountry(country);
+                      setIsOpen(false);
+                    }}
+                    onMouseEnter={() => setHighlightedIndex(index)}
+                    className={`nav-country-option ${
+                      isSelected ? "selected" : ""
+                    } ${isHighlighted ? "highlighted" : ""}`}
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <span className="text-base leading-none">{country.flag}</span>
+                      <span>{country.name}</span>
+                    </span>
+                    {isSelected && (
+                      <span className="text-[#FF6A00] font-bold">✓</span>
+                    )}
+                  </li>
+                );
+              })
+            ) : (
+              <li className="p-3 text-center text-xs text-[#A1A1AA]">
+                No country found
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const Navbar = () => {
   useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -258,6 +415,9 @@ const Navbar = () => {
             <Phone size={15} className="shrink-0 text-[#FF6A00] group-hover:text-white transition-colors duration-300" />
             <span>1800 121 008800</span>
           </a>
+
+          {/* Country Selector Dropdown Immediately to Left of Talk to Expert */}
+          <NavbarCountryDropdown />
 
           {/* Desktop Talk to an Expert CTA Button */}
           <Link 

@@ -685,6 +685,73 @@ button, a.btn-primary, a.btn-orange-override-primary, input[type="button"], inpu
   }
 }
 
+/* ---------------------------------------------------------------------------
+   ENTERPRISE CYBERPUNK AMBIENT BACKGROUND GLOW (Splunk / Linear / Stripe inspired)
+   --------------------------------------------------------------------------- */
+@keyframes slowCyberDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-15px, 12px, 0);
+  }
+  100% {
+    transform: translate3d(12px, -15px, 0);
+  }
+}
+
+@keyframes slowCyberDriftDelay {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, -14px, 0);
+  }
+  100% {
+    transform: translate3d(-12px, 16px, 0);
+  }
+}
+
+.animate-cyberpunk-glow {
+  animation: slowCyberDrift 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-cyberpunk-glow-delay {
+  animation: slowCyberDriftDelay 24s ease-in-out infinite alternate;
+  animation-delay: -8s;
+  will-change: transform;
+}
+
+.animate-cyberpunk-glow-slow {
+  animation: slowCyberDrift 22s ease-in-out infinite alternate;
+  animation-delay: -14s;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-cyberpunk-glow,
+  .animate-cyberpunk-glow-delay,
+  .animate-cyberpunk-glow-slow {
+    animation: none !important;
+  }
+}
+
+/* Custom Country Dropdown Scrollbar */
+.custom-country-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-country-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-country-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 106, 0, 0.4);
+  border-radius: 9999px;
+}
+.custom-country-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #FF6A00;
+}
+
 
 
 

@@ -139,13 +139,11 @@ const NetworkBackground = () => {
           animate={{
             x: [0, Math.random() * 15 - 7.5, 0],
             y: [0, Math.random() * 15 - 7.5, 0],
-            opacity: [0.4, 0.8, 0.4],
           }}
           transition={{
-            duration: (n.id % 3) + 4,
+            duration: n.duration,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: (n.id % 5) * 0.8,
           }}
         />
       ))}
@@ -159,27 +157,29 @@ export default function CybersecurityConsulting() {
   // Custom styling block for animations and styles
   const styles = `
     .glass-card-light {
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 107, 0, 0.08);
-      box-shadow: 0 10px 30px -10px rgba(11, 19, 43, 0.04), 0 1px 1px rgba(0, 0, 0, 0.02);
-      transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), background 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+      border: 1px solid rgba(255, 107, 0, 0.12);
+      box-shadow: 0 10px 30px -10px rgba(11, 19, 43, 0.05), 0 1px 1px rgba(0, 0, 0, 0.02);
+      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease, box-shadow 300ms ease, background 300ms ease;
     }
     
     .glass-card-light:hover {
       transform: translateY(-6px);
-      background: rgba(255, 255, 255, 0.95);
-      border-color: rgba(255, 107, 0, 0.35);
-      box-shadow: 0 20px 40px -15px rgba(255, 107, 0, 0.15), 0 0 25px rgba(255, 107, 0, 0.22);
+      background: rgba(255, 255, 255, 0.98);
+      border-color: rgba(255, 107, 0, 0.45);
+      box-shadow: 0 20px 45px -10px rgba(255, 107, 0, 0.22), 0 0 35px rgba(255, 107, 0, 0.3);
     }
 
-    .glass-card-light .card-icon-wrapper {
-      transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    .glass-card-light .card-icon-container {
+      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease, border-color 300ms ease;
     }
 
-    .glass-card-light:hover .card-icon-wrapper {
-      transform: scale(1.08);
+    .glass-card-light:hover .card-icon-container {
+      transform: scale(1.1);
+      border-color: rgba(255, 107, 0, 0.5);
+      box-shadow: 0 0 25px rgba(255, 107, 0, 0.45);
     }
 
     @keyframes ambientGlowDrift {
@@ -199,10 +199,10 @@ export default function CybersecurityConsulting() {
       .glass-card-light:hover {
         transform: none !important;
       }
-      .glass-card-light .card-icon-wrapper {
+      .glass-card-light .card-icon-container {
         transition: none !important;
       }
-      .glass-card-light:hover .card-icon-wrapper {
+      .glass-card-light:hover .card-icon-container {
         transform: none !important;
       }
       .ambient-glow-drift {
@@ -273,16 +273,16 @@ export default function CybersecurityConsulting() {
       <div className="absolute inset-0 hex-bg pointer-events-none z-0" />
       <div className="absolute inset-0 cyber-grid-overlay pointer-events-none z-0" />
 
-      {/* Radial glows */}
-      <div className="absolute top-[5%] right-[8%] h-[550px] w-[550px] rounded-full bg-[#FF6B00]/10 blur-[100px] pointer-events-none z-0 ambient-glow-drift" />
-      <div className="absolute top-[45%] left-[8%] h-[600px] w-[600px] rounded-full bg-[#FF6B00]/8 blur-[110px] pointer-events-none z-0 ambient-glow-drift" style={{ animationDelay: "-9s" }} />
-      <div className="absolute bottom-[10%] right-[5%] h-[600px] w-[600px] rounded-full bg-[#0B132B]/3 blur-[140px] pointer-events-none" />
+      {/* Radial orange ambient glows */}
+      <div className="absolute top-[5%] right-[8%] h-[550px] w-[550px] rounded-full bg-[#FF6B00]/12 blur-[100px] pointer-events-none z-0 ambient-glow-drift" />
+      <div className="absolute top-[45%] left-[8%] h-[600px] w-[600px] rounded-full bg-[#FF6B00]/10 blur-[110px] pointer-events-none z-0 ambient-glow-drift" style={{ animationDelay: "-9s" }} />
+      <div className="absolute bottom-[10%] right-[5%] h-[600px] w-[600px] rounded-full bg-[#FF6B00]/6 blur-[140px] pointer-events-none" />
 
       <BackgroundParticles />
       <NetworkBackground />
 
       <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Heading & Subtitle */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
@@ -324,7 +324,7 @@ export default function CybersecurityConsulting() {
 
         {/* 2-Column responsive grid (3x2 cards) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20 max-w-6xl mx-auto">
-          
+
           {/* Card 1: Comprehensive Threat Landscape Assessment */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
@@ -392,18 +392,19 @@ export default function CybersecurityConsulting() {
             onMouseEnter={() => setHoveredCard(2)}
             onMouseLeave={() => setHoveredCard(null)}
             className="glass-card-light group rounded-[24px] p-8 relative overflow-hidden transition-all duration-500 border-t-4 border-t-[#FF6B00]/40 hover:border-t-[#FF6B00] flex flex-col justify-between min-h-[280px]"
+            animate={hoveredCard === 2 ? { y: -8 } : { y: 0 }}
           >
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/25 text-[#FF6B00] flex items-center justify-center mb-8 overflow-hidden relative shadow-[0_0_25px_rgba(255,107,0,0.28)] card-icon-wrapper">
-                
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/25 text-[#FF6B00] flex items-center justify-center mb-8 overflow-hidden relative shadow-[0_0_25px_rgba(255,107,0,0.28)]">
+
                 {/* Shield Scanning Line Animation */}
                 <motion.div
                   className="absolute inset-x-0 h-[2px] bg-[#FF6B00] shadow-[0_0_8px_#FF6B00]"
                   animate={{ top: ["0%", "100%", "0%"] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
-                
+
                 <Bug className="h-7 w-7 z-10" />
               </div>
 
@@ -450,8 +451,8 @@ export default function CybersecurityConsulting() {
           >
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative card-icon-wrapper">
-                
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative">
+
                 {/* Lock network background nodes animation */}
                 <svg className="absolute inset-0 w-full h-full opacity-60">
                   <motion.circle cx="15%" cy="15%" r="1.5" fill="#FF6B00" animate={{ scale: [1, 1.8, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -531,7 +532,7 @@ export default function CybersecurityConsulting() {
 
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative overflow-hidden card-icon-wrapper">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative overflow-hidden">
                 <motion.div
                   animate={hoveredCard === 4 ? { y: [-2, -6, -2] } : {}}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -583,14 +584,14 @@ export default function CybersecurityConsulting() {
           >
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative card-icon-wrapper">
-                
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative">
+
                 {/* Flashing beacon */}
                 <span className="absolute top-2 right-2 flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
                 </span>
-                
+
                 <ShieldAlert className="h-7 w-7" />
               </div>
 
@@ -644,7 +645,7 @@ export default function CybersecurityConsulting() {
 
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative card-icon-wrapper">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative">
                 <motion.div
                   animate={hoveredCard === 6 ? { rotate: [0, 15, -15, 0] } : { rotate: 0 }}
                   transition={{ duration: 0.7 }}
@@ -656,7 +657,7 @@ export default function CybersecurityConsulting() {
               <h3 className="text-xl sm:text-2xl font-bold text-[#0B132B] mb-2 group-hover:text-[#FF6B00] transition-colors duration-300">
                 Compliance Alignment
               </h3>
-              
+
               <p className="text-xs sm:text-sm font-semibold tracking-wider text-[#FF6B00] mb-4 uppercase">
                 ISO/IEC 27001:2022 • GDPR • CERT-In • NIST
               </p>
@@ -680,7 +681,7 @@ export default function CybersecurityConsulting() {
         </div>
 
         {/* Animated Statistics Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20 max-w-5xl mx-auto text-center border-y border-gray-100 py-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20 max-w-5xl mx-auto text-center border-y border-gray-100 py-10">
           {[
             { value: "500+", label: "Security Assessments" },
             { value: "24×7", label: "SOC Monitoring" },
@@ -693,12 +694,12 @@ export default function CybersecurityConsulting() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="space-y-2 group"
+              className="space-y-2 group p-4 rounded-2xl transition-all duration-300 hover:bg-[#FF6B00]/5 hover:shadow-[0_0_25px_rgba(255,107,0,0.18)] border border-transparent hover:border-[#FF6B00]/20 cursor-pointer"
             >
-              <div className="text-3xl sm:text-5xl font-black font-display text-[#0B132B] group-hover:text-[#FF6B00] transition-colors duration-300">
+              <div className="text-3xl sm:text-5xl font-black font-display text-[#0B132B] group-hover:text-[#FF6B00] group-hover:drop-shadow-[0_0_14px_rgba(255,107,0,0.55)] transition-all duration-300">
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm font-semibold tracking-wider text-gray-500 uppercase font-sans">
+              <div className="text-xs sm:text-sm font-semibold tracking-wider text-gray-500 uppercase font-sans group-hover:text-[#FF6B00] transition-colors duration-300">
                 {stat.label}
               </div>
             </motion.div>

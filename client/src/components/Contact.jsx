@@ -42,6 +42,7 @@ import {
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 import LocationMap from './LocationMap';
+import CountryDropdown from './CountryDropdown';
 
 // Import certifications/trust logos
 import isoLogo from '../assets/ISO-Loogo-removebg.png';
@@ -432,6 +433,7 @@ const Contact = () => {
 
   const [selectedOptionId, setSelectedOptionId] = useState(null);
   const [selectedService, setSelectedService] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
   const [file, setFile] = useState(null);
   const [referenceId, setReferenceId] = useState("");
   const [errors, setErrors] = useState({});
@@ -779,6 +781,17 @@ const Contact = () => {
                         <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-nc-muted" />
                       </div>
                       <div className="error-area" />
+                    </div>
+
+                    {/* Country / Region Dropdown */}
+                    <div className="form-field-container">
+                      <CountryDropdown
+                        value={selectedCountry}
+                        onChange={(val) => setSelectedCountry(val)}
+                        label="Country / Region"
+                        placeholder="Select Country / Region"
+                        searchPlaceholder="Find a country or region"
+                      />
                     </div>
                   </div>
 
