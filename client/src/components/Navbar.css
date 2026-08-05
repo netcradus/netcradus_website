@@ -607,3 +607,36 @@
   color: #FF6A00;
   font-weight: 600;
 }
+
+.nav-country-flag {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 4px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   NAVBAR TALK TO AN EXPERT BUTTON (Gradient & Glow Spec)
+   ========================================================================== */
+.nav-talk-expert-btn {
+  background: linear-gradient(90deg, #FF7A2F 0%, #FF2E7A 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 25px rgba(255, 122, 47, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.nav-talk-expert-btn:hover {
+  transform: scale(1.05) translateY(-1px);
+  box-shadow: 0 10px 35px rgba(255, 122, 47, 0.6), 0 0 20px rgba(255, 46, 122, 0.4);
+  filter: brightness(1.08);
+}
+
+.nav-talk-expert-btn:active {
+  transform: scale(0.98);
+  filter: brightness(0.92);
+  box-shadow: 0 4px 15px rgba(255, 122, 47, 0.4);
+}

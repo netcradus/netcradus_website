@@ -3,10 +3,11 @@ import { Search, ChevronDown, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const COUNTRIES = [
-  { id: "gb", name: "United Kingdom", flag: "🇬🇧" },
-  { id: "us", name: "United States", flag: "🇺🇸" },
-  { id: "au", name: "Australia", flag: "🇦🇺" },
-  { id: "ae", name: "Dubai (UAE)", flag: "🇦🇪" },
+  { id: "in", name: "India", flag: "/flags/in.svg" },
+  { id: "gb", name: "United Kingdom", flag: "/flags/gb.svg" },
+  { id: "us", name: "United States", flag: "/flags/us.svg" },
+  { id: "au", name: "Australia", flag: "/flags/au.svg" },
+  { id: "ae", name: "Dubai (UAE)", flag: "/flags/ae.svg" },
 ];
 
 export default function CountryDropdown({
@@ -128,7 +129,11 @@ export default function CountryDropdown({
         <span className="flex items-center gap-2.5 truncate text-sm">
           {selectedCountry ? (
             <>
-              <span className="text-base leading-none">{selectedCountry.flag}</span>
+              <img
+                src={selectedCountry.flag}
+                alt={selectedCountry.name}
+                className="nav-country-flag"
+              />
               <span className="text-white font-medium">{selectedCountry.name}</span>
             </>
           ) : (
@@ -196,8 +201,12 @@ export default function CountryDropdown({
                           : "text-white/90 hover:bg-[#1A1A1A]"
                       } ${isSelected ? "font-semibold" : ""}`}
                     >
-                      <span className="flex items-center gap-2.5 truncate">
-                        <span className="text-base leading-none">{country.flag}</span>
+                      <span className="flex items-center truncate" style={{ gap: '10px' }}>
+                        <img
+                          src={country.flag}
+                          alt={country.name}
+                          className="nav-country-flag"
+                        />
                         <span className={isSelected ? "text-white" : "text-white/90"}>
                           {country.name}
                         </span>

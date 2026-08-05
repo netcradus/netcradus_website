@@ -7,16 +7,17 @@ import ProductMegaMenu, { PRODUCTS } from './ProductMegaMenu';
 import './Navbar.css';
 
 const NAVBAR_COUNTRIES = [
-  { id: "gb", name: "United Kingdom", flag: "🇬🇧" },
-  { id: "us", name: "United States", flag: "🇺🇸" },
-  { id: "au", name: "Australia", flag: "🇦🇺" },
-  { id: "ae", name: "Dubai (UAE)", flag: "🇦🇪" },
+  { id: "in", name: "India", flag: "/flags/in.svg" },
+  { id: "gb", name: "United Kingdom", flag: "/flags/gb.svg" },
+  { id: "us", name: "United States", flag: "/flags/us.svg" },
+  { id: "au", name: "Australia", flag: "/flags/au.svg" },
+  { id: "ae", name: "Dubai (UAE)", flag: "/flags/ae.svg" },
 ];
 
 function NavbarCountryDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState(NAVBAR_COUNTRIES[0]);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
 
   const containerRef = useRef(null);
@@ -88,18 +89,13 @@ function NavbarCountryDropdown() {
         aria-haspopup="listbox"
         className="nav-country-btn"
       >
-        <span className="flex items-center gap-1.5 truncate">
-          {selectedCountry ? (
-            <>
-              <span className="text-base leading-none">{selectedCountry.flag}</span>
-              <span className="truncate">{selectedCountry.name}</span>
-            </>
-          ) : (
-            <>
-              <span className="text-base leading-none">🌐</span>
-              <span>Global</span>
-            </>
-          )}
+        <span className="flex items-center truncate" style={{ gap: '10px' }}>
+          <img
+            src={selectedCountry ? selectedCountry.flag : NAVBAR_COUNTRIES[0].flag}
+            alt={selectedCountry ? selectedCountry.name : NAVBAR_COUNTRIES[0].name}
+            className="nav-country-flag"
+          />
+          <span>{selectedCountry ? selectedCountry.name : NAVBAR_COUNTRIES[0].name}</span>
         </span>
         <ChevronDown
           size={14}
@@ -141,8 +137,12 @@ function NavbarCountryDropdown() {
                       isSelected ? "selected" : ""
                     } ${isHighlighted ? "highlighted" : ""}`}
                   >
-                    <span className="flex items-center gap-2.5">
-                      <span className="text-base leading-none">{country.flag}</span>
+                    <span className="flex items-center" style={{ gap: '10px' }}>
+                      <img
+                        src={country.flag}
+                        alt={country.name}
+                        className="nav-country-flag"
+                      />
                       <span>{country.name}</span>
                     </span>
                     {isSelected && (
@@ -416,17 +416,16 @@ const Navbar = () => {
             <span>1800 121 008800</span>
           </a>
 
-          {/* Country Selector Dropdown Immediately to Left of Talk to Expert */}
-          <NavbarCountryDropdown />
-
           {/* Desktop Talk to an Expert CTA Button */}
           <Link 
             to="/contact" 
-            className="hidden lg:inline-flex btn-primary px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-lg hover:scale-105 transition-all no-underline shrink-0"
-            style={{ background: 'var(--color-accent)', color: '#ffffff' }}
+            className="hidden lg:inline-flex btn-primary nav-talk-expert-btn px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full no-underline shrink-0"
           >
             Talk to an Expert
           </Link>
+
+          {/* Country Selector Dropdown to Far Right of Navbar */}
+          <NavbarCountryDropdown />
         </div>
       </div>
 
