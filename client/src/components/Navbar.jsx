@@ -132,17 +132,6 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="nav-links desktop-only hidden lg:flex justify-center items-center gap-8">
           <Link
-            to="/"
-            className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
-              isActiveLink('/')
-                ? 'active text-accent'
-                : 'text-text-secondary hover:text-accent'
-            }`}
-          >
-            Home
-          </Link>
-
-          <Link
             to="/platform"
             className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
               isActiveLink('/platform')
@@ -228,6 +217,17 @@ const Navbar = () => {
           </div>
 
           <Link
+            to="/why-netcradus"
+            className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
+              isActiveLink('/why-netcradus')
+                ? 'active text-accent'
+                : 'text-text-secondary hover:text-accent'
+            }`}
+          >
+            Why Netcradus
+          </Link>
+
+          <Link
             to="/contact"
             className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
               isActiveLink('/contact')
@@ -283,15 +283,6 @@ const Navbar = () => {
         </div>
 
         <div className="mobile-links">
-          <Link
-            to="/"
-            className="mobile-link"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Home
-            <ChevronRight size={18} />
-          </Link>
-
           <Link
             to="/platform"
             className="mobile-link"
@@ -352,6 +343,15 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
+
+          <Link
+            to="/why-netcradus"
+            className="mobile-link"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Why Netcradus
+            <ChevronRight size={18} />
+          </Link>
 
           <Link
             to="/contact"

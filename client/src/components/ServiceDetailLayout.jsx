@@ -68,44 +68,66 @@ const ServiceDetailLayout = ({ service }) => {
         <div className="absolute inset-0 rounded-[30px] bg-[radial-gradient(circle_at_50%_20%,rgba(232,64,10,0.18),transparent_45%)] blur-3xl" />
         <div className="relative overflow-hidden rounded-[30px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_45%),var(--color-surface)] p-4 shadow-[0_22px_70px_rgba(232,64,10,0.08)]">
           {service.id === "cybersecurity" ? (
-            <div 
-              onClick={togglePlay}
-              className="relative overflow-hidden rounded-[12px] h-[400px] w-full bg-[#0f172a] flex items-center justify-center cursor-pointer group"
-            >
-              {/* HTML5 video element */}
-              <video
-                ref={videoRef}
-                src="/videos/cybersecurity.mp4"
-                className="h-full w-full object-cover object-top rounded-[12px]"
-                preload="metadata"
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
-                controls={isPlaying}
-                playsInline
-              />
+            <div className="relative overflow-hidden rounded-[12px] h-[400px] w-full bg-[#070913] border border-white/10 flex items-center justify-center">
+              {/* Radial Ambient Glow */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,123,41,0.18),transparent_70%)] pointer-events-none" />
 
-              {/* Centered animated orange Play button (only visible when paused) */}
-              <AnimatePresence>
-                {!isPlaying && (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/35 rounded-[12px]"
-                  >
-                    <motion.div 
-                      className="h-16 w-16 rounded-full bg-[#FF6B00] text-white flex items-center justify-center shadow-lg shadow-[#FF6B00]/30 transition-colors duration-300"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Play className="h-6 w-6 fill-white ml-1" />
-                    </motion.div>
-                    <span className="text-white text-xs font-bold uppercase tracking-wider font-sans">
-                      Watch Our Cybersecurity Overview
-                    </span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Glowing Shield & Connected Network Motif */}
+              <svg viewBox="0 0 400 400" className="w-full h-full p-6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#ff7b29" />
+                    <stop offset="50%" stopColor="#e8400a" />
+                    <stop offset="100%" stopColor="#7c2ae8" />
+                  </linearGradient>
+                  <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#ff7b29" stopOpacity="0.7" />
+                    <stop offset="100%" stopColor="#ff7b29" stopOpacity="0" />
+                  </radialGradient>
+                </defs>
+
+                {/* Outer Shield Outline */}
+                <path
+                  d="M200 40 L330 90 V190 C330 280 200 340 200 340 C200 340 70 280 70 190 V90 L200 40 Z"
+                  stroke="url(#shieldGrad)"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="drop-shadow-[0_0_12px_rgba(255,123,41,0.6)]"
+                />
+
+                {/* Inner Shield Grid / Mesh */}
+                <path
+                  d="M200 70 L300 110 V180 C300 250 200 295 200 295 C200 295 100 250 100 180 V110 L200 70 Z"
+                  stroke="rgba(255, 123, 41, 0.25)"
+                  strokeWidth="1.5"
+                  strokeDasharray="6 4"
+                />
+
+                {/* Central Core Shield Node */}
+                <circle cx="200" cy="180" r="40" fill="url(#nodeGlow)" className="animate-pulse" />
+                <circle cx="200" cy="180" r="16" fill="#ff7b29" />
+                <circle cx="200" cy="180" r="6" fill="#ffffff" />
+
+                {/* Network Connection Lines */}
+                <line x1="200" y1="40" x2="200" y2="140" stroke="rgba(255, 123, 41, 0.4)" strokeWidth="1.5" />
+                <line x1="70" y1="90" x2="160" y2="160" stroke="rgba(255, 123, 41, 0.4)" strokeWidth="1.5" />
+                <line x1="330" y1="90" x2="240" y2="160" stroke="rgba(255, 123, 41, 0.4)" strokeWidth="1.5" />
+                <line x1="100" y1="180" x2="160" y2="180" stroke="rgba(255, 123, 41, 0.4)" strokeWidth="1.5" />
+                <line x1="300" y1="180" x2="240" y2="180" stroke="rgba(255, 123, 41, 0.4)" strokeWidth="1.5" />
+                <line x1="140" y1="260" x2="180" y2="210" stroke="rgba(255, 123, 41, 0.4)" strokeWidth="1.5" />
+                <line x1="260" y1="260" x2="220" y2="210" stroke="rgba(255, 123, 41, 0.4)" strokeWidth="1.5" />
+
+                {/* Connected Nodes */}
+                <circle cx="200" cy="40" r="4" fill="#ff7b29" />
+                <circle cx="330" cy="90" r="4" fill="#ff7b29" />
+                <circle cx="70" cy="90" r="4" fill="#ff7b29" />
+                <circle cx="160" cy="160" r="4" fill="#ffffff" />
+                <circle cx="240" cy="160" r="4" fill="#ffffff" />
+                <circle cx="140" cy="260" r="4" fill="#ff7b29" />
+                <circle cx="260" cy="260" r="4" fill="#ff7b29" />
+                <circle cx="200" cy="340" r="4" fill="#ff7b29" />
+              </svg>
             </div>
           ) : service.video ? (
             <video

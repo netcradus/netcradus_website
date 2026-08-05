@@ -139,11 +139,13 @@ const NetworkBackground = () => {
           animate={{
             x: [0, Math.random() * 15 - 7.5, 0],
             y: [0, Math.random() * 15 - 7.5, 0],
+            opacity: [0.4, 0.8, 0.4],
           }}
           transition={{
-            duration: n.duration,
+            duration: (n.id % 3) + 4,
             repeat: Infinity,
             ease: "easeInOut",
+            delay: (n.id % 5) * 0.8,
           }}
         />
       ))}
@@ -162,12 +164,50 @@ export default function CybersecurityConsulting() {
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 107, 0, 0.08);
       box-shadow: 0 10px 30px -10px rgba(11, 19, 43, 0.04), 0 1px 1px rgba(0, 0, 0, 0.02);
+      transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), background 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
     }
     
     .glass-card-light:hover {
+      transform: translateY(-6px);
       background: rgba(255, 255, 255, 0.95);
-      border-color: rgba(255, 107, 0, 0.25);
-      box-shadow: 0 20px 40px -15px rgba(255, 107, 0, 0.12), 0 0 15px rgba(255, 107, 0, 0.05);
+      border-color: rgba(255, 107, 0, 0.35);
+      box-shadow: 0 20px 40px -15px rgba(255, 107, 0, 0.15), 0 0 25px rgba(255, 107, 0, 0.22);
+    }
+
+    .glass-card-light .card-icon-wrapper {
+      transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card-light:hover .card-icon-wrapper {
+      transform: scale(1.08);
+    }
+
+    @keyframes ambientGlowDrift {
+      0% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(15px, -15px, 0); }
+      100% { transform: translate3d(-10px, 10px, 0); }
+    }
+
+    .ambient-glow-drift {
+      animation: ambientGlowDrift 18s ease-in-out infinite alternate;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glass-card-light {
+        transition: none !important;
+      }
+      .glass-card-light:hover {
+        transform: none !important;
+      }
+      .glass-card-light .card-icon-wrapper {
+        transition: none !important;
+      }
+      .glass-card-light:hover .card-icon-wrapper {
+        transform: none !important;
+      }
+      .ambient-glow-drift {
+        animation: none !important;
+      }
     }
     
     .hex-bg {
@@ -234,7 +274,8 @@ export default function CybersecurityConsulting() {
       <div className="absolute inset-0 cyber-grid-overlay pointer-events-none z-0" />
 
       {/* Radial glows */}
-      <div className="absolute top-[10%] left-[5%] h-[500px] w-[500px] rounded-full bg-[#FF6B00]/4 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[5%] right-[8%] h-[550px] w-[550px] rounded-full bg-[#FF6B00]/10 blur-[100px] pointer-events-none z-0 ambient-glow-drift" />
+      <div className="absolute top-[45%] left-[8%] h-[600px] w-[600px] rounded-full bg-[#FF6B00]/8 blur-[110px] pointer-events-none z-0 ambient-glow-drift" style={{ animationDelay: "-9s" }} />
       <div className="absolute bottom-[10%] right-[5%] h-[600px] w-[600px] rounded-full bg-[#0B132B]/3 blur-[140px] pointer-events-none" />
 
       <BackgroundParticles />
@@ -249,7 +290,7 @@ export default function CybersecurityConsulting() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B00]/5 border border-[#FF6B00]/15 mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B00]/5 border border-[#FF6B00]/25 mb-4 shadow-[0_0_20px_rgba(255,107,0,0.25)]"
           >
             <span className="h-2 w-2 rounded-full bg-[#FF6B00] animate-pulse" />
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF6B00]">
@@ -318,7 +359,7 @@ export default function CybersecurityConsulting() {
 
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/25 text-[#FF6B00] flex items-center justify-center mb-8 relative shadow-[0_0_25px_rgba(255,107,0,0.28)]">
                 <Radar className="h-7 w-7" />
               </div>
 
@@ -351,11 +392,10 @@ export default function CybersecurityConsulting() {
             onMouseEnter={() => setHoveredCard(2)}
             onMouseLeave={() => setHoveredCard(null)}
             className="glass-card-light group rounded-[24px] p-8 relative overflow-hidden transition-all duration-500 border-t-4 border-t-[#FF6B00]/40 hover:border-t-[#FF6B00] flex flex-col justify-between min-h-[280px]"
-            animate={hoveredCard === 2 ? { y: -8 } : { y: 0 }}
           >
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 overflow-hidden relative">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/25 text-[#FF6B00] flex items-center justify-center mb-8 overflow-hidden relative shadow-[0_0_25px_rgba(255,107,0,0.28)] card-icon-wrapper">
                 
                 {/* Shield Scanning Line Animation */}
                 <motion.div
@@ -384,13 +424,15 @@ export default function CybersecurityConsulting() {
                   {hoveredCard === 2 ? "100%" : "35%"}
                 </span>
               </div>
-              <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden relative">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-[#FF6B00] to-[#E05300]"
+                  className="h-full bg-gradient-to-r from-[#FF6B00] to-[#E05300] relative shadow-[0_0_12px_#FF6B00]"
                   initial={{ width: "35%" }}
                   animate={{ width: hoveredCard === 2 ? "100%" : "35%" }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                />
+                >
+                  <span className="absolute right-0 top-1/2 -translate-y-1/2 h-3 w-3 rounded-full bg-[#FF6B00] blur-[2px] shadow-[0_0_10px_#FF6B00]" />
+                </motion.div>
               </div>
             </div>
           </motion.div>
@@ -408,7 +450,7 @@ export default function CybersecurityConsulting() {
           >
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative card-icon-wrapper">
                 
                 {/* Lock network background nodes animation */}
                 <svg className="absolute inset-0 w-full h-full opacity-60">
@@ -489,7 +531,7 @@ export default function CybersecurityConsulting() {
 
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative overflow-hidden">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative overflow-hidden card-icon-wrapper">
                 <motion.div
                   animate={hoveredCard === 4 ? { y: [-2, -6, -2] } : {}}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -541,7 +583,7 @@ export default function CybersecurityConsulting() {
           >
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative card-icon-wrapper">
                 
                 {/* Flashing beacon */}
                 <span className="absolute top-2 right-2 flex h-2.5 w-2.5">
@@ -602,7 +644,7 @@ export default function CybersecurityConsulting() {
 
             {/* Content Top */}
             <div className="relative z-10">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#FF6B00]/10 to-[#FF6B00]/20 border border-[#FF6B00]/20 text-[#FF6B00] flex items-center justify-center mb-8 relative card-icon-wrapper">
                 <motion.div
                   animate={hoveredCard === 6 ? { rotate: [0, 15, -15, 0] } : { rotate: 0 }}
                   transition={{ duration: 0.7 }}

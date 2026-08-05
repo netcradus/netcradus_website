@@ -166,6 +166,7 @@ import PhasePage from "./pages/phasePage";
 import Partners from "./pages/Partners";
 import PartnerApply from "./pages/PartnerApply";
 import NetCradPage from "./pages/NetCradPage";
+import WhyNetcradusPage from "./pages/WhyNetcradusPage";
 
 import Platform from "./components/Platform";
 import { useReveal } from "./hooks/useReveal";
@@ -245,6 +246,7 @@ function App() {
           <Route path="netxdr" element={<NetXDRPage />} />
           <Route path="netcrad" element={<NetCradPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="why-netcradus" element={<WhyNetcradusPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:slug" element={<BlogPostPage />} />
           <Route path="contact" element={<ContactPage />} />

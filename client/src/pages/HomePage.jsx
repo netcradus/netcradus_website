@@ -43,6 +43,7 @@
 
 import React, { useEffect } from 'react';
 import Hero from '../components/Hero';
+import HomepageHighlights from '../components/HomepageHighlights';
 import Services from '../components/Services';
 import WhyChooseUs from '../components/WhyChooseUs';
 import CybersecurityConsulting from '../components/CybersecurityConsulting';
@@ -65,6 +66,7 @@ const HomePage = () => {
   return (
     <>
       <Hero />
+      <HomepageHighlights />
       {/* <ACISSection /> */}
       <Services />
       <LiveThreatMap />
