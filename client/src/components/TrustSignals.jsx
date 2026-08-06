@@ -148,7 +148,21 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Award, BadgeCheck, BriefcaseBusiness, Building2, Quote, ChevronLeft, ChevronRight, ShieldCheck } from "lucide-react";
+import {
+  Award,
+  BadgeCheck,
+  BriefcaseBusiness,
+  Building2,
+  Quote,
+  ChevronLeft,
+  ChevronRight,
+  ShieldAlert,
+  ShoppingBag,
+  Eye,
+  Factory,
+  CloudOff,
+  Store
+} from "lucide-react";
 
 const testimonials = [
   {
@@ -177,6 +191,7 @@ const caseStudies = [
   {
     title: "Healthcare",
     subtitle: "Phishing Credential Theft",
+    icon: ShieldAlert,
     problem: "A healthcare client faced repeated phishing-based credential theft affecting staff accounts.",
     solution: "Deployed 24/7 SOC monitoring with AI-driven phishing detection and staff security training protocols.",
     result: "Reduced phishing attack incidents by 72% within 90 days."
@@ -184,6 +199,7 @@ const caseStudies = [
   {
     title: "E-commerce",
     subtitle: "Ransomware Defense & Recovery",
+    icon: ShoppingBag,
     problem: "Ransomware encrypted order database.",
     solution: "EDR deployment + isolated infected systems + automated backup/recovery.",
     result: "Zero data loss, full restoration in 4 hours, no ransom paid."
@@ -191,6 +207,7 @@ const caseStudies = [
   {
     title: "Fintech",
     subtitle: "Insider Threat Mitigation",
+    icon: Eye,
     problem: "Unusual data access suggesting insider threat.",
     solution: "User behavior analytics + role-based access controls + real-time alerts.",
     result: "Threat contained in 48 hours, no data exfiltration."
@@ -198,6 +215,7 @@ const caseStudies = [
   {
     title: "Manufacturing",
     subtitle: "OT Security Hardening",
+    icon: Factory,
     problem: "Exposed OT network due to outdated segmentation.",
     solution: "IT/OT segmentation redesign + continuous vulnerability scanning + legacy hardening.",
     result: "Eliminated critical vulnerabilities, 99.9% uptime."
@@ -205,6 +223,7 @@ const caseStudies = [
   {
     title: "SaaS Startup",
     subtitle: "Cloud Misconfiguration Protection",
+    icon: CloudOff,
     problem: "Publicly exposed cloud storage buckets.",
     solution: "Full cloud security audit + least-privilege IAM + automated drift detection.",
     result: "100% exposed assets closed in 72 hours, passed SOC 2 audit with zero findings."
@@ -212,6 +231,7 @@ const caseStudies = [
   {
     title: "Retail",
     subtitle: "DDoS Attack Mitigation",
+    icon: Store,
     problem: "Repeated DDoS attacks during peak sales.",
     solution: "Layered DDoS mitigation with traffic scrubbing, rate limiting, geo-filtering.",
     result: "100% uptime during Black Friday/holiday sales."
@@ -309,7 +329,7 @@ export default function TrustSignals() {
     return () => clearInterval(timer);
   }, [testiIndex, isTestiHovered]);
 
-  // Case Studies Auto-rotate (Every 7s - within 6-8s requirement)
+  // Case Studies Auto-rotate (Every 7s)
   useEffect(() => {
     if (isCaseHovered) return;
     const timer = setInterval(() => {
@@ -317,6 +337,8 @@ export default function TrustSignals() {
     }, 7000);
     return () => clearInterval(timer);
   }, [caseIndex, isCaseHovered]);
+
+  const CurrentCaseIcon = caseStudies[caseIndex].icon;
 
   return (
     <section
@@ -486,20 +508,35 @@ export default function TrustSignals() {
                       }}
                       className="relative rounded-[24px] border border-accent/20 bg-accent/5 p-6 flex flex-col justify-between min-h-[270px] transition-all duration-350 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_12px_30px_rgba(232,64,10,0.12)] cursor-pointer group overflow-hidden"
                     >
-                      {/* Subtitle Badge Header */}
-                      <div className="flex items-center justify-between border-b border-accent/15 pb-3 mb-4">
-                        <div className="flex items-center gap-2">
-                          <ShieldCheck size={16} className="text-accent" />
-                          <span className="text-xs font-black uppercase tracking-wider text-white">
-                            {caseStudies[caseIndex].title}
-                          </span>
+                      {/* Subtle Faint Background Watermark Icon */}
+                      <div className="absolute -right-3 -bottom-3 text-accent opacity-[0.06] pointer-events-none z-0">
+                        <CurrentCaseIcon size={140} />
+                      </div>
+
+                      {/* Header with Top-Left Dark Orange-Glowing Icon Badge */}
+                      <div className="relative flex items-center justify-between border-b border-accent/15 pb-3.5 mb-4 z-10">
+                        <div className="flex items-center gap-3.5">
+                          {/* Dark Glowing Icon Badge */}
+                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-accent/40 bg-[#1a1a1f] text-accent shadow-[0_0_15px_rgba(255,107,26,0.3)] transition-transform duration-300 group-hover:scale-105 group-hover:border-accent/60">
+                            <CurrentCaseIcon size={22} />
+                          </div>
+
+                          <div>
+                            <h4 className="text-sm font-black uppercase tracking-wider text-white leading-tight">
+                              {caseStudies[caseIndex].title}
+                            </h4>
+                            <p className="text-[11px] font-bold text-accent tracking-widest uppercase mt-0.5">
+                              {caseStudies[caseIndex].subtitle}
+                            </p>
+                          </div>
                         </div>
-                        <span className="text-[11px] font-bold text-accent tracking-widest uppercase">
-                          {caseStudies[caseIndex].subtitle}
+
+                        <span className="text-[10px] font-extrabold text-accent/80 tracking-widest uppercase px-2.5 py-1 rounded-full border border-accent/20 bg-accent/10">
+                          #{caseIndex + 1}
                         </span>
                       </div>
 
-                      <div className="space-y-4">
+                      <div className="space-y-3.5 relative z-10">
                         <div>
                           <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">
                             Problem
@@ -552,4 +589,5 @@ export default function TrustSignals() {
       </div>
     </section>
   );
-}
+}
+
