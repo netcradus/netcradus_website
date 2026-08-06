@@ -76,6 +76,7 @@
   white-space: nowrap;
 }
 .service-content-pillar {
+  position: relative;
   margin-top: 4rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -84,6 +85,14 @@
   box-shadow: var(--shadow-premium);
   transition: all 0.4s ease;
   animation: fadeIn 0.4s ease;
+}
+
+.service-content-pillar.cybersecurity-pink-glow {
+  border-color: rgba(255, 47, 176, 0.4);
+  box-shadow:
+    0 0 50px rgba(255, 47, 176, 0.3),
+    0 0 100px rgba(255, 47, 176, 0.18),
+    0 22px 70px rgba(232, 64, 10, 0.15);
 }
 
 .capability-card {
@@ -129,3 +138,4 @@
     transform: translateY(0);
   }
 }
+

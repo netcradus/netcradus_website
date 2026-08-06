@@ -222,11 +222,20 @@ const Services = () => {
           </p>
         </div>
 
-        <div
-          className="service-content-pillar reveal"
-          style={{ transitionDelay: "0.35s" }}
-        >
-          <ServiceDetailLayout service={activeService} />
+        <div className="relative mt-8">
+          {/* Outer Pinkish Glow Ambient Effect for Cybersecurity card */}
+          {activeTab === "cybersecurity" && (
+            <div className="absolute -inset-8 rounded-[44px] bg-[radial-gradient(ellipse_at_center,rgba(255,47,176,0.35),rgba(232,64,10,0.15),transparent_70%)] blur-3xl pointer-events-none animate-pulse" />
+          )}
+
+          <div
+            className={`service-content-pillar reveal ${
+              activeTab === "cybersecurity" ? "cybersecurity-pink-glow" : ""
+            }`}
+            style={{ transitionDelay: "0.35s" }}
+          >
+            <ServiceDetailLayout service={activeService} />
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Globe3D from "./Globe3D";
 import {
   Shield,
   Radar,
@@ -221,6 +222,10 @@ export default function WhyChooseUs() {
             Netcradus
           </span>
         </h2>
+
+        <p className="mt-5 text-sm sm:text-base font-normal text-gray-300/90 max-w-[640px] mx-auto leading-relaxed select-text">
+          A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.
+        </p>
       </motion.div>
 
       {/* DESKTOP LAYOUT: Radial Orbit */}
@@ -327,20 +332,19 @@ export default function WhyChooseUs() {
             </svg>
           </div>
 
-          {/* CENTER: Large circular glass hub */}
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#FF6B00]/50 shadow-[0_0_60px_rgba(255,107,0,0.42),inset_0_0_60px_rgba(59,130,246,0.22)] flex flex-col items-center justify-center p-10 text-center relative z-20 pointer-events-auto select-text"
-            style={{
-              width: `${coreDiameter}px`,
-              height: `${coreDiameter}px`,
-              background: "radial-gradient(circle, rgba(4, 6, 12, 0.99) 0%, rgba(2, 3, 6, 1) 100%)",
-            }}
-          >
-            <div className="absolute inset-4 rounded-full border border-[#FF6B00]/8 pointer-events-none" />
-            <div className="absolute inset-8 rounded-full border border-[#FF6B00]/4 pointer-events-none" />
-            <p className="text-sm sm:text-base font-semibold text-gray-200 leading-[1.75] max-w-[340px] text-center">
-              A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.
-            </p>
+          {/* CENTER: Pure 3D Rotating Network Globe */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center pointer-events-auto">
+            {/* Outer Radial Glow Aura */}
+            <div
+              className="absolute rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,107,26,0.35),rgba(255,45,149,0.22),transparent_70%)] blur-3xl pointer-events-none animate-pulse"
+              style={{
+                width: `${coreDiameter * 1.4}px`,
+                height: `${coreDiameter * 1.4}px`,
+              }}
+            />
+
+            {/* 3D Rotating Globe Canvas */}
+            <Globe3D size={coreDiameter * 1.3} />
           </div>
 
           {/* Orbiting feature glass cards */}
@@ -374,13 +378,14 @@ export default function WhyChooseUs() {
           })}
         </div>
       ) : (
-        /* MOBILE & TABLET RESPONSIVE LAYOUT: Stacked Center Circle + Clean Grid */
+        /* MOBILE & TABLET RESPONSIVE LAYOUT: Clean 3D Globe + Grid */
         <div className="w-full max-w-4xl mx-auto mt-8 flex flex-col items-center gap-8 relative z-20 px-4">
-          {/* Center Glass Hub */}
-          <div className="w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] rounded-full border border-[#FF6B00]/50 shadow-[0_0_50px_rgba(255,107,0,0.35)] flex flex-col items-center justify-center p-6 text-center bg-[#04060c]">
-            <p className="text-xs sm:text-sm font-semibold text-gray-200 leading-relaxed">
-              A managed security partner built for organizations that need enterprise-grade defense, round-the-clock visibility, and business-aware execution.
-            </p>
+          {/* Center 3D Globe */}
+          <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] flex items-center justify-center">
+            {/* Outer Radial Glow */}
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,107,26,0.35),rgba(255,45,149,0.2),transparent_70%)] blur-2xl animate-pulse" />
+
+            <Globe3D size={290} />
           </div>
 
           {/* Cards Grid: 1 col on mobile, 2 cols on tablet */}
