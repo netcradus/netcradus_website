@@ -315,6 +315,53 @@
     border-radius: 0.75rem;
     padding: 0.6rem 1rem;
   }
+
+  /* Specific visual size overrides for padded logo source assets */
+  .client-marquee-logo.logo-item-burgrill,
+  .client-marquee-logo[data-logo="burgrill"] {
+    height: 78px;
+  }
+
+  .client-marquee-logo.logo-item-vastralane,
+  .client-marquee-logo[data-logo="vastralane"] {
+    height: 84px;
+  }
+
+  .client-marquee-logo.logo-item-cyberhaxs,
+  .client-marquee-logo[data-logo="cyberhaxs"] {
+    height: 124px;
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+
+  .client-marquee-logo.logo-item-westhouse,
+  .client-marquee-logo[data-logo="westhouse"] {
+    height: 78px;
+  }
+
+  @media (min-width: 768px) {
+    .client-marquee-logo.logo-item-burgrill,
+    .client-marquee-logo[data-logo="burgrill"] {
+      height: 92px;
+    }
+
+    .client-marquee-logo.logo-item-vastralane,
+    .client-marquee-logo[data-logo="vastralane"] {
+      height: 96px;
+    }
+
+    .client-marquee-logo.logo-item-cyberhaxs,
+    .client-marquee-logo[data-logo="cyberhaxs"] {
+      height: 148px;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+
+    .client-marquee-logo.logo-item-westhouse,
+    .client-marquee-logo[data-logo="westhouse"] {
+      height: 90px;
+    }
+  }
 }
 
 @keyframes float {

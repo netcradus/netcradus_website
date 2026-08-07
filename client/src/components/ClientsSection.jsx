@@ -7,12 +7,12 @@ import client5 from "../assets/clientsList/client5.png";
 import client6 from "../assets/clientsList/client_6-removebg.png";
 
 const clients = [
-    { name: "Client 1", logo: client1 },
-    { name: "Client 2", logo: client2, needsLightBg: true },
-    { name: "Client 3", logo: client3 },
-    { name: "Client 4", logo: client4 },
-    { name: "Client 5", logo: client5 },
-    { name: "Client 6", logo: client6 },
+    { id: "burgrill", name: "Burgrill", logo: client1 },
+    { id: "vastralane", name: "Vastralane", logo: client2, needsLightBg: true },
+    { id: "cyberhaxs", name: "Cyberhaxs", logo: client3 },
+    { id: "westhouse", name: "West House", logo: client4 },
+    { id: "himanshu", name: "Himanshu & Co.", logo: client5 },
+    { id: "akt", name: "AKT", logo: client6 },
 ];
 
 const ClientsSection = () => {
@@ -28,14 +28,15 @@ const ClientsSection = () => {
                 </div>
 
                 <div className="client-marquee-viewport">
-                    <div className="client-marquee-track py-10">
+                    <div className="client-marquee-track py-8">
                         {marqueeClients.map((client, index) => (
-                            <div key={`${client.name}-${index}`} className="mx-10 flex flex-shrink-0 items-center justify-center md:mx-16">
+                            <div key={`${client.id}-${index}`} className="mx-10 flex flex-shrink-0 items-center justify-center md:mx-16">
                                 <img
                                     src={client.logo}
                                     alt={client.name}
-                                    className={`client-marquee-logo object-contain transition-all duration-300 ${
-                                        client.name === "Client 6" 
+                                    data-logo={client.id}
+                                    className={`client-marquee-logo logo-item-${client.id} object-contain transition-all duration-300 ${
+                                        client.id === "akt" 
                                           ? "h-16 md:h-20 scale-[1.15] px-2" 
                                           : "h-14 w-auto md:h-16"
                                     } ${

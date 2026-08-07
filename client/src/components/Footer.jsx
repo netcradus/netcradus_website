@@ -136,18 +136,17 @@ export default function Footer() {
             />
           </div>
 
-          <div className="space-y-3 text-sm leading-relaxed text-[#FFFFFF] font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
+          <div className="space-y-3 text-base sm:text-[17px] leading-relaxed text-[#FFFFFF] font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
             <p>
-              Netcradus is a global cybersecurity company dedicated to building
-              autonomous cyber immune systems. Our ACIS platform empowers modern
-              enterprises with real-time threat detection, automated response,
-              and cyber resilience to stay ahead of evolving security
-              challenges.
+              Netcradus engineers the future of cyber defense. Through our ACIS
+              platform, we combine AI-driven threat detection, automated
+              response, and enterprise-grade resilience to protect what matters
+              most — before threats even strike.
             </p>
           </div>
 
-          <div className="space-y-2 w-full">
-            <div className="text-[11px] leading-tight text-[#FFFFFF] font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
+          <div className="space-y-3 w-full">
+            <div className="text-sm leading-normal space-y-1.5 text-[#FFFFFF] font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
               <div>
                 <strong>CIN:</strong> U62090UP2025PTC229722
               </div>
@@ -156,7 +155,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="pt-2 text-sm text-[#FFFFFF] font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
+            <div className="pt-1 text-base leading-relaxed text-[#FFFFFF] font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
               <a
                 href="mailto:contact@netcradus.com"
                 className="block transition hover:text-[#00B8FF]"
@@ -166,7 +165,7 @@ export default function Footer() {
 
               <a
                 href="tel:1800121008800"
-                className="mt-1 block transition hover:text-[#00B8FF]"
+                className="mt-1.5 block transition hover:text-[#00B8FF]"
               >
                 📞 1800 12100 8800
               </a>
