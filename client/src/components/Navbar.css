@@ -53,33 +53,75 @@
 }
 
 .logo-image {
-  height: 64px; /* Scaled up from 56px */
+  height: 88px; /* Increased >30% from original 64px baseline */
   width: auto;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: brightness(1.1) drop-shadow(0 0 15px rgba(232, 64, 10, 0.25));
+  filter: brightness(1.1) drop-shadow(0 0 15px rgba(255, 107, 0, 0.25));
 }
 
 .navbar.scrolled .logo-image {
-  height: 52px; /* Scaled up from 46px */
-  filter: brightness(1.15) drop-shadow(0 0 10px rgba(232, 64, 10, 0.15));
+  height: 72px;
+  filter: brightness(1.15) drop-shadow(0 0 10px rgba(255, 107, 0, 0.15));
 }
 
 .nav-link {
-  color: var(--color-text-secondary);
-  transition: all 0.3s ease;
-  letter-spacing: 0.06em;
-  display: flex;
+  position: relative;
+  color: #F5F5F5 !important;
+  font-weight: 550;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  display: inline-flex;
   align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  text-decoration: none;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-link:hover,
-.nav-link.active {
-  color: var(--color-text-primary) !important;
+.nav-link-solutions:hover,
+.nav-link-products:hover {
+  color: #FF6B00 !important;
 }
 
-[data-theme="dark"] .nav-link:hover,
-[data-theme="dark"] .nav-link.active {
-  color: #ffffff !important;
+.nav-link:hover svg,
+.nav-link-solutions:hover svg,
+.nav-link-products:hover svg {
+  color: #FF6B00 !important;
+}
+
+/* Active Nav Link Orange Indicator */
+.nav-link.active,
+.nav-link-solutions.active,
+.nav-link-products.active {
+  color: #FF6B00 !important;
+  font-weight: 600;
+}
+
+.nav-link.active::after,
+.nav-link-solutions.active::after,
+.nav-link-products.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: #FF6B00;
+  border-radius: 99px;
+  box-shadow: 0 0 8px rgba(255, 107, 0, 0.7);
+  animation: navActiveGlow 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes navActiveGlow {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 /* PRODUCTS MEGA MENU (Desktop) */
@@ -476,7 +518,7 @@
 
 @media (max-width: 768px) {
   .logo-image {
-    height: 48px !important; /* Scaled up from 42px */
+    height: 60px !important; /* Scaled up >30% from 42px baseline */
   }
   .navbar {
     height: 100px; /* Scaled up from 85px */

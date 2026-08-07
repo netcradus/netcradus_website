@@ -266,7 +266,7 @@ const Navbar = () => {
 
   return (
     <nav ref={navRef} className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
-      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 xl:px-24 flex lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between h-20 lg:h-24">
+      <div className="container max-w-screen-2xl mx-auto px-3 sm:px-4 lg:px-4 xl:px-4 flex lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between h-20 lg:h-24">
         
         {/* Mobile Left: Hamburger Toggle */}
         <button
@@ -277,23 +277,23 @@ const Navbar = () => {
           {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
 
-        {/* Brand Logo (Centered on mobile, Left aligned on desktop) */}
-        <Link to="/" className="flex items-center justify-center gap-2 group mx-auto lg:mx-0">
+        {/* Brand Logo (Shifted to Left Edge & 30%+ Size Increase) */}
+        <Link to="/" className="flex items-center justify-start gap-2 group ml-0 mr-auto lg:mr-0 shrink-0 py-1 pl-0">
           <img
             src="/Netcradus logo01.png"
             alt="Netcradus"
-            className="h-10 sm:h-12 md:h-14 lg:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            className="logo-image h-14 sm:h-16 md:h-20 lg:h-[88px] xl:h-[96px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="nav-links desktop-only hidden lg:flex justify-center items-center gap-8">
+        <div className="nav-links desktop-only hidden lg:flex justify-center items-center gap-8 xl:gap-10">
           <Link
             to="/platform"
-            className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
+            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${
               isActiveLink('/platform')
-                ? 'active text-accent'
-                : 'text-text-secondary hover:text-accent'
+                ? 'active text-[#FF6B00]'
+                : 'text-[#F5F5F5] hover:text-[#FF6B00]'
             }`}
           >
             Platform
@@ -315,16 +315,22 @@ const Navbar = () => {
               }}
               aria-expanded={activeMenu === 'solutions'}
               aria-haspopup="true"
-              className={`nav-link-solutions nav-link text-sm font-semibold tracking-wide transition-colors flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
+              className={`nav-link-solutions nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
                 isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)) || activeMenu === 'solutions'
-                  ? 'active text-accent'
-                  : 'text-text-secondary hover:text-accent'
+                  ? 'active text-[#FF6B00]'
+                  : 'text-[#F5F5F5] hover:text-[#FF6B00]'
               }`}
             >
               Solutions
               <ChevronDown
-                size={14}
-                className={`transition-transform duration-300 ${activeMenu === 'solutions' ? 'rotate-180 text-accent' : ''}`}
+                size={15}
+                className={`transition-transform duration-300 ${
+                  activeMenu === 'solutions'
+                    ? 'rotate-180 text-[#FF6B00]'
+                    : (isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)))
+                    ? 'text-[#FF6B00]'
+                    : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                }`}
               />
             </button>
 
@@ -352,16 +358,22 @@ const Navbar = () => {
               }}
               aria-expanded={activeMenu === 'products'}
               aria-haspopup="true"
-              className={`nav-link-products nav-link text-sm font-semibold tracking-wide transition-colors flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
+              className={`nav-link-products nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
                 PRODUCTS.some((p) => isActiveLink(p.path)) || activeMenu === 'products'
-                  ? 'active text-accent'
-                  : 'text-text-secondary hover:text-accent'
+                  ? 'active text-[#FF6B00]'
+                  : 'text-[#F5F5F5] hover:text-[#FF6B00]'
               }`}
             >
               Products
               <ChevronDown
-                size={14}
-                className={`transition-transform duration-300 ${activeMenu === 'products' ? 'rotate-180 text-accent' : ''}`}
+                size={15}
+                className={`transition-transform duration-300 ${
+                  activeMenu === 'products'
+                    ? 'rotate-180 text-[#FF6B00]'
+                    : PRODUCTS.some((p) => isActiveLink(p.path))
+                    ? 'text-[#FF6B00]'
+                    : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                }`}
               />
             </button>
 
@@ -375,10 +387,10 @@ const Navbar = () => {
 
           <Link
             to="/why-netcradus"
-            className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
+            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${
               isActiveLink('/why-netcradus')
-                ? 'active text-accent'
-                : 'text-text-secondary hover:text-accent'
+                ? 'active text-[#FF6B00]'
+                : 'text-[#F5F5F5] hover:text-[#FF6B00]'
             }`}
           >
             Why Netcradus
@@ -386,10 +398,10 @@ const Navbar = () => {
 
           <Link
             to="/contact"
-            className={`nav-link text-sm font-semibold tracking-wide transition-colors ${
+            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${
               isActiveLink('/contact')
-                ? 'active text-accent'
-                : 'text-text-secondary hover:text-accent'
+                ? 'active text-[#FF6B00]'
+                : 'text-[#F5F5F5] hover:text-[#FF6B00]'
             }`}
           >
             Contact

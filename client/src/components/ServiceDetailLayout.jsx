@@ -1,6 +1,242 @@
 import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Play } from "lucide-react";
+
+const CybersecurityDashboardVisual = () => {
+  return (
+    <div
+      className="w-full relative overflow-hidden"
+      style={{
+        background: `radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.4), transparent 60%), linear-gradient(180deg, #f5e6dd 0%, #ecd8d0 100%)`,
+        borderRadius: "20px",
+        padding: "24px",
+      }}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+        {/* Card 1 (Top-Left): Donut chart - Alerts by severity */}
+        <div className="cyber-dashboard-card cyber-card-left text-left">
+          <div className="flex items-center justify-between mb-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-300">
+              Alerts by Severity
+            </h4>
+            <span className="px-2 py-0.5 text-[10px] font-semibold bg-red-500/20 text-red-400 rounded-full border border-red-500/30">
+              Live Feed
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 my-2">
+            {/* SVG Donut Chart */}
+            <div className="relative w-24 h-24 flex-shrink-0 flex items-center justify-center">
+              <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+                <circle cx="50" cy="50" r="36" fill="none" stroke="#1f1f33" strokeWidth="12" />
+                {/* Low 16% (Blue) */}
+                <circle
+                  cx="50" cy="50" r="36" fill="none" stroke="#3b82f6" strokeWidth="12"
+                  strokeDasharray="36.2 226.2" strokeDashoffset="0"
+                />
+                {/* Medium 42% (Amber) */}
+                <circle
+                  cx="50" cy="50" r="36" fill="none" stroke="#f59e0b" strokeWidth="12"
+                  strokeDasharray="95 226.2" strokeDashoffset="-36.2"
+                />
+                {/* High 28% (Orange) */}
+                <circle
+                  cx="50" cy="50" r="36" fill="none" stroke="#ff7b29" strokeWidth="12"
+                  strokeDasharray="63.3 226.2" strokeDashoffset="-131.2"
+                />
+                {/* Critical 14% (Red) */}
+                <circle
+                  cx="50" cy="50" r="36" fill="none" stroke="#ef4444" strokeWidth="12"
+                  strokeDasharray="31.7 226.2" strokeDashoffset="-194.5"
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span className="text-sm font-black text-white leading-none">1,248</span>
+                <span className="text-[9px] text-gray-400 font-medium mt-0.5">TOTAL</span>
+              </div>
+            </div>
+
+            {/* Legend Grid */}
+            <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px] w-full">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
+                <span className="text-gray-300">Critical</span>
+                <span className="ml-auto font-bold text-white">14%</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span>
+                <span className="text-gray-300">High</span>
+                <span className="ml-auto font-bold text-white">28%</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+                <span className="text-gray-300">Medium</span>
+                <span className="ml-auto font-bold text-white">42%</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>
+                <span className="text-gray-300">Low</span>
+                <span className="ml-auto font-bold text-white">16%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 2 (Top-Right): Line chart - Alerts over time (7 day trend) */}
+        <div className="cyber-dashboard-card cyber-card-right text-left">
+          <div className="flex items-center justify-between mb-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-300">
+              Alerts Over Time
+            </h4>
+            <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+              7-Day ▲ 12%
+            </span>
+          </div>
+
+          <div className="relative h-28 w-full mt-2">
+            <svg viewBox="0 0 240 90" className="w-full h-full overflow-visible">
+              <defs>
+                <linearGradient id="alertTrendGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#e8400a" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="#e8400a" stopOpacity="0.0" />
+                </linearGradient>
+              </defs>
+
+              <line x1="0" y1="20" x2="240" y2="20" stroke="rgba(255,255,255,0.06)" strokeDasharray="3 3" />
+              <line x1="0" y1="45" x2="240" y2="45" stroke="rgba(255,255,255,0.06)" strokeDasharray="3 3" />
+              <line x1="0" y1="70" x2="240" y2="70" stroke="rgba(255,255,255,0.06)" strokeDasharray="3 3" />
+
+              <path
+                d="M 10 60 Q 45 68 80 40 T 150 30 T 230 15 L 230 75 L 10 75 Z"
+                fill="url(#alertTrendGrad)"
+              />
+
+              <path
+                d="M 10 60 Q 45 68 80 40 T 150 30 T 230 15"
+                fill="none"
+                stroke="#ff5520"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+
+              <circle cx="10" cy="60" r="3" fill="#ff5520" />
+              <circle cx="48" cy="65" r="3" fill="#ff5520" />
+              <circle cx="86" cy="40" r="3" fill="#ff5520" />
+              <circle cx="124" cy="48" r="3" fill="#ff5520" />
+              <circle cx="162" cy="30" r="3" fill="#ff5520" />
+              <circle cx="200" cy="35" r="3" fill="#ff5520" />
+              <circle cx="230" cy="15" r="4.5" fill="#ffffff" stroke="#e8400a" strokeWidth="2" />
+            </svg>
+            <div className="flex justify-between text-[9px] text-gray-400 mt-1 font-mono">
+              <span>Mon</span>
+              <span>Tue</span>
+              <span>Wed</span>
+              <span>Thu</span>
+              <span>Fri</span>
+              <span>Sat</span>
+              <span>Sun</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 3 (Bottom-Left): Donut chart - Identity risk overview */}
+        <div className="cyber-dashboard-card cyber-card-left text-left">
+          <div className="flex items-center justify-between mb-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-300">
+              Identity Risk Overview
+            </h4>
+            <span className="px-2 py-0.5 text-[10px] font-bold bg-amber-500/20 text-amber-400 rounded-full border border-amber-500/30">
+              Moderate
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 my-2">
+            {/* SVG Donut Chart */}
+            <div className="relative w-24 h-24 flex-shrink-0 flex items-center justify-center">
+              <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+                <circle cx="50" cy="50" r="36" fill="none" stroke="#1f1f33" strokeWidth="12" />
+                {/* Privilege Risk: 45% */}
+                <circle
+                  cx="50" cy="50" r="36" fill="none" stroke="#e8400a" strokeWidth="12"
+                  strokeDasharray="101.8 226.2" strokeDashoffset="0"
+                />
+                {/* MFA Gaps: 30% */}
+                <circle
+                  cx="50" cy="50" r="36" fill="none" stroke="#ff7b29" strokeWidth="12"
+                  strokeDasharray="67.8 226.2" strokeDashoffset="-101.8"
+                />
+                {/* Anomalous Access: 25% */}
+                <circle
+                  cx="50" cy="50" r="36" fill="none" stroke="#7c2ae8" strokeWidth="12"
+                  strokeDasharray="56.5 226.2" strokeDashoffset="-169.6"
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span className="text-base font-black text-amber-400 leading-none">78</span>
+                <span className="text-[8px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">SCORE</span>
+              </div>
+            </div>
+
+            {/* Breakdown List */}
+            <div className="space-y-1.5 text-[11px] w-full">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#e8400a]"></span>
+                  <span className="text-gray-300">Privilege Risk</span>
+                </div>
+                <span className="font-bold text-white">45%</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#ff7b29]"></span>
+                  <span className="text-gray-300">MFA Gaps</span>
+                </div>
+                <span className="font-bold text-white">30%</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#7c2ae8]"></span>
+                  <span className="text-gray-300">Anomalous Access</span>
+                </div>
+                <span className="font-bold text-white">25%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 4 (Bottom-Right): 3 small stat blocks in a row */}
+        <div className="cyber-dashboard-card cyber-card-right text-left flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-gray-300">
+              SOC Telemetry
+            </h4>
+            <span className="text-[10px] text-blue-400 font-medium bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20">
+              Real-Time
+            </span>
+          </div>
+
+          <div className="grid grid-cols-3 gap-2">
+            <div className="bg-[#1a1a2e] p-2.5 rounded-xl border border-white/5 text-center flex flex-col justify-center">
+              <span className="text-[9px] uppercase font-bold text-gray-400 tracking-tight block">Events</span>
+              <span className="text-base font-black text-white my-0.5">1.42M</span>
+              <span className="text-[9px] font-semibold text-emerald-400">▲ 8.4%</span>
+            </div>
+
+            <div className="bg-[#1a1a2e] p-2.5 rounded-xl border border-white/5 text-center flex flex-col justify-center">
+              <span className="text-[9px] uppercase font-bold text-gray-400 tracking-tight block">Notable</span>
+              <span className="text-base font-black text-white my-0.5">38</span>
+              <span className="text-[9px] font-semibold text-emerald-400">▼ 14%</span>
+            </div>
+
+            <div className="bg-[#1a1a2e] p-2.5 rounded-xl border border-white/5 text-center flex flex-col justify-center">
+              <span className="text-[9px] uppercase font-bold text-gray-400 tracking-tight block">MTTD</span>
+              <span className="text-base font-black text-accent-bright my-0.5">&lt;3.8m</span>
+              <span className="text-[9px] font-semibold text-gray-400">SLA &lt;5m</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ServiceDetailLayout = ({ service }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -68,67 +304,7 @@ const ServiceDetailLayout = ({ service }) => {
         <div className={`absolute -inset-2 rounded-[34px] blur-3xl transition-all duration-500 ${service.id === 'cybersecurity' ? 'bg-[radial-gradient(circle_at_50%_40%,rgba(255,47,176,0.35),rgba(232,64,10,0.18),transparent_65%)] opacity-100 animate-pulse' : 'bg-[radial-gradient(circle_at_50%_20%,rgba(232,64,10,0.18),transparent_45%)]'}`} />
         <div className={`relative overflow-hidden rounded-[30px] border p-4 transition-all duration-500 ${service.id === 'cybersecurity' ? 'border-pink-500/30 bg-[linear-gradient(135deg,rgba(255,47,176,0.12),rgba(232,64,10,0.08),transparent_55%),var(--color-surface)] shadow-[0_22px_70px_rgba(255,47,176,0.22)]' : 'border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_45%),var(--color-surface)] shadow-[0_22px_70px_rgba(232,64,10,0.08)]'}`}>
           {service.id === "cybersecurity" ? (
-            <div className="relative overflow-hidden rounded-[12px] h-[400px] w-full bg-[#070913] border border-pink-500/20 flex items-center justify-center shadow-[0_0_35px_rgba(255,47,176,0.2)]">
-              {/* Pinkish & Orange Radial Ambient Glow */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,47,176,0.28),rgba(255,123,41,0.15),transparent_70%)] pointer-events-none" />
-
-              {/* Glowing Shield & Connected Network Motif */}
-              <svg viewBox="0 0 400 400" className="w-full h-full p-6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#ff2fb0" />
-                    <stop offset="50%" stopColor="#e8400a" />
-                    <stop offset="100%" stopColor="#7c2ae8" />
-                  </linearGradient>
-                  <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#ff2fb0" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="#ff7b29" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
-
-                {/* Outer Shield Outline */}
-                <path
-                  d="M200 40 L330 90 V190 C330 280 200 340 200 340 C200 340 70 280 70 190 V90 L200 40 Z"
-                  stroke="url(#shieldGrad)"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="drop-shadow-[0_0_16px_rgba(255,47,176,0.7)]"
-                />
-
-                {/* Inner Shield Grid / Mesh */}
-                <path
-                  d="M200 70 L300 110 V180 C300 250 200 295 200 295 C200 295 100 250 100 180 V110 L200 70 Z"
-                  stroke="rgba(255, 47, 176, 0.3)"
-                  strokeWidth="1.5"
-                  strokeDasharray="6 4"
-                />
-
-                {/* Central Core Shield Node */}
-                <circle cx="200" cy="180" r="40" fill="url(#nodeGlow)" className="animate-pulse" />
-                <circle cx="200" cy="180" r="16" fill="#ff2fb0" />
-                <circle cx="200" cy="180" r="6" fill="#ffffff" />
-
-                {/* Network Connection Lines */}
-                <line x1="200" y1="40" x2="200" y2="140" stroke="rgba(255, 47, 176, 0.45)" strokeWidth="1.5" />
-                <line x1="70" y1="90" x2="160" y2="160" stroke="rgba(255, 47, 176, 0.45)" strokeWidth="1.5" />
-                <line x1="330" y1="90" x2="240" y2="160" stroke="rgba(255, 47, 176, 0.45)" strokeWidth="1.5" />
-                <line x1="100" y1="180" x2="160" y2="180" stroke="rgba(255, 47, 176, 0.45)" strokeWidth="1.5" />
-                <line x1="300" y1="180" x2="240" y2="180" stroke="rgba(255, 47, 176, 0.45)" strokeWidth="1.5" />
-                <line x1="140" y1="260" x2="180" y2="210" stroke="rgba(255, 47, 176, 0.45)" strokeWidth="1.5" />
-                <line x1="260" y1="260" x2="220" y2="210" stroke="rgba(255, 47, 176, 0.45)" strokeWidth="1.5" />
-
-                {/* Connected Nodes */}
-                <circle cx="200" cy="40" r="4" fill="#ff2fb0" />
-                <circle cx="330" cy="90" r="4" fill="#ff2fb0" />
-                <circle cx="70" cy="90" r="4" fill="#ff2fb0" />
-                <circle cx="160" cy="160" r="4" fill="#ffffff" />
-                <circle cx="240" cy="160" r="4" fill="#ffffff" />
-                <circle cx="140" cy="260" r="4" fill="#ff2fb0" />
-                <circle cx="260" cy="260" r="4" fill="#ff2fb0" />
-                <circle cx="200" cy="340" r="4" fill="#ff2fb0" />
-              </svg>
-            </div>
+            <CybersecurityDashboardVisual />
           ) : service.video ? (
             <video
               className="h-[400px] w-full rounded-[12px] object-cover object-top pointer-events-none"
@@ -152,4 +328,4 @@ const ServiceDetailLayout = ({ service }) => {
   );
 };
 
-export default ServiceDetailLayout;
+export default ServiceDetailLayout;

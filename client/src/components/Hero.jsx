@@ -71,7 +71,7 @@ export default function Hero() {
 
         {/* Subheading (Staggered Animation 3) */}
         <p className="hero-subheading">
-          Protect your business with AI-powered cybersecurity, real-time threat detection, XDR, SIEM, SOAR and 24×7 SOC monitoring.
+          Stay Ahead of Threats — Real-Time, Every Time, with Netcradus.
         </p>
 
         {/* Dual CTA Buttons (Staggered Animation 4) */}

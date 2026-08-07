@@ -139,3 +139,48 @@
   }
 }
 
+/* ---------------------------------------------------------------------------
+   FLOATING DASHBOARD CARDS (CYBERSECURITY HERO SECTION)
+   --------------------------------------------------------------------------- */
+.cyber-dashboard-card {
+  background: #131322;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+@media (min-width: 769px) {
+  .cyber-card-left {
+    transform: translateY(-8px);
+  }
+  .cyber-card-left:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    border-color: rgba(232, 64, 10, 0.35);
+  }
+
+  .cyber-card-right {
+    transform: translateY(8px);
+  }
+  .cyber-card-right:hover {
+    transform: translateY(4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    border-color: rgba(232, 64, 10, 0.35);
+  }
+}
+
+@media (max-width: 768px) {
+  .cyber-card-left,
+  .cyber-card-right {
+    transform: translateY(0);
+  }
+  .cyber-card-left:hover,
+  .cyber-card-right:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  }
+}
+
+
