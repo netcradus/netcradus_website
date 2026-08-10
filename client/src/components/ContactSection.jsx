@@ -34,16 +34,24 @@ export default function ContactSection() {
 
         try {
             await emailjs.send(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_id",
-                import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_id",
+                import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_0b2gu7w",
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_0eug8b5",
                 {
+                    to_email: "info@netcradus.com",
+                    recipient_email: "info@netcradus.com",
+                    to_name: "Netcradus Info",
                     name: formData.user_name,
+                    user_name: formData.user_name,
                     email: formData.user_email,
+                    user_email: formData.user_email,
+                    reply_to: formData.user_email,
                     phone: formData.user_phone || "N/A",
+                    user_phone: formData.user_phone || "N/A",
                     company: formData.user_company || "N/A",
+                    user_company: formData.user_company || "N/A",
                     message: formData.message,
                 },
-                import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "public_key"
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "ezgqG6Hon-z8nuFTU"
             );
 
             setStatus("success");

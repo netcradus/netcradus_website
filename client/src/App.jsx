@@ -167,6 +167,9 @@ import Partners from "./pages/Partners";
 import PartnerApply from "./pages/PartnerApply";
 import NetCradPage from "./pages/NetCradPage";
 import WhyNetcradusPage from "./pages/WhyNetcradusPage";
+import AcisLitePricing from "./pages/AcisLitePricing";
+import AcisProPricing from "./pages/AcisProPricing";
+import AcisEnterprisePricing from "./pages/AcisEnterprisePricing";
 
 import Platform from "./components/Platform";
 import { useReveal } from "./hooks/useReveal";
@@ -272,6 +275,9 @@ function App() {
           <Route path="phase" element={<PhasePage />} />
           <Route path="partners" element={<Partners />} />
           <Route path="partners/apply" element={<PartnerApply />} />
+          <Route path="pricing/acis-lite" element={<AcisLitePricing />} />
+          <Route path="pricing/acis-pro" element={<AcisProPricing />} />
+          <Route path="pricing/acis-enterprise" element={<AcisEnterprisePricing />} />
         </Route>
       </Routes>
     </>

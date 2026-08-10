@@ -2,13 +2,16 @@ import emailjs from "@emailjs/browser";
 
 const serviceId =
   import.meta.env.VITE_EMAILJS_NEWSLETTER_SERVICE_ID ||
-  import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  import.meta.env.VITE_EMAILJS_SERVICE_ID ||
+  "service_0b2gu7w";
 const templateId =
   import.meta.env.VITE_EMAILJS_NEWSLETTER_TEMPLATE_ID ||
-  import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
+  "template_0eug8b5";
 const publicKey =
   import.meta.env.VITE_EMAILJS_NEWSLETTER_PUBLIC_KEY ||
-  import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY ||
+  "ezgqG6Hon-z8nuFTU";
 
 export function getNewsletterConfigError() {
   if (!serviceId || !templateId || !publicKey) {

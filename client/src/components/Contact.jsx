@@ -437,6 +437,7 @@ const Contact = () => {
   const [file, setFile] = useState(null);
   const [referenceId, setReferenceId] = useState("");
   const [errors, setErrors] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
   const [faqOpenIndex, setFaqOpenIndex] = useState(0);
   const fileInputRef = useRef(null);
 
@@ -475,16 +476,25 @@ const Contact = () => {
     try {
       const fullName = `${formData.first_name.trim()} ${formData.last_name.trim()}`;
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_0b2gu7w",
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_0eug8b5",
         {
+          to_email: "info@netcradus.com",
+          recipient_email: "info@netcradus.com",
+          to_name: "Netcradus Info",
           name: fullName,
+          user_name: fullName,
           email: formData.user_email,
+          user_email: formData.user_email,
+          reply_to: formData.user_email,
           phone: formData.user_phone || "N/A",
+          user_phone: formData.user_phone || "N/A",
           company: formData.user_company || "N/A",
+          user_company: formData.user_company || "N/A",
+          service: selectedService || "None",
           message: `${formData.message}\n\n[Selected Service: ${selectedService || "None"}]\n[Attached File: ${file ? file.name : "None"}]`,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "ezgqG6Hon-z8nuFTU"
       );
 
       setReferenceId(`NC-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
@@ -503,8 +513,9 @@ const Contact = () => {
       setErrors({});
     } catch (error) {
       console.error("Email error:", error);
+      const errTxt = error?.text || error?.message || JSON.stringify(error);
+      setErrorMessage(errTxt);
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
     }
   };
 
@@ -890,6 +901,32 @@ const Contact = () => {
                       </button>
                     </Magnetic>
                   </div>
+
+                  {status === "error" && (
+                    <div className="p-4 my-4 rounded-xl bg-red-500/10 border border-red-500/30 text-xs space-y-3">
+                      <div className="flex items-start gap-2 text-red-400">
+                        <ShieldAlert size={16} className="shrink-0 mt-0.5" />
+                        <div>
+                          <p className="font-semibold text-white">Email Gateway Authentication Issue</p>
+                          <p className="text-red-300/90 mt-0.5">
+                            {errorMessage.includes("Gmail_API") || errorMessage.includes("Invalid grant")
+                              ? "Notice: The EmailJS Gmail connection needs to be re-authenticated in the EmailJS Dashboard."
+                              : "Gateway error: " + errorMessage}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="pt-2 border-t border-red-500/20 flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <span className="text-slate-300">Click below to send your details directly:</span>
+                        <a
+                          href={`mailto:info@netcradus.com?subject=${encodeURIComponent(`Consultation Request: ${formData.first_name} ${formData.last_name}`)}&body=${encodeURIComponent(`Name: ${formData.first_name} ${formData.last_name}\nEmail: ${formData.user_email}\nPhone: ${formData.user_phone || "N/A"}\nCompany: ${formData.user_company || "N/A"}\nService: ${selectedService || "None"}\n\nMessage:\n${formData.message}`)}`}
+                          className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#FF6B00] to-[#FF8C42] text-white font-bold text-xs no-underline hover:opacity-90 transition-opacity"
+                        >
+                          Send via Email App ✉️
+                        </a>
+                      </div>
+                    </div>
+                  )}
 
                   <p className="security-footer">
                     <ShieldCheck size={14} className="text-nc-success" />

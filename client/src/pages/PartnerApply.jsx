@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { CheckCircle, ArrowLeft, ArrowRight, Loader } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_0b2gu7w";
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_0eug8b5";
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "ezgqG6Hon-z8nuFTU";
 
 const STEPS = [
   "Company Information",
@@ -359,10 +359,18 @@ Time: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle
         serviceId,
         templateId,
         {
+          to_email: "info@netcradus.com",
+          recipient_email: "info@netcradus.com",
+          to_name: "Netcradus Info",
           name: form.contactName,
-          email: "info@netcradus.com",
+          user_name: form.contactName,
+          email: form.contactEmail || "info@netcradus.com",
+          user_email: form.contactEmail || "info@netcradus.com",
+          reply_to: form.contactEmail || "info@netcradus.com",
           company: form.legalName,
+          user_company: form.legalName,
           phone: form.contactNumber,
+          user_phone: form.contactNumber,
           source: "Partner Application Form",
           subscription_source: "Partner Application",
           preferences: form.partnershipTypes.join(", ") || "N/A",

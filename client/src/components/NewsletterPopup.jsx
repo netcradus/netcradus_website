@@ -8,16 +8,20 @@ const LS_KEY = "netcradus_newsletter_subscribed";
 
 const serviceId =
   import.meta.env.VITE_EMAILJS_NEWSLETTER_SERVICE_ID ||
-  import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  import.meta.env.VITE_EMAILJS_SERVICE_ID ||
+  "service_0b2gu7w";
 const notifyTemplateId =
   import.meta.env.VITE_EMAILJS_NOTIFY_TEMPLATE_ID ||
-  import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
+  "template_0eug8b5";
 const newsletterTemplateId =
   import.meta.env.VITE_EMAILJS_NEWSLETTER_TEMPLATE_ID ||
-  import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID ||
+  "template_0eug8b5";
 const publicKey =
   import.meta.env.VITE_EMAILJS_NEWSLETTER_PUBLIC_KEY ||
-  import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY ||
+  "ezgqG6Hon-z8nuFTU";
 
 function isValidBusinessEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

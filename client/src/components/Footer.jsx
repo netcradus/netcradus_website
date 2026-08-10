@@ -11,9 +11,9 @@ const footerColumns = [
     title: "Platform",
     links: [
       { label: "ACIS Overview", to: "/platform#acis-overview" },
-      { label: "ACIS Lite", to: "/platform#acis-lite" },
-      { label: "ACIS Pro", to: "/platform#acis-pro" },
-      { label: "ACIS Enterprise", to: "/platform#acis-enterprise" },
+      { label: "ACIS Lite", to: "/pricing/acis-lite" },
+      { label: "ACIS Pro", to: "/pricing/acis-pro" },
+      { label: "ACIS Enterprise", to: "/pricing/acis-enterprise" },
       { label: "AI-SIEM Engine", to: "/platform#ai-siem-engine" },
       { label: "SOAR Automation", to: "/platform#soar-automation" },
       { label: "Integrations / API", to: "/platform#integrations-api" },
