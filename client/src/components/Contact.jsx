@@ -903,24 +903,24 @@ const Contact = () => {
                   </div>
 
                   {status === "error" && (
-                    <div className="p-4 my-4 rounded-xl bg-red-500/10 border border-red-500/30 text-xs space-y-3">
-                      <div className="flex items-start gap-2 text-red-400">
-                        <ShieldAlert size={16} className="shrink-0 mt-0.5" />
+                    <div className="p-4 my-4 rounded-xl bg-[#FEF2F2] border border-[#FCA5A5] text-xs space-y-3 shadow-md">
+                      <div className="flex items-start gap-2.5 text-[#991B1B]">
+                        <ShieldAlert size={18} className="shrink-0 mt-0.5 text-[#DC2626]" />
                         <div>
-                          <p className="font-semibold text-white">Email Gateway Authentication Issue</p>
-                          <p className="text-red-300/90 mt-0.5">
+                          <p className="font-bold text-[#7F1D1D] text-sm">Email Gateway Re-authentication Required</p>
+                          <p className="text-[#991B1B] mt-1 text-xs leading-relaxed font-medium">
                             {errorMessage.includes("Gmail_API") || errorMessage.includes("Invalid grant")
-                              ? "Notice: The EmailJS Gmail connection needs to be re-authenticated in the EmailJS Dashboard."
+                              ? "Notice: The EmailJS Gmail integration needs to be re-authenticated in the EmailJS Dashboard. In the meantime, click below to send your consultation request directly to info@netcradus.com."
                               : "Gateway error: " + errorMessage}
                           </p>
                         </div>
                       </div>
 
-                      <div className="pt-2 border-t border-red-500/20 flex flex-col sm:flex-row items-center justify-between gap-3">
-                        <span className="text-slate-300">Click below to send your details directly:</span>
+                      <div className="pt-3 border-t border-[#FCA5A5]/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <span className="text-[#7F1D1D] font-semibold">Ready to send via your email app:</span>
                         <a
                           href={`mailto:info@netcradus.com?subject=${encodeURIComponent(`Consultation Request: ${formData.first_name} ${formData.last_name}`)}&body=${encodeURIComponent(`Name: ${formData.first_name} ${formData.last_name}\nEmail: ${formData.user_email}\nPhone: ${formData.user_phone || "N/A"}\nCompany: ${formData.user_company || "N/A"}\nService: ${selectedService || "None"}\n\nMessage:\n${formData.message}`)}`}
-                          className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#FF6B00] to-[#FF8C42] text-white font-bold text-xs no-underline hover:opacity-90 transition-opacity"
+                          className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#FF6B00] to-[#E8400A] text-white font-bold text-xs shadow-md hover:brightness-110 transition-all text-center no-underline"
                         >
                           Send via Email App ✉️
                         </a>
