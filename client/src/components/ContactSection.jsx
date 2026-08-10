@@ -60,7 +60,15 @@ export default function ContactSection() {
         } catch (error) {
             console.error("Email error:", error);
             setStatus("error");
-            setTimeout(() => setStatus("idle"), 5000);
+            try {
+                const mailtoSubject = encodeURIComponent(`Contact Enquiry from ${formData.user_name}`);
+                const mailtoBody = encodeURIComponent(
+                    `Name: ${formData.user_name}\nEmail: ${formData.user_email}\nPhone: ${formData.user_phone || "N/A"}\nCompany: ${formData.user_company || "N/A"}\n\nMessage:\n${formData.message}`
+                );
+                window.location.href = `mailto:info@netcradus.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+            } catch (e) {
+                console.error("Mailto fallback error:", e);
+            }
         }
     };
 

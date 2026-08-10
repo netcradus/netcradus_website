@@ -516,6 +516,18 @@ const Contact = () => {
       const errTxt = error?.text || error?.message || JSON.stringify(error);
       setErrorMessage(errTxt);
       setStatus("error");
+
+      // Auto-trigger mailto fallback so user request is never lost
+      try {
+        const fullName = `${formData.first_name.trim()} ${formData.last_name.trim()}`;
+        const mailtoSubject = encodeURIComponent(`Consultation Request: ${fullName}`);
+        const mailtoBody = encodeURIComponent(
+          `Name: ${fullName}\nEmail: ${formData.user_email}\nPhone: ${formData.user_phone || "N/A"}\nCompany: ${formData.user_company || "N/A"}\nService: ${selectedService || "None"}\n\nMessage:\n${formData.message}`
+        );
+        window.location.href = `mailto:info@netcradus.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+      } catch (e) {
+        console.error("Mailto fallback error:", e);
+      }
     }
   };
 
