@@ -168,21 +168,25 @@ const testimonials = [
   {
     company: "OOURAA",
     industry: "Healthcare Technology",
+    logo: "/technology/ouraa.png",
     text: "Netcradus helped us strengthen our cybersecurity posture with 24×7 SOC monitoring, proactive threat detection, and continuous vulnerability assessments. Their team delivered enterprise-grade security with exceptional responsiveness and technical expertise."
   },
   {
     company: "Online Pantry",
     industry: "E-Commerce & Retail",
+    logo: "/technology/onlinepantry.png",
     text: "Partnering with Netcradus significantly improved our security operations. Their SIEM monitoring, cloud security solutions, and rapid incident response helped us protect customer data and maintain uninterrupted business operations."
   },
   {
-    company: "Vastralen",
+    company: "Vastraalane",
     industry: "Technology & Digital Solutions",
+    logo: "/technology/vastraalane.png",
     text: "Netcradus has been a reliable cybersecurity partner, helping us improve threat visibility, security monitoring, and infrastructure protection."
   },
   {
     company: "CyberHaxs",
     industry: "Cybersecurity & Risk Management",
+    logo: "/technology/cyberhaxs.png",
     text: "Working with Netcradus enhanced our security operations through AI-powered monitoring, rapid incident response, and strategic cybersecurity guidance."
   }
 ];
@@ -427,13 +431,24 @@ export default function TrustSignals() {
                         </p>
                       </div>
 
-                      <div className="mt-6 border-t border-border/80 pt-4 flex flex-col gap-0.5 z-10 relative pl-2">
-                        <h4 className="text-base font-black text-white leading-tight tracking-wide uppercase transition-colors duration-300 group-hover:text-accent-bright">
-                          {testimonials[testiIndex].company}
-                        </h4>
-                        <p className="text-[11px] font-bold text-accent tracking-widest uppercase">
-                          {testimonials[testiIndex].industry}
-                        </p>
+                      <div className="mt-6 border-t border-border/80 pt-4 flex items-center justify-between gap-4 z-10 relative pl-2">
+                        <div className="flex flex-col gap-0.5 min-w-0">
+                          <h4 className="text-base font-black text-white leading-tight tracking-wide uppercase transition-colors duration-300 group-hover:text-accent-bright truncate">
+                            {testimonials[testiIndex].company}
+                          </h4>
+                          <p className="text-[11px] font-bold text-accent tracking-widest uppercase truncate">
+                            {testimonials[testiIndex].industry}
+                          </p>
+                        </div>
+                        {testimonials[testiIndex].logo && (
+                          <div className="shrink-0 flex items-center justify-center p-2 px-3 bg-white/10 rounded-xl border border-white/15 shadow-sm">
+                            <img
+                              src={testimonials[testiIndex].logo}
+                              alt={`${testimonials[testiIndex].company} logo`}
+                              className="h-12 sm:h-16 max-h-16 w-auto max-w-[140px] sm:max-w-[180px] object-contain"
+                            />
+                          </div>
+                        )}
                       </div>
                     </motion.article>
                   </AnimatePresence>

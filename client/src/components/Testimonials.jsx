@@ -17,21 +17,25 @@ const TESTIMONIALS_DATA = [
   {
     company: "OOURAA",
     industry: "Healthcare Technology",
+    logo: "/technology/ouraa.png",
     quote: "Netcradus helped us strengthen our cybersecurity posture with 24×7 SOC monitoring, proactive threat detection, and continuous vulnerability assessments. Their team delivered enterprise-grade security with exceptional responsiveness and technical expertise."
   },
   {
     company: "Online Pantry",
     industry: "E-Commerce & Retail",
+    logo: "/technology/onlinepantry.png",
     quote: "Partnering with Netcradus significantly improved our security operations. Their SIEM monitoring, cloud security solutions, and rapid incident response helped us protect customer data and maintain uninterrupted business operations."
   },
   {
-    company: "Vastralen",
+    company: "Vastraalane",
     industry: "Technology & Digital Solutions",
+    logo: "/technology/vastraalane.png",
     quote: "Netcradus has been a reliable cybersecurity partner, helping us improve threat visibility, security monitoring, and infrastructure protection. Their expertise has added significant value to our business."
   },
   {
     company: "CyberHaxs",
     industry: "Cybersecurity & Risk Management",
+    logo: "/technology/cyberhaxs.png",
     quote: "Working with Netcradus enhanced our security operations through AI-powered monitoring, rapid incident response, and strategic cybersecurity guidance. Their expertise makes them a trusted long-term security partner."
   }
 ];
@@ -175,22 +179,34 @@ export default function Testimonials() {
                                     </p>
 
                                     <div 
-                                        className="relative z-10 pt-6 mt-auto"
+                                        className="relative z-10 pt-6 mt-auto flex items-center justify-between gap-4"
                                         style={{ borderTop: "1px solid rgba(17, 17, 17, 0.15)" }}
                                     >
-                                        <h4 
-                                            className="mono-label mb-1 font-bold"
-                                            style={{ color: "#111111" }}
-                                        >
-                                            {TESTIMONIALS_DATA[currentIndex].industry}
-                                        </h4>
+                                        <div className="flex flex-col min-w-0">
+                                            <h4 
+                                                className="mono-label mb-1 font-bold"
+                                                style={{ color: "#111111" }}
+                                            >
+                                                {TESTIMONIALS_DATA[currentIndex].industry}
+                                            </h4>
 
-                                        <p 
-                                            className="font-mono text-[9px] uppercase tracking-widest font-semibold"
-                                            style={{ color: "#FF6B00" }}
-                                        >
-                                            {TESTIMONIALS_DATA[currentIndex].company}
-                                        </p>
+                                            <p 
+                                                className="font-mono text-[9px] uppercase tracking-widest font-semibold"
+                                                style={{ color: "#FF6B00" }}
+                                            >
+                                                {TESTIMONIALS_DATA[currentIndex].company}
+                                            </p>
+                                        </div>
+
+                                        {TESTIMONIALS_DATA[currentIndex].logo && (
+                                            <div className="shrink-0 flex items-center justify-center p-2 px-3 bg-black/5 rounded-xl border border-black/10 shadow-sm">
+                                                <img 
+                                                    src={TESTIMONIALS_DATA[currentIndex].logo} 
+                                                    alt={`${TESTIMONIALS_DATA[currentIndex].company} logo`} 
+                                                    className="h-12 sm:h-16 max-h-16 w-auto max-w-[140px] sm:max-w-[180px] object-contain"
+                                                />
+                                            </div>
+                                        )}
                                     </div>
                                 </GlassCard>
                             </motion.div>
