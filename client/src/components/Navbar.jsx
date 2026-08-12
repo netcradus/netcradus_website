@@ -4,6 +4,7 @@ import { Menu, X, ChevronRight, ChevronDown, Phone } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 import SolutionsMegaMenu, { SOLUTIONS } from './SolutionsMegaMenu';
 import ProductMegaMenu, { PRODUCTS } from './ProductMegaMenu';
+import PlatformMegaMenu, { PLATFORM_ITEMS } from './PlatformMegaMenu';
 import './Navbar.css';
 
 const NAVBAR_COUNTRIES = [
@@ -167,7 +168,8 @@ const Navbar = () => {
   useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null); // 'solutions' | 'products' | null
+  const [activeMenu, setActiveMenu] = useState(null); // 'platform' | 'solutions' | 'products' | null
+  const [isMobilePlatformOpen, setIsMobilePlatformOpen] = useState(false);
   const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
 
@@ -288,16 +290,48 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="nav-links desktop-only hidden lg:flex justify-center items-center gap-8 xl:gap-10">
-          <Link
-            to="/platform"
-            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${
-              isActiveLink('/platform')
-                ? 'active text-[#FF6B00]'
-                : 'text-[#F5F5F5] hover:text-[#FF6B00]'
-            }`}
+          {/* Platform Mega Menu Trigger */}
+          <div
+            className={`nav-item-platform relative ${activeMenu === 'platform' ? 'open' : ''}`}
+            onMouseEnter={() => handleMouseEnter('platform')}
+            onMouseLeave={handleMouseLeave}
           >
-            Platform
-          </Link>
+            <button
+              type="button"
+              onClick={(e) => handleMenuToggle('platform', e)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleMenuToggle('platform', e);
+                }
+              }}
+              aria-expanded={activeMenu === 'platform'}
+              aria-haspopup="true"
+              className={`nav-link-platform nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
+                isActiveLink('/platform') || activeMenu === 'platform'
+                  ? 'active text-[#FF6B00]'
+                  : 'text-[#F5F5F5] hover:text-[#FF6B00]'
+              }`}
+            >
+              Platform
+              <ChevronDown
+                size={15}
+                className={`transition-transform duration-300 ${
+                  activeMenu === 'platform'
+                    ? 'rotate-180 text-[#FF6B00]'
+                    : isActiveLink('/platform')
+                    ? 'text-[#FF6B00]'
+                    : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                }`}
+              />
+            </button>
+
+            <PlatformMegaMenu
+              isOpen={activeMenu === 'platform'}
+              onClose={() => setActiveMenu(null)}
+              onMouseEnter={() => handleMouseEnter('platform')}
+              onMouseLeave={handleMouseLeave}
+            />
+          </div>
 
           {/* Solutions Mega Menu Trigger */}
           <div
@@ -454,14 +488,31 @@ const Navbar = () => {
         </div>
 
         <div className="mobile-links">
-          <Link
-            to="/platform"
-            className="mobile-link"
-            onClick={() => setIsMenuOpen(false)}
+          <button
+            type="button"
+            className={`mobile-solutions-toggle ${isMobilePlatformOpen ? 'open' : ''}`}
+            onClick={() => setIsMobilePlatformOpen((prev) => !prev)}
           >
             Platform
             <ChevronRight size={18} />
-          </Link>
+          </button>
+
+          <div className={`mobile-solutions-list ${isMobilePlatformOpen ? 'open' : ''}`}>
+            {PLATFORM_ITEMS.map((item) => (
+              <Link
+                key={item.id}
+                to={item.path}
+                className="mobile-solution-link"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setIsMobilePlatformOpen(false);
+                }}
+              >
+                <span className="mobile-solution-name">{item.name}</span>
+                <span className="mobile-solution-desc">→ {item.subtitle}</span>
+              </Link>
+            ))}
+          </div>
 
           <button
             type="button"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Download, Check, ArrowRight, Shield, Eye, Cpu, Zap, Search, Key, Cloud, Activity, Monitor, Info, AlertTriangle, Layers } from "lucide-react";
+import { Download, Check, ArrowRight, Shield, Eye, Cpu, Zap, Search, Key, Cloud, Activity, Monitor, Info, AlertTriangle, Layers, Users, FileText, Bug } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -7,6 +7,9 @@ import { SEO_META } from "../data/seoMeta";
 import PageHero from "./PageHero";
 import AmbientMesh from "./AmbientMesh";
 import ImageLightbox from "./ImageLightbox";
+import RadialPlatformWheel from "./RadialPlatformWheel";
+import PlatformShowcaseSlider from "./PlatformShowcaseSlider";
+import PlatformDirectory from "./PlatformDirectory";
 
 const smoothScrollTo = (targetId, duration = 600) => {
   const target = document.getElementById(targetId);
@@ -404,391 +407,36 @@ export default function Platform() {
   return (
     <div className="bg-background transition-colors duration-500">
       {/* Custom Hero section */}
-      <section
-        className="relative overflow-x-hidden py-24 md:py-32"
-        style={{
-          backgroundImage: "linear-gradient(rgba(0,0,0,0.64), rgba(0,0,0,0.64)), url('/img/platform bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
-      >
+      <section className="relative overflow-x-hidden bg-[#06030b] py-16 md:py-24 border-b border-white/5">
         <AmbientMesh />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_32%,rgba(255,107,0,0.08),transparent_30%)]" />
 
-        <div className="container relative z-10 mx-auto grid max-w-screen-2xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-16 xl:px-24">
-          {/* Left Column: Content */}
-          <div className="max-w-3xl">
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+          {/* Header & Hero Text */}
+          <div className="max-w-7xl mx-auto text-center mb-10 px-2">
             {/* 1. Next-Gen Cyber Defence Badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/8 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FF6B00]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B00] animate-ping" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/25 bg-[#FF6B00]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-[#FF6B00] shadow-[0_0_20px_rgba(255,107,0,0.2)]">
+              <span className="h-2 w-2 rounded-full bg-[#FF6B00] animate-ping" />
               Next-Generation Cyber Defence
             </div>
 
             {/* 2. Primary Heading */}
-            <h1 className="text-4xl font-black leading-tight tracking-tighter text-white md:text-6.5xl">
-              The Netcradus <br />
-              <span className="text-white">Cybersecurity Platform</span>
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight text-white drop-shadow-[0_0_40px_rgba(255,82,160,0.35)]">
+              Unified &amp; Built to Secure the <span className="bg-gradient-to-r from-white via-[#ff8ad8] to-[#ff52a0] bg-clip-text text-transparent">AI Revolution</span>
             </h1>
-
-            {/* 3. Description paragraph */}
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-300 md:text-lg">
-              Experience the power of ACIS (Autonomous Cyber Immune System) and CYRIX XDR, combining AI-driven threat detection, autonomous response, real-time visibility, and intelligent cyber defence in one unified security platform.
-            </p>
-
-            {/* 5. Four premium feature pills */}
-            <div className="mt-8 grid grid-cols-2 gap-3 max-w-lg">
-              {[
-                { text: "AI Powered Detection", icon: "🛡" },
-                { text: "Autonomous Response", icon: "⚡" },
-                { text: "Unified Visibility", icon: "🌐" },
-                { text: "Enterprise Ready", icon: "🔒" }
-              ].map((pill, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-2 rounded-xl border border-white/8 bg-white/4 px-4 py-2.5 text-xs sm:text-sm font-semibold text-gray-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#FF6B00]/40 hover:shadow-[0_0_15px_rgba(255,107,0,0.15)] hover:text-white"
-                >
-                  <span>{pill.icon}</span>
-                  <span>{pill.text}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* 6. Typewriter loop effect */}
-            <div className="mt-6 flex items-center gap-2 font-mono text-xs sm:text-sm text-gray-400 min-h-[24px]">
-              <span className="text-[#FF6B00] font-bold">&gt;_</span>
-              <span>{typingText}</span>
-              <span className="h-4 w-1.5 bg-[#FF6B00] animate-pulse" />
-            </div>
-
-            {/* 7. Extra operation badges */}
-            <div className="mt-4 flex items-center gap-4 text-[10px] font-bold text-gray-500">
-              <span className="flex items-center gap-1.5"><span className="text-[#FF6B00]">ACIS</span> → Detect</span>
-              <span className="text-gray-700">|</span>
-              <span className="flex items-center gap-1.5"><span className="text-[#00E5FF]">CYRIX XDR</span> → Correlate</span>
-              <span className="text-gray-700">|</span>
-              <span className="flex items-center gap-1.5"><span className="text-white">SOC</span> → Protect</span>
-            </div>
-
-            {/* 8. CTA Buttons */}
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#acis-overview"
-                onClick={(e) => {
-                  e.preventDefault();
-                  smoothScrollTo("acis-overview", 600);
-                }}
-                className="rounded-xl bg-[#FF6B00] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#FF6B00]/20 transition-all duration-300 hover:bg-[#ff8533] hover:shadow-[#FF6B00]/35 hover:-translate-y-0.5"
-              >
-                Explore ACIS
-              </a>
-              <a
-                href="#netxdr"
-                onClick={(e) => {
-                  e.preventDefault();
-                  smoothScrollTo("netxdr", 600);
-                  setActiveTab("netxdr");
-                }}
-                className="rounded-xl border border-[#FF6B00]/50 bg-transparent px-6 py-3.5 text-sm font-bold text-[#FF6B00] transition-all duration-300 hover:bg-[#FF6B00]/8 hover:-translate-y-0.5"
-              >
-                Discover CYRIX XDR
-              </a>
-            </div>
           </div>
 
-          {/* Right Column: Visual Elements */}
-          <div className="relative flex items-center justify-center overflow-visible min-h-[480px] lg:-translate-y-12">
-            {/* Animated orange connection lines representing AI Communication */}
-            <div className="absolute right-[45%] top-1/2 -translate-y-1/2 w-[240px] h-[160px] pointer-events-none z-0 hidden lg:block overflow-visible">
-              <svg className="w-full h-full overflow-visible">
-                <defs>
-                  <linearGradient id="rayGrad" x1="100%" y1="50%" x2="0%" y2="50%">
-                    <stop offset="0%" stopColor="#FF6B00" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="#FF6B00" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M 220 40 L 40 20"
-                  stroke="url(#rayGrad)"
-                  strokeWidth="1.5"
-                  strokeDasharray="6, 6"
-                  className="animate-pulse"
-                >
-                  <animate attributeName="stroke-dashoffset" values="40;0" dur="2.5s" repeatCount="indefinite" />
-                </path>
-                <path
-                  d="M 220 80 L 10 80"
-                  stroke="url(#rayGrad)"
-                  strokeWidth="1.5"
-                  strokeDasharray="6, 6"
-                  className="animate-pulse"
-                >
-                  <animate attributeName="stroke-dashoffset" values="40;0" dur="2.2s" repeatCount="indefinite" />
-                </path>
-                <path
-                  d="M 220 120 L 30 140"
-                  stroke="url(#rayGrad)"
-                  strokeWidth="1.5"
-                  strokeDasharray="6, 6"
-                  className="animate-pulse"
-                >
-                  <animate attributeName="stroke-dashoffset" values="40;0" dur="2.8s" repeatCount="indefinite" />
-                </path>
-              </svg>
-            </div>
-
-            {/* Soft orange halo glow directly behind robot to stand out */}
-            <div className="absolute w-[360px] h-[360px] rounded-full bg-[#FF6B00]/12 blur-[90px] pointer-events-none z-0" />
-
-            {/* Glowing network particles & rotating circular rings behind robot */}
-            <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none opacity-20">
-              <div className="absolute w-[520px] h-[520px] border border-dashed border-[#FF6B00]/40 rounded-full animate-spin-cw" />
-              <div className="absolute w-[640px] h-[640px] border border-dashed border-[#00E5FF]/20 rounded-full animate-spin-ccw" />
-              <div className="absolute w-[400px] h-[400px] border border-[#FF6B00]/15 rounded-full animate-ping" style={{ animationDuration: "6s" }} />
-            </div>
-
-            {/* Floating and Breathing Robot Image Wrapper */}
-            <motion.div
-              className="w-full max-w-[340px] sm:max-w-[460px] lg:max-w-[640px] z-10 relative lg:-mb-32 lg:translate-y-12"
-              style={{
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 85%, transparent 100%), linear-gradient(to right, black 0%, black 95%, transparent 100%)",
-                WebkitMaskComposite: "source-in",
-                maskImage:
-                  "linear-gradient(to bottom, black 0%, black 85%, transparent 100%), linear-gradient(to right, black 0%, black 95%, transparent 100%)",
-                maskComposite: "intersect",
-              }}
-              animate={{
-                y: [0, -10, 0],
-                scale: [1, 1.02, 1],
-                x: [0, translateXAmount, translateXAmount, 0, 0]
-              }}
-              transition={{
-                y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
-                scale: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                x: { duration: 9, times: [0, 0.4, 0.5, 0.9, 1], ease: "easeInOut", repeat: Infinity }
-              }}
-            >
-              <img 
-                src="/img/platform hero image.png" 
-                alt="ACIS platform" 
-                className="w-full object-contain cursor-zoom-in hover:opacity-90 transition-opacity" 
-                onClick={() => setLightboxImage({ src: "/img/platform hero image.png", alt: "ACIS platform" })}
-                onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
-              />
-            </motion.div>
-
+          {/* Radial Security Platform Wheel Component Showcase */}
+          <div className="w-full mt-4">
+            <RadialPlatformWheel />
           </div>
         </div>
       </section>
 
-      {/* Improved Sticky Navigation Tabs */}
-      <section className="sticky top-20 z-20 border-y border-white/5 bg-black/60 py-3 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-screen-2xl items-center gap-3 overflow-x-auto scrollbar-hide px-4 sm:px-6 lg:px-16 xl:px-24 md:overflow-x-visible md:justify-between">
-          {[
-            { label: "ACIS Overview", id: "acis-overview" },
-            { label: "ACIS Lite", id: "acis-lite" },
-            { label: "ACIS Pro", id: "acis-pro" },
-            { label: "ACIS Enterprise", id: "acis-enterprise" },
-            { label: "AI-SIEM Engine", id: "ai-siem-engine" },
-            { label: "SOAR Automation", id: "soar-automation" },
-            { label: "Cyrix XDR", id: "netxdr" },
-          ].map((tab) => {
-            const isActive = activeTab === tab.id;
-            return (
-              <a
-                key={tab.label}
-                href={`#${tab.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  smoothScrollTo(tab.id, 600);
-                  setActiveTab(tab.id);
-                }}
-                className={`relative flex-shrink-0 md:flex-1 min-h-[48px] px-6 lg:px-8 flex items-center justify-center text-center rounded-xl border text-xs lg:text-sm font-semibold transition-all duration-300 backdrop-blur-md no-underline whitespace-nowrap ${isActive
-                  ? "border-[#FF6B00]/40 bg-[#FF6B00]/10 text-white shadow-[0_0_20px_rgba(255,107,0,0.15)]"
-                  : "border-white/10 bg-white/5 text-gray-400 hover:border-[#FF6B00]/20 hover:text-white hover:shadow-[0_0_15px_rgba(255,107,0,0.06)]"
-                  }`}
-              >
-                {tab.label}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabUnderline"
-                    className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#FF6B00]"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </a>
-            );
-          })}
-        </div>
-      </section>
+      {/* Platform Directory Section */}
+      <PlatformDirectory />
 
-      <section className="pt-12 pb-0">
-        <div className="mx-auto max-w-screen-2xl space-y-8 px-4 sm:px-6 lg:px-16 xl:px-24">
-          {platformSections.map((section, index) => (
-            <article
-              key={section.id}
-              id={section.id}
-              className={`scroll-mt-[160px] grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:items-center ${section.cardClass || ""} ${index % 2 === 1 ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"
-                }`}
-            >
-              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <h2 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">{section.title}</h2>
-                <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">{section.description}</p>
-                <ul className="mt-6 grid gap-3 md:grid-cols-2">
-                  {section.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="rounded-[20px] border border-border bg-[var(--color-surface-raised)]/70 px-4 py-3 text-sm text-text-secondary shadow-[0_0_22px_rgba(232,64,10,0.04)]"
-                    >
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                {section.cta ? (
-                  <a
-                    href="/assets/acis-whitepaper.pdf"
-                    download
-                    className="btn-primary mt-8 inline-flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-[0.2em]"
-                  >
-                    Download ACIS White Paper
-                    <Download size={16} />
-                  </a>
-                ) : null}
-
-              </div>
-
-              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                <div className="relative overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(232,64,10,0.12),transparent_55%)]" />
-                  <img
-                    src={section.image}
-                    alt={section.title}
-                    className="relative max-h-[360px] w-full rounded-[22px] object-contain cursor-zoom-in hover:opacity-90 transition-opacity"
-                    onClick={() => setLightboxImage({ src: section.image, alt: section.title })}
-                    onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
-                  />
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <div id="netxdr" className="scroll-mt-[160px]">
-        <section
-          className="mt-8 pt-12 pb-0 border-t border-border/20"
-        >
-          <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
-            <article className="grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-
-              {/* Left Column: Heading, Paragraph, and Feature Chips */}
-              <div className="text-left">
-                <div className="mb-4 inline-flex rounded-full border border-accent/15 bg-accent/8 px-3 py-1 text-xs font-bold uppercase tracking-[0.25em] text-accent">
-                  CYRIX XDR
-                </div>
-                <h2 className="text-3xl font-black tracking-tight text-text-primary md:text-5xl">
-                  One Platform for Complete Threat Detection & Response
-                </h2>
-                <p className="mt-5 max-w-3xl text-base leading-relaxed text-text-secondary md:text-lg">
-                  Cyrix XDR continuously monitors endpoints, networks, cloud workloads, user identities, and business applications from a single intelligent platform. Using AI-powered analytics, behavioral detection, and real-time event correlation, it identifies sophisticated cyber threats faster, prioritizes critical risks, and automates response actions. This enables security teams to reduce alert fatigue, accelerate investigations, and strengthen enterprise-wide cyber resilience.
-                </p>
-
-                <ul className="mt-6 grid gap-3 md:grid-cols-2">
-                  {[
-                    "AI-Powered Threat Detection",
-                    "Unified Visibility",
-                    "Intelligent Event Correlation",
-                    "Automated Incident Response",
-                    "Threat Hunting",
-                    "Identity Protection",
-                  ].map((feature) => (
-                    <li
-                      key={feature}
-                      className="rounded-[20px] border border-border bg-[var(--color-surface-raised)]/70 px-4 py-3 text-sm text-text-secondary shadow-[0_0_22px_rgba(232,64,10,0.04)] hover:border-accent/40 hover:text-white hover:shadow-[0_0_15px_rgba(232,64,10,0.08)] transition-all duration-300 cursor-default"
-                    >
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Right Column: Image */}
-              <div className="w-full">
-                <div className="relative overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(232,64,10,0.12),transparent_55%)]" />
-                  <img
-                    src="/assets/netxdr6.png"
-                    alt="One Platform for Complete Threat Detection & Response"
-                    className="relative max-h-[360px] w-full rounded-[22px] object-contain cursor-zoom-in hover:opacity-90 transition-opacity"
-                    onClick={() => setLightboxImage({ src: "/assets/netxdr6.png", alt: "One Platform for Complete Threat Detection & Response" })}
-                    onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
-                  />
-                </div>
-              </div>
-
-            </article>
-          </div>
-        </section>
-
-        {netxdrCapabilities.map((feat, index) => {
-          const isImageLeft = index % 2 === 0;
-          return (
-            <section
-              key={index}
-              className={`scroll-mt-[160px] mt-8 pt-12 border-t border-border/20 ${index === netxdrCapabilities.length - 1 ? "pb-24" : "pb-12"
-                }`}
-            >
-              <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24">
-                <article className="grid gap-8 rounded-[32px] border border-border bg-[var(--color-surface)]/88 p-6 shadow-[0_18px_60px_rgba(232,64,10,0.06)] backdrop-blur-md md:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-
-                  {/* Text Column */}
-                  <div className={`text-left ${isImageLeft ? "lg:order-2" : "lg:order-1"}`}>
-                    <span className="mb-4 block text-[10px] font-bold uppercase tracking-[0.4em] text-accent font-display md:text-[12px]">
-                      // Cyrix XDR Capability
-                    </span>
-                    <h3 className="text-3xl font-black tracking-tight text-white md:text-5xl leading-tight">
-                      {feat.title}
-                    </h3>
-                    <div className="mt-5 space-y-4 max-w-3xl">
-                      {feat.paragraphs.map((para, pIdx) => (
-                        <p key={pIdx} className="text-base leading-relaxed text-text-secondary md:text-lg">
-                          {para}
-                        </p>
-                      ))}
-                    </div>
-
-                    <ul className="mt-6 grid gap-3 md:grid-cols-2">
-                      {feat.bullets.map((bullet, bIdx) => (
-                        <li
-                          key={bIdx}
-                          className="rounded-[20px] border border-border bg-[var(--color-surface-raised)]/70 px-4 py-3 text-sm text-text-secondary shadow-[0_0_22px_rgba(232,64,10,0.04)] hover:border-accent/40 hover:text-white hover:shadow-[0_0_15px_rgba(232,64,10,0.08)] transition-all duration-300 cursor-default"
-                        >
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Image Column */}
-                  <div className={`w-full ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
-                    <div className="relative overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(135deg,rgba(232,64,10,0.08),transparent_40%),var(--color-surface)] p-4">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(232,64,10,0.12),transparent_55%)]" />
-                      <img
-                        src={feat.image}
-                        alt={feat.title}
-                        className="relative max-h-[360px] w-full rounded-[22px] object-contain cursor-zoom-in hover:opacity-90 transition-opacity"
-                        onClick={() => setLightboxImage({ src: feat.image, alt: feat.title })}
-                        onError={(e) => { e.currentTarget.src = "/assets/acis-dashboard.png"; }}
-                      />
-                    </div>
-                  </div>
-
-                </article>
-              </div>
-            </section>
-          );
-        })}
-      </div>
+      {/* NEW INTERACTIVE SHOWCASE SLIDER SECTION WITH REAL IMAGES & SIDE-BY-SIDE DETAILS */}
+      <PlatformShowcaseSlider onOpenLightbox={(img) => setLightboxImage(img)} />
 
       {/* Image Lightbox Modal */}
       <ImageLightbox

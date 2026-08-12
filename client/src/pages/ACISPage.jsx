@@ -203,7 +203,7 @@ const PlatformSection = () => {
 
   return (
     <section id="platform" className="bg-surface py-20 px-6">
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1380px] mx-auto">
         <div className="text-center mb-10">
           <span className="text-[11px] font-semibold text-accent uppercase tracking-[0.1em]">THE PLATFORM</span>
           <h2 className="text-[40px] font-bold text-text-primary mt-2 mb-4">A Complete SOC in Your Browser</h2>
@@ -228,7 +228,7 @@ const PlatformSection = () => {
         </div>
 
         <div className="mt-8">
-          <div className="bg-surface-raised border border-border rounded-xl overflow-hidden shadow-2xl shadow-black/50">
+          <div className="bg-surface-raised border border-border/80 rounded-xl overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.7)]">
             {/* Browser Top Bar */}
             <div className="h-[36px] bg-surface px-4 flex items-center gap-2 border-b border-border">
               <div className="flex gap-1.5">
@@ -241,12 +241,12 @@ const PlatformSection = () => {
               </div>
             </div>
             {/* Screenshot */}
-            <div className="bg-surface relative min-h-[400px] md:min-h-[600px] flex items-center justify-center">
+            <div className="bg-surface relative min-h-[400px] md:min-h-[600px] flex items-center justify-center p-2 md:p-3">
               <img
                 key={activeTab} // triggers re-render for fade
                 src={tabs[activeTab].img}
                 alt={tabs[activeTab].label}
-                className="w-full block animate-[fadeIn_0.4s_ease-out]"
+                className="w-full block animate-[fadeIn_0.4s_ease-out] rounded-lg brightness-[1.04] contrast-[1.04] object-contain"
               />
             </div>
           </div>

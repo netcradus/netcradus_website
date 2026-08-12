@@ -167,7 +167,7 @@ const ACISSection = () => {
           >
             <div className="absolute inset-0 flex justify-center items-center z-0 opacity-40 md:scale-[1.2]"></div>
 
-            <div className="relative z-10 w-full max-w-[900px] mx-auto mt-8 bg-surface-raised border border-border rounded-xl shadow-brand-lg overflow-hidden transform hover:scale-[1.02] transition-transform duration-700">
+            <div className="relative z-10 w-full max-w-[1280px] mx-auto mt-6 bg-surface-raised border border-border/80 rounded-xl shadow-[0_24px_60px_rgba(0,0,0,0.7)] overflow-hidden transform hover:scale-[1.01] transition-transform duration-500">
               <div className="h-8 bg-surface border-b border-border flex items-center px-4 gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
                 <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
@@ -176,7 +176,7 @@ const ACISSection = () => {
               <img
                 src="/assets/acisDashboard-v2.png"
                 alt="ACIS Dashboard"
-                className="w-full h-auto opacity-90 object-cover"
+                className="w-full h-auto opacity-100 object-contain brightness-[1.04] contrast-[1.04] p-1"
               />
             </div>
           </div>

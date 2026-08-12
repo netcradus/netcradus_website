@@ -259,6 +259,7 @@ function App() {
           <Route path="acis" element={<ACISPage />} />
           <Route path="crm" element={<CRMPage />} />
           <Route path="netxdr" element={<NetXDRPage />} />
+          <Route path="xdr" element={<NetXDRPage />} />
           <Route path="netcrad" element={<NetCradPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="why-netcradus" element={<WhyNetcradusPage />} />
