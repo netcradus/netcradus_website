@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SectionWrapper from "./ui/SectionWrapper";
-import GlassCard from "./ui/GlassCard";
-import { Quote, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote, ArrowUpRight, ChevronLeft, ChevronRight, Star, Sparkles, ShieldCheck } from "lucide-react";
 
 import client1 from "../assets/clientsList/client_1-removebg.png";
 import client2 from "../assets/clientsList/client_2-removebg.png";
@@ -18,31 +16,39 @@ const TESTIMONIALS_DATA = [
     company: "OOURAA",
     industry: "Healthcare Technology",
     logo: "/technology/ouraa.png",
-    quote: "Netcradus helped us strengthen our cybersecurity posture with 24×7 SOC monitoring, proactive threat detection, and continuous vulnerability assessments. Their team delivered enterprise-grade security with exceptional responsiveness and technical expertise."
+    rating: 5,
+    quote:
+      "Netcradus helped us strengthen our cybersecurity posture with 24×7 SOC monitoring, proactive threat detection, and continuous vulnerability assessments. Their team delivered enterprise-grade security with exceptional responsiveness and technical expertise."
   },
   {
     company: "Online Pantry",
     industry: "E-Commerce & Retail",
     logo: "/technology/onlinepantry.png",
-    quote: "Partnering with Netcradus significantly improved our security operations. Their SIEM monitoring, cloud security solutions, and rapid incident response helped us protect customer data and maintain uninterrupted business operations."
+    rating: 5,
+    quote:
+      "Partnering with Netcradus significantly improved our security operations. Their SIEM monitoring, cloud security solutions, and rapid incident response helped us protect customer data and maintain uninterrupted business operations."
   },
   {
     company: "Vastraalane",
     industry: "Technology & Digital Solutions",
     logo: "/technology/vastraalane.png",
-    quote: "Netcradus has been a reliable cybersecurity partner, helping us improve threat visibility, security monitoring, and infrastructure protection. Their expertise has added significant value to our business."
+    rating: 5,
+    quote:
+      "Netcradus has been a reliable cybersecurity partner, helping us improve threat visibility, security monitoring, and infrastructure protection. Their expertise has added significant value to our business."
   },
   {
     company: "CyberHaxs",
     industry: "Cybersecurity & Risk Management",
     logo: "/technology/cyberhaxs.png",
-    quote: "Working with Netcradus enhanced our security operations through AI-powered monitoring, rapid incident response, and strategic cybersecurity guidance. Their expertise makes them a trusted long-term security partner."
+    rating: 5,
+    quote:
+      "Working with Netcradus enhanced our security operations through AI-powered monitoring, rapid incident response, and strategic cybersecurity guidance. Their expertise makes them a trusted long-term security partner."
   }
 ];
 
 const slideVariants = {
   enter: (direction) => ({
-    x: direction > 0 ? 100 : -100,
+    x: direction > 0 ? 80 : -80,
     opacity: 0
   }),
   center: {
@@ -52,220 +58,203 @@ const slideVariants = {
   },
   exit: (direction) => ({
     zIndex: 0,
-    x: direction < 0 ? 100 : -100,
+    x: direction < 0 ? 80 : -80,
     opacity: 0
   })
 };
 
 export default function Testimonials() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [direction, setDirection] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-    const handleNext = () => {
-        setDirection(1);
-        setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
-    };
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
+  };
 
-    const handlePrev = () => {
-        setDirection(-1);
-        setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length);
-    };
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length);
+  };
 
-    const handleDotClick = (idx) => {
-        setDirection(idx > currentIndex ? 1 : -1);
-        setCurrentIndex(idx);
-    };
+  const handleDotClick = (idx) => {
+    setDirection(idx > currentIndex ? 1 : -1);
+    setCurrentIndex(idx);
+  };
 
-    useEffect(() => {
-        if (isHovered) return;
-        const timer = setInterval(() => {
-            handleNext();
-        }, 4500);
-        return () => clearInterval(timer);
-    }, [currentIndex, isHovered]);
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(() => {
+      handleNext();
+    }, 5500);
+    return () => clearInterval(timer);
+  }, [currentIndex, isHovered]);
 
-    return (
-        <SectionWrapper 
-            className="border-y border-white/5 relative overflow-hidden transition-colors duration-300"
-            style={{ backgroundColor: "#0B0B0D" }}
-        >
-            {/* Soft off-white radial gradient behind the section */}
-            <div 
-                className="absolute inset-0 pointer-events-none z-0"
-                style={{
-                    background: "radial-gradient(circle at top left, rgba(255,248,240,0.14), transparent 60%)"
-                }}
-            />
+  return (
+    <section className="relative overflow-hidden bg-[#07070b] py-24 border-t border-white/10">
+      {/* Subtle radial ambient background light */}
+      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_20%_30%,rgba(236,76,140,0.06),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(249,131,46,0.06),transparent_50%)]" />
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24 items-center">
-
-                {/* Left Side */}
-                <div className="lg:col-span-1">
-
-                    <div className="flex items-center gap-2 mb-6">
-                        <div className="w-1.5 h-4 bg-primary" />
-                        <span className="mono-label text-primary font-bold">
-                            DOSSIER_FEEDBACK: 04
-                        </span>
-                    </div>
-
-                    <h2 className="text-5xl md:text-7xl font-display font-extrabold text-[var(--text-primary)] mb-8 tracking-tighter leading-none uppercase">
-                        Trusted by <br />
-                        <span className="text-primary italic">
-                            LEADERS.
-                        </span>
-                    </h2>
-
-                    <p className="text-[var(--text-secondary)] font-sans text-sm md:text-lg leading-relaxed mb-12 max-w-sm">
-                        Securing the infrastructure of the world's most resilient organizations through strategic intelligence.
-                    </p>
-
-                    <button className="mono-label text-[var(--text-primary)] hover:text-primary transition-colors flex items-center gap-3 border-b border-[var(--border-color)] pb-2 group">
-                        ACCESS_CLIENT_LOGS
-
-                        <ArrowUpRight
-                            size={14}
-                            className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-                        />
-                    </button>
-
-                </div>
-
-                {/* Right Side */}
-                <div className="lg:col-span-2 space-y-12">
-
-                    {/* Testimonials sliding carousel */}
-                    <div 
-                        className="relative w-full overflow-hidden min-h-[340px] sm:min-h-[290px] md:min-h-[260px] lg:min-h-[290px] xl:min-h-[260px]"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
-                    >
-                        <AnimatePresence mode="wait" custom={direction}>
-                            <motion.div
-                                key={currentIndex}
-                                custom={direction}
-                                variants={slideVariants}
-                                initial="enter"
-                                animate="center"
-                                exit="exit"
-                                transition={{
-                                    x: { type: "spring", stiffness: 300, damping: 30 },
-                                    opacity: { duration: 0.2 }
-                                }}
-                                className="w-full h-full"
-                            >
-                                <GlassCard
-                                    hover={false}
-                                    className="p-10 h-full min-h-[300px] sm:min-h-[250px] md:min-h-[220px] lg:min-h-[250px] xl:min-h-[220px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(0,0,0,0.22),0_0_50px_rgba(255,245,235,0.25)]"
-                                    style={{
-                                        backgroundColor: "rgba(255, 252, 248, 0.94)",
-                                        backdropFilter: "blur(16px)",
-                                        WebkitBackdropFilter: "blur(16px)",
-                                        border: "1px solid rgba(255, 255, 255, 0.45)",
-                                        boxShadow: "0 20px 50px rgba(0,0,0,0.18), 0 0 40px rgba(255,245,235,0.18)"
-                                    }}
-                                >
-                                    <Quote
-                                        className="absolute top-8 right-8 text-[#FF6B00]/15 w-12 h-12"
-                                        strokeWidth={1}
-                                    />
-
-                                    <p 
-                                        className="font-sans text-sm md:text-lg font-medium leading-relaxed mb-8 italic relative z-10"
-                                        style={{ color: "#444444" }}
-                                    >
-                                        "{TESTIMONIALS_DATA[currentIndex].quote}"
-                                    </p>
-
-                                    <div 
-                                        className="relative z-10 pt-6 mt-auto flex items-center justify-between gap-4"
-                                        style={{ borderTop: "1px solid rgba(17, 17, 17, 0.15)" }}
-                                    >
-                                        <div className="flex flex-col min-w-0">
-                                            <h4 
-                                                className="mono-label mb-1 font-bold"
-                                                style={{ color: "#111111" }}
-                                            >
-                                                {TESTIMONIALS_DATA[currentIndex].industry}
-                                            </h4>
-
-                                            <p 
-                                                className="font-mono text-[9px] uppercase tracking-widest font-semibold"
-                                                style={{ color: "#FF6B00" }}
-                                            >
-                                                {TESTIMONIALS_DATA[currentIndex].company}
-                                            </p>
-                                        </div>
-
-                                        {TESTIMONIALS_DATA[currentIndex].logo && (
-                                            <div className="shrink-0 flex items-center justify-center p-2 px-3 bg-black/5 rounded-xl border border-black/10 shadow-sm">
-                                                <img 
-                                                    src={TESTIMONIALS_DATA[currentIndex].logo} 
-                                                    alt={`${TESTIMONIALS_DATA[currentIndex].company} logo`} 
-                                                    className="h-12 sm:h-16 max-h-16 w-auto max-w-[140px] sm:max-w-[180px] object-contain"
-                                                />
-                                            </div>
-                                        )}
-                                    </div>
-                                </GlassCard>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-
-                    {/* Navigation Controls */}
-                    <div className="flex items-center justify-between max-w-xs mx-auto pt-2 relative z-10">
-                        <button
-                            onClick={handlePrev}
-                            className="p-2.5 rounded-full bg-white text-black hover:text-[#FF6B00] shadow-md border border-white hover:border-[#FF6B00] transition-all hover:scale-105"
-                            aria-label="Previous Testimonial"
-                        >
-                            <ChevronLeft size={16} />
-                        </button>
-
-                        <div className="flex gap-2">
-                            {TESTIMONIALS_DATA.map((_, idx) => (
-                                <button
-                                    key={idx}
-                                    onClick={() => handleDotClick(idx)}
-                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                        idx === currentIndex ? "bg-[#FF6B00] w-5" : "bg-white/20 hover:bg-white/40"
-                                    }`}
-                                />
-                            ))}
-                        </div>
-
-                        <button
-                            onClick={handleNext}
-                            className="p-2.5 rounded-full bg-white text-black hover:text-[#FF6B00] shadow-md border border-white hover:border-[#FF6B00] transition-all hover:scale-105"
-                            aria-label="Next Testimonial"
-                        >
-                            <ChevronRight size={16} />
-                        </button>
-                    </div>
-
-                    {/* Client Logos */}
-                    <div className="pt-12 border-t border-[var(--border-color)]">
-
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 place-items-center">
-
-                            {clientLogos.map((logo, idx) => (
-                                <img
-                                    key={idx}
-                                    src={logo}
-                                    alt="Client"
-                                    className="h-16 md:h-20 w-auto object-contain"
-                                />
-                            ))}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column Header */}
+          <div className="lg:col-span-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#13131c] border border-white/10 text-orange-400 font-mono text-xs uppercase tracking-widest mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Verified Client Proof</span>
             </div>
 
-        </SectionWrapper>
-    );
+            <h2 className="font-sora font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight mb-6">
+              Trusted by <br className="hidden sm:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ec4c8c] to-[#f9832e]">
+                Security Leaders
+              </span>
+            </h2>
+
+            <p className="font-sans text-gray-400 text-base sm:text-lg leading-relaxed mb-8">
+              Discover how global organizations rely on Netcradus for 24/7 SOC defense, automated threat containment, and zero-trust resilience.
+            </p>
+
+            <div className="space-y-3 mb-8">
+              <div className="flex items-center gap-3 text-gray-300 font-sans text-sm">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>99.9% Client Satisfaction & Retention</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300 font-sans text-sm">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Contractually Backed &lt; 15 Min SLA</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300 font-sans text-sm">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Zero Undetected Critical Incidents</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column Testimonial Card & Controls */}
+          <div className="lg:col-span-7 space-y-8">
+            <div
+              className="relative w-full min-h-[300px]"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <AnimatePresence mode="wait" custom={direction}>
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.25 }
+                  }}
+                  className="w-full"
+                >
+                  <div className="bg-[#13131c] border border-white/10 rounded-2xl p-8 sm:p-10 relative overflow-hidden shadow-2xl backdrop-blur-xl flex flex-col justify-between min-h-[300px] group hover:border-orange-500/40 transition-colors">
+                    {/* Background accent glow */}
+                    <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-[#ec4c8c]/10 to-[#f9832e]/10 blur-2xl rounded-full pointer-events-none" />
+
+                    <Quote className="absolute top-6 right-8 text-orange-500/20 w-14 h-14 pointer-events-none" />
+
+                    <div>
+                      {/* Rating Stars */}
+                      <div className="flex items-center gap-1 mb-6">
+                        {Array.from({ length: TESTIMONIALS_DATA[currentIndex].rating }).map((_, i) => (
+                          <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
+                        ))}
+                      </div>
+
+                      {/* Quote Text */}
+                      <p className="font-sans text-white text-base sm:text-lg lg:text-xl font-normal leading-relaxed italic relative z-10 mb-8">
+                        "{TESTIMONIALS_DATA[currentIndex].quote}"
+                      </p>
+                    </div>
+
+                    {/* Author & Logo Footer */}
+                    <div className="relative z-10 border-t border-white/10 pt-6 flex items-center justify-between gap-4">
+                      <div className="flex flex-col min-w-0">
+                        <h4 className="font-sora font-bold text-xl text-white tracking-tight">
+                          {TESTIMONIALS_DATA[currentIndex].company}
+                        </h4>
+                        <p className="font-mono text-xs text-orange-400 uppercase tracking-wider mt-0.5">
+                          {TESTIMONIALS_DATA[currentIndex].industry}
+                        </p>
+                      </div>
+
+                      {TESTIMONIALS_DATA[currentIndex].logo && (
+                        <div className="bg-white p-3 rounded-xl border border-white/20 shadow-md flex items-center justify-center h-14 w-auto min-w-[110px] max-w-[160px] shrink-0">
+                          <img
+                            src={TESTIMONIALS_DATA[currentIndex].logo}
+                            alt={`${TESTIMONIALS_DATA[currentIndex].company} logo`}
+                            className="max-h-9 w-auto object-contain"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-between pt-2 max-w-sm mx-auto sm:mx-0">
+              <button
+                onClick={handlePrev}
+                className="w-10 h-10 rounded-full bg-[#1c1c2b] border border-white/10 hover:border-orange-500 text-white hover:text-orange-400 flex items-center justify-center transition-all hover:scale-105"
+                aria-label="Previous Testimonial"
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              <div className="flex items-center gap-2">
+                {TESTIMONIALS_DATA.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleDotClick(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      idx === currentIndex
+                        ? "bg-gradient-to-r from-[#ec4c8c] to-[#f9832e] w-7"
+                        : "bg-white/20 hover:bg-white/40 w-2"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={handleNext}
+                className="w-10 h-10 rounded-full bg-[#1c1c2b] border border-white/10 hover:border-orange-500 text-white hover:text-orange-400 flex items-center justify-center transition-all hover:scale-105"
+                aria-label="Next Testimonial"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Client Logos Strip */}
+        <div className="mt-16 pt-12 border-t border-white/10">
+          <div className="text-center font-mono text-xs uppercase tracking-widest text-gray-500 mb-8">
+            Securing Infrastructure Across Industries
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center">
+            {clientLogos.map((logo, idx) => (
+              <div
+                key={idx}
+                className="w-full h-20 bg-[#13131c]/60 border border-white/5 hover:border-white/20 rounded-xl p-4 flex items-center justify-center transition-all duration-300 group"
+              >
+                <img
+                  src={logo}
+                  alt={`Client logo ${idx + 1}`}
+                  className="max-h-12 w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -170,6 +170,7 @@ import WhyNetcradusPage from "./pages/WhyNetcradusPage";
 import AcisLitePricing from "./pages/AcisLitePricing";
 import AcisProPricing from "./pages/AcisProPricing";
 import AcisEnterprisePricing from "./pages/AcisEnterprisePricing";
+import AdminInquiries from "./pages/AdminInquiries";
 
 import Platform from "./components/Platform";
 import { useReveal } from "./hooks/useReveal";
@@ -278,6 +279,7 @@ function App() {
           <Route path="pricing/acis-lite" element={<AcisLitePricing />} />
           <Route path="pricing/acis-pro" element={<AcisProPricing />} />
           <Route path="pricing/acis-enterprise" element={<AcisEnterprisePricing />} />
+          <Route path="admin/inquiries" element={<AdminInquiries />} />
         </Route>
       </Routes>
     </>

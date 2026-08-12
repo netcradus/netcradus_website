@@ -14,14 +14,14 @@ const HIGHLIGHTS = [
     color2: '#ff7b29',
   },
   {
-    id: 'briefing',
-    category: 'Company Update',
-    title: 'Join us at our next cybersecurity briefing',
-    image: '/images/highlight-briefing.png',
-    link: '/contact',
-    gradientId: 'gradBriefing',
-    color1: '#1fc8ff',
-    color2: '#7c2ae8',
+    id: 'cyrix-platform',
+    category: 'Platform Innovation',
+    title: 'Cyrix XDR – Autonomous Extended Detection & Response',
+    image: '/images/highlight-cyrix.png',
+    link: '/netxdr',
+    gradientId: 'gradCyrix',
+    color1: '#ff7b29',
+    color2: '#e8400a',
   },
 ];
 

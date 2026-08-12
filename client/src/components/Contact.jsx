@@ -39,7 +39,6 @@ import {
   Calendar,
   Settings
 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 import './Contact.css';
 import LocationMap from './LocationMap';
 import CountryDropdown from './CountryDropdown';
@@ -472,62 +471,55 @@ const Contact = () => {
     if (!validate()) return;
 
     setStatus("loading");
+    setErrorMessage("");
 
     try {
-      const fullName = `${formData.first_name.trim()} ${formData.last_name.trim()}`;
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_0b2gu7w",
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_0eug8b5",
-        {
-          to_email: "info@netcradus.com",
-          recipient_email: "info@netcradus.com",
-          to_name: "Netcradus Info",
-          name: fullName,
-          user_name: fullName,
-          email: formData.user_email,
-          user_email: formData.user_email,
-          reply_to: formData.user_email,
-          phone: formData.user_phone || "N/A",
-          user_phone: formData.user_phone || "N/A",
-          company: formData.user_company || "N/A",
-          user_company: formData.user_company || "N/A",
-          service: selectedService || "None",
-          message: `${formData.message}\n\n[Selected Service: ${selectedService || "None"}]\n[Attached File: ${file ? file.name : "None"}]`,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "ezgqG6Hon-z8nuFTU"
-      );
+      const payload = new FormData();
+      payload.append("first_name", formData.first_name.trim());
+      payload.append("last_name", formData.last_name.trim());
+      payload.append("user_email", formData.user_email.trim());
+      payload.append("user_phone", formData.user_phone ? formData.user_phone.trim() : "");
+      payload.append("user_company", formData.user_company ? formData.user_company.trim() : "");
+      payload.append("selectedService", selectedService || "");
+      payload.append("selectedCountry", selectedCountry || "");
+      payload.append("message", formData.message.trim());
 
-      setReferenceId(`NC-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
-      setStatus("success");
-      setFormData({
-        first_name: "",
-        last_name: "",
-        user_company: "",
-        user_phone: "",
-        user_email: "",
-        message: ""
-      });
-      setSelectedService("");
-      setSelectedOptionId(null);
-      setFile(null);
-      setErrors({});
-    } catch (error) {
-      console.error("Email error:", error);
-      const errTxt = error?.text || error?.message || JSON.stringify(error);
-      setErrorMessage(errTxt);
-      setStatus("error");
-
-      // Auto-trigger mailto fallback so user request is never lost
-      try {
-        const fullName = `${formData.first_name.trim()} ${formData.last_name.trim()}`;
-        const mailtoSubject = encodeURIComponent(`Consultation Request: ${fullName}`);
-        const mailtoBody = encodeURIComponent(
-          `Name: ${fullName}\nEmail: ${formData.user_email}\nPhone: ${formData.user_phone || "N/A"}\nCompany: ${formData.user_company || "N/A"}\nService: ${selectedService || "None"}\n\nMessage:\n${formData.message}`
-        );
-        window.location.href = `mailto:info@netcradus.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-      } catch (e) {
-        console.error("Mailto fallback error:", e);
+      if (file) {
+        payload.append("attachment", file);
       }
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: payload,
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setReferenceId(result.referenceId || `NC-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
+        setStatus("success");
+        setFormData({
+          first_name: "",
+          last_name: "",
+          user_company: "",
+          user_phone: "",
+          user_email: "",
+          message: ""
+        });
+        setSelectedService("");
+        setSelectedCountry("");
+        setSelectedOptionId(null);
+        setFile(null);
+        setErrors({});
+      } else {
+        const errorText = result.error || result.message || "Failed to submit request. Please check your details and try again.";
+        setErrorMessage(errorText);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setErrorMessage(error?.message || "A network error occurred. Please check your connection and try again.");
+      setStatus("error");
     }
   };
 
@@ -915,27 +907,15 @@ const Contact = () => {
                   </div>
 
                   {status === "error" && (
-                    <div className="p-4 my-4 rounded-xl bg-[#FEF2F2] border border-[#FCA5A5] text-xs space-y-3 shadow-md">
+                    <div className="p-4 my-4 rounded-xl bg-[#FEF2F2] border border-[#FCA5A5] text-xs space-y-2 shadow-md">
                       <div className="flex items-start gap-2.5 text-[#991B1B]">
                         <ShieldAlert size={18} className="shrink-0 mt-0.5 text-[#DC2626]" />
                         <div>
-                          <p className="font-bold text-[#7F1D1D] text-sm">Email Gateway Re-authentication Required</p>
+                          <p className="font-bold text-[#7F1D1D] text-sm">Unable to Submit Request</p>
                           <p className="text-[#991B1B] mt-1 text-xs leading-relaxed font-medium">
-                            {errorMessage.includes("Gmail_API") || errorMessage.includes("Invalid grant")
-                              ? "Notice: The EmailJS Gmail integration needs to be re-authenticated in the EmailJS Dashboard. In the meantime, click below to send your consultation request directly to info@netcradus.com."
-                              : "Gateway error: " + errorMessage}
+                            {errorMessage || "An unexpected error occurred while processing your request. Your entered details have been preserved. Please try again."}
                           </p>
                         </div>
-                      </div>
-
-                      <div className="pt-3 border-t border-[#FCA5A5]/60 flex flex-col sm:flex-row items-center justify-between gap-3">
-                        <span className="text-[#7F1D1D] font-semibold">Ready to send via your email app:</span>
-                        <a
-                          href={`mailto:info@netcradus.com?subject=${encodeURIComponent(`Consultation Request: ${formData.first_name} ${formData.last_name}`)}&body=${encodeURIComponent(`Name: ${formData.first_name} ${formData.last_name}\nEmail: ${formData.user_email}\nPhone: ${formData.user_phone || "N/A"}\nCompany: ${formData.user_company || "N/A"}\nService: ${selectedService || "None"}\n\nMessage:\n${formData.message}`)}`}
-                          className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#FF6B00] to-[#E8400A] text-white font-bold text-xs shadow-md hover:brightness-110 transition-all text-center no-underline"
-                        >
-                          Send via Email App ✉️
-                        </a>
                       </div>
                     </div>
                   )}

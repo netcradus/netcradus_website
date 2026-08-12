@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Shield, Zap, RefreshCcw, Activity, Target, Search, CheckCircle, GitMerge, Server, Building2, ShieldCheck, Globe, Lock } from 'lucide-react';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { SEO_META } from '../data/seoMeta';
+import { AcisHeroSection, OrbitDiagram, PlatformStrip } from '../components/AcisHero';
 
 // Custom hook for fade-in effect on scroll
 
@@ -884,7 +885,9 @@ export default function ACISPage() {
 
   return (
     <div className="font-sans text-text-primary bg-surface overflow-x-hidden selection:bg-accent/30">
-      <HeroSection />
+      <AcisHeroSection />
+      <OrbitDiagram />
+      <PlatformStrip />
       <ClosedLoopSection />
       <PlatformSection />
       <ArchitectureLayersSection />

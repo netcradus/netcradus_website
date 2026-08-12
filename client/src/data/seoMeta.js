@@ -447,6 +447,24 @@ export const SEO_META = {
     robots: PUBLIC_INDEX_ROBOTS,
     type: "website",
   },
+  whyNetcradus: {
+    path: "/why-netcradus",
+    title: "Why Netcradus | Autonomous Cybersecurity & AI Threat Defense",
+    description:
+      "Discover why global enterprises choose Netcradus for 24/7 SOC monitoring, sub-15 minute SLA incident response, zero-trust security, and AI-powered threat defense.",
+    keywords: [
+      "Why Netcradus",
+      "cybersecurity advantages",
+      "autonomous cyber defense",
+      "24/7 SOC monitoring",
+      "managed security service provider",
+      "zero trust architecture",
+      "sub 15 minute SLA",
+      "AI SIEM platform",
+    ],
+    robots: PUBLIC_INDEX_ROBOTS,
+    type: "website",
+  },
   blogFallback: {
     path: "/blog",
     title: "Cybersecurity Article | Netcradus",
