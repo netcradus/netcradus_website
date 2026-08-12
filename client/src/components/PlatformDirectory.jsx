@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Shield, Activity, Zap, Bug, Key, AlertTriangle, Cpu, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const NETCRADUS_PLATFORMS = [
@@ -6,6 +7,7 @@ export const NETCRADUS_PLATFORMS = [
     id: 'xdr',
     name: 'NetCradus XDR',
     icon: Shield,
+    path: '/platform/endpoint-detection',
     tagline: 'Endpoint + Threat Hunting + Detection',
     description: 'Unified EPP, EDR, and AI threat hunting across enterprise endpoints and cloud workloads.',
     bullets: ['Endpoint Protection (EPP)', 'Threat Hunting', 'Real-Time Incident Detection'],
@@ -17,6 +19,7 @@ export const NETCRADUS_PLATFORMS = [
     id: 'siem',
     name: 'NetCradus SIEM',
     icon: Activity,
+    path: '/acis',
     tagline: 'Log Management + Detection + Correlation',
     description: 'High-speed log ingestion, automated event correlation, and AI-driven SIEM analytics.',
     bullets: ['Log Management', 'AI Threat Detection', 'Event Correlation Engine'],
@@ -28,6 +31,7 @@ export const NETCRADUS_PLATFORMS = [
     id: 'soar',
     name: 'NetCradus SOAR',
     icon: Zap,
+    path: '/acis',
     tagline: 'Automated Response + Playbooks',
     description: 'Machine-speed incident response, automated playbooks, and SOC workflow orchestration.',
     bullets: ['Automated Response', 'Orchestration Playbooks', 'Machine-Speed Containment'],
@@ -39,6 +43,7 @@ export const NETCRADUS_PLATFORMS = [
     id: 'cti',
     name: 'NetCradus CTI',
     icon: Bug,
+    path: '/platform',
     tagline: 'Threat Intelligence',
     description: 'Adversary tradecraft profiling, IOC extraction, and global threat intelligence feeds.',
     bullets: ['Threat Intelligence Feeds', 'Malware Reverse Engineering', 'MITRE ATT&CK Mapping'],
@@ -50,6 +55,7 @@ export const NETCRADUS_PLATFORMS = [
     id: 'pam',
     name: 'NetCradus PAM',
     icon: Key,
+    path: '/platform',
     tagline: 'Privileged Access Management',
     description: 'Identity verification, PAM vault security, and continuous zero-trust access enforcement.',
     bullets: ['Privileged Access Vault', 'Zero Trust Architecture', 'Session Anomaly Detection'],
@@ -61,23 +67,25 @@ export const NETCRADUS_PLATFORMS = [
     id: 'grc',
     name: 'NetCradus GRC',
     icon: AlertTriangle,
+    path: '/platform',
     tagline: 'Risk + Compliance',
-    description: 'Attack surface management, continuous vulnerability scanning, and ISO/SOC 2 compliance tracking.',
-    bullets: ['Vulnerability Management', 'Cyber Risk Prioritization', 'Compliance Audit Tracking'],
-    color: '#F97316',
-    bgBadge: 'rgba(249, 115, 22, 0.12)',
-    border: 'rgba(249, 115, 22, 0.3)'
+    description: 'Continuous risk scoring, vulnerability audit frameworks, and GRC compliance automation.',
+    bullets: ['Risk Scoring Engine', 'Vulnerability Auditing', 'Compliance Frameworks'],
+    color: '#F59E0B',
+    bgBadge: 'rgba(245, 158, 11, 0.12)',
+    border: 'rgba(245, 158, 11, 0.3)'
   },
   {
-    id: 'ai-sec',
+    id: 'aisecurity',
     name: 'NetCradus AI Security',
     icon: Cpu,
+    path: '/services/ai-security',
     tagline: 'AI/ML Security + AI Threat Detection',
-    description: 'Autonomous GBDT and ONNX ML models for next-generation AI threat detection & defense.',
-    bullets: ['AI/ML Security Shield', 'AI Threat Detection Engine', 'Autonomous ACIS Core'],
-    color: '#FF6B00',
-    bgBadge: 'rgba(255, 107, 0, 0.12)',
-    border: 'rgba(255, 107, 0, 0.3)'
+    description: 'Protect enterprise AI pipelines, LLM prompts, and machine learning model vectors.',
+    bullets: ['LLM Threat Protection', 'AI Model Defense', 'ML Data Poisoning Detection'],
+    color: '#8B5CF6',
+    bgBadge: 'rgba(139, 92, 246, 0.12)',
+    border: 'rgba(139, 92, 246, 0.3)'
   }
 ];
 
@@ -110,10 +118,10 @@ export default function PlatformDirectory({ onSelectPlatform }) {
             {NETCRADUS_PLATFORMS.map((plat) => {
               const IconComp = plat.icon;
               return (
-                <div
+                <Link
                   key={plat.id}
-                  onClick={() => onSelectPlatform && onSelectPlatform(plat.id)}
-                  className="group relative bg-[#18112b] border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:bg-[#1e1537] hover:border-[#FF6B00]/50 shadow-md cursor-pointer flex flex-col justify-between"
+                  to={plat.path}
+                  className="group relative bg-[#18112b] border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:bg-[#1e1537] hover:border-[#FF6B00]/50 shadow-md cursor-pointer flex flex-col justify-between no-underline"
                   style={{
                     borderColor: plat.border
                   }}
@@ -163,7 +171,7 @@ export default function PlatformDirectory({ onSelectPlatform }) {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

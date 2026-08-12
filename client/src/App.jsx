@@ -173,6 +173,7 @@ import AcisEnterprisePricing from "./pages/AcisEnterprisePricing";
 import AdminInquiries from "./pages/AdminInquiries";
 
 import Platform from "./components/Platform";
+import EndpointDetectionPage from "./pages/EndpointDetectionPage";
 import { useReveal } from "./hooks/useReveal";
 
 function AppLayout() {
@@ -247,6 +248,8 @@ function App() {
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
           <Route path="platform" element={<Platform />} />
+          <Route path="platform/endpoint-detection" element={<EndpointDetectionPage />} />
+          <Route path="endpoint-detection" element={<EndpointDetectionPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="services/cybersecurity" element={<CyberSecurityPage />} />
           <Route path="services/managed-soc" element={<ManagedSOCPage />} />
@@ -259,7 +262,6 @@ function App() {
           <Route path="acis" element={<ACISPage />} />
           <Route path="crm" element={<CRMPage />} />
           <Route path="netxdr" element={<NetXDRPage />} />
-          <Route path="xdr" element={<NetXDRPage />} />
           <Route path="netcrad" element={<NetCradPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="why-netcradus" element={<WhyNetcradusPage />} />

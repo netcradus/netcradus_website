@@ -19,7 +19,7 @@ export const PLATFORM_ITEMS = [
     name: "NetCradus XDR",
     subtitle: "Endpoint + Threat Hunting + Detection",
     description: "AI-powered unified endpoint, network and real-time threat hunting detection.",
-    path: "/netxdr",
+    path: "/platform/endpoint-detection",
     icon: ShieldCheck,
   },
   {
