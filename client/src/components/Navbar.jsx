@@ -9,7 +9,7 @@ import './Navbar.css';
 
 const NAVBAR_COUNTRIES = [
   { id: "in", name: "India", flag: "/flags/in.svg" },
-  { id: "gb", name: "United Kingdom", flag: "/flags/gb.svg" },
+  { id: "gb", name: "United Kingdom", flag: "/flags/gb.svg", url: "https://www.netcradus.co.uk/" },
   { id: "us", name: "United States", flag: "/flags/us.svg" },
   { id: "au", name: "Australia", flag: "/flags/au.svg" },
   { id: "ae", name: "Dubai (UAE)", flag: "/flags/ae.svg" },
@@ -27,6 +27,14 @@ function NavbarCountryDropdown() {
   const filteredCountries = NAVBAR_COUNTRIES.filter((c) =>
     c.name.toLowerCase().includes(searchQuery.toLowerCase().trim())
   );
+
+  const handleSelectCountry = (country) => {
+    setSelectedCountry(country);
+    setIsOpen(false);
+    if (country.url) {
+      window.location.href = country.url;
+    }
+  };
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -75,8 +83,7 @@ function NavbarCountryDropdown() {
     } else if (e.key === "Enter") {
       e.preventDefault();
       if (filteredCountries[highlightedIndex]) {
-        setSelectedCountry(filteredCountries[highlightedIndex]);
-        setIsOpen(false);
+        handleSelectCountry(filteredCountries[highlightedIndex]);
       }
     }
   };
@@ -129,10 +136,7 @@ function NavbarCountryDropdown() {
                     key={country.id}
                     role="option"
                     aria-selected={isSelected}
-                    onClick={() => {
-                      setSelectedCountry(country);
-                      setIsOpen(false);
-                    }}
+                    onClick={() => handleSelectCountry(country)}
                     onMouseEnter={() => setHighlightedIndex(index)}
                     className={`nav-country-option ${
                       isSelected ? "selected" : ""
