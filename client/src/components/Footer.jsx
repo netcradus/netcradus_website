@@ -130,7 +130,7 @@ export default function Footer() {
         <div className="space-y-6 lg:col-span-4 flex flex-col items-center sm:items-start">
           <div className="flex items-center gap-3">
             <img
-              src="/Netcradus logo01.png"
+              src="/image.png"
               alt="Netcradus logo"
               className="h-18 w-auto object-contain mx-auto sm:mx-0"
             />

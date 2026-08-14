@@ -107,9 +107,8 @@ function NavbarCountryDropdown() {
         </span>
         <ChevronDown
           size={14}
-          className={`transition-transform duration-250 shrink-0 ${
-            isOpen ? "rotate-180 text-[#FF6A00]" : "text-white/70"
-          }`}
+          className={`transition-transform duration-250 shrink-0 ${isOpen ? "rotate-180 text-[#FF6A00]" : "text-white/70"
+            }`}
         />
       </button>
 
@@ -138,9 +137,8 @@ function NavbarCountryDropdown() {
                     aria-selected={isSelected}
                     onClick={() => handleSelectCountry(country)}
                     onMouseEnter={() => setHighlightedIndex(index)}
-                    className={`nav-country-option ${
-                      isSelected ? "selected" : ""
-                    } ${isHighlighted ? "highlighted" : ""}`}
+                    className={`nav-country-option ${isSelected ? "selected" : ""
+                      } ${isHighlighted ? "highlighted" : ""}`}
                   >
                     <span className="flex items-center" style={{ gap: '10px' }}>
                       <img
@@ -271,9 +269,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav ref={navRef} className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
-      <div className="container max-w-screen-2xl mx-auto px-3 sm:px-4 lg:px-4 xl:px-4 flex lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between h-20 lg:h-24">
-        
+    <header ref={navRef} className={`navbar ${isScrolled ? 'scrolled glass' : ''}`}>
+      <div className="navbar-container">
+
         {/* Mobile Left: Hamburger Toggle */}
         <button
           className="lg:hidden w-10 h-10 flex items-center justify-center text-white bg-transparent border-none cursor-pointer p-0 shrink-0 z-10"
@@ -286,14 +284,14 @@ const Navbar = () => {
         {/* Brand Logo (Shifted to Left Edge & 30%+ Size Increase) */}
         <Link to="/" className="flex items-center justify-start gap-2 group ml-0 mr-auto lg:mr-0 shrink-0 py-1 pl-0">
           <img
-            src="/Netcradus logo01.png"
+            src="/image.png"
             alt="Netcradus"
             className="logo-image h-14 sm:h-16 md:h-20 lg:h-[88px] xl:h-[96px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="nav-links desktop-only hidden lg:flex justify-center items-center gap-8 xl:gap-10">
+        <nav className="desktop-nav">
           {/* Platform Mega Menu Trigger */}
           <div
             className={`nav-item-platform relative ${activeMenu === 'platform' ? 'open' : ''}`}
@@ -310,22 +308,20 @@ const Navbar = () => {
               }}
               aria-expanded={activeMenu === 'platform'}
               aria-haspopup="true"
-              className={`nav-link-platform nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
-                isActiveLink('/platform') || activeMenu === 'platform'
+              className={`nav-link-platform nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${isActiveLink('/platform') || activeMenu === 'platform'
                   ? 'active text-[#FF6B00]'
                   : 'text-[#F5F5F5] hover:text-[#FF6B00]'
-              }`}
+                }`}
             >
               Platform
               <ChevronDown
                 size={15}
-                className={`transition-transform duration-300 ${
-                  activeMenu === 'platform'
+                className={`transition-transform duration-300 ${activeMenu === 'platform'
                     ? 'rotate-180 text-[#FF6B00]'
                     : isActiveLink('/platform')
-                    ? 'text-[#FF6B00]'
-                    : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
-                }`}
+                      ? 'text-[#FF6B00]'
+                      : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                  }`}
               />
             </button>
 
@@ -353,22 +349,20 @@ const Navbar = () => {
               }}
               aria-expanded={activeMenu === 'solutions'}
               aria-haspopup="true"
-              className={`nav-link-solutions nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
-                isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)) || activeMenu === 'solutions'
+              className={`nav-link-solutions nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)) || activeMenu === 'solutions'
                   ? 'active text-[#FF6B00]'
                   : 'text-[#F5F5F5] hover:text-[#FF6B00]'
-              }`}
+                }`}
             >
               Solutions
               <ChevronDown
                 size={15}
-                className={`transition-transform duration-300 ${
-                  activeMenu === 'solutions'
+                className={`transition-transform duration-300 ${activeMenu === 'solutions'
                     ? 'rotate-180 text-[#FF6B00]'
                     : (isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)))
-                    ? 'text-[#FF6B00]'
-                    : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
-                }`}
+                      ? 'text-[#FF6B00]'
+                      : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                  }`}
               />
             </button>
 
@@ -396,22 +390,20 @@ const Navbar = () => {
               }}
               aria-expanded={activeMenu === 'products'}
               aria-haspopup="true"
-              className={`nav-link-products nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${
-                PRODUCTS.some((p) => isActiveLink(p.path)) || activeMenu === 'products'
+              className={`nav-link-products nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${PRODUCTS.some((p) => isActiveLink(p.path)) || activeMenu === 'products'
                   ? 'active text-[#FF6B00]'
                   : 'text-[#F5F5F5] hover:text-[#FF6B00]'
-              }`}
+                }`}
             >
               Products
               <ChevronDown
                 size={15}
-                className={`transition-transform duration-300 ${
-                  activeMenu === 'products'
+                className={`transition-transform duration-300 ${activeMenu === 'products'
                     ? 'rotate-180 text-[#FF6B00]'
                     : PRODUCTS.some((p) => isActiveLink(p.path))
-                    ? 'text-[#FF6B00]'
-                    : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
-                }`}
+                      ? 'text-[#FF6B00]'
+                      : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                  }`}
               />
             </button>
 
@@ -425,29 +417,27 @@ const Navbar = () => {
 
           <Link
             to="/why-netcradus"
-            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${
-              isActiveLink('/why-netcradus')
+            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${isActiveLink('/why-netcradus')
                 ? 'active text-[#FF6B00]'
                 : 'text-[#F5F5F5] hover:text-[#FF6B00]'
-            }`}
+              }`}
           >
             Why Netcradus
           </Link>
 
           <Link
             to="/contact"
-            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${
-              isActiveLink('/contact')
+            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${isActiveLink('/contact')
                 ? 'active text-[#FF6B00]'
                 : 'text-[#F5F5F5] hover:text-[#FF6B00]'
-            }`}
+              }`}
           >
             Contact
           </Link>
-        </div>
+        </nav>
 
         {/* CTA Buttons & Mobile Phone Call Icon */}
-        <div className="flex justify-end items-center gap-3 sm:gap-4 shrink-0 z-10">
+        <div className="navbar-actions">
           {/* Mobile Right: Circular Phone Call Icon Button */}
           <a
             href="tel:1800121008800"
@@ -467,8 +457,8 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Talk to an Expert CTA Button */}
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="hidden lg:inline-flex btn-primary nav-talk-expert-btn px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full no-underline shrink-0"
           >
             Talk to an Expert
@@ -602,7 +592,7 @@ const Navbar = () => {
 
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 
