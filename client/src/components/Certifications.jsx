@@ -29,7 +29,7 @@
 //   return (
 //     <div className="group relative flex h-full flex-col rounded-[26px] border border-border bg-[linear-gradient(180deg,rgba(232,64,10,0.06),transparent_65%),var(--color-surface)] p-5 shadow-[0_16px_42px_rgba(232,64,10,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/30 hover:shadow-[0_0_36px_rgba(232,64,10,0.12)]">
 //       <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      
+
 //       <div className="flex min-h-[140px] items-center justify-center rounded-[22px] border border-white/30 bg-white/70 p-5 dark:border-white/10 dark:bg-white/5">
 //         <img
 //           src={logo.src}
@@ -108,9 +108,15 @@ import certin from "../assets/certin-Photoroom.png";
 import gdpr from "../assets/gdpr.jpeg";
 import soc2 from "../assets/soc2.png";
 import ico from "../assets/ico.png";
+import ISO_IEC from "../assets/ISO_IEC.png"
 import nist from "../assets/nist.jpg";
 
 const certifications = [
+  {
+    src: ISO_IEC,
+    alt: "ISO/IEC 42001:2023",
+    note: "Artificial Intelligence Management System",
+  },
   {
     src: isoLogo,
     alt: "ISO/IEC 27001:2022",
