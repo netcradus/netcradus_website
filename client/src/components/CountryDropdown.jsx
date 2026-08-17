@@ -106,9 +106,9 @@ export default function CountryDropdown({
       onKeyDown={handleKeyDown}
     >
       {label && (
-        <label className="block text-xs font-semibold text-[#A1A1AA] mb-1.5 tracking-wide">
+        <label className="block text-xs font-semibold text-[#6B7280] mb-1.5 tracking-wide uppercase">
           {label}
-          {required && <span className="text-[#FF6A00] ml-1">*</span>}
+          {required && <span className="text-[#E8400A] ml-1">*</span>}
         </label>
       )}
 
@@ -118,13 +118,13 @@ export default function CountryDropdown({
         onClick={() => setIsOpen((prev) => !prev)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        className={`w-full h-12 px-4 rounded-[12px] bg-[#0B0F17] border ${
+        className={`w-full h-[52px] px-4 rounded-[14px] bg-[#FFFFFF] border ${
           error
             ? "border-red-500/80"
             : isOpen
-            ? "border-[#FF6A00] shadow-[0_0_12px_rgba(255,106,0,0.25)]"
-            : "border-white/10 hover:border-white/20"
-        } text-white flex items-center justify-between transition-all duration-250 ease-out outline-none cursor-pointer`}
+            ? "border-[#E8400A] shadow-[0_0_0_3px_rgba(232,64,10,0.12)]"
+            : "border-[#E7DED5] hover:border-[#D1C3B4]"
+        } text-[#1F1F1F] flex items-center justify-between transition-all duration-250 ease-out outline-none cursor-pointer`}
       >
         <span className="flex items-center gap-2.5 truncate text-sm">
           {selectedCountry ? (
@@ -134,15 +134,15 @@ export default function CountryDropdown({
                 alt={selectedCountry.name}
                 className="nav-country-flag"
               />
-              <span className="text-white font-medium">{selectedCountry.name}</span>
+              <span className="text-[#1F1F1F] font-medium">{selectedCountry.name}</span>
             </>
           ) : (
-            <span className="text-[#A1A1AA]">{placeholder}</span>
+            <span className="text-[#6B7280]">{placeholder}</span>
           )}
         </span>
         <ChevronDown
-          className={`h-4 w-4 text-[#A1A1AA] transition-transform duration-250 ease-out shrink-0 ${
-            isOpen ? "rotate-180 text-[#FF6A00]" : ""
+          className={`h-4 w-4 text-[#6B7280] transition-transform duration-250 ease-out shrink-0 ${
+            isOpen ? "rotate-180 text-[#E8400A]" : ""
           }`}
         />
       </button>
@@ -157,18 +157,18 @@ export default function CountryDropdown({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.98 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 rounded-[12px] bg-[#0B0F17] border border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.7)] p-2.5 overflow-hidden"
+            className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 rounded-[12px] bg-[#FFFFFF] border border-[#E7DED5] shadow-[0_16px_36px_rgba(0,0,0,0.06)] p-2.5 overflow-hidden"
           >
             {/* Search Input Field */}
             <div className="relative mb-2">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#A1A1AA]" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
               <input
                 ref={searchInputRef}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={searchPlaceholder}
-                className="w-full h-10 pl-9 pr-3.5 rounded-[8px] bg-[#161B26] border border-white/10 text-xs text-white placeholder-[#A1A1AA] outline-none focus:border-[#FF6A00] focus:ring-1 focus:ring-[#FF6A00] transition-all"
+                className="w-full h-10 pl-9 pr-3.5 rounded-[8px] bg-[#F8F7F5] border border-[#E7DED5] text-xs text-[#1F1F1F] placeholder-[#6B7280] outline-none focus:border-[#E8400A] focus:ring-1 focus:ring-[#E8400A] transition-all"
               />
             </div>
 
@@ -179,7 +179,7 @@ export default function CountryDropdown({
               className="max-h-56 overflow-y-auto space-y-1 pr-1 custom-country-scrollbar"
               style={{
                 scrollbarWidth: "thin",
-                scrollbarColor: "rgba(255,106,0,0.4) transparent",
+                scrollbarColor: "rgba(232,64,10,0.4) transparent",
               }}
             >
               {filteredCountries.length > 0 ? (
@@ -196,10 +196,12 @@ export default function CountryDropdown({
                       onClick={() => selectCountry(country)}
                       onMouseEnter={() => setHighlightedIndex(index)}
                       className={`h-10 px-3 rounded-[8px] flex items-center justify-between cursor-pointer text-xs transition-colors duration-150 ${
-                        isHighlighted || isSelected
-                          ? "bg-[#1A1A1A] text-white"
-                          : "text-white/90 hover:bg-[#1A1A1A]"
-                      } ${isSelected ? "font-semibold" : ""}`}
+                        isSelected
+                          ? "bg-[#FFF4EA]"
+                          : isHighlighted
+                          ? "bg-[#FFF8F2]"
+                          : "bg-white"
+                      } text-[#1F1F1F] ${isSelected ? "font-semibold" : ""}`}
                     >
                       <span className="flex items-center truncate" style={{ gap: '10px' }}>
                         <img
@@ -207,18 +209,18 @@ export default function CountryDropdown({
                           alt={country.name}
                           className="nav-country-flag"
                         />
-                        <span className={isSelected ? "text-white" : "text-white/90"}>
+                        <span className="text-[#1F1F1F]">
                           {country.name}
                         </span>
                       </span>
                       {isSelected && (
-                        <Check className="h-4 w-4 text-[#FF6A00] shrink-0" />
+                        <Check className="h-4 w-4 text-[#E8400A] shrink-0" />
                       )}
                     </li>
                   );
                 })
               ) : (
-                <li className="py-4 text-center text-xs text-[#A1A1AA]">
+                <li className="py-4 text-center text-xs text-[#6B7280]">
                   No country or region found
                 </li>
               )}

@@ -30,8 +30,6 @@ import {
   MessageSquare,
   Clock,
   Timer,
-  Copy,
-  Check,
   Navigation,
   ChevronDown,
   ArrowUpRight,
@@ -319,33 +317,6 @@ function AmbientBackground() {
       <div className="bg-grain" />
       <div className="bg-vignette" />
     </div>
-  );
-}
-
-function CopyButton({ value }) {
-  const [copied, setCopied] = useState(false);
-
-  async function handleCopy(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
-    } catch (err) {
-      // ignore
-    }
-  }
-
-  return (
-    <button
-      type="button"
-      onClick={handleCopy}
-      aria-label={copied ? "Copied" : "Copy to clipboard"}
-      className="copy-btn"
-    >
-      {copied ? <Check size={14} className="text-nc-success" /> : <Copy size={14} />}
-    </button>
   );
 }
 
@@ -926,7 +897,6 @@ const Contact = () => {
                       </a>
                       <p className="get-in-touch-value-desc">24×7 Emergency Incident Response</p>
                     </div>
-                    <CopyButton value="+91 72909 09571" />
                   </div>
 
                   {/* Email Us (3 professional contact emails) */}
@@ -938,26 +908,23 @@ const Contact = () => {
                       <p className="get-in-touch-label" style={{ marginBottom: 0 }}>Email Us</p>
                     </div>
                     <div className="w-full pl-11 space-y-4">
-                      <div className="flex items-center justify-between group">
-                        <div>
-                          <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>General Enquiries</p>
-                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>info@netcradus.com</p>
-                        </div>
-                        <CopyButton value="info@netcradus.com " />
+                      <div>
+                        <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>General Enquiries</p>
+                        <a href="mailto:info@netcradus.com" className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>
+                          info@netcradus.com
+                        </a>
                       </div>
-                      <div className="flex items-center justify-between group">
-                        <div>
-                          <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>Emergency Support (24×7)</p>
-                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>support@netcradus.com</p>
-                        </div>
-                        <CopyButton value="support@netcradus.com" />
+                      <div>
+                        <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>Emergency Support (24×7)</p>
+                        <a href="mailto:support@netcradus.com" className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>
+                          support@netcradus.com
+                        </a>
                       </div>
-                      <div className="flex items-center justify-between group">
-                        <div>
-                          <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>Sales & Business Enquiries</p>
-                          <p className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>sales@netcradus.com</p>
-                        </div>
-                        <CopyButton value="sales@netcradus.com" />
+                      <div>
+                        <p className="get-in-touch-label" style={{ fontSize: "0.75rem", opacity: 0.7 }}>Sales & Business Enquiries</p>
+                        <a href="mailto:sales@netcradus.com" className="get-in-touch-value hover:text-[#E8400A] transition-colors" style={{ fontSize: "0.95rem" }}>
+                          sales@netcradus.com
+                        </a>
                       </div>
                     </div>
                   </div>

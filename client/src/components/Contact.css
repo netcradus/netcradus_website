@@ -1092,25 +1092,20 @@
   margin-bottom: 0;
 }
 
+a.get-in-touch-value {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+a.get-in-touch-value:hover {
+  text-decoration: none;
+}
+
 .get-in-touch-value-desc {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.5);
   margin-top: 2px;
-}
-
-.copy-btn {
-  border: none;
-  background: transparent;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  color: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.copy-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
 }
 
 .get-in-touch-secure-badge {
