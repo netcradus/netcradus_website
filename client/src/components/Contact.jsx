@@ -433,12 +433,10 @@ const Contact = () => {
   const [selectedOptionId, setSelectedOptionId] = useState(null);
   const [selectedService, setSelectedService] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
-  const [file, setFile] = useState(null);
   const [referenceId, setReferenceId] = useState("");
   const [errors, setErrors] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [faqOpenIndex, setFaqOpenIndex] = useState(0);
-  const fileInputRef = useRef(null);
 
   const optionToService = {
     sales: "vapt",
@@ -484,9 +482,7 @@ const Contact = () => {
       payload.append("selectedCountry", selectedCountry || "");
       payload.append("message", formData.message.trim());
 
-      if (file) {
-        payload.append("attachment", file);
-      }
+
 
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -509,7 +505,6 @@ const Contact = () => {
         setSelectedService("");
         setSelectedCountry("");
         setSelectedOptionId(null);
-        setFile(null);
         setErrors({});
       } else {
         const errorText = result.error || result.message || "Failed to submit request. Please check your details and try again.";
@@ -529,9 +524,7 @@ const Contact = () => {
     document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function handleFileChange(e) {
-    setFile(e.target.files?.[0] ?? null);
-  }
+
 
   function resetForm() {
     setFormData({
@@ -544,16 +537,11 @@ const Contact = () => {
     });
     setSelectedService("");
     setSelectedOptionId(null);
-    setFile(null);
     setStatus("idle");
     setErrors({});
   }
 
-  function formatBytes(bytes) {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-  }
+
 
   return (
     <div className="contact-section-wrapper">
@@ -616,7 +604,7 @@ const Contact = () => {
             className="hero-image-container"
           >
             <img
-              src="/img/contact background.png"
+              src="/img/india_hero_bg.jpg"
               alt="Cybersecurity Shield Visual"
               className="hero-mobile-only-image"
             />
@@ -842,45 +830,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* File Uploader */}
-                  <div className="attachment-container">
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      onChange={handleFileChange}
-                      className="hidden"
-                      id="attachment"
-                    />
-                    {file ? (
-                      <div className="file-attached-info">
-                        <div className="flex items-center gap-2 min-w-0" style={{ display: 'flex', gap: '8px' }}>
-                          <FileText size={16} className="text-[#C2410C] shrink-0" strokeWidth={1.75} />
-                          <div className="min-w-0">
-                            <p className="truncate text-sm text-nc-text" style={{ margin: 0 }}>{file.name}</p>
-                            <p className="font-mono text-[11px] text-nc-muted" style={{ margin: 0 }}>{formatBytes(file.size)}</p>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => setFile(null)}
-                          aria-label="Remove attachment"
-                          className="copy-btn"
-                          style={{ opacity: 1 }}
-                        >
-                          <X size={16} className="text-[#6B7280] hover:text-[#DC2626]" />
-                        </button>
-                      </div>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => fileInputRef.current?.click()}
-                        className="file-btn"
-                      >
-                        <UploadCloud size={16} />
-                        Attach a file (optional)
-                      </button>
-                    )}
-                  </div>
+
 
                   {/* Submit Button */}
                   <div className="submit-btn-wrapper">

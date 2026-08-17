@@ -10,9 +10,7 @@ import './Navbar.css';
 const NAVBAR_COUNTRIES = [
   { id: "in", name: "India", flag: "/flags/in.svg" },
   { id: "gb", name: "United Kingdom", flag: "/flags/gb.svg", url: "https://www.netcradus.co.uk/" },
-  { id: "us", name: "United States", flag: "/flags/us.svg" },
-  { id: "au", name: "Australia", flag: "/flags/au.svg" },
-  { id: "ae", name: "Dubai (UAE)", flag: "/flags/ae.svg" },
+  { id: "au", name: "Australia", flag: "/flags/au.svg", url: "https://aus.netcradus.com/" },
 ];
 
 function NavbarCountryDropdown() {
@@ -281,12 +279,12 @@ const Navbar = () => {
           {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
 
-        {/* Brand Logo (Shifted to Left Edge & 30%+ Size Increase) */}
-        <Link to="/" className="flex items-center justify-start gap-2 group ml-0 mr-auto lg:mr-0 shrink-0 py-1 pl-0">
+        {/* Brand Logo */}
+        <Link to="/" className="flex items-center justify-start group ml-0 mr-auto lg:mr-0 shrink-0 py-1 pl-0">
           <img
             src="/image.png"
             alt="Netcradus"
-            className="logo-image h-14 sm:h-16 md:h-20 lg:h-[88px] xl:h-[96px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            className="logo-image transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
 
@@ -308,19 +306,19 @@ const Navbar = () => {
               }}
               aria-expanded={activeMenu === 'platform'}
               aria-haspopup="true"
-              className={`nav-link-platform nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${isActiveLink('/platform') || activeMenu === 'platform'
-                  ? 'active text-[#FF6B00]'
-                  : 'text-[#F5F5F5] hover:text-[#FF6B00]'
+              className={`nav-link cursor-pointer bg-transparent border-none p-0 outline-none ${isActiveLink('/platform') || activeMenu === 'platform'
+                  ? 'active'
+                  : ''
                 }`}
             >
               Platform
               <ChevronDown
-                size={15}
+                size={12}
                 className={`transition-transform duration-300 ${activeMenu === 'platform'
                     ? 'rotate-180 text-[#FF6B00]'
                     : isActiveLink('/platform')
                       ? 'text-[#FF6B00]'
-                      : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                      : 'text-white/70'
                   }`}
               />
             </button>
@@ -349,19 +347,19 @@ const Navbar = () => {
               }}
               aria-expanded={activeMenu === 'solutions'}
               aria-haspopup="true"
-              className={`nav-link-solutions nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)) || activeMenu === 'solutions'
-                  ? 'active text-[#FF6B00]'
-                  : 'text-[#F5F5F5] hover:text-[#FF6B00]'
+              className={`nav-link cursor-pointer bg-transparent border-none p-0 outline-none ${isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)) || activeMenu === 'solutions'
+                  ? 'active'
+                  : ''
                 }`}
             >
               Solutions
               <ChevronDown
-                size={15}
+                size={12}
                 className={`transition-transform duration-300 ${activeMenu === 'solutions'
                     ? 'rotate-180 text-[#FF6B00]'
                     : (isActiveLink('/services') || SOLUTIONS.some((s) => isActiveLink(s.path)))
                       ? 'text-[#FF6B00]'
-                      : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                      : 'text-white/70'
                   }`}
               />
             </button>
@@ -390,19 +388,19 @@ const Navbar = () => {
               }}
               aria-expanded={activeMenu === 'products'}
               aria-haspopup="true"
-              className={`nav-link-products nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0 outline-none ${PRODUCTS.some((p) => isActiveLink(p.path)) || activeMenu === 'products'
-                  ? 'active text-[#FF6B00]'
-                  : 'text-[#F5F5F5] hover:text-[#FF6B00]'
+              className={`nav-link cursor-pointer bg-transparent border-none p-0 outline-none ${PRODUCTS.some((p) => isActiveLink(p.path)) || activeMenu === 'products'
+                  ? 'active'
+                  : ''
                 }`}
             >
               Products
               <ChevronDown
-                size={15}
+                size={12}
                 className={`transition-transform duration-300 ${activeMenu === 'products'
                     ? 'rotate-180 text-[#FF6B00]'
                     : PRODUCTS.some((p) => isActiveLink(p.path))
                       ? 'text-[#FF6B00]'
-                      : 'text-[#F5F5F5] group-hover:text-[#FF6B00]'
+                      : 'text-white/70'
                   }`}
               />
             </button>
@@ -417,20 +415,14 @@ const Navbar = () => {
 
           <Link
             to="/why-netcradus"
-            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${isActiveLink('/why-netcradus')
-                ? 'active text-[#FF6B00]'
-                : 'text-[#F5F5F5] hover:text-[#FF6B00]'
-              }`}
+            className={`nav-link ${isActiveLink('/why-netcradus') ? 'active' : ''}`}
           >
             Why Netcradus
           </Link>
 
           <Link
             to="/contact"
-            className={`nav-link text-[15px] font-semibold tracking-wide transition-all duration-300 ${isActiveLink('/contact')
-                ? 'active text-[#FF6B00]'
-                : 'text-[#F5F5F5] hover:text-[#FF6B00]'
-              }`}
+            className={`nav-link ${isActiveLink('/contact') ? 'active' : ''}`}
           >
             Contact
           </Link>
@@ -450,16 +442,16 @@ const Navbar = () => {
           {/* Desktop Toll-Free Number CTA Button */}
           <a
             href="tel:1800121008800"
-            className="hidden lg:inline-flex items-center gap-2 px-3.5 py-2 md:px-4 md:py-2.5 lg:px-5 lg:py-3 text-[13px] md:text-[14px] lg:text-[15px] font-semibold text-[#111111] bg-white border border-[#FF6A00] rounded-full transition-all duration-300 hover:bg-[#FF6A00] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(255,106,0,0.35)] no-underline whitespace-nowrap group shrink-0"
+            className="hidden lg:inline-flex nav-phone-btn shrink-0 group"
           >
-            <Phone size={15} className="shrink-0 text-[#FF6A00] group-hover:text-white transition-colors duration-300" />
+            <Phone size={15} className="shrink-0 phone-icon group-hover:text-white transition-colors duration-300" />
             <span>1800 121 008800</span>
           </a>
 
           {/* Desktop Talk to an Expert CTA Button */}
           <Link
             to="/contact"
-            className="hidden lg:inline-flex btn-primary nav-talk-expert-btn px-8 py-3.5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full no-underline shrink-0"
+            className="hidden lg:inline-flex nav-talk-expert-btn shrink-0"
           >
             Talk to an Expert
           </Link>

@@ -35,7 +35,7 @@ export const PLATFORM_ITEMS = [
     name: "NetCradus SOAR",
     subtitle: "Automated Response + Playbooks",
     description: "Autonomous incident containment and agentic playbook orchestration.",
-    path: "/acis",
+    path: "/platform/soar",
     icon: Zap,
   },
   {
@@ -137,7 +137,7 @@ const PlatformMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
             </div>
 
             {/* 7 Products Grid */}
-            <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-[42px] min-w-0">
               {PLATFORM_ITEMS.map((item) => {
                 const ItemIcon = item.icon;
                 return (
@@ -145,19 +145,19 @@ const PlatformMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
                     key={item.id}
                     to={item.path}
                     onClick={onClose}
-                    className="group flex items-start gap-3.5 p-3.5 rounded-xl border border-transparent hover:border-orange-200 hover:bg-orange-50/60 hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(255,107,0,0.05)] transition-all duration-300 no-underline cursor-pointer"
+                    className="group flex items-start gap-3.5 p-3.5 rounded-xl border border-transparent hover:border-orange-200 hover:bg-orange-50/60 hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(255,107,0,0.05)] transition-all duration-300 no-underline cursor-pointer min-w-0 break-words"
                   >
                     <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-xl bg-orange-100/70 text-[#FF6B00] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#FF6B00] group-hover:text-white">
                       <ItemIcon size={18} />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-[#111827] transition-colors duration-300 group-hover:text-[#FF6B00]">
+                    <div className="flex-1 min-w-0 break-words">
+                      <h4 className="text-sm font-bold text-[#111827] transition-colors duration-300 group-hover:text-[#FF6B00] break-words">
                         {item.name}
                       </h4>
-                      <span className="text-[11px] font-semibold text-[#FF6B00] block mt-0.5 leading-tight">
+                      <span className="text-[11px] font-semibold text-[#FF6B00] block mt-0.5 leading-tight break-words">
                         → {item.subtitle}
                       </span>
-                      <p className="text-xs text-[#6B7280] leading-relaxed mt-1">
+                      <p className="text-xs text-[#6B7280] leading-relaxed mt-1 break-words">
                         {item.description}
                       </p>
                     </div>

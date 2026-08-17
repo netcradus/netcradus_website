@@ -133,7 +133,7 @@
 
 @media (min-width: 992px) {
   .hero-section {
-    background: url('/img/contact background.png') no-repeat center center;
+    background: url('/img/india_hero_bg.jpg') no-repeat center center;
     background-size: cover;
   }
 }
@@ -203,6 +203,7 @@
 @media (min-width: 1024px) {
   .hero-section-grid {
     grid-template-columns: 1.15fr 0.85fr;
+    max-width: 1600px; /* Expanded further to shift content more leftward */
   }
 }
 
