@@ -101,7 +101,7 @@ function NavbarCountryDropdown() {
             alt={selectedCountry ? selectedCountry.name : NAVBAR_COUNTRIES[0].name}
             className="nav-country-flag"
           />
-          <span>{selectedCountry ? selectedCountry.name : NAVBAR_COUNTRIES[0].name}</span>
+          <span className="nav-country-name">{selectedCountry ? selectedCountry.name : NAVBAR_COUNTRIES[0].name}</span>
         </span>
         <ChevronDown
           size={14}
