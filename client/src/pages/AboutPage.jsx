@@ -37,7 +37,6 @@ import SubHero from '../components/SubHero';
 import About from "../components/About";
 import TechnologyPartnersSection from "../components/TechnologyPartnersSection";
 import TeamMembersSection from "../components/TeamMembersSection";
-import GallerySection from '../components/GallerySection';
 // import CTABanner from "../components/CTABanner";
 import Certifications from '../components/Certifications';
 import { usePageMeta } from '../hooks/usePageMeta';
@@ -63,8 +62,6 @@ return (
         <TechnologyPartnersSection />
 
         {/* <TeamMembersSection /> */}
-
-        <GallerySection />
 
         {/* <CTABanner /> */}
 
