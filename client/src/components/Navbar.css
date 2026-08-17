@@ -1004,3 +1004,179 @@
   line-height: 1.45 !important;
   overflow: hidden !important;
 }
+
+/* Solutions Mega Menu Styles */
+.solutions-mega-content {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 405px !important;
+  gap: 45px !important;
+  box-sizing: border-box !important;
+}
+
+.solutions-links {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  column-gap: 55px !important;
+  row-gap: 48px !important;
+  min-width: 0 !important;
+}
+
+.solution-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 18px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.solution-item-content {
+  min-width: 0 !important;
+  width: 100% !important;
+  flex: 1 !important;
+}
+
+.solution-item-title,
+.solution-item-description {
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+.solution-item-description {
+  max-width: 330px !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 1024px) {
+  .solutions-mega-content {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .solutions-links {
+    grid-template-columns: 1fr !important;
+    row-gap: 24px !important;
+  }
+}
+
+/* Products Mega Menu Styles */
+.products-mega-content {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 385px !important;
+  gap: 42px !important;
+  align-items: stretch !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.products-links {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  column-gap: 52px !important;
+  row-gap: 46px !important;
+  min-width: 0 !important;
+}
+
+.product-mega-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 18px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.product-mega-content {
+  flex: 1 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.product-mega-title,
+.product-mega-description {
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+.product-mega-description {
+  max-width: 300px !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 1024px) {
+  .products-mega-content {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-links {
+    grid-template-columns: 1fr !important;
+    row-gap: 24px !important;
+  }
+}
+
+/* Products Featured Panel Styles */
+.products-featured-panel {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  padding-left: 36px !important;
+  padding-right: 36px !important;
+  box-sizing: border-box !important;
+}
+
+.products-featured-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.products-featured-description {
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+}
+
+/* Solutions Featured Panel Styles */
+.solutions-featured-panel {
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding-left: 38px !important;
+  padding-right: 38px !important;
+}
+
+.solutions-featured-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.solutions-featured-description {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+
+  line-height: 1.5 !important;
+  box-sizing: border-box !important;
+}

@@ -165,91 +165,93 @@ const SolutionsMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
               boxShadow: "0 20px 50px rgba(0, 0, 0, 0.12)",
             }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 items-stretch">
+            <div className="p-8 solutions-mega-content">
               
-              {/* COLUMN 1 - Core Security Services */}
-              <div className="flex flex-col text-left space-y-4">
-                <div className="mb-4">
-                  <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-[#111827] pb-2 relative">
-                    Core Security Services
-                    <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-accent" />
-                  </h3>
+              <div className="solutions-links">
+                {/* COLUMN 1 - Core Security Services */}
+                <div className="flex flex-col text-left space-y-4">
+                  <div className="mb-4">
+                    <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-[#111827] pb-2 relative">
+                      Core Security Services
+                      <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-accent" />
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    {CORE_SECURITY.map((solution) => {
+                      const Icon = solution.icon;
+                      return (
+                        <Link
+                          key={solution.id}
+                          to={solution.path}
+                          onClick={onClose}
+                          className="group solution-item p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
+                        >
+                          <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
+                            <Icon size={18} />
+                          </div>
+                          <div className="solution-item-content">
+                            <h4 className="solution-item-title text-sm font-bold text-[#111827] transition-colors duration-300 group-hover:text-accent">
+                              {solution.name}
+                            </h4>
+                            <p className="solution-item-description text-xs text-[#6B7280] mt-1">
+                              {solution.description}
+                            </p>
+                          </div>
+                          <ArrowRight
+                            size={14}
+                            className="shrink-0 mt-1 text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                          />
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  {CORE_SECURITY.map((solution) => {
-                    const Icon = solution.icon;
-                    return (
-                      <Link
-                        key={solution.id}
-                        to={solution.path}
-                        onClick={onClose}
-                        className="group flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
-                      >
-                        <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
-                          <Icon size={18} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-bold text-[#111827] transition-colors duration-300 group-hover:text-accent">
-                            {solution.name}
-                          </h4>
-                          <p className="text-xs text-[#6B7280] leading-normal mt-1">
-                            {solution.description}
-                          </p>
-                        </div>
-                        <ArrowRight
-                          size={14}
-                          className="shrink-0 mt-1 text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                        />
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
+                {/* COLUMN 2 - Specialized Solutions */}
+                <div className="flex flex-col text-left space-y-4">
+                  <div className="mb-4">
+                    <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-[#111827] pb-2 relative">
+                      Specialized Solutions
+                      <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-accent" />
+                    </h3>
+                  </div>
 
-              {/* COLUMN 2 - Specialized Solutions */}
-              <div className="flex flex-col text-left space-y-4">
-                <div className="mb-4">
-                  <h3 className="text-sm font-extrabold uppercase tracking-[0.15em] text-[#111827] pb-2 relative">
-                    Specialized Solutions
-                    <span className="absolute bottom-0 left-0 w-8 h-[2px] bg-accent" />
-                  </h3>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  {SPECIALIZED_SECURITY.map((solution) => {
-                    const Icon = solution.icon;
-                    return (
-                      <Link
-                        key={solution.id}
-                        to={solution.path}
-                        onClick={onClose}
-                        className="group flex items-start gap-4 p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
-                      >
-                        <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
-                          <Icon size={18} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-bold text-[#111827] transition-colors duration-300 group-hover:text-accent">
-                            {solution.name}
-                          </h4>
-                          <p className="text-xs text-[#6B7280] leading-normal mt-1">
-                            {solution.description}
-                          </p>
-                        </div>
-                        <ArrowRight
-                          size={14}
-                          className="shrink-0 mt-1 text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                        />
-                      </Link>
-                    );
-                  })}
+                  <div className="flex flex-col gap-2">
+                    {SPECIALIZED_SECURITY.map((solution) => {
+                      const Icon = solution.icon;
+                      return (
+                        <Link
+                          key={solution.id}
+                          to={solution.path}
+                          onClick={onClose}
+                          className="group solution-item p-4 rounded-xl border border-transparent hover:border-accent/10 hover:bg-orange-50 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,107,0,0.04)] transition-all duration-300 no-underline cursor-pointer"
+                        >
+                          <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-orange-50 text-accent transition-all duration-300 group-hover:scale-108 group-hover:bg-accent group-hover:text-white">
+                            <Icon size={18} />
+                          </div>
+                          <div className="solution-item-content">
+                            <h4 className="solution-item-title text-sm font-bold text-[#111827] transition-colors duration-300 group-hover:text-accent">
+                              {solution.name}
+                            </h4>
+                            <p className="solution-item-description text-xs text-[#6B7280] mt-1">
+                              {solution.description}
+                            </p>
+                          </div>
+                          <ArrowRight
+                            size={14}
+                            className="shrink-0 mt-1 text-accent opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                          />
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 
               {/* COLUMN 3 - Featured Panel */}
-              <div className="md:col-span-2 lg:col-span-1">
-                <div className="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-accent via-accent-bright to-orange-600 p-8 text-white flex flex-col justify-between h-full group/panel shadow-[0_10px_30px_rgba(255,107,0,0.15)]">
+              <div>
+                <div className="solutions-featured-panel relative overflow-hidden rounded-[20px] bg-gradient-to-br from-accent via-accent-bright to-orange-600 py-8 text-white flex flex-col justify-between h-full group/panel shadow-[0_10px_30px_rgba(255,107,0,0.15)]">
                   {/* Floating Background Shapes */}
                   <div className="absolute top-[-20%] right-[-20%] w-[180px] h-[180px] rounded-full bg-white/10 blur-2xl animate-pulse duration-4000" />
                   <div className="absolute bottom-[-10%] left-[-10%] w-[120px] h-[120px] rounded-full bg-black/10 blur-xl" />
@@ -267,14 +269,14 @@ const SolutionsMegaMenu = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
                     </svg>
                   </div>
 
-                  <div className="relative z-10 space-y-4">
+                  <div className="solutions-featured-content relative z-10 space-y-4">
                     <span className="inline-block text-[9px] font-black uppercase tracking-[0.25em] bg-white/20 px-3 py-1 rounded-full">
                       Featured Panel
                     </span>
                     <h3 className="text-xl md:text-2xl font-black leading-tight text-white">
                       Enterprise Solutions
                     </h3>
-                    <p className="text-xs leading-relaxed text-white/85">
+                    <p className="solutions-featured-description text-xs text-white/85">
                       Discover AI-powered cybersecurity, healthcare, cloud, and digital transformation solutions designed to secure and accelerate modern businesses.
                     </p>
                   </div>
