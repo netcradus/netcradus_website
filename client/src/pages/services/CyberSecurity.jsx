@@ -585,7 +585,6 @@
 // export default CyberSecurityPage;
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import {
   CircleDollarSign,
   Lock,
@@ -644,89 +643,65 @@ const CyberSecurityPage = () => {
 
       {/* SECTION 1 – HERO */}
       <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
+        {/* Background Looping Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-80 pointer-events-none z-0"
+        >
+          <source src="/videos/cybersecurity services.mp4" type="video/mp4" />
+        </video>
+
+        {/* Dark Overlay Gradient for Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/75 pointer-events-none z-0" />
+
         {/* Background Gradients & Effects */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none z-0"
           style={{
             background: `
-              radial-gradient(ellipse at 30% 30%, rgba(255,107,0,0.1) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 70%, rgba(59,130,246,0.06) 0%, transparent 50%)
+              radial-gradient(ellipse at 30% 30%, rgba(255,107,0,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(59,130,246,0.08) 0%, transparent 50%)
             `
           }}
         />
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-accent/5 rounded-full blur-[100px] pointer-events-none z-0" />
 
         <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-16 xl:px-24 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
-            {/* Left Content */}
-            <div className="lg:col-span-6 text-left space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/20 bg-accent/8">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
-                <span className="text-xs font-bold tracking-wider uppercase text-accent">
-                  Cyber Security Services
-                </span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] text-white">
-                Secure Your Business.<br />
-                <span className="bg-gradient-to-r from-accent to-accent-bright bg-clip-text text-transparent">
-                  Protect Your Future.
-                </span>
-              </h1>
-
-              <p className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-xl">
-                Cyber threats are no longer limited to large enterprises. Every business connected to the internet is a potential target. Whether you're a startup, SME, or global organization, cybersecurity is essential to protect your data, operations, reputation, and customers.
-              </p>
-
-              <p className="text-base text-text-secondary leading-relaxed max-w-xl">
-                At Netcradus, we help organizations stay ahead of evolving cyber threats with intelligent security solutions, proactive monitoring, and expert-driven defense strategies.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-accent text-white font-bold text-sm tracking-wide shadow-lg shadow-accent/20 hover:bg-accent-bright hover:scale-102 transition-all duration-300 no-underline"
-                >
-                  Get Started
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-border bg-white/5 text-white font-bold text-sm tracking-wide hover:bg-white/10 hover:border-white/20 hover:scale-102 transition-all duration-300 no-underline"
-                >
-                  Talk to an Expert
-                </Link>
-              </div>
+          <div className="max-w-3xl text-left space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/20 bg-accent/8">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+              <span className="text-xs font-bold tracking-wider uppercase text-accent">
+                Cyber Security Services
+              </span>
             </div>
 
-            {/* Right Illustration: Direct Loop Video Component */}
-            <div className="lg:col-span-6 flex justify-center relative">
-              <div className="absolute w-[350px] h-[350px] rounded-full bg-accent/8 blur-[80px] pointer-events-none z-0" />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-[1.1] text-white">
+              Secure Your Business.<br />
+              <span className="bg-gradient-to-r from-accent to-accent-bright bg-clip-text text-transparent">
+                Protect Your Future.
+              </span>
+            </h1>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                className="relative z-10 w-full max-w-[500px]"
+
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-accent text-white font-bold text-sm tracking-wide shadow-lg shadow-accent/20 hover:bg-accent-bright hover:scale-102 transition-all duration-300 no-underline"
               >
-                <div className="relative overflow-hidden rounded-[28px] border border-border bg-surface p-4 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
-                  {/* Looping Inline Video Player */}
-                  <div className="relative overflow-hidden rounded-[20px] aspect-video w-full bg-[#0f172a] flex items-center justify-center shadow-[0_15px_30px_rgba(255,107,0,0.15)]">
-                    <video
-                      src="/img/Netcradus cyber security.mp4"
-                      className="w-full h-full object-cover rounded-[20px]"
-                      autoPlay
-                      loop
-                      playsInline
-                      disablePictureInPicture
-                      disableRemotePlayback
-                    />
-                  </div>
-                </div>
-              </motion.div>
+                Get Started
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-border bg-white/5 text-white font-bold text-sm tracking-wide hover:bg-white/10 hover:border-white/20 hover:scale-102 transition-all duration-300 no-underline"
+              >
+                Talk to an Expert
+              </Link>
             </div>
-
           </div>
         </div>
       </section>
