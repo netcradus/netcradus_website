@@ -135,6 +135,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingContact from "./components/FloatingContact";
 import NewsletterPopup from "./components/NewsletterPopup";
 import WhatsAppButton from "./components/WhatsAppButton";
+import NetcradusChatbot from "./components/chatbot/NetcradusChatbot";
 import CookieConsent from "./components/CookieConsent";
 
 import HomePage from "./pages/HomePage";
@@ -228,6 +229,7 @@ function AppLayout() {
       <CookieConsent />
       <FloatingContact />
       <WhatsAppButton />
+      <NetcradusChatbot />
       <NewsletterPopup />
 
       <main className="relative z-10 w-full">
