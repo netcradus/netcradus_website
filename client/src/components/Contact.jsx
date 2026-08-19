@@ -395,9 +395,9 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
-    user_company: "",
-    user_phone: "",
-    user_email: "",
+    company: "",
+    phone: "",
+    email: "",
     message: ""
   });
 
@@ -423,54 +423,75 @@ const Contact = () => {
 
   const validate = () => {
     const nextErrors = {};
-    if (!formData.first_name.trim()) nextErrors.first_name = "First name is required.";
-    if (!formData.last_name.trim()) nextErrors.last_name = "Last name is required.";
-    if (!formData.user_email.trim()) {
-      nextErrors.user_email = "Business email is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.user_email)) {
-      nextErrors.user_email = "Enter a valid email address.";
+    if (!formData.first_name.trim()) {
+      nextErrors.first_name = "First name is required.";
     }
-    if (!formData.message.trim()) nextErrors.message = "Message details are required.";
+    if (!formData.last_name.trim()) {
+      nextErrors.last_name = "Last name is required.";
+    }
+    if (!formData.email.trim()) {
+      nextErrors.email = "Business email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      nextErrors.email = "Enter a valid email address.";
+    }
+    if (!formData.phone.trim()) {
+      nextErrors.phone = "Phone number is required.";
+    } else if (!/^\+?[0-9\s\-()]{7,20}$/.test(formData.phone)) {
+      nextErrors.phone = "Enter a valid phone number.";
+    }
+    if (!formData.company.trim()) {
+      nextErrors.company = "Company name is required.";
+    }
+    if (!selectedService) {
+      nextErrors.service = "Please select a service.";
+    }
+    if (!formData.message.trim()) {
+      nextErrors.message = "Message details are required.";
+    }
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (status === "loading") return;
+
     if (!validate()) return;
 
-    setStatus("loading");
-    setErrorMessage("");
+    const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    if (!WEB3FORMS_ACCESS_KEY) {
+      console.error("VITE_WEB3FORMS_ACCESS_KEY is not configured");
+      setErrorMessage("Unable to submit your request. Please try again.");
+      setStatus("error");
+      return;
+    }
+
+    const form = e.currentTarget;
+    const formDataPayload = new FormData(form);
+    formDataPayload.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formDataPayload.append("subject", "New Consultation Request - Netcradus Website");
+    formDataPayload.append("from_name", "Netcradus Website");
 
     try {
-      const payload = new FormData();
-      payload.append("first_name", formData.first_name.trim());
-      payload.append("last_name", formData.last_name.trim());
-      payload.append("user_email", formData.user_email.trim());
-      payload.append("user_phone", formData.user_phone ? formData.user_phone.trim() : "");
-      payload.append("user_company", formData.user_company ? formData.user_company.trim() : "");
-      payload.append("selectedService", selectedService || "");
-      payload.append("selectedCountry", selectedCountry || "");
-      payload.append("message", formData.message.trim());
+      setStatus("loading");
+      setErrorMessage("");
 
-
-
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: payload,
+        body: formDataPayload,
       });
 
       const result = await response.json();
 
       if (response.ok && result.success) {
-        setReferenceId(result.referenceId || `NC-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
+        setReferenceId(`NC-${Math.random().toString(36).slice(2, 8).toUpperCase()}`);
         setStatus("success");
         setFormData({
           first_name: "",
           last_name: "",
-          user_company: "",
-          user_phone: "",
-          user_email: "",
+          company: "",
+          phone: "",
+          email: "",
           message: ""
         });
         setSelectedService("");
@@ -478,13 +499,11 @@ const Contact = () => {
         setSelectedOptionId(null);
         setErrors({});
       } else {
-        const errorText = result.error || result.message || "Failed to submit request. Please check your details and try again.";
-        setErrorMessage(errorText);
-        setStatus("error");
+        throw new Error(result.message || "Web3Forms submission failed");
       }
     } catch (error) {
-      console.error("Submission error:", error);
-      setErrorMessage(error?.message || "A network error occurred. Please check your connection and try again.");
+      console.error("Web3Forms submission error:", error);
+      setErrorMessage("Unable to submit your request. Please try again.");
       setStatus("error");
     }
   };
@@ -495,18 +514,17 @@ const Contact = () => {
     document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-
-
   function resetForm() {
     setFormData({
       first_name: "",
       last_name: "",
-      user_company: "",
-      user_phone: "",
-      user_email: "",
+      company: "",
+      phone: "",
+      email: "",
       message: ""
     });
     setSelectedService("");
+    setSelectedCountry("");
     setSelectedOptionId(null);
     setStatus("idle");
     setErrors({});
@@ -603,9 +621,9 @@ const Contact = () => {
                     <span className="success-badge-ping" />
                     <CheckCircle2 size={48} className="relative text-nc-success" strokeWidth={1.5} />
                   </div>
-                  <h3 className="success-title">Request Sent Securely</h3>
+                  <h3 className="success-title">Thank you!</h3>
                   <p className="success-desc">
-                    A Netcradus specialist will reach out within one business hour.
+                    Your consultation request has been submitted successfully. Our team will contact you shortly.
                   </p>
                   <div className="success-reference">
                     Reference&nbsp;<span className="text-[#C2410C]">{referenceId}</span>
@@ -675,62 +693,68 @@ const Contact = () => {
 
                     {/* Email */}
                     <div className="form-field-container">
-                      <label htmlFor="user_email" className="field-label">
+                      <label htmlFor="email" className="field-label">
                         Business Email<span className="text-[#C2410C]">*</span>
                       </label>
                       <div className="input-wrapper">
                         <input
-                          id="user_email"
-                          name="user_email"
+                          id="email"
+                          name="email"
                           type="email"
-                          value={formData.user_email}
+                          value={formData.email}
                           onChange={handleChange}
                           placeholder="Business Email*"
-                          aria-invalid={!!errors.user_email}
-                          className={`field-input ${errors.user_email ? "border-error" : ""}`}
+                          aria-invalid={!!errors.email}
+                          className={`field-input ${errors.email ? "border-error" : ""}`}
                         />
                       </div>
                       <div className="error-area">
-                        {errors.user_email && <p className="text-error">{errors.user_email}</p>}
+                        {errors.email && <p className="text-error">{errors.email}</p>}
                       </div>
                     </div>
 
                     {/* Phone */}
                     <div className="form-field-container">
-                      <label htmlFor="user_phone" className="field-label">
+                      <label htmlFor="phone" className="field-label">
                         Phone Number*
                       </label>
                       <div className="input-wrapper">
                         <input
-                          id="user_phone"
-                          name="user_phone"
+                          id="phone"
+                          name="phone"
                           type="tel"
-                          value={formData.user_phone}
+                          value={formData.phone}
                           onChange={handleChange}
                           placeholder="Phone Number*"
-                          className="field-input"
+                          aria-invalid={!!errors.phone}
+                          className={`field-input ${errors.phone ? "border-error" : ""}`}
                         />
                       </div>
-                      <div className="error-area" />
+                      <div className="error-area">
+                        {errors.phone && <p className="text-error">{errors.phone}</p>}
+                      </div>
                     </div>
 
                     {/* Company */}
                     <div className="form-field-container">
-                      <label htmlFor="user_company" className="field-label">
+                      <label htmlFor="company" className="field-label">
                         Company Name*
                       </label>
                       <div className="input-wrapper">
                         <input
-                          id="user_company"
-                          name="user_company"
+                          id="company"
+                          name="company"
                           type="text"
-                          value={formData.user_company}
+                          value={formData.company}
                           onChange={handleChange}
                           placeholder="Company Name*"
-                          className="field-input"
+                          aria-invalid={!!errors.company}
+                          className={`field-input ${errors.company ? "border-error" : ""}`}
                         />
                       </div>
-                      <div className="error-area" />
+                      <div className="error-area">
+                        {errors.company && <p className="text-error">{errors.company}</p>}
+                      </div>
                     </div>
 
                     {/* Service Dropdown */}
@@ -741,9 +765,14 @@ const Contact = () => {
                       <div className="input-wrapper">
                         <select
                           id="selectedService"
+                          name="service"
                           value={selectedService}
-                          onChange={(e) => setSelectedService(e.target.value)}
-                          className="field-input field-select"
+                          onChange={(e) => {
+                            setSelectedService(e.target.value);
+                            setErrors({ ...errors, service: undefined });
+                          }}
+                          aria-invalid={!!errors.service}
+                          className={`field-input field-select ${errors.service ? "border-error" : ""}`}
                         >
                           <option value="" disabled>Service Required*</option>
                           {serviceOptions.map((opt) => (
@@ -754,7 +783,9 @@ const Contact = () => {
                         </select>
                         <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-nc-muted" />
                       </div>
-                      <div className="error-area" />
+                      <div className="error-area">
+                        {errors.service && <p className="text-error">{errors.service}</p>}
+                      </div>
                     </div>
 
                     {/* Country / Region Dropdown */}
@@ -766,6 +797,7 @@ const Contact = () => {
                         placeholder="Select Country / Region"
                         searchPlaceholder="Find a country or region"
                       />
+                      <input type="hidden" name="country" value={selectedCountry} />
                     </div>
                   </div>
 
