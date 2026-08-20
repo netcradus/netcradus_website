@@ -126,7 +126,7 @@
 // }
 
 // export default App;
-import { Routes, Route, Outlet, useLocation } from "react-router-dom";
+import { Routes, Route, Outlet, useLocation, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { sendLog } from "./utils/logger";
 import Navbar from "./components/Navbar";
@@ -175,6 +175,12 @@ import AdminInquiries from "./pages/AdminInquiries";
 
 import Platform from "./components/Platform";
 import EndpointDetectionPage from "./pages/EndpointDetectionPage";
+import SIEMPage from "./pages/SIEMPage";
+import SOARPage from "./pages/SOARPage";
+import CTIPage from "./pages/CTIPage";
+import PAMPage from "./pages/PAMPage";
+import GRCPage from "./pages/GRCPage";
+import AISecurityPlatformPage from "./pages/AISecurityPlatformPage";
 import { useReveal } from "./hooks/useReveal";
 
 function AppLayout() {
@@ -251,7 +257,21 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="platform" element={<Platform />} />
           <Route path="platform/endpoint-detection" element={<EndpointDetectionPage />} />
-          <Route path="endpoint-detection" element={<EndpointDetectionPage />} />
+          <Route path="endpoint-detection" element={<Navigate to="/platform/endpoint-detection" replace />} />
+          <Route path="platform/xdr" element={<EndpointDetectionPage />} />
+          <Route path="xdr" element={<Navigate to="/platform/endpoint-detection" replace />} />
+          <Route path="platform/siem" element={<SIEMPage />} />
+          <Route path="siem" element={<Navigate to="/platform/siem" replace />} />
+          <Route path="platform/soar" element={<SOARPage />} />
+          <Route path="soar" element={<Navigate to="/platform/soar" replace />} />
+          <Route path="platform/cti" element={<CTIPage />} />
+          <Route path="cti" element={<Navigate to="/platform/cti" replace />} />
+          <Route path="platform/pam" element={<PAMPage />} />
+          <Route path="pam" element={<Navigate to="/platform/pam" replace />} />
+          <Route path="platform/grc" element={<GRCPage />} />
+          <Route path="grc" element={<Navigate to="/platform/grc" replace />} />
+          <Route path="platform/ai-security" element={<AISecurityPlatformPage />} />
+          <Route path="ai-security" element={<Navigate to="/platform/ai-security" replace />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="services/cybersecurity" element={<CyberSecurityPage />} />
           <Route path="services/managed-soc" element={<ManagedSOCPage />} />

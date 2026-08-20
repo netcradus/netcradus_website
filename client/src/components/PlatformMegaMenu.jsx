@@ -27,7 +27,7 @@ export const PLATFORM_ITEMS = [
     name: "NetCradus SIEM",
     subtitle: "Log Management + Detection + Correlation",
     description: "Real-time log aggregation, intelligent event correlation and threat detection.",
-    path: "/acis",
+    path: "/platform/siem",
     icon: Radar,
   },
   {
@@ -43,7 +43,7 @@ export const PLATFORM_ITEMS = [
     name: "NetCradus CTI",
     subtitle: "Threat Intelligence",
     description: "Global cyber threat research, adversary tradecraft and IOC feeds.",
-    path: "/platform",
+    path: "/platform/cti",
     icon: Eye,
   },
   {
@@ -51,7 +51,7 @@ export const PLATFORM_ITEMS = [
     name: "NetCradus PAM",
     subtitle: "Privileged Access Management",
     description: "Verify identity, enforce zero trust, and secure privileged credentials.",
-    path: "/platform",
+    path: "/platform/pam",
     icon: Users,
   },
   {
@@ -59,7 +59,7 @@ export const PLATFORM_ITEMS = [
     name: "NetCradus GRC",
     subtitle: "Risk + Compliance",
     description: "Continuous attack surface management, vulnerability scanning & compliance audits.",
-    path: "/platform",
+    path: "/platform/grc",
     icon: AlertTriangle,
   },
   {
@@ -67,7 +67,7 @@ export const PLATFORM_ITEMS = [
     name: "NetCradus AI Security",
     subtitle: "AI/ML Security + AI Threat Detection",
     description: "AI engine protection, model vulnerability defense & LLM threat triage.",
-    path: "/platform",
+    path: "/platform/ai-security",
     icon: Cpu,
   },
 ];

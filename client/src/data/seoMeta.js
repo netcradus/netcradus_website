@@ -180,6 +180,114 @@ export const SEO_META = {
     robots: PUBLIC_INDEX_ROBOTS,
     type: "website",
   },
+  siem: {
+    path: "/platform/siem",
+    title: "NetCradus SIEM | Autonomous Log Management & Threat Detection",
+    description:
+      "Experience high-speed log ingestion, automated event correlation, and AI-driven SIEM analytics with NetCradus SIEM. Mitigate threats in real-time.",
+    keywords: [
+      "AI SIEM platform",
+      "log management",
+      "threat detection",
+      "event correlation",
+      "NetCradus SIEM",
+      "security analytics",
+      "security event monitoring",
+    ],
+    robots: PUBLIC_INDEX_ROBOTS,
+    type: "website",
+  },
+  xdr: {
+    path: "/platform/endpoint-detection",
+    title: "NetCradus XDR | Extended Detection & Response Platform",
+    description:
+      "Protect endpoints, servers, and multi-cloud workloads in real time. NetCradus Cyrix XDR unifies EDR, behavioral NGAV, and proactive threat hunting.",
+    keywords: [
+      "XDR platform",
+      "endpoint detection",
+      "EDR agent",
+      "threat hunting",
+      "incident response",
+      "cybersecurity platform",
+    ],
+    robots: PUBLIC_INDEX_ROBOTS,
+    type: "website",
+  },
+  soar: {
+    path: "/platform/soar",
+    title: "NetCradus SOAR | Security Orchestration, Automation & Response",
+    description:
+      "Orchestrate incident response at machine speed. Build custom automated playbooks and isolate compromised devices with NetCradus SOAR.",
+    keywords: [
+      "SOAR platform",
+      "security orchestration",
+      "incident containment",
+      "automated playbooks",
+      "remediation workflows",
+    ],
+    robots: PUBLIC_INDEX_ROBOTS,
+    type: "website",
+  },
+  cti: {
+    path: "/platform/cti",
+    title: "NetCradus CTI | Cyber Threat Intelligence Platform",
+    description:
+      "Synchronize real-time threat intelligence feeds. Profile adversary tactics and reverse-engineer malicious payloads with NetCradus CTI.",
+    keywords: [
+      "CTI platform",
+      "threat intelligence",
+      "adversary profiling",
+      "IOC feeds",
+      "MITRE ATT&CK mapping",
+    ],
+    robots: PUBLIC_INDEX_ROBOTS,
+    type: "website",
+  },
+  pam: {
+    path: "/platform/pam",
+    title: "NetCradus PAM | Privileged Access Management",
+    description:
+      "Secure administrative credentials and vaults. Enforce least-privilege Zero Trust and monitor privileged session trails with NetCradus PAM.",
+    keywords: [
+      "PAM vault",
+      "privileged access management",
+      "credential vaults",
+      "Zero Trust access",
+      "session anomaly detection",
+    ],
+    robots: PUBLIC_INDEX_ROBOTS,
+    type: "website",
+  },
+  grc: {
+    path: "/platform/grc",
+    title: "NetCradus GRC | Governance, Risk & Compliance Platform",
+    description:
+      "Automate compliance auditing and cybersecurity risk mapping. Continuously audit assets and surface threats with NetCradus GRC.",
+    keywords: [
+      "GRC auditing",
+      "risk compliance management",
+      "compliance frameworks",
+      "ISO 27001",
+      "SOC 2 audits",
+    ],
+    robots: PUBLIC_INDEX_ROBOTS,
+    type: "website",
+  },
+  aiSecurityPlatform: {
+    path: "/platform/ai-security",
+    title: "NetCradus AI Security | AI/ML & LLM Triage Protection",
+    description:
+      "Harden machine learning pipelines and large language models against prompts injection, data poisoning, and Shadow AI traffic.",
+    keywords: [
+      "AI model defense",
+      "LLM threat protection",
+      "semantic prompt guardrails",
+      "prompt injection protection",
+      "Shadow AI detection",
+    ],
+    robots: PUBLIC_INDEX_ROBOTS,
+    type: "website",
+  },
   acis: {
     path: "/acis",
     title:

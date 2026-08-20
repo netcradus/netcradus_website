@@ -55,24 +55,37 @@ function setStructuredData(data) {
   script.textContent = JSON.stringify(data);
 }
 
-export function usePageMeta(title, description, options = {}) {
+export function usePageMeta(titleOrObj, description, options = {}) {
   useEffect(() => {
     const windowPath = window.location.pathname || "/";
     const normalizedPath = windowPath === "/" ? "/" : windowPath.replace(/\/+$/, "");
     const matchedMeta = getSeoMetaByPath(normalizedPath);
 
+    let title = "";
+    let desc = "";
+    let opts = options;
+
+    if (typeof titleOrObj === "object" && titleOrObj !== null) {
+      title = titleOrObj.title;
+      desc = titleOrObj.description;
+      opts = { ...titleOrObj, ...options };
+    } else {
+      title = titleOrObj;
+      desc = description;
+    }
+
     const finalTitle = title || matchedMeta?.title;
-    const finalDescription = description || matchedMeta?.description;
-    const rawKeywords = options.keywords || matchedMeta?.keywords || DEFAULT_KEYWORDS;
+    const finalDescription = desc || matchedMeta?.description;
+    const rawKeywords = opts.keywords || matchedMeta?.keywords || DEFAULT_KEYWORDS;
     const finalKeywords = Array.isArray(rawKeywords) ? rawKeywords : [rawKeywords];
-    const finalRobots = options.robots || matchedMeta?.robots || "index, follow, max-image-preview:large";
-    const finalType = options.type || matchedMeta?.type || "website";
-    const finalPath = options.path || normalizedPath;
-    const canonicalUrl = options.canonical || `${BASE_URL}${finalPath}`;
-    const imageUrl = options.image?.startsWith("http")
-      ? options.image
-      : options.image
-        ? `${BASE_URL}${options.image}`
+    const finalRobots = opts.robots || matchedMeta?.robots || "index, follow, max-image-preview:large";
+    const finalType = opts.type || matchedMeta?.type || "website";
+    const finalPath = opts.path || normalizedPath;
+    const canonicalUrl = opts.canonical || `${BASE_URL}${finalPath}`;
+    const imageUrl = opts.image?.startsWith("http")
+      ? opts.image
+      : opts.image
+        ? `${BASE_URL}${opts.image}`
         : DEFAULT_IMAGE;
 
     if (finalTitle) {
@@ -113,16 +126,16 @@ export function usePageMeta(title, description, options = {}) {
       },
     };
 
-    if (options?.article?.publishedTime) {
-      webPageSchema.datePublished = options.article.publishedTime;
+    if (opts?.article?.publishedTime) {
+      webPageSchema.datePublished = opts.article.publishedTime;
     }
 
-    if (options?.article?.modifiedTime) {
-      webPageSchema.dateModified = options.article.modifiedTime;
+    if (opts?.article?.modifiedTime) {
+      webPageSchema.dateModified = opts.article.modifiedTime;
     }
 
-    if (options?.article?.section) {
-      webPageSchema.articleSection = options.article.section;
+    if (opts?.article?.section) {
+      webPageSchema.articleSection = opts.article.section;
     }
 
     if (finalPath === "/") {
@@ -152,5 +165,5 @@ export function usePageMeta(title, description, options = {}) {
     }
 
     return undefined;
-  }, [title, description, options]);
+  }, [titleOrObj, description, options]);
 }

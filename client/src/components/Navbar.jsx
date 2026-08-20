@@ -296,16 +296,8 @@ const Navbar = () => {
             onMouseEnter={() => handleMouseEnter('platform')}
             onMouseLeave={handleMouseLeave}
           >
-            <button
-              type="button"
-              onClick={(e) => handleMenuToggle('platform', e)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  handleMenuToggle('platform', e);
-                }
-              }}
-              aria-expanded={activeMenu === 'platform'}
-              aria-haspopup="true"
+            <Link
+              to="/platform"
               className={`nav-link cursor-pointer bg-transparent border-none p-0 outline-none ${isActiveLink('/platform') || activeMenu === 'platform'
                   ? 'active'
                   : ''
@@ -321,7 +313,7 @@ const Navbar = () => {
                       : 'text-white/70'
                   }`}
               />
-            </button>
+            </Link>
 
             <PlatformMegaMenu
               isOpen={activeMenu === 'platform'}
