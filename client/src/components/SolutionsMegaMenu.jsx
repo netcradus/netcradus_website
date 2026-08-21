@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
+  Key,
 } from "lucide-react";
 
 export const SOLUTIONS = [
@@ -29,6 +30,14 @@ export const SOLUTIONS = [
     description: "24×7 monitoring and rapid threat detection & response.",
     path: "/services/managed-soc",
     icon: Radar,
+  },
+  {
+    id: "iam",
+    name: "Identity & Access Management",
+    tagline: "Identity Security",
+    description: "Secure identities, enforce least privilege, and govern access across the enterprise.",
+    path: "/services/iam",
+    icon: Key,
   },
   {
     id: "cloud-security",
@@ -86,6 +95,13 @@ const CORE_SECURITY = [
     description: "24×7 monitoring and rapid threat detection & response.",
     path: "/services/managed-soc",
     icon: Radar,
+  },
+  {
+    id: "iam",
+    name: "Identity & Access Management",
+    description: "Secure identities, enforce least privilege, and govern access across the enterprise.",
+    path: "/services/iam",
+    icon: Key,
   },
   {
     id: "network-security",
